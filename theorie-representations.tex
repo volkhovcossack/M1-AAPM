@@ -1,0 +1,908 @@
+\documentclass[french]{book}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{lmodern}
+\usepackage[top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+\usepackage{microtype}
+\usepackage{mathtools, amssymb, amsthm}
+\usepackage{mdframed}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage{wrapfig}
+\usepackage{stmaryrd}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{theorem}{Théorème}
+\newtheorem{definition}{Définition}[section]
+\newtheorem*{remark}{Remarque}
+\newtheorem*{lemma}{Lemme}
+\newtheorem*{corollary}{Corollaire}
+\newtheorem*{mth}{Méthode}
+\newmdtheoremenv{thm}{Théorème}
+\newtheorem{exo}{Exercice}
+\newtheorem{exemple}{Exemple}
+
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
+\newcommand{\less}{\ \lesss\ }
+
+\newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}}
+\newcommand{\bg}{\ \biggg\ }
+
+\title{\bsc{Théorie des représentations}}
+\date{2023-2024}
+\author{Yves \bsc{Aubry}, M-147A, yves.aubry@univ-tln.fr}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Généralités sur les groupes}
+
+\section{Rappels}
+
+
+Soit $G$ un groupe. Soit $H$ un sous-groupe de $G$ (i. e. $H \neq 0$ et $\forall x, y \in H, x y ^{-1} \in H$).
+
+Considérons la relation binaire suivante sur $G$ :
+
+Pour $x, y \in G$, $x \equiv _{d} y \mod H$ ssi $x y ^{-1} \in H$. C'est une relation d'équivalence. Elle est dite de congruence à gauche modulo $H$.
+
+\begin{proof}
+  En effet, si $x \in G$, alors $x x ^{-1} = e \in H$, donc $x \mod _{g} = x \mod H$. La relation est donc réflexive.
+
+  De plus, si $x, y \in G$ tels que $x \equiv _{g} y \mod H$, alors $x y ^{-1} \in H$. $H$ étant un sous-groupe de $G$, il est donc stable par passage au symétrique. D'où $(x y ^{-1} ) ^{-1}  \in H$, i. e. $y x ^{-1} \in H$, c'est-à-dire $y \equiv _{g} x \mod H$.
+
+  Enfin, si $x, y,z \in G$ tels que $x \equiv _{g} y \mod H$ et $y \equiv _{g} z \mod H$, alors $x y ^{-1} \in H$ et $yz ^{-1} \in H$. Or, $H$ étant un sous-groupe de $G$, donc $H$ est stable pour la loi de composition interne. D'où $(x y ^{-1} )(y z ^{-1} ) \in H$. Par associativité, $x (y y ^{-1} ) z ^{-1}  \in H$, ie $x z ^{-1}  \in H$.
+
+  Donc $x \equiv _{g} z \mod H $ et la relation est transitive.
+\end{proof}
+
+\
+
+Soit $x \in G$. La classe d'équivalence de $x$ pour cette relation d'équivalence est
+
+\begin{gather*}
+  cl _{d}(x) = \{ y \in G \mid x y ^{-1} \in H \} \\
+  = \{ y \in G \mid \exists h \in H, x y ^{-1} = h \} \\
+  = \{ y \in G \mid \exists h \in H, y = hx \} \\
+  = \{ hx, h \in H \} =: Hx
+\end{gather*}
+
+De même, on considère, sur $G$,  la relation de congruence à gauche modulo $H$  :
+
+\begin{equation*}
+  x \equiv _{g} y \mod H \text{ ssi } x ^{-1} y \in H.
+\end{equation*}
+
+On montre de même que c'est une relation d'équivalence. Si $x \in G$, alors $cl_g(x) := xH = \{ xh, h \in H \} $.
+
+\begin{remark}
+  Si $G$ est abélien, alors les classes à gauche et à droite modulo $H$ coincident.
+\end{remark}
+
+\begin{definition}
+  Un sous-groupe $H$ d'un groupe $G$ est dit distingué dans $G$ (ou normal) si :
+
+  \begin{gather*}
+    \forall  x \in G, xH = Hx, \\
+    \text{ i. e. } \forall x \in G, x H x ^{-1}  \subset H \\
+    \text{ i. e. } \forall x \in G, x H x ^{-1} =H.
+  \end{gather*}
+\end{definition}
+
+On note alors $H \triangleleft G$.
+
+\begin{remark}
+  Tout sous-groupe d'un groupe abélien est distingué.
+\end{remark}
+
+\begin{prop}
+  Soit $G$ un groupe et $H$ un sous-groupe distingué de $G$.
+
+  On note $G/H$ l'ensemble des classes à droite ou à gauche modulo $H$.
+
+  Si $x, y \in G$ et si l'on note $\overline{a} $ la classe de $a$ modulo $H$, on peut munir le quotient $G/H$ d'une structure de groupe en posant
+
+  \begin{gather*}
+    \overline{x} \cdot \overline{y} = \overline{xy}.
+  \end{gather*}
+\end{prop}
+
+\begin{proof}
+  Cette loi est bien définie, i. e. elle ne dépend pas du choix des représentants des classes d'équivalence.
+\end{proof}
+
+\begin{remark}
+  Cette loi de la surjection canonique $\pi:
+    \begin{array}{lll}
+    G & \longrightarrow & G/H \\
+    x & \longmapsto \overline{x}
+    \end{array}$ un morphisme de groupes.
+\end{remark}
+
+\begin{thm}[Lagrange]
+  Soit $G$ un groupe fini et $H$ un sous-groupe de $G$.
+
+  Alors l'ordre de $H$ divise l'ordre de $G$.
+\end{thm}
+
+\begin{remark}
+  L'ordre d'un groupe est simplement son cardinal.
+\end{remark}
+
+\begin{remark}
+  Si $g$ est un élément de $G$, alors l'ordre de $G$ est défini comme l'ordre du sous-groupe $\langle g \rangle $ engendré par $g$. S'il est fini, alors l'ordre de $g$ est le plus petit entier $n$ tel que $g ^{n} =e$.
+
+  D'après le théorème de Lagrange, l'ordre d'un élément divise l'ordre du groupe.
+\end{remark}
+
+\begin{remark}
+  Si $G$ est un groupe fini et $H$ un sous-groupe de $G$, alors les classes (à gauche) modulo $H$ ont toutes le même cardinal, à savoir celui de $H$. En effet, l'application, pour $x \in G : f_x:
+    \begin{array}{lll}
+    H & \longrightarrow & xH \\
+    h & \longmapsto xh
+    \end{array}$ est bijective.
+\end{remark}
+
+\section{Exemples de groupes}
+
+\subsection{$ (\mathbb{Z}, +)$ }
+
+Groupe abélien.
+
+$n \mathbb{Z} = \{ nk, k \in \mathbb{Z} \} $ est un sous-groupe de $\mathbb{Z}$.
+
+\begin{remark}
+  Tout sous-groupe de $\mathbb{Z}$ est de la forme $n \mathbb{Z}$ pour un certain $n \mathbb{Z}$.
+\end{remark}
+
+\subsection{$\mathbb{Z}/{ n }\mathbb{Z}$}
+
+C'est l'ensemble des classes d'équivalence pour la relation d'équivalence suivante :
+
+\begin{gather*}
+  x, y \in \mathbb{Z}, x \equiv y \mod n \mathbb{Z} \text{ ssi } x - y \in n\mathbb{Z}.
+\end{gather*}
+
+\begin{remark}
+  $\overline{x} = \overline{y}  $ ssi $x R y$.
+\end{remark}
+
+On munit l'ensemble quotient $\mathbb{Z}/{ n }\mathbb{Z}$ d'une structure de groupe (et même d'anneau) en posant, pour $x, y \in \mathbb{Z}$ : $\overline{x}+ \overline{y} = \overline{x+y}   $ (et $\overline{x} \times \overline{y} = \overline{x \times y}   $).
+
+\begin{remark}
+  $\mathbb{Z}/{ 6 }\mathbb{Z}$ anneau non intègre, car $ \overline{2} \times \overline{3} = \overline{0}   $.
+\end{remark}
+
+\begin{remark}
+  $\mathbb{Z}/{ n }\mathbb{Z}$ est un corps ssi $n$ est premier.
+\end{remark}
+
+\begin{prop}
+  Tous les groupes $\mathbb{Z}/{ n }\mathbb{Z}$ sont cycliques. Les générateurs sont les $\overline{a} $ tels que $a$ et $n$ sont premiers entre eux, i. e. $(a,n) = 1$. De plus, tout groupe cyclique est isomorphe à $\mathbb{Z}/{ n }\mathbb{Z}$ avec $n = \lvert G \rvert$.
+
+  Enfin, si $G$ est cyclique d'ordre $n$ alors pour tout diviseur $d$ de $n$, $G$ admet un sous-groupe d'ordre $d$, et celui-ci est unique, et celui-ci est cyclique.
+\end{prop}
+
+\begin{remark}
+  $\mathbb{Z}/{ 2 }\mathbb{Z} \times \mathbb{Z}/{ 3 }\mathbb{Z} = \{ (\overline{a}, \tilde{a} ), \overline{a} \in \mathbb{Z}/{ 2 }\mathbb{Z}, \tilde{a} \in \mathbb{Z}/{ 3 }\mathbb{Z}  \} $.
+\end{remark}
+
+\begin{thm}[Théorème des restes chinois]
+  Soient $n_1, \dots, n_r$ des entiers premiers entre eux deux à deux. Alors l'application
+
+  \[
+  \begin{array}{lll}
+  \mathbb{Z}/{ \prod_{i=1}^{r} n_i  }\mathbb{Z} & \longrightarrow & \prod_{i=1}^{r } \mathbb{Z}/{ n_i }\mathbb{Z}  \\
+  a + (\prod_{i=1}^{r} n_i ) \mathbb{Z} & \longmapsto (a+ n_1 \mathbb{Z}, \dots, a+ n_r \mathbb{Z})
+  \end{array}
+  \]
+
+  est un isomorphisme d'anneaux et la réciproque est vraie.
+\end{thm}
+
+\marginpar{19-09-2023}
+
+\section{Groupe diédral}
+
+Soit $n \geq 3$ un entier. Le groupe diédral de degré $n$ est le groupe des isométries du plan laissant fixe le polygone régulier à $n$ côtés. On le note $D_n$ (ou $D _{2n}$).
+
+$D_n$ est un groupe d'ordre $2n$ constitué de $n$ rotations et de $n$ symétries.
+
+Considérons le polygone régulier dont les sommets sont, dans le plan complexe, les $n$ racines $n$-ièmes de l'unité :
+
+\[
+e^{\frac{2ik \pi}{n}}, k = 0, 1, \dots, n-1.
+\]
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/racines-3.jpg}
+  \caption{Racines 3-ièmes de l'unité.}
+  \label{}
+\end{figure}
+
+Soit $r = rot(0, \frac{2 \pi}{n})$ la rotation de centre $O$ et d'angle $\frac{2 \pi}{n}$ et soit $s$ la symétrie axiale d'axe la droite réelle $(x,x)$.
+
+On a \[
+r:\begin{array}{rcl}
+\mathbb{C} & \longrightarrow & \mathbb{C} \\
+z & \longmapsto e^{\frac{2 i \pi}{n}} z
+\end{array}
+\]
+
+et
+
+\[
+s:
+  \begin{array}{rcl}
+  \mathbb{C} & \longrightarrow & \mathbb{C} \\
+  z & \longmapsto \overline{z}
+  \end{array}.
+\]
+
+
+On vérifie que l'on a $r ^{n} = 1 = id$, $s ^2 = 1 =id$ et $rs = r ^{-1} $.
+
+\begin{proof}
+  En effet, si $z \in \mathbb{C}$, alors
+
+  \[
+  r ^{-1} (z) = e^{- \frac{2 i \pi}{n}} z \text{ et } s r s(z) = s r (\overline{z} ) = s \left( e^{\frac{2 i \pi}{n}} \overline{z} \right) = e^{- \frac{2 i \pi}{n}} z = r ^{-1} (z),
+  \]
+
+  donc $s r s = r ^{-1} $.
+\end{proof}
+
+On peut donc définir le groupe diédral $D_n$ par ``générateurs et relations'' de la façon suivante :
+
+\[
+D_n = \langle r,s \rangle  \text{ avec } r ^{n} = s ^2 = 1 \text{ et } s r s = r ^{-1} .
+\]
+
+Le sous-groupe de $D_n$ engendré par $r$ est un sous-groupe d'ordre $n$ :
+
+\[
+\langle r \rangle = \{ r, r ^2, \dots, r ^{n-1}, id \} \simeq \mathbb{Z}/{ n }\mathbb{Z} .
+\]
+
+Il est d'indice 2 dans $D_n$, il est donc distingué dans $D_n$.
+
+\subsection{Description du groupe $D_3$}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/elts-d3.png}
+  \caption{Description explicite des éléments de $D_3$.}
+  \label{}
+\end{figure}
+
+On a donc
+
+\[
+D_3 = \{ e, r, r ^2, s, rs, r ^2 s \}
+\]
+
+\begin{remark}
+  Il n'existe que deux groupes d'ordre 6 à isomorphisme près, à savoir le groupe cyclique (abélien) $\mathbb{Z}/{ 6 }\mathbb{Z}$ et le groupe symétrique (non abélien) $\mathfrak{S}_{3} $.
+\end{remark}
+
+Or $D_3$ n'est pas abélien, donc $D_3$ est isomorphe à $\mathfrak{S}_{3} $.
+
+\begin{exo}
+  Déterminer l'ordre des éléments de $D_3$ ainsi que ses sous-groupes.
+\end{exo}
+
+%\paragraph{Exemple du groupe quaternionien}
+
+\begin{exemple}[Groupe quaternionien]
+  Soit $\mathbb{H}$ le corps des quaternions d'Hamilton.
+
+  \[
+  \mathbb{H} = \{ a+ib+jc+kd \mid i ^2 = j ^2 = k ^2 = 1, ij = -ij = k, jk=-kj=i, ki=-ik=j \text{ et }  a, b, c, d \in \mathbb{R}\}.
+  \]
+
+  $\mathbb{H}$ est un corps non commutatif. On $\mathbb{R} \subset \mathbb{C} \subset \mathbb{H}$.
+
+  Considérons le sous-ensemble suivant de $\mathbb{H}$ :
+
+  \[
+  \mathbb{H} _{8} = \{ 1, -1, i, -i, j, -j, k, -k \}.
+  \]
+
+  \begin{exo}
+    Montrer que $\mathbb{H}_8$ muni de la multiplication est un groupe.
+  \end{exo}
+
+  C'est un groupe non abélien d'ordre 8.
+
+  \begin{exo}
+    Déterminer l'ordre des éléments de $\mathbb{H} _{8}$ ainsi que ses sous-groupes.
+  \end{exo}
+\end{exemple}
+
+
+
+\paragraph{Rappel}
+
+
+\begin{thm}[De classification des groupes abéliens finis]
+  Tout groupe \textbf{abélien} fini est isomorphe à un produit de groupes cycliques de la forme
+
+  \[
+  \mathbb{Z}/{ d_1 }\mathbb{Z} \times \mathbb{Z}/{ d_2 }\mathbb{Z} \times \dots \times \mathbb{Z}/{ d_r }\mathbb{Z}, \text{ avec } d_1 \mid d_2 \mid \dots \mid d_r.
+  \]
+
+  Cette écriture est unique (à l'ordre près des facteurs).
+\end{thm}
+
+On en déduit qu'il existe trois groupes abéliens d'ordre 8 à isomorphisme près :
+
+\[
+\mathbb{Z}/{ 8 }\mathbb{Z}, \mathbb{Z}/{ 2 }\mathbb{Z} \times \mathbb{Z}/{ 4 }\mathbb{Z} \text{ et }  (\mathbb{Z}/{ 2 }\mathbb{Z}) ^3.
+\]
+
+Question : a-t-on $\mathbb{H}_8 \simeq D_4$ ?
+
+\section{Les théorèmes de Sylow}
+
+Si $H$ est un sous-groupe d'un groupe $G$, ses \textbf{conjugués} dans $G$ sont $g H g ^{-1} $, avec $g \in G$. En particulier, $H$ est distingué dans $G$ si et seulement si il est égal à tous ses conjugués.
+
+\begin{definition}
+  Si $G$ est un groupe fini d'ordre $p ^{\alpha} q$, avec $p$ premier, $\alpha \geq 1$ et $q$ premier avec $p$, alors tout sous-groupe de $G$ d'ordre $p3\alpha$ est appelé un $p$ sous-groupe de Sylow de $G$ (ou encore un $p$-Sylow de $G$).
+\end{definition}
+
+\begin{thm}[Premier théorème de Sylow]
+  Soit $G$ un groupe d'ordre $p ^{\alpha} q$, $p$ premier, $\alpha \geq 1$, $(p, q)=1$. Pour tout $1 \leq \beta \leq \alpha$, il existe un sous-groupe de $G$ d'ordre $p ^{\beta}$.
+\end{thm}
+
+\begin{thm}[Deuxième théorème de Sylow]
+  Le nombre $n_p$ de $p$-Sylow de $G$ vérifie :
+  \[
+  \begin{cases}
+    n_p \equiv 1 \mod p \\
+    n_p \mid q.
+  \end{cases}
+  \]
+\end{thm}
+
+\begin{thm}[Troisième théorème de Sylow]
+
+  \
+
+  \begin{enumerate}
+    \item Le conjugué d'un $p$-Sylow est un $p$-Sylow.
+    \item Tous les $p$-Sylow sont conjugués entre eux.
+  \end{enumerate}
+\end{thm}
+
+\begin{exo}
+  Montrer qu'il n'existe pas de groupes simples d'ordre 15.
+\end{exo}
+
+\begin{proof}
+  Soit $G$ un groupe d'ordre $3 \times 5 = 15$. D'après le premier théorème de Sylow, $G$ admet au moins un 3-Sylow.
+
+  Soit $n_3$ le nombre de 3-Sylow de G. Par le deuxième théorème de Sylow, on a
+
+  \[
+  n_3 \equiv 1 \mod 3 \text{ et } n_3 \mid 5.
+  \]
+
+  $G$ admet donc un unique 3-Sylow $H$.
+
+  D'après le (1) du troisième théorème de Sylow, les conjugués de $H$ sont des 3-Sylow de $G$, donc sont égaux à $H$ puisque c'est le seul 3-Sylow de $G$. Donc $H$ est égal à tous ses conjugués et donc $H$ est distingué dans $G$. Puisque $\lvert H \rvert = 3$, $H \neq \{ e \} $ et $H \neq G$. Donc $G$ admet un sous-groupe distingué propre. Donc $G$ n'est pas simple.
+\end{proof}
+
+\subsection{Groupes agissant sur un ensemble ou action de groupes}
+
+\begin{definition}[Action de groupe]
+  Une action (à gauche) d'un groupe $G$ sur un ensemble $X$ est une application
+
+  \[
+    \begin{array}{lll}
+    G \times X & \longrightarrow & X \\
+    (g,x) & \longmapsto g \cdot x
+    \end{array}
+  \]
+
+  telle que
+
+  \begin{enumerate}
+    \item $\forall x \in X, e \cdot x = x$ (où $e$ est l'élément neutre de $G$) ;
+    \item $\forall g, g' \in G, \forall x \in X, g \cdot (g' \cdot x) = (gg')\cdot x$.
+  \end{enumerate}
+\end{definition}
+
+On peut voir une action comme un morphisme de groupes de $G$ dans le groupe symétrique $\mathfrak{S}_{X} $ de permutations dans $X$ :
+
+\begin{prop}
+  Si un groupe $G$ agit sur un ensemble $X$ par
+
+  \[
+    \begin{array}{rcl}
+    G \times X & \longrightarrow & X \\
+    (g,x) & \longmapsto g \cdot x,
+    \end{array}
+  \]
+
+  alors pour tout $g \in G$, l'application
+
+  \[
+  \pi_g:
+    \begin{array}{rcl}
+    X & \longrightarrow & X \\
+    x & \longmapsto g \cdot x
+    \end{array}
+  \]
+
+  est une permutation de $X$ et l'application
+
+  \[
+  \pi:
+    \begin{array}{rcl}
+    G & \longrightarrow & \mathfrak{S}_{X}  \\
+    g & \longmapsto \pi_g
+    \end{array}
+  \]
+
+  est un morphisme de groupes.
+
+  Réciproquement, si $
+    \begin{array}{rcl}
+    G & \longrightarrow & \mathfrak{S}_{X}  \\
+    g & \longmapsto p_g
+    \end{array}$ est un morphisme de groupes, alors $(g,x) \mapsto g \cdot x :=p_g(x)$ est une action de $G$ sur $X$.
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  %Vérifions que $\pi$ est bien un morphisme de groupes. Montrons tout d'abord que, si $g \in G$, alors l'application
+
+  %\[
+  %\pi:
+  %  \begin{array}{rcl}
+  %  X & \longrightarrow & X \\
+  %  x & \longmapsto \pi_g(x) = g \cdot x
+  %  \end{array}
+  %\]
+
+  %est une permutation de $X$.
+
+  %On a
+
+  %\[
+  %\pi_e:
+  %  \begin{array}{rcl}
+  %  X & \longrightarrow & X \\
+  %  x & \longmapsto x
+  %  \end{array} = id_X.
+  %\]
+
+  %De plus, si $g, g' \in G$, alors $\pi _{gg'} = \pi_g \circ \pi _{g'}$.
+
+  %Soit $x \in X$, on a $\pi _{gg'}(x) = (gg') \cdot x$ et
+
+  %\begin{gather*}
+  %  (\pi_g \circ \pi _{g'})(x)= \pi_g(\pi _{g'})(x)
+  %\end{gather*}
+
+  Supposons que $G$ agisse sur un ensemble $X$ par $
+    \begin{array}{rcl}
+    G \times X & \longrightarrow & X \\
+    (g,x) & \longmapsto g \cdot x
+    \end{array}$.
+
+  Soit $g \in G$. Considérons l'application $\pi_g:
+    \begin{array}{rcl}
+    X & \longrightarrow & X \\
+    x & \longmapsto g \cdot x
+    \end{array}$.
+
+  Montrons que $\pi_g$ est injective. Soient $x, y \in X$ tq $\pi_g(x) = \pi_g(y)$. D'où $g \cdot x = g \cdot y$. D'où $g ^{-1}  \cdot g \cdot x = g ^{-1}  \cdot g \cdot y$. D'où $(g ^{-1}  g ) \cdot x = (g ^{-1}  g ) \cdot y$. D'où $e \cdot x = e \cdot y$. Donc $\pi_g$ est injective. Montrons que $\pi_g$ est surjective. Soit $y \in X$. On a $y = \pi_g(g ^{-1}  y) = g \cdot g ^{-1}  \cdot y$. Donc $\pi_g$ est surjective. Donc $\pi_g$ est bijective.
+
+  On peut donc considérer l'application $\pi:
+    \begin{array}{rcl}
+    G & \longrightarrow & \mathfrak{S}_{X}  \\
+    g & \longmapsto \pi_g
+    \end{array}$.
+
+  Montrons que $\pi$ est un morphisme de groupes. Montrons que $\forall g, g' \in G, \pi _{g g'} = \pi_g \circ \pi _{g'}$.
+
+  Soient $g, g' \in G$. Soit $x \in X$. $$\pi _{ gg'}(x) = (g g') \cdot x = g \cdot g' \cdot x = g \cdot (\pi _{ g'} (x)) = \pi_g (\pi _{ g'}(x)).$$
+
+  Donc $\pi _{ gg'} = \pi_g \circ \pi _{ g'}$.
+
+  \
+
+  Réciproquement, si on se donne un morphisme de groupes d'un groupe $G$ dans un groupe de permutations $\mathfrak{S}_{X} $ :
+
+  \[
+  p:
+    \begin{array}{rcl}
+    G & \longrightarrow & \mathfrak{S}_{X}  \\
+    g & \longmapsto p_g,
+    \end{array}
+  \]
+
+  alors l'application
+
+  \[
+    \begin{array}{rcl}
+    G \times X & \longrightarrow & X \\
+    (g,x) & \longmapsto g \cdot := p_g(x)
+    \end{array}
+  \]
+
+  est une action de groupes.
+
+  En effet,
+
+  \begin{enumerate}
+    \item Soit $x \in X$, on a $e \cdot x = p_e(x) = id_X(x) = x$, car $p$ est un morphisme de groupes et l'image de l'élément neutre par un morphisme de groupes est l'élément neutre.
+    \item Soient $g, g' \in G$ et soit $x \in X$ ; on a
+
+    \begin{gather*}
+      g \cdot (g' \cdot x) = g \cdot (p _{g'}(x)) = p_g(p _{g'}(x)) = (p_g \circ p _{g'})(x) = p _{gg'}(x) = (gg') \cdot x,
+    \end{gather*}
+
+    car $p$ est un morphisme de groupes.
+  \end{enumerate}
+\end{proof}
+
+Cela établit deux bijections réciproques entre l'ensemble des actions de $G$ sur $X$ et celui des morphismes de $G$ dans $\mathfrak{S}_{X} $.
+
+\begin{definition}
+  Si un groupe $G$ agit sur un ensemble $X$, alors la relation sur $X$ définie par : pour $x, y \in X, x \sim y $ ssi $\exists g \in G, y = g  \cdot x$ est une relation d'équivalence. La classe d'équivalence de $X$ pour cette relation s'appelle \textbf{l'orbite} de $X$ :
+
+  \[
+  Orb(x):= \{ g \cdot x, g \in G \} .
+  \]
+
+  Ainsi, l'ensemble des orbites forme une \textbf{partition} de $X$.
+
+  On dit que $g$ agit \textbf{transitivement} s'il n'y a qu'une seule orbite.
+
+  Le \textbf{noyau} de l'action est le noyau du morphisme associé :
+
+  \[
+  \pi:
+    \begin{array}{rcl}
+    G & \longrightarrow & \mathfrak{S}_{X}  \\
+    g & \longmapsto \left(\pi_g:
+      \begin{array}{rcl}
+      X & \longrightarrow & X \\
+      x & \longmapsto g \cdot x
+      \end{array}\right)
+    \end{array}
+  \]
+
+  \[
+  \operatorname{Ker}(\pi) = \{ g \in G \mid \forall x \in X, g \cdot x = x \}.
+  \]
+
+  On dit que l'action est \textbf{fidèle} si son noyau est réduit à $\{ e \} $ (i. e. si le morphisme $\pi$ est injectif).
+
+  Le \textbf{stabilisateur} (ou groupe d'isotropie) d'un élément $x \in X$ est l'ensemble :
+
+  \[
+  Stab(x) = \{ g \in G \mid g \cdot x = x \}.
+  \]
+
+  C'est un sous-groupe de $G$ (en exercice).
+\end{definition}
+
+\begin{prop}
+  Pour $x$ fixé dans $X$, l'application
+
+  \[
+    \begin{array}{rcl}
+    G & \longrightarrow & X \\
+    g & \longmapsto g \cdot x
+    \end{array}
+  \]
+
+  définit une bijection de l'ensemble $G / Stab(x)$ des classes à gauche modulo $Stab(x)$ sur l'orbite de $x$. Ainsi, le cardinal de l'orbite $Orb(x)$ est égal à l'indice du stabilisateur de $x$ :
+
+  \[
+  \sharp(Orb(x)) = [G:Stab(x)].
+  \]
+\end{prop}
+
+\begin{thm}[Formule des classes]
+  Soit $G$ un groupe fini agissant sur un ensemble fini $X$. Alors
+
+  \[
+  \sharp(X) = \sum_{\substack{x \text{ décrivant un système} \\ \text{des représentants des orbites} }}^{} [G:Stab(x)].
+  \]
+\end{thm}
+
+\begin{proof}
+  \[
+  \sharp(X) = \sum_{i=1}^{m} \sharp(Orb(x_i)),
+  \]
+
+  où $\{ x_1, \dots, x_n \}$ est un système des représentants des orbites pour l'action de $G$ sur $X$.
+\end{proof}
+
+\paragraph{Exemple d'action de groupe}
+
+ On fait agit un groupe $G$ sur lui-même par conjugaison
+
+ \[
+   \begin{array}{rcl}
+   G \times G & \longrightarrow & G \\
+   (g,x) & \longmapsto g \cdot x := g x g ^{-1} .
+   \end{array}
+ \]
+
+C'est bien une action de groupes, car
+
+\begin{enumerate}
+  \item Soit $x \in G$, on a $e \cdot x = e x e ^{-1} =x$.
+  \item Soient $g, g' \in G$ et $x \in G$. On a :
+
+  \[
+  g \cdot (g' \cdot x) = g \cdot (g x g ^{-1} )=g(g'x (g')^{-1} ) g ^{-1} = (gg') x ((g')^{-1} g ^{-1} ) = (gg')x(gg') ^{-1} = (gg')\cdot x.
+  \]
+\end{enumerate}
+
+\emph{Cette action est-elle transitive, fidèle ? Quelle est l'orbite d'un élément ?}
+
+\marginpar{20-09-2023}
+
+Soit $x \in G$. L'orbite de $x$ est :
+
+\[
+Orb(x) = \{ g \cdot x, g \in G \} = \{ g x g ^{-1} , g \in G \} = \text{classe de conjugaison de } x \text{ dans } G.
+\]
+
+On a $Orb(e) = \{ e \} $. Si $G$ n'est pas réduit à $\{ e \} $, il y a plusieurs orbites : l'action n'est donc pas transitive (il y a autant d'orbites que de classes de conjugaison).
+
+\emph{L'action est-elle fidèle ?}  Etudions le noyau du morphisme $\pi$ associé à cette action
+
+\[
+\pi:
+  \begin{array}{rcl}
+  G & \longrightarrow & \mathfrak{S}_{G}  \\
+  g & \longmapsto \left( \pi_g:
+    \begin{array}{rcl}
+    G & \longrightarrow & G \\
+    x & \longmapsto g x g ^{-1}
+    \end{array}\right).
+  \end{array}
+\]
+
+On a
+
+\begin{gather*}
+  \operatorname{Ker}(\pi) = \{  g \in G \mid \pi_g =id_G \} = \{ g \in G \mid \forall x \in G, \pi_g(x) = x \} \\
+  = \{ g \in G \mid \forall x \in G, g x g ^{-1} =x \} =  \{ g \in G \mid \forall x \in G, gx = xg \} = Z(G).
+\end{gather*}
+
+L'action est fidèle si et seulement si le centre de $G$ est réduit à l'élément neutre.
+
+Soit $x \in G$. \emph{Quel est le stabilisateur de $x$ ?}
+
+\begin{gather*}
+  Stab(x) = \{ g \in G \mid g \cdot x = x \} = \{ g \in G \mid g x g ^{-1} =x \} = \{ g \in G \mid gx=xg \} = \text{centralisateur de } x.
+\end{gather*}
+
+Etudions un exemple avec $G = \mathfrak{S}_{3} $. Les orbites de $\mathfrak{S}_{3} $ pour cette action sont les classes de conjugaison de $\mathfrak{S}_{3} $. Elles constituent une partition de $\mathfrak{S}_{3} $.
+
+\begin{enumerate}
+  \item $Orb(e) = \{ e \} $.
+  \item $Orb(\tau_3) = \{ \sigma \tau_3 \sigma ^{-1} , \sigma \in \mathfrak{S}_{3}  \} = \{ \text{transpositions de } \mathfrak{S}_{3} \} = \{ \tau_1, \tau_2, \tau_3 \} $.
+  \item $Orb(\sigma_1) = \{ \sigma \sigma_1 \sigma ^{-1} , \sigma \in \mathfrak{S}_{3}  \} = \{ 3-\text{cycles de } \mathfrak{S}_{3}  \} = \{ \sigma_1, \sigma_2 \} $.
+\end{enumerate}
+
+La formule des classes s'écrit alors :
+
+\[
+\lvert \mathfrak{S}_{3} \rvert = \sum_{}^{} [\mathfrak{S}_{3}: Stab(x_i)],
+\]
+
+où $\{ x_1, x_2, x_3 \} $ est un système des représentants de l'orbite, avec $x_1 = e, x_2 = \tau_1, x_3 = \sigma_1$.
+
+On a
+
+\[
+\lvert \mathfrak{S}_{3}  \rvert = \sum_{i=1}^{3} \sharp Orb(x_i)  =  \sharp Orb(x_1) +\sharp Orb(x_2) + \sharp Orb(x_3) =1+3+2 = 6.
+\]
+
+L'action est fidèle, car $Z(\mathfrak{S}_{3} ) = \{ e \} $. L'action n'est pas transitive, car il y a trois orbites, à savoir les trois classes de conjugaison.
+
+\[
+Stab(e) = \{ \sigma \in \mathfrak{S}_{3} \mid \sigma e = e \sigma \}= \mathfrak{S}_{3}.
+\]
+
+On a bien
+
+\begin{gather*}
+  [\mathfrak{S}_{3}: Stab(e) ] = \frac{\lvert \mathfrak{S}_{3}  \rvert}{\lvert Stab(e) \rvert} = \frac{3!}{3!}=1 = \sharp Orb(e).
+\end{gather*}
+
+On a $[\mathfrak{S}_{3}: Stab(\tau_3) ] = \sharp Orb(\tau_3) = 3$, donc $\lvert Stab(\tau_3) \rvert = 2$. D'où
+
+\begin{gather*}
+  Stab(\tau_3) = \{ \text{permutations de } \mathfrak{S}_{3} \text{ qui commutent avec } \tau_3 \} = \{ e, \tau_3 \}.
+\end{gather*}
+
+On a $[\mathfrak{S}_{3}: Stab(\sigma_1) ] = \sharp Orb(\sigma_1)=2$, donc $\lvert Stab(\sigma_1) \rvert = 3$. Puisque l'indice du stabilisateur est 2, on en déduit que $Stab(\sigma_1) \triangleleft \mathfrak{S}_{3} $. Or les seuls sous-groupes distingués de $\mathfrak{S}_{n} $ sont $\{ e \}, \mathfrak{S}_{n} \text{ et }  \mathfrak{A}_n  $. Donc
+
+\begin{gather*}
+  Stab(\sigma_1) = \mathfrak{A}_3 = \{ e, \sigma_1, \sigma_2 \}.
+\end{gather*}
+
+\chapter{Représentations linéaires des groupes finis}
+
+Théorie introduite par Frobenius à la fin du XIX siècle.
+
+\section{Premières définitions}
+
+\begin{definition}
+  Une représentation linéaire d'un groupe $G$ est la donnée d'un $\mathbb{C}$-espace vectoriel $V$ muni d'une action de groupes (à gauche) de $G$ agissant de manière linéaire :
+
+  \[\begin{matrix}
+    G \times V & \longrightarrow & V \\
+    (g,x) & \longmapsto & g \cdot x
+  \end{matrix}\]
+  %  \begin{array}{rcl}
+  %  G \times V & \longrightarrow & V \\
+  %  (g,x) & \longmapsto g \cdot x
+  %  \end{array}
+
+  telle que
+
+  \begin{enumerate}
+    \item $\forall x \in V, e \cdot x = e$ ;
+    \item $\forall g, g' \in G, \forall x \in V, g \cdot (g' \cdot x) = (gg')\cdot x$ ;
+    \item $\forall g \in G, \forall x,x' \in V, \forall \lambda, \lambda' \in \mathbb{C}$, $g \cdot (\lambda x+\lambda'x') = \lambda g \cdot x + \lambda' g \cdot x$.
+  \end{enumerate}
+\end{definition}
+
+Une représentation linéaire d'un groupe $G$ est donc la donnée d'un $\mathbb{C}$-espace vectoriel $V$ et d'un morphisme de groupes :
+
+%\[
+%\rho:
+%  \begin{array}{rcl}
+%  G & \longrightarrow & GL(V) \\
+%  g & \longmapsto \left(\rho_g:
+%    \begin{array}{rcl}
+%    V & \longrightarrow & V \\
+%    x & \longmapsto g \cdot x
+%    \end{array}\right),
+%  \end{array}
+%\]
+
+
+\[\begin{matrix}
+\rho : & G & \longrightarrow & GL(V) \\
+\ & g & \longmapsto & \left(\begin{matrix}
+ V & \longrightarrow & V \\
+ x & \longmapsto & g \cdot x
+\end{matrix}\right)
+\end{matrix}\]
+où $GL(V)$ est le groupe des automorphismes du $\mathbb{C}$-espace vectoriel $V$.
+
+On a bien $\forall g, g' \in G, \rho _{gg'} = \rho_g \circ \rho _{g'}$ et $\rho_e=id_V$ et $\rho _{g ^{-1} } = \rho_g ^{-1} $ comme vu précédemment.
+
+De plus, $, \forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$, i. e. une application linéaire de $V$ dans $V$ et donc $\rho_g \in GL(V)$. En effet, si $x, x' \in V$ et $\lambda , \lambda' \in \mathbb{C}$, alors
+
+\begin{gather*}
+  \rho_g(\lambda x + \lambda' x') = g \cdot(\lambda x+ \lambda'x') \stackrel{(3)}{=} \lambda g \cdot x + \lambda' g \cdot x' = \lambda \rho_g(x) + \lambda'\rho_g(x').
+\end{gather*}
+
+\begin{definition}
+  L'espace vectoriel $V$ est appelé \textbf{l'espace de la représentation}.
+
+  La dimension de $V$ (en tant que $\mathbb{C}$-espace vectoriel) est appelé le \textbf{degré} ou la dimension de la représentation.
+
+  Lorsque $\rho$ est injectif, la représentation est dite \textbf{fidèle} ; le groupe $G$ se représente alors de manière concrète comme un sous-groupe de $GL(V)$ ; lorsque $V$ est de dimension finie (ce que nous allons supposer dorénavant), le choix d'une base du $\mathbb{C}$-espace vectoriel $V$ fournit alors une représentation encore plus concrète comme groupe de matrice.
+\end{definition}
+
+\begin{remark}[Personnelle]
+  Si \(\rho\) est une représentation fidèle, alors
+
+  \[\operatorname{Ker}(\rho) = \{ g \in G \mid \forall x \in V, g \cdot x = x \} = \{ e \}. \]
+\end{remark}
+
+\begin{remark}
+  Soient $G$ un groupe fini et $\rho : G \to GL(V)$ une représentation (linéaire) de $G$. Soit $g \in G$ un élément d'ordre $n$. On a alors
+
+  \[
+  (\rho_g)^n = \rho _{g ^{n}} = \rho_e = id_V.
+  \]
+
+  Donc l'endomorphisme $\rho_g$ est racine du polynôme $X^{n}-1$ qui n' a que des racines simples. Le polynôme minimal de $\rho_g$ divise donc le polynôme $X ^{n}-1$ et n'a donc aussi que des racines simples. Le polynôme minimal de $\rho_g$ est donc scindé sur $\mathbb{C}$ et à racines simples, on en déduit que l'endomorphisme de $\rho_g$ est \textbf{diagonalisable}.
+\end{remark}
+
+\paragraph{Exemples}
+
+\begin{enumerate}
+  \item La représentation triviale (ou représentation unité) :
+
+  \[\begin{matrix}
+  \rho : & G & \longrightarrow & GL(\mathbb{C}) \simeq \mathbb{C}^{*} \\
+  \ & g & \longmapsto & \left( \rho_g : \begin{matrix}
+   \mathbb{C} & \longrightarrow & \mathbb{C} \\
+   x & \longmapsto & x
+  \end{matrix}\right).
+  \end{matrix}\]
+
+
+    \item Les représentations de degré 1 : ce sont les morphismes de groupes
+
+    \[
+    \rho : G \longrightarrow \mathbb{C} ^{*}
+    \]
+
+    puisque si $dim V =1$, alors $GL(V) \simeq \mathbb{C}^{*}$, car les endomorphismes de $V$ sont des homothéties :
+
+    %\[
+    %f _{\lambda} : \mathbb{C} \longrightarrow \mathbb{C}, f _{\lambda}(x) = \lambda x
+    %\]
+
+    \[\begin{matrix}
+    f _{\lambda } : & \mathbb{C} & \longrightarrow & \mathbb{C} \\
+    \ & x & \longmapsto & \lambda x
+    \end{matrix}\]
+
+    et
+
+    \[\begin{matrix}
+      GL(V) & \longrightarrow & \mathbb{C} ^{*} \\
+      f_{\lambda} & \longmapsto & \lambda
+    \end{matrix}\]
+
+    %\[
+    %  \begin{array}{rcl}
+    %  GL(V) & \longrightarrow & \mathbb{C} ^{*} \\
+    %  f _{\lambda } & \longmapsto \lambda
+    %  \end{array}
+    %\]
+
+    qui a une homothétie fait correspondre son rapport induit un isomorphisme. Si $G$ est \textbf{fini}, tout élément de $G$ est d'ordre fini (par le théorème de Lagrange) et donc, pour tout $g \in G$, $\rho_g$ est une racine de l'unité dans $\mathbb{C}$, et en particulier $\rho_g$ est un nombre complexe de module 1 :
+
+    \[
+    \lvert \rho_g \rvert = 1.
+    \]
+
+    \item Soient $\mathfrak{S}_n$ le groupe symétrique et $(e_1, \dots, e_n)$ la base canonique de $\mathbb{C} ^{n}$. On définit la représentation canonique de degré $n$ de $\mathfrak{S}_n$ en posant :
+
+    \[\begin{matrix}
+    \rho : & \mathfrak{S}_n & \longrightarrow & GL(\mathbb{C} ^{n}) \\
+    \ & \sigma & \longmapsto & \left( \rho _{\sigma} : \begin{matrix}
+    \mathbb{C} ^{n} & \longrightarrow & \mathbb{C}^{n} \\
+    e_i & \longmapsto & \rho _{\sigma}(e_i) := e _{\sigma(i)}
+    \end{matrix}\right).
+    \end{matrix}\]
+
+    %\[
+    %\rho:
+    %  \begin{array}{rcl}
+    %  \mathfrak{S}_n & \longrightarrow & GL(\mathbb{C} ^{n}) \\
+    %  \sigma & \longmapsto \left(\rho_\sigma:
+    %    \begin{array}{rcl}
+    %    \mathbb{C} ^{n} & \longrightarrow & \mathbb{C} ^{n} \\
+    %    e_i & \longmapsto \rho _{\sigma}(e_i) := e _{\sigma(i)}
+    %    \end{array}\right).
+    %  \end{array}
+    %\]
+
+\end{enumerate}
+
+
+\end{document}

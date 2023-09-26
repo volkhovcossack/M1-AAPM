@@ -27,10 +27,6 @@
 \newtheorem{exemple}{Exemple}
 
 
-\newcommand*{\TakeFourierOrnament}[1]{{%
-\fontencoding{U}\fontfamily{futs}selectfont\char#1}}
-\newcommand*{\danger}{\TakeFourierOrnament{66}}
-
 \newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
 \newcommand{\less}{\ \lesss\ }
 
@@ -96,7 +92,7 @@ $V(x) =(x- \varepsilon , x+ \varepsilon )$ est une base de voisinage pour la top
 
 
 
-\begin{definition}[Espace métrique, distance]
+\begin{definition}[Espace métrique, distance] \label{distance}
   \
 
   $X$ est un ensemble, $d : X \times X \to \mathbb{R} ^{+}$ distance sur $X$ si et seulement si :
@@ -721,6 +717,223 @@ Si $X$ est un espace vectoriel normé complet (de Banach), alors $X'$ l'est auss
   \label{}
 \end{figure}
 
+\section{Espaces localement convexes métrisables, espaces de Fréchet}
+
+\subsection{Topologies définies par une distance}
+
+On rappelle la définition \ref{distance}.
+
+\begin{definition}[Distances équivalentes]
+  On dit que $d_1$ est équivalente à $d_2$ si et seulement si il existe \(C \bg 0\) tel que
+
+  \[\frac{1}{C}d_1(x,y) \leq d_2(x,y) \leq C d_1(x,y).\]
+\end{definition}
+
+\(d_1 \sim d_2 \implies (X,d_1) \simeq (X,d_2)\), mais la réciproque est fausse.
+
+\begin{exemple}
+  On prend un espace métrique \((X,d)\) avec les distances
+
+  \[\delta(x,y) = \frac{d(x,y)}{1+ d(x,y)} \text{ et } \delta'(x,y) = \inf(1, d(x,y)).\]
+
+  Ces deux distances sont équivalentes entre elles.%, mais elles ne sont pas équivalentes à \(d\).
+\end{exemple}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Montrons que \((X, d) \sim (X, \delta')\). On remarque d'abord que
+
+    \[\delta(x,y) = \frac{d(x,y)}{1+ d(x,y)} \leq d(x,y), \]
+
+    ce qui veut dire que \((X, d) \prec (X, \delta).\)
+
+    Prenons \(f(t) = \frac{t}{1+t}\). La fonction \(f\) est une bijection de \(\mathbb{R} ^{+}\) dans \([0, 1]\). En effet, montrons qu'il existe \(g : [0, 1] \to \mathbb{R} ^{+}\) telle que $g \circ f = f \circ g = \operatorname{id}$.
+
+    On a
+
+    \begin{gather*}
+      \frac{t}{1+t} = s \implies t = ts+s \implies t = \frac{s}{1-s}.
+    \end{gather*}
+
+    Donc \(d(x,y) = \frac{\delta(x,y)}{1 - \delta(x,y)}\). Donc si \(d(x,y) \less \varepsilon\), alors \(d(x,y) \less \frac{\varepsilon}{1- \varepsilon}\). Donc \((X,\delta) \prec (X,d)\).
+
+    \item Montrons que \(\delta \sim \delta'\).
+
+    On a \[\frac{d}{1+d} \leq \begin{cases}
+      1 \\
+      \delta
+    \end{cases},\]
+
+    donc \[\delta(x,y) \leq \delta'(x,y).\]
+
+    Mais \(\delta' \leq 2 \delta\).
+
+    Si $ d \leq 1 \text{ et } \delta' = d$, alors $d \leq 2 d$.
+
+    Si $d \geq  1 \text{ et } \delta' = 1$, alors $1 \leq 2 d$.
+
+    \item Montrons que $\delta$ est une distance.
+
+    \begin{enumerate}
+      \item Montrons l'inégalité triangulaire. Si $d(x,y) \leq d(x,z) + d(z,y)$, montrons que $\delta(x,y) \leq \delta(x,z) + \delta(z,y)$.
+
+      Est-ce que \(f(d(x,y)) \leq f(d(x,z))+ f(d(z,y))\) ?
+
+      \begin{enumerate}
+        \item $f$ est croissante, donc \(f(d(x,y)) \leq f[d(x,z) + d(z,y)]\). Il suffit de voir que $f(t) \leq f(u)+f(v)$.
+
+        \item Montrons la sous-additivité de $f$. Posons \[v  \mapsto \varphi(v) =  f(u+v) - f(u) - f(v). \]
+
+        On a \(\varphi(0) = 0\), car \(f(0) =0\) et \(\varphi(v) = f'(u+v) - f'(v) \less 0\), car $f$ est une fonction croissante.
+      \end{enumerate}
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+\emph{Sous quelles conditions un espace localement convexe est métrisable ?}
+
+On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topologie de la convergence simple n'est pas métrisable. Plus généralement, les topologies faibles ne sont pas métrisables, sauf si on travaille en dimension finie. De plus, \(X\) muni de la topologie grossière n'est pas métrisable (non séparée).
+
+\begin{prop}\label{elc-metr}
+  Soit \(X\) un espace localement convexe (donc séparé). Alors les assertions suivantes sont équivalentes.
+
+  \begin{enumerate}
+    \item \(X\) est métrisable.
+    \item Il existe une base dénombrable de voisinages de 0 dans \(X\), et ce pour tout \(x \in X\).
+    \item La topologie de \(X\) est engendrée par une famille dénombrable de semi-normes.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \begin{enumerate}
+    \item \((1) \implies (2)\). La topologie sur \(X\) est équivalente à \((X,d)\). Soit \((X,d)\) un espace métrique. Il suffit de poser
+
+    \[\mathcal{O} _{\frac{1}{n}} = \left\{ x \mid d(x,0) \less \frac{1}{n}\right\} \ (\mathbb{R} \text{ est archimédien}). \]
+
+    Alors \(\forall \varepsilon \bg 0, \exists n \text{ tel que } \mathcal{O} _{\frac{1}{n}} \subset \mathcal{O} _{\varepsilon}\). Donc \(x + \mathcal{O} _{\frac{1}{n}}\) est une base dénombrable de voisinages de \(x\).
+
+    \item \((2) \implies (3)\). On sait que \(\mathscr{T}\) topologie de \(X\) est donnée par une famille de semi-normes. Les voisinages de 0 dans \(X\) sont donnés par
+
+    \[\mathcal{O} _{a, \varepsilon} = \bigcap _{i=1} ^{n} \mathcal{O} _{\varepsilon, a_i}, \text{ avec } i \in \{ 1, \dots, n \}.\]
+
+    On rappelle que \(\mathcal{O} _{\varepsilon,a_i} = \{ x \mid \rho _{a_i} \less \varepsilon \}\).
+
+    On peut choisir \(\varepsilon = \frac{1}{n}\). On sait qu'il existe une base dénombrable de voisinages de 0 dans \(X\). Soit \(U_n\) une base de voisinages dénombrable de 0. On pose
+
+    \[\rho_n(x) = \mu _{U_n}(x).\]
+
+    On prend les \(U_n\) convexes, balancés, absorbants (c'est possible, car \(X\) est un espace localement convexe).
+
+    \item \((3) \implies (1)\).
+
+    \begin{enumerate}
+      \item Soit \( (\rho_n)\) une famille dénombrable de semi-normes sur \(X\). On pose
+
+      \[d(x,y) = \sum_{n=1}^{\infty} 2 ^{-n} \frac{\rho_n(x-y)}{1 + \rho_n(x-y)}.\]
+
+      Montrons que \((X, \text{ELC}) \prec (X, d)\). Soit \(U \in \mathscr{T}\). On se ramène aux voisinages de 0. On a
+
+      \[U = \bigcap _{\text{finie}} \mathcal{O} _{\varepsilon, a}, a \in A. \]
+
+      Comme il existe une base dénombrable de voisinages, on peut choisir
+
+      \[U _{\varepsilon} = \bigcap _{j=1} ^{N} = \{ x \mid \rho _{j}(x-0)\less \varepsilon \}, \text{ avec } A= \mathbb{N}.\]
+
+      Ce voisinage est inclus dans \(\{ x \mid \sum_{}^{} \rho_j(x-0) \leq N \varepsilon\}\).
+
+      Montrons que \(U\) est un voisinage de \(x\) pour la topologie métrique \((X,d)\).
+
+      Soit \(\varepsilon \bg 0\). On pose \(d(x,0) = \left( \sum_{1}^{N} + \sum_{N+1}^{\infty}\right) \frac{\rho_n}{1+ \rho_n}\). Or \(N\) est tel que
+
+      \[\sum_{N+1}^{\infty} 2 ^{-n} \less \varepsilon \implies \sum_{N+1}^{\infty} 2 ^{-n} \frac{\rho_n}{1+ \rho_n} \less \varepsilon.\]
+
+      De plus,
+
+      \begin{gather}
+        d(x,y) \leq \varepsilon + \sum_{n=1}^{N}  \frac{d_n}{1+d_n} \less \varepsilon + \sum_{n=1}^{N} d_n(x,y). \label{vois_un}
+      \end{gather}
+
+      Or \(\rho_n(x-y)\less \varepsilon\), car \(x \in y + U _{\varepsilon}\).
+
+      Donc \ref{vois_un} devient
+
+      \begin{gather*}
+        d(x,y) \leq \varepsilon + N \varepsilon \text{ avec } N \text{ fixé.}
+      \end{gather*}
+
+      Donc \(\mathscr{T} \prec (X,d)\).
+
+      \item Montrons que \((X,d) \prec \mathscr{T}\). On doit majorer \(\rho_m(x-y)\).
+
+      Or \begin{gather*}
+        d(x,y) = \sum_{n=1}^{\infty} 2 ^{-n} \frac{\rho_n(x-y)}{1+ \rho_n(x-y)} \geq 2 ^{-m} \frac{\rho_m(x-y)}{1 + \rho_m(x-y)}.
+     \end{gather*}
+
+     Et
+
+     \begin{gather*}
+       2 ^{m}d(x,y) \geq \frac{\rho_m(x-y)}{1 + \rho_m(x-y)} \geq  f(t).
+     \end{gather*}
+
+     Donc on a \(\rho_m \leq  g(2 ^{m} d(x,y))\), où \(g\) est la réciproque de \(t \mapsto \frac{1}{1+t}\).
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}
+  Soit \(X\) un espace localement convexe qui vérifie l'une des propriétés énoncées dans la proposition \ref{elc-metr} (i. e. métrisable). On note la topologie de \(X\) ELC par \(\mathscr{T}\). Alors \(X\) est complet pour \(\mathscr{T}\) si et seulement si \((X,d)\) est complet.
+\end{prop}
+
+\begin{proof}
+  Cette proposition se démontre comme \ref{elc-metr}.
+\end{proof}
+
+\begin{definition}
+  Soit \(X\) un espace localement convexe. On dit que \(X\) est un \textbf{espace de Fréchet} si \(X\) est \textbf{métrisable et complet}.
+\end{definition}
+
+\begin{exemple}
+
+  \
+
+  \begin{enumerate}
+    \item \emph{Les espaces localement convexes qui ne sont pas des Fréchet. }
+    \begin{enumerate}
+      \item \emph{Non métrisables.} \(\mathscr{F}([0, 1], \mathbb{R}) \) muni de la topologie de la convergence simple, les topologies faibles, \(\dots\)
+    \end{enumerate}
+
+    \item \emph{Les espaces localement convexes qui sont des Fréchet. } Les espaces de Banach, par exemple \(\mathscr{F}([0, 1], \mathbb{R}) \) muni de la topologie de la convergence uniforme, \(\mathcal{C}^{\infty}_0(K)\), \(\dots\)
+  \end{enumerate}
+\end{exemple}
+
+\subsection{Espace de Schwarz \(\mathscr{S}(\mathbb{R} ^{d}) \subset \mathcal{C}^\infty(\mathbb{R}^d)\)}
+
+\(\varphi \in \mathscr{S}(\mathbb{R}^d) \iff \rho _{\alpha, \beta}(\varphi) = \sup_{ \mathbb{R} } \left\lvert x ^{\alpha} D _{\varphi} ^{\beta} \right\rvert \less \infty\).
+
+Montrons que \(\mathscr{S}(\mathbb{R})\) est complet. On va regarder \(\rho _{0, 0}, \rho _{0, 1}, \rho _{1, 0}, \rho _{1, 1}, \dots\)
+
+\begin{enumerate}
+  \item \(\rho _{0, 0}(\varphi _{p+q} - \varphi _{p}) \less \varepsilon\), donc \( \varphi _{p} \longrightarrow \varphi\), donc
+
+  \[\sup_{ \mathbb{R} } \lvert \varphi _{p+q} (x) - \varphi _{p}(x) \rvert \less \varepsilon. \]
+
+  En particulier pour tout \(K \subset \mathbb{R}\), \(\varphi_n\) est de Cauchy dans \(\mathcal{C}^0(K)\). Or \(\mathcal{C}^0(K)\) est complet, donc \(\varphi_n \underset{\text{uniformément}}{\longrightarrow} \varphi.\) Comme \(K\) est arbitraire, elle converge localement sur tout \(\mathbb{R}\). On a
+
+  \[\rho _{0, 0}(\varphi _{p+q} - \varphi_p) \less \varepsilon, \]
+
+  donc \[\rho _{0, 0}(\varphi - \varphi_p) \less \varepsilon.\]
+
+  Donc \(\varphi _{p}\) converge pour \(\rho _{0,0}\).
+
+  \item On a besoin de rappeler le lemme suivant :
+
+  \begin{lemma}
+    Si \(\varphi' \longrightarrow \psi\) uniformément et \(\varphi_n \longrightarrow \varphi\) simplement, alors \(\psi = \varphi'\).
+  \end{lemma}
+\end{enumerate}
 
 
 

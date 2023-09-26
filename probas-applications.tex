@@ -1392,6 +1392,8 @@ On calcule :
 
   \end{enumerate}
 
+\end{proof}
+
   \begin{prop}[Indépendance et fonctions de répartition]
     Les variables aléatoires $X_1$ et $X_2$ sont indépendantes si et seulement si
 
@@ -1470,7 +1472,91 @@ On calcule :
 
 %Réviser changement de variable dans \mathbb{R}^n.
 
-\end{proof}
+
+
+\marginpar{26-09-2023}
+
+%Programme :
+%Convergence de VA
+%Convergence en loi (fonction caractéristique)
+%Théorèmes limites
+%Vecteurs gaussiens
+%(Espérances conditionnelles)
+
+\section{Changement de variables}
+
+On considère \((X_1, X_2)\) un vecteur aléatoire à densité \(f _{X_1 X_2}(x_1, x_2)\). On construit deux autres variables aléatoires \(U_1, U_2\) telles que
+
+\[\begin{cases}
+U_1 = g_1(X_1, X_2) \\
+U_2 = g_2(X_1, X_2).
+\end{cases}\]
+
+
+On veut trouver la loi de \(U_1, U_2\), à savoir la densité du couple.
+
+Soit \(h : \mathbb{R}^2 \to \mathbb{R}\) une fonction mesurable positive quelconque que l'on appelle ``fonction test''.
+
+\begin{gather}
+  \int_{\Omega} h(U_1, U_2) d \mathbb{P} = \int_{\Omega} h(g_1(X_1, X_2), g_2(X_1, X_2)) d \mathbb{P} \\
+  \stackrel{\text{transfert}}{=} \iint_{\mathbb{R}^2} h (g_1(x_1, x_2), g_2(x_1, x_2)) d P _{X_1 X_2}\\
+  = \iint_{\mathbb{R}^2} h(g_1(x_1, x_2), g_2(x_1, x_2)) f _{X_1, X_2} (x_1, x_2) d x_1 d x_2. \label{chva}
+\end{gather}
+
+On pose
+
+\[\begin{cases}
+u_1 = g_1 (x_1, x_2) \\
+u_2 = g_2 (x_1, x_2).
+\end{cases}\]
+
+On sait que \((X_1, X_2)\) ne sont pas forcément définies sur \(\mathbb{R}^2\), mais sur un certain domaine \(A \subset \mathbb{R}^2\). On pose \(G = (g_1, g_2) : \mathbb{R}^2 \to \mathbb{R}^2\).
+
+On doit avoir \(G ^{-1}  : \begin{cases}
+  x_1 = d_1(u_1, u_2) \\
+  x_2 = d_2(u_1, u_2)
+\end{cases},\) donc il faut que \(G\) soit inversible. De plus, on devrait calculer la matrice jacobienne
+
+\[J _{U_1 U_2} = \left(\begin{matrix}
+  \frac{\partial d_1 }{\partial u_1 } & \frac{\partial d_1 }{\partial u_2} \\
+  \frac{\partial d_2 }{\partial u_2 } & \frac{\partial d_2 }{\partial u_2}
+\end{matrix}\right).\]
+
+\ref{chva} devient :
+
+\begin{gather*}
+  \iint_{\mathbb{R}^2 \cap G(A)} h(u_1, u_2) f _{X_1 X_2} (d_1(u_1, u_2), d_2(u_1, u_2)) \lvert \operatorname{det}(J _{U_1 U_2}(u_1, u_2)) \rvert d u_1 d u_2.
+\end{gather*}
+
+Comme \(h\) est quelconque, on peut choisir \(h(x) = \mathds{1}_{\{ g \bg f \} }(x) \text{ et puis } h(x) = \mathds{1}_{\{ g \less f \} } \).
+
+On obtient la formule de changement de variable :
+
+\begin{thm}
+  \[f _{U_1 U_2}(u_1, u_2) = f _{X_1 X_2}(d_1(u_1, u_2), d_2(u_1, u_2)) \lvert \operatorname{det} J _{U_1 U_2}(u_1, u_2) \rvert \mathds{1}_{G(A)}(u_1, u_2).\]
+\end{thm}
+
+\emph{Si on a deux variables aléatoires \(X_1 \text{ et } X_2 \), quelle est la loi de \((X_1+X_2)\) ?}
+
+On introduit \[\begin{cases}
+  U_1 = X_1 + X_2,
+  U_2 = X_2
+\end{cases} \implies \begin{cases}
+  X_1 = U_1 - U_2 \\
+  X_2 = U_2
+\end{cases}.\]
+
+De plus, \[J _{U_1 U_2} = \begin{pmatrix}
+1 & -1 \\
+0 & 1
+\end{pmatrix}.\]
+
+On calcule \[f _{U_1 U_2} (u_1, u_2) = f _{X_1 X_2}(u_1 - u_2, u_2)\] et on obtient \[f _{U_1}(u_1) = \int f _{U_1, U_2}(u_1, u_2) d u_2 = \int_{}^{} f _{X_1 X_2} (u_1 - u_2, u_2) d u_2 = \int_{\mathbb{R}}^{} f _{X_1}(u_1- u_2)f _{X_2}(u_2) d u_2. \]
+
+Il s'agit du \textbf{produit de convolution}.
+
+
+
 
 
 
@@ -1617,6 +1703,8 @@ où $p_a$ et $p_b$ sont les pourcentages de $a$ et de $b$.
 
 Il s'agit de la \textbf{loi binomiale}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \chapter{Travaux dirigés}
 
 \begin{exo}
@@ -1647,6 +1735,19 @@ Il s'agit de la \textbf{loi binomiale}.
 
 \begin{exo}
   On lance 10 fois une pièce de monnaie. Calculer la probabilité qu'au cinquième lancer on obtient pile en sachant que le nombre total des piles obtenus est 3.
+\end{exo}
+
+\begin{exo}
+  On a deux variables aléatoires \(X_1\) et \(X_2\) de même densité \(f(x) = \frac{1}{X ^2} \mathds{1}_{[1, \infty)}(x)\) et elles sont indépendantes. On pose
+  \begin{gather*}
+    U = X_1 X_2 \\
+    V = \frac{X_1}{X_2}.
+  \end{gather*}
+
+  \begin{enumerate}
+    \item Calculer la loi du couple \((U,V)\).
+    \item \(U \text{ et } V \) sont-elles indépendantes ?
+  \end{enumerate}
 \end{exo}
 
 

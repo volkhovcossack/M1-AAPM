@@ -26,10 +26,6 @@
 \newtheorem{exemple}{Exemple}
 
 
-\newcommand*{\TakeFourierOrnament}[1]{{%
-\fontencoding{U}\fontfamily{futs}selectfont\char#1}}
-\newcommand*{\danger}{\TakeFourierOrnament{66}}
-
 \newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
 \newcommand{\less}{\ \lesss\ }
 
@@ -799,7 +795,7 @@ où $GL(V)$ est le groupe des automorphismes du $\mathbb{C}$-espace vectoriel $V
 
 On a bien $\forall g, g' \in G, \rho _{gg'} = \rho_g \circ \rho _{g'}$ et $\rho_e=id_V$ et $\rho _{g ^{-1} } = \rho_g ^{-1} $ comme vu précédemment.
 
-De plus, $, \forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$, i. e. une application linéaire de $V$ dans $V$ et donc $\rho_g \in GL(V)$. En effet, si $x, x' \in V$ et $\lambda , \lambda' \in \mathbb{C}$, alors
+De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$, i. e. une application linéaire de $V$ dans $V$ et donc $\rho_g \in GL(V)$. En effet, si $x, x' \in V$ et $\lambda , \lambda' \in \mathbb{C}$, alors
 
 \begin{gather*}
   \rho_g(\lambda x + \lambda' x') = g \cdot(\lambda x+ \lambda'x') \stackrel{(3)}{=} \lambda g \cdot x + \lambda' g \cdot x' = \lambda \rho_g(x) + \lambda'\rho_g(x').
@@ -902,7 +898,205 @@ De plus, $, \forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V
     %  \end{array}
     %\]
 
+    \marginpar{26-09-2023}
+
+    \item \emph{La représentation de permutations.} Soit \(\begin{matrix}
+     G \times X & \longrightarrow & X \\
+     (g,x) & \longmapsto & g \cdot x
+   \end{matrix}\) une action d'un groupe sur un ensemble fini \(X\). Soit \(V\) un \(\mathbb{C}\)-espace vectoriel de dimension égale au cardinal de \(X\) (par exemple, on peut voir \(V\) comme le \(\mathbb{C}\)-espace vectoriel des fonctions définies sur \(X\) et à valeurs dans \(\mathbb{C}\) dont une base peut être donnée par les fonctions indicatrices \( \varepsilon_x : \begin{matrix}
+     X & \longrightarrow & \mathbb{C} \\
+     y & \longmapsto & \varepsilon_x(y) = \begin{cases}
+      1 \text{ si } x=y \\
+      0 \text{ sinon }
+    \end{cases}
+    \end{matrix}\) pour \(x\) décrivant \(X\)) muni d'une base indexée par les éléments de \(X\) : \(\{ \varepsilon_x, x \in X \} \). On peut écrire \(V = \bigoplus _{x \in X} \mathbb{C} \varepsilon_x\). On définit une représentation linéaire (complexe de dimension finie) :
+
+    \[\begin{matrix}
+    \rho : & G & \longrightarrow & GL(V) \\
+    \ & g & \longmapsto &\left( \rho_g : \begin{matrix}
+    V & \longrightarrow & V \\
+    \varepsilon_x & \longmapsto & \rho_g(\varepsilon_x) := \varepsilon _{g \cdot x}.
+    \end{matrix} \right)
+    \end{matrix}\]
+
+    C'est la représentation de permutations associée à l'action de \(G\) sur \(X\) (c'est l'application qui envoie un vecteur de base sur un autre vecteur de base).
+
+    \item \emph{La représentation régulière. } C'est l'exemple précédent avec \(X = G\) agissant sur lui-même (par translation à gauche) :
+
+    \[\begin{matrix}
+    \rho : & G & \longrightarrow & GL(V) \\
+    \ & g & \longmapsto & \left( \rho_g : \begin{matrix}
+    V & \longrightarrow & V \\
+    \varepsilon_x & \longmapsto & \varepsilon _{gx}.
+    \end{matrix}\right)
+    \end{matrix}\]
+
+    Ici, il s'agit de la loi de composition interne de \(G\) et on a \(\operatorname{dim}(V) = \lvert G \rvert\).
+
 \end{enumerate}
+
+\begin{definition}
+  Deux représentations linéaires \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) d'un groupe \(G\) sont dites \textbf{isomorphes} ou équivalentes s'il existe un isomorphisme d'espaces vectoriels \(f: V \to V'\) tel que l'on ait : \[\forall g \in G, \rho'_g \circ f  = f \circ \rho_g.\]
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{figures/rep-iso2.png}
+    \caption{Représentations linéaires isomorphes.}
+    \label{}
+  \end{figure}
+
+  On peut exprimer cette condition par la commutativité du diagramme suivant :
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{figures/rep-iso.png}
+    \caption{Diagramme commutatif de deux représentations isomorphes.}
+    \label{}
+  \end{figure}
+\end{definition}
+
+\begin{remark}
+  Dire que le diagramme ci-dessus commute, c'est dire que
+
+  \[\tilde{f} \circ \rho = \rho'.\]
+
+  D'où, pour tout \(g \in G\), \(\rho'_g = \tilde{f} (\rho_g) = f \circ \rho_g \circ f ^{-1} \), i. e. \( \rho_g' \circ f = f \circ \rho_g\).
+\end{remark}
+
+\begin{remark}
+  En termes de matrices, cela signifie  que les matrices associées à la première représentation sont semblable à leurs homologues dans la deuxième, via la même matrice de passage :
+
+  \[\forall g \in G, \operatorname{Mat}(\rho_g') = \operatorname{Mat}(f) \times \operatorname{Mat}(\rho_g) \times \operatorname{Mat}(f) ^{-1}. \]
+\end{remark}
+
+\subsection{Sous-représentations}
+
+\begin{definition}
+  Si \(\rho : G \to GL(V)\) est une représentation linéaire d'un groupe \(G\) et si \(W\) est un sous-espace vectoriel de \(V\) stable par la représentation (i.e. stable par les automorphismes \(\rho_g\) pour \(g \in G\), i.e. \(\forall g \in G, \rho_g(W) \subset W\), i. e. \(\forall g \in G, \forall w \in W, \rho_g(w) \in W\)), alors cela nous permet de définir une \textbf{sous-représentation}
+
+  \[\begin{matrix}
+  \rho _{|W} : & G & \longrightarrow & GL(W) \\
+  \ & g & \longmapsto & \left( \rho _{g _{|W}} : \begin{matrix}
+  W & \longrightarrow & W \\
+  w & \longmapsto & \rho_g(w)
+  \end{matrix}\right).
+  \end{matrix}\]
+\end{definition}
+
+\begin{definition}
+  Une représentation \(\rho : G \to GL(V)\) est dite \textbf{irréductible} si les seuls sous-espaces stables de \(V\) sont \(\{0\} \text{ et } V\).
+\end{definition}
+
+\begin{remark}
+  Les représentations de degré 1 sont bien évidemment des représentations irréductibles.
+\end{remark}
+
+\section{Théorème de Maschke}
+
+On définit tout d'abord la notion de \textbf{somme directe} de représentations. On rappelle que si \(V\) est un espace vectoriel et si \(W, W'\) sont deux sous-espaces vectoriels de \(V\), alors on dit que \(V\) est \textbf{somme directe} de \(W\) et \(W'\) si tout \(x \in V\) peut s'écrire de façon unique sous la forme :
+
+\[x = w+w', \text{ avec } w \in W, w' \in W'. \]
+
+Il revient au même de dire que
+
+\[W \cap W' = \{ 0 \} \text{ et } \operatorname{dim}(V) = \operatorname{dim}(W)+ \operatorname{dim}(W').\]
+
+On écrit alors \(V = W \oplus W'\) et l'on dit que \(W'\) est un \textbf{supplémentaire} de \(W\) dans \(V\).
+
+L'application \(p : \begin{matrix}
+  V & \longrightarrow & V \\
+  v = \stackrel{\in W}{w} + \stackrel{\in W'}{w'} & \longmapsto & w
+\end{matrix}\) est alors appelé le \textbf{projecteur} de \(V\) sur \(W\) associé à la décomposition \(V = W \oplus W'\). On a \(\operatorname{Im}(p) = W\) et \(\operatorname{Ker}(p) = W'\) et \(p(x) = x\) si \(x \in W\).
+
+Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même vérifiant ces deux propriétés, on vérifie que \(V = W \oplus \operatorname{Ker}(p)\), avec \(\operatorname{Ker}(p) = \{ v \in V, p(v) = 0 \} \). On établit ainsi une \textbf{bijection} entre les projecteurs de \(V\) sur \(W\) et les \textbf{supplémentaires} de \(W\) dans \(V\).
+
+\begin{definition}
+  Soient \(\rho : G \longrightarrow GL(V) \text{ et } \rho' : G \longrightarrow GL(V')\) deux représentations d'un groupe \(G\). On définit la somme directe \(\rho \oplus \rho'\) comme étant la représentation d'espace vectoriel \(V \oplus V'\) définie par
+
+  \[\begin{matrix}
+  \rho \oplus \rho' : & G & \longrightarrow & GL(V \oplus V') \\
+  \ & g & \longmapsto & \left( (\rho \oplus \rho')_g  : \begin{matrix}
+  V \oplus V' & \longrightarrow & V \oplus V' \\
+  v + v' & \longmapsto & \rho_g(v) + \rho_g'(v')
+  \end{matrix}\right).
+  \end{matrix}\]
+\end{definition}
+
+\begin{thm}[De Maschke]
+  Toute représentation linéaire complexe de dimension finie d'un groupe fini est \textbf{somme directe de représentations irréductibles}.
+\end{thm}
+
+\begin{lemma}
+  Tout sous-espace stable d'une représentation linéaire complexe de degré fini d'un groupe fini admet un sous-espace \textbf{supplémentaire \textit{stable}}.
+\end{lemma}
+
+\begin{remark}
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} Il existe un produit scalaire hermitien sur l'espace de la représentation qui est stable par l'action du groupe. En effet, si \(\langle \cdot, \cdot \rangle \) désigne un produit scalaire quelconque sur \(V\), le produit suivant est stable par \(\rho\) :
+
+  \[\forall x, y \in V, \langle x, y \rangle_{\rho} := \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \langle \rho_g(x), \rho_g(y) \rangle. \]
+
+  En effet, si \(h \in G\), alors on a:
+
+  \begin{gather*}
+    \langle \rho_h(x), \rho_h(y) \rangle _{\rho} = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \langle \rho_g(\rho_h(x)), \rho_g (\rho_h(y)) \rangle  \\
+    = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \langle \rho _{gh}(x), \rho _{gh}(y) \rangle  = \langle x, y \rangle _{\rho},
+  \end{gather*}
+
+  car \(g \longmapsto gh\) est une bijection de \(G\) sur lui-même.
+\end{remark}
+
+
+\begin{proof}[Démonstration du lemme]
+  Si \(W\) est un sous-espace vectoriel de \(V\) stable sous l'action de \(G\), alors le supplémentaire \textbf{orthogonal} de \(W\) est lui aussi stable sous l'action puisque : \(W \subset V\) stable sous l'action de \(G\) par \(\rho\), i. e. \( \forall g \in G, \rho_g(W) \subset W\). On a
+
+  \[W ^{\perp} := \{  x \in V \mid \langle x, w \rangle _{\rho} = 0,  \forall w \in W \}.\]
+
+  Montrons que \( W ^{\perp}\) est stable par \(\rho\). Soit \(g \in G\), soit \(x \in W ^{\perp}\), montrons que \(\rho_g(x) \in W ^{\perp}\). Soit \(w \in W\), montrons que \(\langle \rho_g(x), w \rangle _{\rho}=0\). On a
+
+  \begin{gather*}
+    \langle \rho_g(x), w \rangle_{\rho} = \langle \rho _{g ^{-1} }(\rho_g(x)), \rho _{g ^{-1} }(w) \rangle _{\rho} = \langle x, \rho _{g ^{-1} (w)} \rangle _{\rho} = 0,
+  \end{gather*}
+
+  car \(\rho _{g ^{-1} }(w) \in W\).
+\end{proof}
+
+\begin{proof}[Démonstration du théorème]
+  Si \(\operatorname{dim}(V)=1\) ou si \(V\) est irréductible, c'est démontré.
+
+  Si \(\operatorname{dim}(V) \geq 2\) et \(V\) est non irréductible, alors \(V\) possède une sous-représentation \(W\) distincte de \(\{ 0 \} \) et \(V\). Si \(\langle \cdot, \cdot \rangle _{\rho}\) est un produit scalaire hermitien sur \(V\) invariant sous l'action de \(G\), le supplémentaire orthogonal \(W ^{\perp}\) de \(W\) est lui aussi stable par \(G\). On a alors \(V = W \oplus W'\) et \(W\) et \(W'\) sont de dimensions inférieures à celle de \(V\).
+
+  Par l'hypothèse de récurrence, on peut les décomposer en sommes directes de représentations irréductibles.
+\end{proof}
+
+\section{Caractère d'une représentation}
+
+\begin{definition}
+  On appelle \textbf{caractère} de la représentation \(\rho : G \longrightarrow GL(V)\) l'application
+
+  \[\begin{matrix}
+  \chi_{\rho} : & G & \longrightarrow & \mathbb{C} \\
+  \ & g & \longmapsto & \chi_{\rho}(g) := \operatorname{Tr}(\rho_g).
+  \end{matrix}\]
+
+  où \(\operatorname{Tr}(\rho_g)\) désigne la \textbf{trace} de l'endomorphisme \(\rho_g\).
+
+  Le degré du caractère \(\chi_\rho\) est défini comme le degré de la représentation \(\rho\).
+\end{definition}
+
+\begin{prop}
+  Soit \(\rho: G \longrightarrow GL(V)\) une représentation d'un groupe fini \(G\) de caractère \(\chi _{\rho}\).
+
+  \begin{enumerate}
+    \item \(\chi_{\rho}(e) = \operatorname{dim}(V) = \text{degré de } \rho = \text{degré de } \chi _{\rho}\).
+    \item \(\forall g \in G, \chi _{\rho}(g ^{-1}) = \overline{\chi _{\rho}(g)}\) (conjugaison complexe).
+    \item \(\forall g, h \in G\), \(\chi _{\rho}(g h g ^{-1} ) = \chi _{\rho}(h)\), i. e. \(\chi _{\rho}\) est une fonction centrale sur \(G\), i. e. \(\chi _{\rho}\) est constante sur les classes de conjugaison.
+    \item \(\chi _{\rho\oplus \rho'} = \chi _{\rho}+ \chi _{\rho'}\), si \(\rho' : G \longrightarrow GL(V')\) est une représentation de \(G\).
+    \item Si \(\rho, \rho'\) sont équivalentes, alors \(\chi _{\rho} = \chi _{\rho'}\). 
+  \end{enumerate}
+\end{prop}
+
+
+
 
 
 \end{document}

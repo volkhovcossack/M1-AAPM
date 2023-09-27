@@ -1206,8 +1206,252 @@ Donc $\forall \overrightarrow{ v } \in \mathbb{R}^n, g(\overrightarrow{ v } ) = 
 
 On en déduit que $g \longrightarrow \alpha_g$ est injective.
 
+\marginpar{27-09-2023}
+
+\begin{exemple}
+  \(T : \mathbb{R}^2 \to \mathbb{R}, Tx =  2x_1+ 5x_2 \). On définit \(\alpha : \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}\), \(\alpha((x_1, x_2), (x_1', x_2')) = x_1 x_2'-x_2 x_1', \alpha \in \Omega ^2(\mathbb{R}^2)\).
+
+  Ecrire le produit tensoriel entre \(\alpha\) et \(T\)...
+\end{exemple}
+
+Si \(E, F\) sont deux espaces vectoriels et \(T : E \longrightarrow F\) linéaire (\(T \in \mathscr{L}(E, F) \)). On peut définir une application linéaire
+
+\[T ^{*} : F ^{*} \longrightarrow E ^{*}.\]
+
+Pour \(f \in F ^{*}\), on doit déterminer \(T ^{*}(f)\) comme un élément de \(E ^{*}\). Alors \(T ^{*}(f)\) doit être une application linéaire \(T ^{*}(f) \in \mathscr{L}(E, \mathbb{R})\), i. e. \(T ^{*}(f) : E \longrightarrow \mathbb{R}\).
+
+\[\forall v \in E, (T ^{*}(f))(v) \stackrel{\text{déf}}{=} f(T(v)) \text{ cf figure \ref{tstar}}. \]
+
+On a \(f \in F ^{*}, f \in \mathscr{L}(F, \mathbb{R})\).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/tstar.png}
+  \caption{Illustration de \(T ^{*}\)}
+  \label{tstar}
+\end{figure}
+
+\(F ^{*} = \Omega'(F), E ^{*} = \Omega'(E)\). On peut aussi utiliser la notation \(\Omega ^{1}(T)\) pour \(T ^{*}\). On peut aussi définir, à partir de \(T\),
+
+\[\Omega ^{k}(T) : \underbrace{\Omega ^{k}(F)}_{\alpha}  \longrightarrow \underbrace{\Omega ^{k}(E)}_{\beta}.\]
+
+Pour \(\alpha \in \Omega ^{k}(E)\), on a besoin que \( \underbrace{\Omega ^{k}(T)(\alpha)}_{k\text{-linéaire}} \in \Omega ^{k}(E)\).
+
+\(\forall v_1, \dots, v_n\), on a besoin de définir
+
+\[ \underbrace{(\Omega ^{k}(T))(\alpha)}_{\beta \in \Omega ^{k}(E)}(v_1, \dots, v_k) = \underbrace{\alpha(T(v_1), T(v_2), \dots, T(v_k))}_{\in F ^{k}}.\]
 
 
+\begin{exo}
+
+  \
+
+  \begin{enumerate}
+    \item Montrer que \(\beta\) est \(k\)-linéaire, i. e. \(\forall k , \Omega ^{k}(T)(\alpha) \in \Omega ^{k}(E)\).
+    \item Montrer que \(\Omega ^{k}(S \circ T) = \Omega ^{k}(T) \circ \Omega ^{k}(S)\).
+    \item Montrer que \(\Omega ^{k}(\mathds{1}_{E}) = \mathds{1}_{\Omega ^{k}(E)}\).
+    \item Montrer que si \(T : E \to F\) est inversible, alors
+
+    \[\Omega ^{k}(T ^{-1} ) = (\Omega ^{k}(T)) ^{-1}. \]
+  \end{enumerate}
+\end{exo}
+
+\paragraph{Quelques propriétés}
+
+Si on a \(E \stackrel{T}{\longrightarrow} F \stackrel{S}{G}\), on a \[\Omega ^{k}(G) \stackrel{\Omega ^{k}(S)}{\longrightarrow} \Omega ^{k}(S) \stackrel{\Omega ^{k}(T)}{\longrightarrow} \Omega ^{k}(E)\].
+
+On a \(S \circ T : E \longrightarrow G\). Alors \[\Omega ^{k}(T) \circ \Omega ^{k}(S) \in \Omega ^{k}(G) \longrightarrow \Omega ^{k}(E)\] et \[\Omega ^{k}(S \circ T) : \Omega ^{k}(G) \longrightarrow \Omega ^{k}(E)\].
+
+On considère \(\mathds{1}_{E} : E \to E\). Alors \[\Omega ^{k}(\mathds{1}_{E}) = \mathds{1}_{\Omega ^{k}(E)}\].
+
+\
+
+On rappelle que l'on peut associer à un vecteur \(v \in E\) un vecteur contravariant \( \iota(v) \in E ^{**}\). On définit alors, \(\forall l \in \mathbb{N}, l \geq  1\),
+
+\[\Omega _{l}(E) := \{ \alpha : \underbrace{E ^{*} \times \dots \times E ^{*}}_{k \text{ fois} } \to \mathbb{R} \mid \alpha \text{ est } l\text{-linéaire}\} = \Omega ^{l}(E ^{*}), \]
+
+avec la base \(\{ e _{i_1} \otimes \dots \otimes e _{i_l} \mid 1 \leq i_j \leq  n, 1 \leq j \leq l \}\).
+
+On a \(\operatorname{dim}(\infty _{l}(E)) = n ^{l}\) et \( \forall \alpha \in \Omega _{l}(E)\),
+
+\[\alpha = \sum_{1 \leq i_1, \dots, i_l \leq n}^{} \alpha(e ^{i_1}, \dots, e ^{i_l}) e _{i_1} \otimes \dots \otimes e _{i_l}.\]
+
+Pour \( T : E \longrightarrow F\), \(\Omega _{l}(T) : \Omega _{l}(E) \to \Omega _{l}(F)\) (objets contravariants pour la dualité), avec \(\alpha \in \Omega _{l}(E), \beta = \Omega _{l}(T)(\alpha) \in \Omega _{l}(F)\).
+
+On va essayer de définir
+
+\[\beta \underset{f_j \in F ^{*}}{(f_1, \dots, f_l)} = \Omega _{l}(T)(\alpha)(f_1, \dots, f_l) \stackrel{\text{déf}}{=} \alpha \underset{T ^{*}(f_j) \in F ^{*}}{(T ^{*}(f_1), \dots, T ^{*}(f_l))}.\]
+
+On a alors le schéma suivant :
+
+\begin{gather*}
+  F \stackrel{T}{\longrightarrow} F \stackrel{S}{\longrightarrow} G \\
+  \Omega _{l}(E) \underset{\Omega _{l}(T)}{\longrightarrow}\Omega _{l}(F) \underset{\Omega _{l}(S)}{\longrightarrow} \Omega _{l}(G).
+\end{gather*}
+
+
+\begin{definition}
+  Pour tous \( k, l\), on a
+
+  \[\Omega ^{k} _{l}(E) := \{ \alpha : \underbrace{E \times \dots \times E}_{k \text{ fois}} \times \underbrace{E ^{*} \times \dots \times E ^{*}}_{l \text{ fois}} \mid \alpha \text{ est } k \text{-linéaire}\}\]
+
+  qui a pour base
+
+  \[\{ e ^{i_1} \otimes \dots \otimes e ^{i_k} \otimes e _{j_1} \otimes \dots \otimes e _{j_l} \mid 1 \leq i_1, \dots, i_k \leq n, 1 \leq j_1, \dots, j_l \leq n\}.\]
+\end{definition}
+
+On a \(\operatorname{dim}(\Omega ^{k} _{l}) = n ^{k+l}\). Pour \(\alpha \in \Omega _{l} ^{k}(E)\), on écrit
+
+\[\alpha = \sum_{\substack{1 \leq i_1, \dots, i_k \leq n \\ 1 \leq j_1, \dots, j_l}}^{} \alpha(e _{i_1}, \dots, e _{i_k}, e ^{j_1}, \dots, e ^{j_l}) e ^{i_1} \otimes \dots \otimes e ^{i_k} \otimes e _{j_1} \otimes \dots \otimes e _{j_l}. \]
+
+\paragraph{Parenthèse sur les notations}
+
+En physique, on écrit
+
+\[\alpha = \sum_{\substack{i_1, \dots, i_k \\ j_1, \dots, j_l}}^{} a _{i_1 \dots i_k} ^{j_1 \dots j_l} e ^{i_1} \otimes \dots e ^{i_k} \otimes e _{j_1} \otimes \dots \otimes e ^{j_l}. \]
+
+et on dit : si \(\alpha\) est un \((l, k) \) tenseur, alors \(\alpha\) est la collection de valeurs \(a ^{j_1 \dots j_l} _{i_1 \dots i_k}\).
+
+%Si on me paie un euro pour chaque somme tapée en LaTeX, je deviens millionaire.
+
+Si \(T : E \to E\) est donnée, alors \(\Omega ^{k} _{l}(T)(\alpha)\) est donnée maintenant par le coefficient
+
+\[b _{\tilde{i_1}, \dots, \tilde{i_l}} ^{\tilde{j_1}, \dots, \tilde{j_l}}.\]
+
+\textbf{Les produits scalaires sur un espace vectoriel sont des tenseurs 2-covariants.}
+
+\begin{definition}[Produit scalaire]
+  Une application \(\alpha : E \times E \to \mathbb{R}\) est un produit scalaire quand
+
+  \begin{enumerate}
+    \item \(\alpha \in \Omega ^{2}(E)\) ;
+    \item \(\alpha\) est symétrique, i. e.
+
+    \[\forall v, w, \alpha(v,w) = \alpha(w, v).\]
+
+    \item \(\alpha\) est définie positive, i. e. \(\forall v \in E, \alpha(v, v) \geq  0\) et \(\alpha(v,v) = 0 \iff v=0\). En particulier, si \(v \neq 0\), alors \(\alpha(v,v) \bg 0\).
+  \end{enumerate}
+
+  \(\alpha\) dans une base est donnée par les coefficients \(a _{i, j}, 1 \leq  i,j \leq n\). Par exemple, on considère
+
+  \begin{gather}
+    v = \sum_{}^{} x_i e_i, w = \sum_{}^{} y_i e_i, \alpha = \sum_{1 \leq i,j \leq n}^{} a _{ij} e ^{i} \otimes e ^{j}.
+  \end{gather}
+
+  Dans ce cas, on a
+
+  \begin{gather}
+    \alpha(v,w) = \left(\sum_{1 \leq i,j \leq n}^{} a _{ij} e ^{i} \otimes e ^{j} \right) \left(\sum _{k} x_k e_k, \sum_{l}^{} y_l e_l\right) \\
+    = \sum_{i,j,k,l}^{} a _{ij} e ^{i}(k) e ^{j}(e_l) x_k y_l   = \sum_{i,j,k,l}^{} a _{ij} \delta _{k} ^{i} \delta _{l} ^{j} x_k y_l   = \sum_{i,j}^{} a _{ij} x_i y_j.
+  \end{gather}
+\end{definition}
+
+Donc un produit scalaire est un (0, 2)-tenseur.
+
+Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie de \(\Omega _{l} ^{k}(E)\) qui sont appelés les tenseurs extérieurs. Voici quelques définitions.
+
+\begin{definition}
+  \begin{enumerate}
+    \item On dit que \(\sigma\) est une permutation d'ordre \(k\) quand
+    \[\sigma : \{1, \dots, k \} \longmapsto \{1, \dots, k \}\]
+
+    est une bijection. On note \(\sigma _{i}:= \sigma(i)\). Pour tout \(k \in \mathbb{N}\), \(S_k\) est l'ensemble des permutations d'ordre \(k\). L'ensemble \(S_k\) muni de la loi \(\circ\) est un groupe. On dit qu'une permutation est une transposition quand il existe \(i \neq j\) tels que
+
+    \[\sigma _{i} = j, \sigma_j = i, \sigma _{s} = s \forall s \notin \{ i,j \}. \]
+
+    \(\forall \sigma \in S_k, \exists \sigma _{(1)}, \dots, \sigma _{(l)}\) tel que
+
+    \begin{equation}\label{decomp}
+      \sigma = \sigma _{(1)} \dots \sigma _{(l)},
+    \end{equation}
+
+    et chaque \(\sigma _{(s)}\) est une transposition. Cette décomposition n'est pas unique, mais dans toutes les décompositions comme dans \ref{decomp}, la parité de \(l\) ne change pas.
+
+    On définit
+
+    \[\begin{matrix}
+      \operatorname{sgn}(\sigma) \\
+      \varepsilon(\sigma)
+    \end{matrix}:= \begin{cases}
+      1 \text{ si } l \text{ est paire,} \\
+      0 \text{ si } l \text{ est impaire.}
+    \end{cases}\]
+
+    %Chaque permutation peut être décomposée en un produit de
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  \( \alpha \in \Omega ^{k}(E)\) est dite un \textbf{tenseur extérieur} (aussi appelé tenseur antisymétrique) si
+
+  \[\forall v_1, \dots, v_k \in E, \forall \sigma \in S_k, \alpha(v _{\sigma_1, \dots, v _{\sigma_k}}) = \operatorname{sgn}(\sigma) \alpha(v_1, \dots, v_n).\]
+\end{definition}
+
+\begin{prop}
+  Les trois assertions suivantes sont équivalentes :
+
+  \begin{enumerate}
+    \item \(\alpha\) est extérieur ;
+    \item \(\forall \sigma S_k \text{ telle que }  \sigma\) est une transposition,
+
+    \[\forall v_1, \dots, v_k, \alpha(v _{\sigma_1, \dots, v _{\sigma_k}}) = - \alpha(v_1, \dots, v_k) ;\]
+
+    \item \(\forall v_1, \dots, v_k \in E\), si il existe \(i, j \in \{ 1, \dots, k \} \) tels que \(v_i = v_j, i \neq j\), alors \(\alpha(v_1, \dots, v_k) = 0\).
+  \end{enumerate}
+\end{prop}
+
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item \((1) \implies (2)\). On a \(\operatorname{sgn}(\text{transposition}) = -1\).
+    \item \((2) \implies (3)\). Donné \(i,j\) tel que \(v_i = v_j, i \neq j\). On considère la transposition qui échange \(i\) et \(j\) et on a
+
+    \[\alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) = - \alpha(v_1, \dots, v_k), \]
+
+    mais \((v _{\sigma_1}, \dots, v _{\sigma_k}) = (v_1, \dots, v_k)\) comme \(v_i = v_j\) et donc
+
+    \[\alpha(v_1, \dots, v_n) = - \alpha(v_1, \dots, v_k) \implies \alpha(v_1, \dots,v_k) = 0.\]
+
+    \item \((2) \implies (1)\). Si \(\sigma = \sigma _{(1)} \dots \sigma _{(l)}\), \(\sigma _{(j)}\) sont des transpositions, alors
+
+    \[\alpha(v _{\sigma_1}, \dots, \alpha(v _{\sigma_k})) = (-1) ^{l}\alpha(v_1, \dots, v_k) = \operatorname{sgn}(\sigma)\alpha(v_1, \dots, v_k).\]
+
+    \item \((3) \implies (2)\). \(\sigma\) est une transposition telle que \(\sigma_i = j, \sigma_j = i\). Les \(v_1, \dots, v_k\) sont donnés. On a
+
+    \begin{gather*}
+      \alpha(v_1, \dots, \underbrace{v_i+v_j}_{\text{position }i}, \underbrace{v_i+ v_j}_{\text{position }j}, \dots, v_k) = 0.
+    \end{gather*}
+
+    Mais
+
+    \begin{gather*}
+      \alpha(v_1, \dots, v_i + v_j, \dots, v_i + v_j, \dots, v_k) \\
+       = \alpha(v_1, \dots, v_i, \dots, v_i+v_j, \dots, v_k) + \alpha(v_1, \dots, v_j, \dots, v_i+v_j, \dots, v_k) \\
+      = \alpha(v_1, \dots, v_i, \dots, v_i, \dots, v_k) + \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) \\
+      + \alpha(v_1, \dots, v_j,\dots, v_i, \dots, v_k) + \alpha(v_1, \dots, v_j, \dots, v_j, \dots, v_k).
+    \end{gather*}
+
+    On a donc
+
+    \begin{gather*}
+      \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) = -\alpha(v_1, \dots, v_j, \dots, v_i, \dots, v_k) = \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}).
+    \end{gather*}
+  \end{enumerate}
+\end{proof}
+
+\begin{exemple}
+  \begin{enumerate}
+    \item \(\alpha(v,w) = \alpha((v',v ^2), (w', w ^2)) = v'w ^2 - v ^2 w'\). Il est antisymétrique.
+    \item Plus généralement, pour chaque \(v_1, \dots, v_k \in \mathbb{R}^k\),
+
+    \[\alpha(v_1, \dots, v_k)  = \operatorname{det}[v_1 \ v_2 \ \dots \ v_k]\]
+
+    est un tenseur extérieur.
+  \end{enumerate}
+\end{exemple}
 
 
 \end{document}

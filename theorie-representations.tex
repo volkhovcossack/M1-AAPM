@@ -34,13 +34,15 @@
 
 \title{\bsc{Théorie des représentations}}
 \date{2023-2024}
-\author{Yves \bsc{Aubry}, M-147A, yves.aubry@univ-tln.fr}
+\author{Yves \bsc{Aubry}, M-147A, yves.aubry@univ-tln.fr, Joachim \bsc{Asch}}
 
 \begin{document}
 
 \maketitle
 
 \tableofcontents
+
+\part{Représentations linéaires des groupes finis}
 
 \chapter{Généralités sur les groupes}
 
@@ -915,8 +917,8 @@ De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$,
     \rho : & G & \longrightarrow & GL(V) \\
     \ & g & \longmapsto &\left( \rho_g : \begin{matrix}
     V & \longrightarrow & V \\
-    \varepsilon_x & \longmapsto & \rho_g(\varepsilon_x) := \varepsilon _{g \cdot x}.
-    \end{matrix} \right)
+    \varepsilon_x & \longmapsto & \rho_g(\varepsilon_x) := \varepsilon _{g \cdot x}
+    \end{matrix} \right).
     \end{matrix}\]
 
     C'est la représentation de permutations associée à l'action de \(G\) sur \(X\) (c'est l'application qui envoie un vecteur de base sur un autre vecteur de base).
@@ -927,8 +929,8 @@ De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$,
     \rho : & G & \longrightarrow & GL(V) \\
     \ & g & \longmapsto & \left( \rho_g : \begin{matrix}
     V & \longrightarrow & V \\
-    \varepsilon_x & \longmapsto & \varepsilon _{gx}.
-    \end{matrix}\right)
+    \varepsilon_x & \longmapsto & \varepsilon _{gx}
+    \end{matrix}\right).
     \end{matrix}\]
 
     Ici, il s'agit de la loi de composition interne de \(G\) et on a \(\operatorname{dim}(V) = \lvert G \rvert\).
@@ -936,7 +938,7 @@ De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$,
 \end{enumerate}
 
 \begin{definition}
-  Deux représentations linéaires \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) d'un groupe \(G\) sont dites \textbf{isomorphes} ou équivalentes s'il existe un isomorphisme d'espaces vectoriels \(f: V \to V'\) tel que l'on ait : \[\forall g \in G, \rho'_g \circ f  = f \circ \rho_g.\]
+  Deux représentations linéaires \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) d'un groupe \(G\) sont dites \textbf{isomorphes} ou équivalentes s'il existe un isomorphisme d'espaces vectoriels (ici application linéaire bijective) \(f: V \to V'\) tel que l'on ait : \[\forall g \in G, \rho'_g \circ f  = f \circ \rho_g.\]
 
   \begin{figure}[h!]
     \centering
@@ -1005,7 +1007,7 @@ On écrit alors \(V = W \oplus W'\) et l'on dit que \(W'\) est un \textbf{suppl�
 
 L'application \(p : \begin{matrix}
   V & \longrightarrow & V \\
-  v = \stackrel{\in W}{w} + \stackrel{\in W'}{w'} & \longmapsto & w
+  v = \underbrace{w}_{\in W} + \underbrace{w'}_{\in W'} & \longmapsto & w
 \end{matrix}\) est alors appelé le \textbf{projecteur} de \(V\) sur \(W\) associé à la décomposition \(V = W \oplus W'\). On a \(\operatorname{Im}(p) = W\) et \(\operatorname{Ker}(p) = W'\) et \(p(x) = x\) si \(x \in W\).
 
 Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même vérifiant ces deux propriétés, on vérifie que \(V = W \oplus \operatorname{Ker}(p)\), avec \(\operatorname{Ker}(p) = \{ v \in V, p(v) = 0 \} \). On établit ainsi une \textbf{bijection} entre les projecteurs de \(V\) sur \(W\) et les \textbf{supplémentaires} de \(W\) dans \(V\).
@@ -1027,7 +1029,7 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
 \end{thm}
 
 \begin{lemma}
-  Tout sous-espace stable d'une représentation linéaire complexe de degré fini d'un groupe fini admet un sous-espace \textbf{supplémentaire \textit{stable}}.
+  Tout sous-espace stable d'une représentation linéaire complexe de degré fini d'un groupe fini admet un sous-espace \textbf{supplémentaire \emph{stable}}.
 \end{lemma}
 
 \begin{remark}
@@ -1083,20 +1085,227 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
   Le degré du caractère \(\chi_\rho\) est défini comme le degré de la représentation \(\rho\).
 \end{definition}
 
-\begin{prop}
+\begin{prop}[Propriétés du caractère d'une représentation]
   Soit \(\rho: G \longrightarrow GL(V)\) une représentation d'un groupe fini \(G\) de caractère \(\chi _{\rho}\).
 
   \begin{enumerate}
     \item \(\chi_{\rho}(e) = \operatorname{dim}(V) = \text{degré de } \rho = \text{degré de } \chi _{\rho}\).
     \item \(\forall g \in G, \chi _{\rho}(g ^{-1}) = \overline{\chi _{\rho}(g)}\) (conjugaison complexe).
-    \item \(\forall g, h \in G\), \(\chi _{\rho}(g h g ^{-1} ) = \chi _{\rho}(h)\), i. e. \(\chi _{\rho}\) est une fonction centrale sur \(G\), i. e. \(\chi _{\rho}\) est constante sur les classes de conjugaison.
+    \item \(\forall g, h \in G\), \(\chi _{\rho}(g h g ^{-1} ) = \chi _{\rho}(h)\), i. e. \(\chi _{\rho}\) est une \textbf{fonction centrale} sur \(G\), i. e. \(\chi _{\rho}\) est \textbf{constante sur les classes de conjugaison}.
     \item \(\chi _{\rho\oplus \rho'} = \chi _{\rho}+ \chi _{\rho'}\), si \(\rho' : G \longrightarrow GL(V')\) est une représentation de \(G\).
-    \item Si \(\rho, \rho'\) sont équivalentes, alors \(\chi _{\rho} = \chi _{\rho'}\). 
+    \item Si \(\rho, \rho'\) sont équivalentes, alors \(\chi _{\rho} = \chi _{\rho'}\).
   \end{enumerate}
 \end{prop}
 
+\marginpar{27-09-2023}
 
+\begin{proof}
 
+  \
+  Soit \(\rho : G \longrightarrow GL(V)\) représentation linéaire d'un groupe fini \(G\) de caractère \(\chi _{\rho}\).
+  \begin{enumerate}
+    \item Par définition, \(\chi _{\rho}(e) = \operatorname{Tr}(\rho_e) \). Puisque \(\rho\) est un morphisme de groupes, l'image de l'élément neutre de \(G\) par \(\rho\) est donc l'élément neutre de \(GL(V)\), à savoir l'identité \(\operatorname{id}_V\) sur \(V\). D'où : \[\chi _{\rho}(e) = \operatorname{Tr}(\rho_e) = \operatorname{Tr}(id_V) = \operatorname{Tr}(I _{\operatorname{dim}(V)}). \]
 
+    C'est la matrice identité à \(\operatorname{dim}(V)\) lignes et \(\operatorname{dim}(V)\) colonnes.
+
+    \item Montrons que \(\forall g \in G, \chi _{\rho}(g ^{-1} ) = \overline{\chi _{\rho}(g)}\).
+
+    Remarquons que si \(G\) est fini et si \(g \in G\), alors les valeurs propres de \(\rho_g\) (les racines du polynôme de cet endomorphisme) sont les racines de l'unité. En effet, si \(G\) est d'ordre \(n\), alors, par le théorème de Lagrange, on a \(g ^{n} = e\). D'où
+
+    \[\rho_g ^{n} = \rho _{g ^{n}} = \rho_e = \operatorname{id}_V,\]
+
+    donc le polynôme minimal de \(\rho_g\) divise \(X ^{n}-1\). Or les racines du polynôme minimal de \(\rho_g\) sont les valeurs propres de \(\rho_g\). Donc les valeurs propres de \(\rho_g\) sont les racines de l'unité.
+
+    En particulier, les valeurs propres de \(\rho_g\) sont des nombres complexes de module 1. Donc, si \(\lambda \) est une valeur propre de \(\rho_g\), alors \(\lvert \lambda  \rvert = 1\) et donc \(\lambda  ^{-1} = \overline{\lambda }\). De plus, les valeurs propres de \(\rho _{g ^{-1}} = \rho _{g} ^{-1} \) (car \(\rho\) est un morphisme) sont les inverses de celles de \(\rho_g\).
+
+    En effet, si \(f(x) = \lambda x\) avec \(x\) non nul et \(f \in GL(V)\), alors
+
+    \[x =  f ^{-1} (f(x)) = f ^{-1} (\lambda x) = \lambda f ^{-1} (x),\]
+
+    d'où \(f ^{-1} (x) = \lambda ^{-1} (x)\) et donc \(x\) est vecteur propre de \(f ^{-1} \) pour la valeur propre \(\lambda ^{-1} \).
+
+    Enfin, puisque la trace d'un endomorphisme est la somme de ses valeurs propres (comptées avec leur multiplicités), on en déduit que
+
+    \[\chi _{\rho}(g ^{-1}) = \overline{\chi _{\rho}(g)}. \]
+
+    \item Soient \(g, h \in G\). On a
+
+    \begin{gather*}
+      \chi _{\rho}(g h g ^{-1}) \stackrel{\text{déf}}{=} \operatorname{Tr}(\rho _{ghg ^{-1}}) \stackrel{\text{morphisme}}{=} \operatorname{Tr}(\rho_g \circ \rho_h \circ \rho _{g ^{-1}}) \\
+      = \operatorname{Tr}(\rho_g \circ \rho_h \circ \rho_g ^{-1}) \stackrel{\operatorname{Tr}(AB) = \operatorname{Tr}(BA)}{=} \operatorname{Tr}(\rho_g ^{-1} \circ \rho_g \circ \rho_h) = \operatorname{Tr}(\rho_h) = \chi _{\rho}(h).
+    \end{gather*}
+
+    Donc \(\chi _{\rho}\) est une fonction centrale sur \(G\), i. e. qu'elle prend les mêmes valeurs sur les éléments d'une même classe de conjugaison.
+
+    \item Soient \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) deux représentations de \(G\). La somme directe de \(\rho\) et \(\rho'\) est la représentation
+     \[\begin{matrix}
+      \rho \oplus \rho' : & G & \longrightarrow & GL(V \oplus V') \\
+      \ & g & \longmapsto & \left( (\rho \oplus \rho')_g  : \begin{matrix}
+      V \oplus V' & \longrightarrow & V \oplus V' \\
+      v + v' & \longmapsto & \rho_g(v) + \rho_g'(v')
+      \end{matrix}\right).
+      \end{matrix}\]
+
+      Si \((e_1, \dots, e_n)\) est une base de \(V\) et \((e_1', \dots, e_m')\) est une base de \(V'\), alors
+
+      \[B = (e_1+0, \dots, e_n+0, 0 + e_1', \dots, 0 + e_m')\]
+
+      est une base de \(V \oplus V'\).
+
+      D'où
+
+      \[\operatorname{Mat}_B((\rho \oplus \rho')_g) = \begin{pmatrix}
+      \operatorname{Mat} _{(e_1, \dots, e_n)}(\rho_g) & 0 \\
+      0 & \operatorname{Mat} _{(e_1', \dots, e_m')}(\rho_g')
+      \end{pmatrix}, \]
+
+      d'où
+
+      \begin{gather*}
+        \chi _{(\rho\oplus \rho')_g} = \operatorname{Tr}((\rho\oplus \rho')_g) = Tr(\operatorname{Mat}_B((\rho \oplus \rho')_g)) = \operatorname{Tr}(\operatorname{Mat} _{(e_1, \dots, e_n)}(\rho_g))+ \operatorname{Tr}(\operatorname{Mat} _{(e_1', \dots, e_m')}(\rho_g')) = \chi _{\rho}(g) + \chi _{\rho'}(g').
+      \end{gather*}
+
+      \item Soient \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) deux représentations équivalentes de \(G\). Alors il existe une isomorphisme \(f : V \longrightarrow V'\) tel que
+
+      \[\forall g \in G, \rho_g' = f \circ \rho_g \circ f ^{-1}.\]
+
+      D'où, pour tout \(g \in G\), on a
+
+      \[\chi _{\rho'}(g) = \operatorname{Tr}(\rho_g') = \operatorname{Tr}(f \circ \rho_g \circ f ^{-1}) = \operatorname{Tr}(\rho_g) = \chi _{\rho}(g).\]
+
+      Donc \(\chi _{\rho} = \chi _{\rho'}\).
+  \end{enumerate}
+\end{proof}
+
+\paragraph{Exemples de calculs de caractères}
+
+\begin{enumerate}
+  \item Si \(G\) opère sur un ensemble fini \(X\), considérons la représentation de permutations \(\rho\) associée, avec \(V = \bigoplus _{x \in X} \langle e_x \rangle = \bigoplus _{x \in X} \mathbb{C} e_x\).
+
+  \[\begin{matrix}
+  \rho : & G & \longrightarrow & GL(V) \\
+  \ & g & \longmapsto &\left( \rho_g : \begin{matrix}
+  V & \longrightarrow & V \\
+  \varepsilon_x & \longmapsto & \rho_g(\varepsilon_x) := \varepsilon _{g \cdot x}
+  \end{matrix} \right).
+  \end{matrix}\]
+
+  On a \(\chi _{\rho} : G \longrightarrow \mathbb{C}\) tel que \(\chi _{\rho}(g) = \operatorname{Tr}(\rho_g)\). Dans une base \((e_x) _{x \in X}\) de \(V\), pour \(g \in G\) fixé, la matrice de \(\rho_g\) est une matrice de permutations, i.e. a exactement un 1 par ligne et par colonne et tous les autres coefficients sont nuls.
+
+  De plus, si \(\operatorname{Mat} _{(e_x)} (\rho_g) = (a _{ij}) _{i,j}\), alors le terme diagonal correspondant à \(\rho_g(e_x)\) sera égal à 1 si et seulement si \(g \cdot x = x\) si et seulement si \(x\) est un point fixe de \(g\). Sinon il vaudra 0. Donc
+
+  \[\chi _{\rho}(g) = \operatorname{Tr}(\rho_g) = \sharp \{ x \in X \mid g \cdot x = x \}.\]
+
+  \item \emph{Caractère de la représentation régulière (c'est le cas particulier de la représentation de permutations \(\rho\) avec \(G\) fini, \(X = G\), l'action étant la multiplication dans \(G\)).}
+
+  On a alors, pour tout \(g \in G\) :
+
+  \begin{gather}
+    \chi _{\rho}(g) = \operatorname{Tr}(\rho_g) = \sharp \{ x \in G \mid g x=x \} = \begin{cases}
+      \lvert G \rvert \text{ si } g=e \\
+      0 \text{ si } g \neq e.
+    \end{cases}
+  \end{gather}
+\end{enumerate}
+
+\begin{definition}
+  Un caractère d'un groupe \(G\) est dit \textbf{irréductible} si c'est le caractère d'une représentation irréductible de \(G\).
+\end{definition}
+
+\section{Orthogonalité des caractères irréductibles}
+
+Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\mathscr{F}(G) \) des fonctions définies sur \(G\) et à valeurs dans \(\mathbb{C}\). On munit le \(\mathbb{C}\)-espace vectoriel \(\mathscr{F}(G)\) d'une structure hermitienne donnée par le produit scalaire suivant : pour \(\varphi, \psi \in \mathscr{F}(G)\), on a
+
+\[\langle \varphi, \psi \rangle := \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \overline{\varphi(g)} \psi(g).\]
+
+\begin{remark}
+  Si \(f \in \mathscr{F}(G) \), alors \[f = \sum_{g \in G}^{} \lambda \operatorname{Ind}_g = \sum_{g \in G}^{} f(g) \operatorname{Ind}_g, \]
+
+  où
+
+  \[\begin{matrix}
+  \operatorname{Ind}_g : & G & \longrightarrow & \mathbb{C} \\
+  \ & x & \longmapsto & \begin{cases}
+    1 \text{ si } x=g \\
+    0 \text{ sinon. }
+  \end{cases}
+  \end{matrix}\]
+
+  Donc \((\operatorname{Ind}_g) _{g \in G}\) est une base de \(G\). En particulier, \(\operatorname{dim} _{\mathbb{C}}(\mathscr{F}(G)) = \lvert G \rvert\).
+\end{remark}
+
+\begin{lemma}[De Schur]
+  Soit \(\rho : G \longrightarrow GL(V)\) et \( \rho' : G \longrightarrow GL(V')\) deux représentations linéaires irréductibles d'un groupe fini \(G\). Soit \(f : V \longrightarrow V'\) une application linéaire vérifiant :
+
+  \[\forall g \in G, f \circ \rho_g = \rho_g' \circ f.\]
+
+  \begin{enumerate}
+    \item Si \(\rho \text{ et }  \rho'\) ne sont pas isomorphes, alors \(f = 0\).
+    \item Si \(\rho \text{ et } \rho'\) sont isomorphes, alors \(f\) est une homothétie.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Montrons la contraposée : on suppose que \(f\) n'est pas l'application nulle.
+
+    Le sous-espace \(\operatorname{Ker}(f)\) de \(V\) est stable par \(\rho\). En effet, si \(g \in G\) et si \(x \in \operatorname{Ker}(f)\), alors \(\rho_g(x) \in \operatorname{Ker}(f)\), car :
+
+    \begin{gather*}
+      f(\rho_g(x)) = (f \circ \rho_g)(x) = (\rho_g' \circ f)(x) = \rho_g'(f(x)) = \rho_g'(0) = \rho_g'(0)=0.
+    \end{gather*}
+
+    Comme \(f \neq 0\), i. e. \(\operatorname{Ker}(f) \neq V\), on en déduit que \(\operatorname{Ker}(f) = \{ 0 \}\) par irréductibilité de \(\rho\).
+
+    De même, le sous-espace \(\operatorname{Im}(f)\) de \(V'\) est stable par \(\rho'\). En effet, si \(g \in G\) et \(y=f(x) \in \operatorname{Im}(f)\), alors \(\rho_g'(y) \in \operatorname{Im}(f)\), car
+
+    \begin{gather*}
+      \rho_g'(y) = \rho_g'(f(x)) = (\rho_g' \circ f)(x) = (f \circ \rho_g)(x) = f(\rho_g(x)).
+    \end{gather*}
+
+    Puisque \(f \neq 0\) (i. e. \(\operatorname{Im}(f) \neq \{ 0 \} \)), on en déduit que \(\operatorname{Im}(f) = V'\) par irréductibilité de \(\rho'\).
+
+    En conclusion, \(f\) est bijective. Donc \(f\) est un isomorphisme et donc \(\rho\) et \(\rho'\) sont deux représentations isomorphes.
+
+    \item On suppose que \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\). On peut donc identifier \(V\) et \(V'\) (et \(\rho \text{ et } \rho'\)). Puisque \(\mathbb{C}\) est algébriquement clos (théorème de d'Alembert-Gauss), l'endomorphisme \(f : V \longrightarrow V \) admet une valeur propre \(\lambda \in \mathbb{C}\). Le sous-espace propre \(\operatorname{SEP}(f, \lambda)\) de \(f\) pour la valeur propre \(\lambda\) est stable par \(\rho\).
+
+    En effet, si \(g \in G\) et si \(x \in \operatorname{SEP}(x, \lambda)\), alors \(\rho_g(x) \in \operatorname{SEP}(f, \lambda)\), car \[f(\rho_g)(x) = \rho_g(f(x)) = \rho_g(\lambda x) = \lambda \rho_g(x).\]
+
+    Donc \( \underset{\neq \{ 0 \} }{\operatorname{SEP}(f, \lambda)} = V\) par irréductibilité de \(\rho\). D'où, \( \forall x \in V, f(x) = \lambda x\), i. e. \(f\) est une homothétie de rapport \(\lambda\).
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}
+  Les caractères irréductibles d'un groupe \(G\) forment un système orthonormal de fonctions de l'espace vectoriel hermitien \(\mathscr{F}(G) \), i. e.
+
+  \[\langle \chi, \chi' \rangle = \begin{cases}
+    1 \text{ si } \chi = \chi' \\
+    0 \text{ sinon,  }
+  \end{cases} \]
+
+  si \(\chi, \chi'\) ne sont pas des caractères irréductibles de \(G\).
+\end{prop}
+
+\begin{proof}
+  Soient \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) deux représentations irréductibles de \(G\) et soient \(\chi \text{ et } \chi'\) leurs caractères associés.
+
+  Soit \(g \in G\), notons \(\operatorname{Mat}(\rho_g) = (a _{ij}(g)) _{1 \leq i, j \leq d}, \operatorname{Mat}(\rho_g') = (a _{ij}'(g)) _{1 \leq i, j \leq d'}\), où \(d = \operatorname{deg}(\chi) = \operatorname{dim}(V)\) et \(d' = \operatorname{deg}(\chi') = \operatorname{dim}(V')\). On a :
+
+  \begin{gather*}
+    \chi(g) = \operatorname{Tr}(\rho_g) = \sum_{i=1}^{d} a _{ii}(g) \text{ et } \chi'(g) = \sum_{i=1}^{d'}a _{ii}'(g).
+  \end{gather*}
+
+  D'où
+
+  \begin{gather*}
+    \langle \chi, \chi' \rangle = \frac{1}{\lvert G \rvert} \sum_{g \in G} \overline{\chi(g)} \chi'(g) = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \sum_{i,j}^{} \overline{a _{ii}(g)} a _{ii}'(g)= \begin{cases}
+      0 \text{ si }  \rho \text{ et } \rho' \text{ non isomorphes, } \\
+      1 \text{ si }  \rho \text{ et } \rho' \text{ son isomorphes. }
+    \end{cases}
+  \end{gather*}
+\end{proof}
 
 \end{document}

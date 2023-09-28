@@ -1359,7 +1359,7 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 
     est une bijection. On note \(\sigma _{i}:= \sigma(i)\). Pour tout \(k \in \mathbb{N}\), \(S_k\) est l'ensemble des permutations d'ordre \(k\). L'ensemble \(S_k\) muni de la loi \(\circ\) est un groupe. On dit qu'une permutation est une transposition quand il existe \(i \neq j\) tels que
 
-    \[\sigma _{i} = j, \sigma_j = i, \sigma _{s} = s \forall s \notin \{ i,j \}. \]
+    \[\sigma _{i} = j, \sigma_j = i, \sigma _{s} = s, \forall s \notin \{ i,j \}. \]
 
     \(\forall \sigma \in S_k, \exists \sigma _{(1)}, \dots, \sigma _{(l)}\) tel que
 
@@ -1394,7 +1394,7 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 
   \begin{enumerate}
     \item \(\alpha\) est extérieur ;
-    \item \(\forall \sigma S_k \text{ telle que }  \sigma\) est une transposition,
+    \item \(\forall \sigma \in S_k \text{ telle que }  \sigma\) est une transposition,
 
     \[\forall v_1, \dots, v_k, \alpha(v _{\sigma_1, \dots, v _{\sigma_k}}) = - \alpha(v_1, \dots, v_k) ;\]
 
@@ -1415,13 +1415,13 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 
     mais \((v _{\sigma_1}, \dots, v _{\sigma_k}) = (v_1, \dots, v_k)\) comme \(v_i = v_j\) et donc
 
-    \[\alpha(v_1, \dots, v_n) = - \alpha(v_1, \dots, v_k) \implies \alpha(v_1, \dots,v_k) = 0.\]
+    \[\alpha(v_1, \dots, v_k) = - \alpha(v_1, \dots, v_k) \implies \alpha(v_1, \dots,v_k) = 0.\]
 
     \item \((2) \implies (1)\). Si \(\sigma = \sigma _{(1)} \dots \sigma _{(l)}\), \(\sigma _{(j)}\) sont des transpositions, alors
 
-    \[\alpha(v _{\sigma_1}, \dots, \alpha(v _{\sigma_k})) = (-1) ^{l}\alpha(v_1, \dots, v_k) = \operatorname{sgn}(\sigma)\alpha(v_1, \dots, v_k).\]
+    \[\alpha(v _{\sigma_1}, \dots,v _{\sigma_k}) = (-1) ^{l}\alpha(v_1, \dots, v_k) = \operatorname{sgn}(\sigma)\alpha(v_1, \dots, v_k).\]
 
-    \item \((3) \implies (2)\). \(\sigma\) est une transposition telle que \(\sigma_i = j, \sigma_j = i\). Les \(v_1, \dots, v_k\) sont donnés. On a
+    \item \((3) \implies (2)\). \(\sigma\) est une transposition telle que \(\sigma_i = j, \sigma_j = i\). Les \(v_1, \dots, v_k\) sont donnés. On écrit :
 
     \begin{gather*}
       \alpha(v_1, \dots, \underbrace{v_i+v_j}_{\text{position }i}, \underbrace{v_i+ v_j}_{\text{position }j}, \dots, v_k) = 0.
@@ -1471,7 +1471,7 @@ On suppose que \(\operatorname{dim}(E) = n\) et \(k \bg n\). Alors si \(\alpha \
 
 On définit maintenant
 
-\[\Lambda ^{k}(E) := \{ \alpha \in \Omega ^{k}(E), \alpha \text{ est tenseur extérieur. }  \} \]
+\[\Lambda ^{k}(E) := \{ \alpha \in \Omega ^{k}(E), \alpha \text{ est tenseur extérieur}\}. \]
 
 \begin{prop}
   \(\Lambda ^{k}(E)\) est un sous-espace vectoriel, i. e.
@@ -1485,7 +1485,7 @@ On cherche une base pour \(\Lambda ^{k}(E)\). Si \((e_1, \dots, e_n)\) base de \
 
 \[\{ e ^{i_1} \otimes \dots \otimes e ^{i_k}  \mid 1 \leq  i_j \leq n, 1 \leq j \leq n\} \]
 
-est une base de \(E\).
+est une base de \(\Omega ^{k}(E)\).
 
 On va définir pour chaque choix d'indices \(1 \leq i_1 \less i_2 \less \dots \less i_k \leq  n\) un élément extérieur \(\varepsilon ^{i_1 i_2 \dots i_k}\) comme un élément proposé de base de \(\Lambda ^{k}(E)\) par la formule
 
@@ -1525,7 +1525,7 @@ Une autre manière pour proposer des éléments de base \(\forall 1 \leq i_1 \le
 
 \[\overline{\varepsilon}^{i_1 \dots i_k}(e _{j_1}, \dots, e _{j_k}) \stackrel{\text{déf}}{=} \delta _{j_1} ^{i_1} \delta _{j_2} ^{i_2} \dots \delta _{j_k} ^{i_k}.\]
 
-Si \(j_s = j_l\) pour \(s \neq l\) \(\overline{\varepsilon} ^{i_1 \dots i_k} = 0 \) par définition.
+Si \(j_s = j_l\) pour \(s \neq l\), alors \(\overline{\varepsilon} ^{i_1 \dots i_k} = 0 \) par définition.
 
 Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre croissant, on les réordonne par une permutation \(\sigma \in S_k\) avec \(1 \leq \sigma _{j_1} \less \dots \less \sigma _{j_k} \leq n\). On définit
 
@@ -1536,9 +1536,7 @@ Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre cro
 \(\overline{\varepsilon} \) est prolongé par \(k\)-linéarité sur tout élément \((v_1, \dots, v_k) \in E ^{k}\).
 
 \begin{thm}
-  \(\{ \overline{\varepsilon} ^{i_1 \dots i_k}, \text{ pour tout } 1 \leq i_1 \less \dots \less i_k \leq n \} \)
-
-  forme une base pour \(\Lambda ^{k}(E)\).
+  \(\{ \overline{\varepsilon} ^{i_1 \dots i_k}, \text{ pour tout } 1 \leq i_1 \less \dots \less i_k \leq n \} \) forme une base pour \(\Lambda ^{k}(E)\).
 \end{thm}
 
 \begin{proof}
@@ -1558,11 +1556,11 @@ Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre cro
   \end{enumerate}
 \end{proof}
 
-\emph{Quelle est la dimension de \(\lambda ^{k}(E)\) ?}
+\emph{Quelle est la dimension de \(\Lambda ^{k}(E)\) ?}
 
 C'est \(\operatorname{dim}(\Lambda ^{k}(E)) = \binom{n}{k} = \frac{n!}{k! (n-k)!}\).
 
-Par convention, \(\operatorname{dim}(\Lambda ^{0}(E)) = \mathbb{R}\), \(\Lambda ^{k}(E) = \{ 0 \} \) si \(k \less 0\) et \[\operatorname{dim}(\Lambda ^{k}(E)) = \frac{n!}{1!(n-1)!} = n \text{ et } \operatorname{dim}(\Lambda ^{n}(E)) = \frac{n!}{(n-n)! 0!} = 1. \]
+Par convention, \(\operatorname{dim}(\Lambda ^{0}(E)) =1 \text{ et } \Lambda ^{k}(E) = \mathbb{R}\), \(\Lambda ^{k}(E) = \{ 0 \} \) si \(k \less 0\) et \[\operatorname{dim}(\Lambda ^{1}(E)) = \frac{n!}{1!(n-1)!} = n \text{ et } \operatorname{dim}(\Lambda ^{n}(E)) = \frac{n!}{(n-n)! 0!} = 1. \]
 
 \begin{prop}
   Si \(\alpha \in \Lambda ^{k}(F)\), \(T \in \mathscr{L}(E, F) \), \((\Omega ^{k}(T))(\alpha) \in \Lambda ^{k}(E)\).
@@ -1722,6 +1720,241 @@ Comme \(\omega\) est linéairement dépendant, par contraposée, \(\{ T(e_1), \d
   = \sum_{j1}^{} \dots \sum_{jn}^{} A _{j_1 1} A _{j_2 2} \dots A _{j_n n} \omega(e _{j1}, \dots, e _{jn}) = \sum_{\sigma \in S_n}^{} A _{\sigma_1 1} A _{\sigma_2 2} \dots A _{\sigma_n n} \operatorname{sgn}(\sigma) \\
   \implies \operatorname{det}(A) = \sum_{\sigma \in S_n}^{} \operatorname{sgn}(\sigma) A _{\sigma_1 1} A _{\sigma_2 2} \dots A _{\sigma_n n}.
 \end{gather*}
+
+\subsection{Les élément de volumes et orientation}
+
+On a défini
+
+\[\omega = \varepsilon ^{1 2 \dots n} \in \Lambda ^{n}(E).\]
+
+Cet élément dépend du choix de la base.
+
+\begin{definition}
+  On dit que \(\omega\) est un élément de volume sur \(E\), avec \(\operatorname{dim}(E) = n\) si \(\omega \in \Lambda ^{n}(E)\) et \(\omega = 0\).
+\end{definition}
+
+\begin{remark}
+  Si \(\omega_1, \omega_2 \in \Lambda ^{n}(E)\) sont deux éléments de volume, alors il existe \(c \neq 0, c \in \mathbb{R} \text{ tel que } \omega_1 = c \omega_2 \).
+\end{remark}
+
+\begin{definition}
+  On dit qu'une base \(\{ e_1, \dots, e_n \} \) de \(E\) (base arbitraire \emph{ordonnée}) a l'orientation positive (négative) ou est orientée positivement (négativement) par rapport à \(\omega\), qui est élément de volume donné sur \(E\), quand \(\omega(e_1, \dots, e_n) \bg 0 (\omega(e_1, \dots, e_n) \less 0)\).
+\end{definition}
+
+Si \(\omega = \varepsilon ^{1 2 \dots n}\) construit à partir de la base \(\{ e_1, \dots, e_n\} \) et \(\{ e_1', \dots, e_n' \} \) est une base orientée positivement par rapport à \(\omega\), alors, par rapport à l'application linéaire \(T : E \longrightarrow E, T(e_i) = e_i'\), on a \(\operatorname{det}(T) \bg 0\).
+
+\begin{proof}
+  En exercice.
+\end{proof}
+
+La réciproque est aussi vraie.
+
+\begin{definition}
+  \(\{ e_1, \dots, e_n \}, \{ e_1', \dots, e_n' \} \) sont deux bases données. On dit qu'elles sont de même orientation lorsqu'il existe \(\omega \in \Lambda ^{n}(E)\) élément de volume tel que \(\omega(e_1, \dots, e_n)\) et \(\omega(e_1', \dots, e_n')\) sont de même signe.
+\end{definition}
+
+\begin{lemma}
+  Si un tel \(\omega\) dans la définition existe, alors \(\forall \omega \in \Lambda ^{n}(E)\), \(\omega(e_1, \dots, e_n)\) et \(\omega(e_1', \dots, e_n')\) ont le même signe.
+\end{lemma}
+
+\begin{proof}
+  En exercice.
+\end{proof}
+
+\begin{remark}
+  Etre de la même orientation est une relation d'équivalence sur la collection de bases sur \(E\). Il y a deux classes d'équivalence.
+\end{remark}
+
+Si on fait la théorie sur \(\mathbb{C}\) (qui n'est pas un corps ordonné), on ne peut pas définir une orientation. Si \(\omega(e_1, \dots, e_n) \in \mathbb{C}\), il n'y a pas de signe (Kahler).
+
+\
+
+On définit \[\Lambda ^{*}(E) := \bigoplus _{k \in \mathbb{Z}} \Lambda ^{k}(E) = \bigoplus _{0 \leq k \leq n} \Lambda ^{k}(E).\]
+
+En général, \(\alpha \otimes \beta\) n'est pas un tenseur extérieur. On cherche un produit \(\wedge\) qui nous donne
+
+\[\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E) \implies  \alpha \wedge \beta \in \Lambda ^{k+l}(E).\]
+
+Si on essaie de mettre
+
+\begin{gather*}
+  \alpha \wedge \beta(v_1, \dots, v_k, v _{k+1}, \dots, v _{k+l}) = \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma)\alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) \beta(v _{\sigma _{k+1}}, \dots, v _{\sigma _{k+l}}).
+\end{gather*}
+
+Ce produit est tel que \(\alpha \times \beta\) est antisymétrique, mais défini de cette façon, il n'est pas associatif.
+
+\begin{definition}
+  \(\Lambda ^{k}(E)\times \Lambda ^{l}(E) \stackrel{\wedge}{\longrightarrow} \Lambda ^{k+l}(E)\), avec \(\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E)\), le produit extérieur \(\alpha \wedge \beta\) est défini comme l'élément de \(\Omega ^{k+l}(E)\) par
+
+  \begin{gather*}
+    \alpha \wedge \beta (v_1, \dots, v_k, v _{k+1}, \dots, v _{k+l}) = \frac{1}{k!l!} \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma) \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) \beta(v _{\sigma _{k+1}}, \dots, v _{k+l}).
+  \end{gather*}
+\end{definition}
+
+\begin{lemma}
+  \(\alpha \in \Lambda ^{k}, \beta \in \Lambda ^{l}(E) \implies \alpha \wedge \beta \in \Lambda ^{k+l}(E) \).
+\end{lemma}
+
+\begin{proof}
+  Prenons \(\tau \in S _{k+l}\). On a
+
+  \begin{gather*}
+    \alpha\wedge \beta(v _{\tau_1}, \dots, v _{\tau_k}, v _{\tau _{k+1}}, \dots, v _{\tau _{k+l}})\\
+    \stackrel{\text{déf}}{=} \frac{1}{k!l!} \sum_{\sigma \in S _{k+l}} \operatorname{sgn}(\sigma) \alpha(v _{(\sigma \tau)_1}, \dots, v _{(\sigma \tau)_k}) \beta (v _{(\sigma \tau) _{k+1}}, \dots, v _{(\sigma \tau) _{k+l}})
+  \end{gather*}
+\end{proof}
+
+\begin{prop}
+  Si \(\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E), \gamma \in \Lambda ^{s}(E)\), alors
+
+  \[(\alpha \wedge \beta) \wedge \gamma = \alpha \wedge (\beta \wedge \gamma).\]
+
+  Donc on peut parler sans confusion de \(\alpha \wedge \beta \wedge \gamma \in \Lambda ^{k+l+s}(E)\).
+\end{prop}
+
+Donc on peut généraliser le produit sur \(m\) tenseurs extérieurs \(\alpha _{i} \in \Lambda ^{k_i}, 1 \leq i \leq m\),
+
+\begin{gather*}
+  \alpha_1 \wedge \dots \wedge \alpha ^{m}(v_1, \dots, v _{k_1}, v _{k_1 +1}, \dots, v _{k_1 + k_2}, \dots, v _{\sum_{i=1}^{m-1} k_i }, \dots, v _{\sum_{i=1}^{m} k_i}) \\
+  = \frac{1}{k_1! \dots k_m!} \sum_{\sigma \in S _{k_1 + \dots + k_m}} \operatorname{sgn}(\sigma) \alpha_1( v _{\sigma_1}, \dots, v _{\sigma _{k_1}}) \alpha_2(\dots) \dots \alpha_m (\dots).
+\end{gather*}
+
+\begin{exemple}
+  \begin{gather*}
+    \varepsilon ^{i_1\dots i_k}(v_1, \dots, v_k) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) (e ^{i_1} \otimes e ^{i_n}) (v _{\sigma_1}, \dots, v _{\sigma_n}) \\
+    = \sum_{\sigma \in S_k}^{} \operatorname{sgn}(\sigma) e ^{i_1} (v _{\sigma_1}) \dots e ^{i_k}(v _{\sigma_k}) \\
+    = \frac{1}{1! \dots 1!} \sum_{ \sigma \in S_k}^{} \operatorname{sgn}(\sigma) e ^{i_1}(v _{\sigma_1}) \dots e ^{i_k}(v _{\sigma_n}).
+  \end{gather*}
+
+  Si on met \(m=k, k_1 = \dots = k_m = 1, \alpha _{k_j} = e ^{i_j} \in \Lambda ^{1}(E), 1 \leq j \leq k\), on voit que
+
+  \[\varepsilon ^{i_1 \dots i_k} = e ^{i_1} \wedge \dots \wedge e ^{i_k}.\]
+\end{exemple}
+
+\begin{exo}
+  Montrer que \(e ^{i_1}\wedge \dots \wedge e ^{i_k}(e _{j_1}, \dots, e _{j_k}) = \delta _{j_1} ^{i_1} \dots\delta _{j_k} ^{i_k}  \), avec \(0 \less i_1 \less \dots \less i_k \leq n, 0 \leq j_1 \less j_2 \less \dots \less j_k \leq n\) qui montre que
+
+  \[\varepsilon ^{i_1 \dots i_k} = \overline{\varepsilon} ^{i_1 \dots i_k}.\]
+\end{exo}
+
+
+Donc pour \(n=m\), on obtient \(\varepsilon ^{1 2 \dots n} = e ^{1}\wedge \dots \wedge e ^{n}\). Donc l'élément de volume \(\omega\) associé à une base ordonnée \((e_1, \dots, e_n)\) de \(E\) est simplement \(\omega = e ^{1}\wedge \dots \wedge e ^{n}\).
+
+\begin{exemple}
+  Si \(\alpha_i \in \Lambda ^{1}(E), v_i \in E\),
+
+  \begin{gather*}
+    \alpha_1 \wedge \dots \wedge \alpha_m (v_1, \dots, v_m) = \sum_{\sigma \in S_m}^{} \operatorname{sgn}(\sigma) \alpha_1(v _{\sigma_1} \dots \alpha_m(v _{\sigma_m})) = \operatorname{det}[\alpha_i(v_j)].
+  \end{gather*}
+\end{exemple}
+
+\begin{exemple}
+  \(\alpha_i : \mathbb{R}^3 \to \mathbb{R}\),
+
+  \begin{gather*}
+    \alpha_1(x_1, x_2, x_3) = x_1+x_2, \alpha(x_1, x_2, x_3) = x_3, \\
+    v_1 = (1,1, 0), v_2 =(0, 1, 0).
+  \end{gather*}
+
+  \(m=2, n=3\).
+
+  \begin{gather*}
+    \alpha_1 \wedge \alpha_2(v_1, v_2) = \sum_{\sigma \in S_2}^{} \operatorname{sgn}(\sigma)\alpha_1(v _{\sigma_1}) \alpha_2(v _{\sigma_2}) \\
+    = \alpha_1(v_1) \alpha_2(v_2) - \alpha_2(v_1) \alpha_1(v_2) = \operatorname{det}\left(\begin{pmatrix}
+    \alpha_1(v_1) & \alpha_1(v_2) \\
+    \alpha_2(v_1) & \alpha_2(v_2)
+  \end{pmatrix}\right)  = \operatorname{det}\left(\begin{pmatrix}
+    2 & 1 \\
+    0 & 1
+    \end{pmatrix}\right) = 2.
+  \end{gather*}
+\end{exemple}
+
+\begin{prop}
+  \(\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E)\), alors \[\alpha\wedge \beta = (-1) ^{kl} \beta \times \alpha.\] En particulier, si \(k\) est impair,
+
+  \[\forall \alpha \in \Lambda ^{k}(E), \alpha \wedge \alpha = 0, \]
+
+  parce que dans ce cas, on a \(\alpha\wedge \alpha = (-1) \alpha\wedge \alpha\).
+\end{prop}
+
+\begin{proof}
+  \begin{gather*}
+    \alpha \wedge \beta(v_1, \dots, v _{k+l}) = \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma)(v _{\sigma_1}, \dots, v _{\sigma_k}) \beta(v _{\sigma _{k+1}}, \dots, v _{\sigma _{k+l}}) \\
+    \beta \wedge \alpha(v_1, \dots, v _{k+l}) = \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma) \beta(v _{\sigma_1}, v _{\sigma_l}) \alpha(v _{l+1}, \dots, v _{l+k}).
+  \end{gather*}
+
+  On doit introduire \(\tau\) telle que \((-1) ^{kl}\).
+\end{proof}
+
+\begin{prop}
+  Soit \(T \in \mathscr{L}(E, F)\). Pour tout \(k\), \( \Lambda ^{k}(T) : \Lambda ^{k}(F) \longrightarrow \Lambda ^{k}(E)\), pour \(\alpha \in \Lambda ^{k}(F), \beta \in \Lambda ^{l}(F)\),
+
+  \[\underbrace{\Lambda ^{k+l}(T)(\alpha\wedge \beta)}_{ \in \Lambda ^{k+l}(E)} = \underbrace{\Lambda ^{k}(T)(\alpha)}_{\in \Lambda ^{k}(E)} \wedge \underbrace{\Lambda ^{l}(T)(\beta)}_{\in \Lambda ^{l}(E)}.\]
+\end{prop}
+
+La relation entre le produit extérieur \(\wedge\) et le produit extérieur des vecteurs de \(\mathbb{R}^3\) : soient \(v_1 = (x_1, x_2, x_3) \text{ et } v_2 = (y_1, y_2, y_3)\).
+
+\[v_1 \times v_2 := (x_2 y_3 - x_3 y_2, x_3 y_1 - x_1 y_3, x_1 y_2 - x_2 y_1).\]
+
+Penser à \(v_1, v_2\) comme des éléments de \((\mathbb{R}^3) ^{*}\), donc comme des éléments de \(\Lambda ^{1}((\mathbb{R}^3)^{*})\).
+
+Quels sont les coefficients de \(v_1 \wedge v_2\) dans la base \(\varepsilon _{12}, \varepsilon _{13}, \varepsilon _{23}\) ?
+
+\begin{gather*}
+  v_1 \wedge v_2 = \sum_{1 \leq  i_1 \less i_2 \leq 3}^{}  v_1 \wedge v_2 (e ^{i_1}, e ^{i_2}) \varepsilon _{i_1 i_2}  = v_1 \wedge v_2 (e ^{1}, e ^{2}) \varepsilon _{12} + v_1 \wedge v_2 (e ^{2}, e ^{3}) \varepsilon _{23} + v_1 \wedge v_2(e ^{1}, e ^{3}) \varepsilon _{13} \\
+  = [v_1(e ^{1}) v_2(e ^{2}) - v_1(e ^{2}) v_2(e ^{1})] \varepsilon _{12} + [v_1(e ^{2}) v_2(e ^{3}) - v_2(e ^{2}) v_1(e ^{3})] \varepsilon _{23} + [v_1(e ^{1}) v_2(e ^{2}) - v_2(e ^{1}) v_1(e ^{3})] \varepsilon_{13}\\
+  = (e ^{1}(v_1) e ^{2}(v_2) - e ^{2}(v_1) e ^{1}(v_2)) \varepsilon_{12}+ (e ^{2}(v_1) e ^{3}(v_2) - e ^{2}(v_2) e ^{3}(v_1)) \varepsilon_{23} + (e ^{1}(v_1) e ^{2}(v_2) - e ^{1}(v_2) e ^{3}(v_1)) \varepsilon_{13} \\
+  =(x_1 y_2 - x_2 y_1) \varepsilon _{12} +(x_2 y_3 - x_3y_2) \varepsilon _{23} + (x_1 y_3- x_3 y_1) \varepsilon _{13}.
+\end{gather*}
+
+Donc si on choisit la base \(\{ \varepsilon _{23}, \varepsilon _{31}, \varepsilon _{12}\}\), on obtient \(\varepsilon _{31} = - \varepsilon _{13} = e _{1} \wedge e _{3}\). On obtient les coordonnées dans la base ordonnée \((\varepsilon _{23}, \varepsilon _{31}, \varepsilon _{12})\) de \(\Lambda _{2}(\mathbb{R}^3)\) de \(v_1 \wedge v_2 \in \Lambda _{2}(\mathbb{R}^3)\) est donnée par \(v_1 \times v_2\).
+
+\begin{definition}[Contraction d'un tenseur par vecteur]
+  Soit \(X \in E\). Pour tout \(\alpha \in \Omega ^{k}(E), 1 \leq k \leq n\). \(i_X ^{\alpha} \in \Omega ^{k-1}(E)\) pour
+
+  \[i_X(\alpha)(v_1, v _{k-1}) \stackrel{\text{déf}}{=} \alpha(X,v_1, \dots, v _{k-1}).\]
+\end{definition}
+
+On a \(\Omega ^{0} \simeq \mathbb{R}\). Si \(\alpha \in \Omega ^{1}(E) = E ^{*}\), on a \(i_X(\alpha) = \alpha(X) \in \mathbb{R}\). En particulier, \(i_X\) est défini sur \(\Lambda ^{k}(E)\) pour tout \(k\).
+
+
+\begin{lemma}
+  \(X \in E, \alpha \in \Lambda ^{k}(E)\), alors \(i_X(\alpha) \in \Lambda ^{k-1}(E)\).
+\end{lemma}
+
+\begin{proof}
+
+  Pour \(v_i = v_j, i \neq j, i, j \in \{ 1, \dots, k-1 \}\), donc
+  \[i_X(\alpha)(v_1, \dots, v _{k-1}) = \alpha(X, v_1, \dots, v _{k-1}) = 0\]
+\end{proof}
+
+\begin{prop}
+
+  \begin{enumerate}
+    \item \(X \longrightarrow i_X\) est linéaire dans le sens que
+    \begin{enumerate}
+      \item \(i _{X+Y} = i_X+i_Y\),
+      \item \(i _{cX} = c i _{X}\).
+    \end{enumerate}
+
+    \item Si on considère \(i_X\) restreint à \(\Lambda ^{*}(E)\), on a \(i_X \circ i_Y = - i_Y \circ i_X\) et \(i_X \circ i_X = 0\).
+    \item Pour \(i _{X_{\mid \lambda ^{*}(E)}}\), on a, pour \(\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E)\),
+
+    \[i_X(\alpha \wedge \beta) = i_X(\alpha)\wedge \beta+ (-1) ^{k} \alpha \wedge (i_X \beta).\]
+  \end{enumerate}
+
+\end{prop}
+
+\begin{remark}
+  Supposons que \(F \subseteq E\) est un sous-espace vectoriel, avec \(\operatorname{dim}(F) = n-1, \operatorname{dim}(E) = n\), \(X \notin F\) et \(\omega\) est un élément de volume en E, alors \(\omega \in \lambda ^{n}(E)\). Alors \(i_X(\omega) \in \Lambda ^{n-1}(F)\) va être un élément de volume pour \(F\).
+
+  \[I_F : F \longrightarrow E \text{ est une injection } \implies \Lambda ^{n-1}(E) \stackrel{\Lambda ^{n-1}(I_F)}{\longrightarrow} \Lambda ^{n-1}(F), \]
+
+  \[\Lambda ^{n-1}(I_F) \alpha (v_1, \dots, v _{n-1}) = \alpha(v_1, \dots, v _{n-1}), v_i \in F.\]
+
+  Donc quand on dit que \(i_X(\omega) \in \Lambda ^{n-1}(F)\), on est en train de considérer \(i_X(\omega) _{\mid F ^{n-1}}\) en réalité.
+\end{remark}
 
 
 \end{document}

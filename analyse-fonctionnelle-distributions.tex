@@ -511,7 +511,7 @@ $X$ est un espace vectoriel $\mathbb{R}$ ou $\mathbb{C}$.
   On suppose que $C$ est balancé. Pour $x \in C \implies -x \in C$, donc $[-x, x] \in C$ par convexité.
 \end{proof}
 
-\begin{thm}
+\begin{thm}\label{convexes-balances}
   Soit $X$ un espace vectoriel topologique. Les assertions suivantes sont équivalentes :
 
   \begin{enumerate}
@@ -736,7 +736,7 @@ On rappelle la définition \ref{distance}.
 
   \[\delta(x,y) = \frac{d(x,y)}{1+ d(x,y)} \text{ et } \delta'(x,y) = \inf(1, d(x,y)).\]
 
-  Ces deux distances sont équivalentes entre elles.%, mais elles ne sont pas équivalentes à \(d\).
+  Ces distances sont équivalentes entre elles.%, mais elles ne sont pas équivalentes à \(d\).
 \end{exemple}
 
 \begin{proof}
@@ -748,9 +748,14 @@ On rappelle la définition \ref{distance}.
 
     \[\delta(x,y) = \frac{d(x,y)}{1+ d(x,y)} \leq d(x,y), \]
 
-    ce qui veut dire que \((X, d) \prec (X, \delta).\)
+    ce qui veut dire que \((X, d) \prec (X, \delta)\) (car si \(\mathcal{O}\) est un ouvert pour \(\delta\), alors il le sera forcément pour \(d\)).
 
-    Prenons \(f(t) = \frac{t}{1+t}\). La fonction \(f\) est une bijection de \(\mathbb{R} ^{+}\) dans \([0, 1]\). En effet, montrons qu'il existe \(g : [0, 1] \to \mathbb{R} ^{+}\) telle que $g \circ f = f \circ g = \operatorname{id}$.
+    Prenons
+    \begin{equation}\label{bij-dist}
+      f(t) = \frac{t}{1+t}.
+    \end{equation}
+
+    La fonction \(f\) est une bijection de \(\mathbb{R} ^{+}\) dans \([0, 1]\). En effet, montrons qu'il existe \(g : [0, 1] \to \mathbb{R} ^{+}\) telle que $g \circ f = f \circ g = \operatorname{id}$.
 
     On a
 
@@ -762,25 +767,26 @@ On rappelle la définition \ref{distance}.
 
     \item Montrons que \(\delta \sim \delta'\).
 
-    On a \[\frac{d}{1+d} \leq \begin{cases}
+    On a \[\delta = \frac{d}{1+d} \leq \begin{cases}
       1 \\
-      \delta
-    \end{cases},\]
+      \delta.
+    \end{cases}\]
 
-    donc \[\delta(x,y) \leq \delta'(x,y).\]
+    En effet, cela vient du fait que \(\frac{d(x,y)}{1+d(x,y)} \underset{d(x,y) \to \infty }{\longrightarrow} 1\). Donc \[\delta(x,y) \leq \delta'(x,y).\]
 
-    Mais \(\delta' \leq 2 \delta\).
+    Mais \(\delta' \leq 2 \delta\). En effet, on distingue deux cas :
 
-    Si $ d \leq 1 \text{ et } \delta' = d$, alors $d \leq 2 d$.
-
-    Si $d \geq  1 \text{ et } \delta' = 1$, alors $1 \leq 2 d$.
+    \begin{enumerate}
+      \item Si \(\delta \leq  1 \text{ et } \delta' = d, \text{ alors } d \leq 2 d \),
+      \item Si \(\delta \geq  1 \text{ et } \delta' = 1, \text{ alors } 1 \leq 2 d \).
+    \end{enumerate}
 
     \item Montrons que $\delta$ est une distance.
 
     \begin{enumerate}
       \item Montrons l'inégalité triangulaire. Si $d(x,y) \leq d(x,z) + d(z,y)$, montrons que $\delta(x,y) \leq \delta(x,z) + \delta(z,y)$.
 
-      Est-ce que \(f(d(x,y)) \leq f(d(x,z))+ f(d(z,y))\) ?
+      Est-ce que \(f(d(x,y)) \leq f(d(x,z))+ f(d(z,y))\), avec \(f\) définie dans \ref{bij-dist} ?
 
       \begin{enumerate}
         \item $f$ est croissante, donc \(f(d(x,y)) \leq f[d(x,z) + d(z,y)]\). Il suffit de voir que $f(t) \leq f(u)+f(v)$.
@@ -795,7 +801,7 @@ On rappelle la définition \ref{distance}.
 
 \emph{Sous quelles conditions un espace localement convexe est métrisable ?}
 
-On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topologie de la convergence simple n'est pas métrisable. Plus généralement, les topologies faibles ne sont pas métrisables, sauf si on travaille en dimension finie. De plus, \(X\) muni de la topologie grossière n'est pas métrisable (non séparée).
+On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topologie de la convergence simple n'est pas métrisable. Plus généralement, les topologies faibles ne sont pas métrisables, sauf si on travaille en dimension finie. Par ailleurs, \(X\) muni de la topologie grossière n'est pas métrisable (non séparée).
 
 \begin{prop}\label{elc-metr}
   Soit \(X\) un espace localement convexe (donc séparé). Alors les assertions suivantes sont équivalentes.
@@ -825,7 +831,7 @@ On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topolog
 
     \[\rho_n(x) = \mu _{U_n}(x).\]
 
-    On prend les \(U_n\) convexes, balancés, absorbants (c'est possible, car \(X\) est un espace localement convexe).
+    On prend les \(U_n\) convexes, balancés, absorbants comme dans le théorème \ref{convexes-balances} (c'est possible, car \(X\) est un espace localement convexe).
 
     \item \((3) \implies (1)\).
 
@@ -834,7 +840,7 @@ On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topolog
 
       \[d(x,y) = \sum_{n=1}^{\infty} 2 ^{-n} \frac{\rho_n(x-y)}{1 + \rho_n(x-y)}.\]
 
-      Montrons que \((X, \text{ELC}) \prec (X, d)\). Soit \(U \in \mathscr{T}\). On se ramène aux voisinages de 0. On a
+      Montrons que \((X, \text{ELC}) \prec (X, d)\). Soit \(U \in \mathscr{T}\) (la topologie ELC). On se ramène aux voisinages de 0. On a
 
       \[U = \bigcap _{\text{finie}} \mathcal{O} _{\varepsilon, a}, a \in A. \]
 
@@ -842,7 +848,7 @@ On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topolog
 
       \[U _{\varepsilon} = \bigcap _{j=1} ^{N} = \{ x \mid \rho _{j}(x-0)\less \varepsilon \}, \text{ avec } A= \mathbb{N}.\]
 
-      Ce voisinage est inclus dans \(\{ x \mid \sum_{}^{} \rho_j(x-0) \leq N \varepsilon\}\).
+      Ce voisinage est inclus dans \(\left\{ x \mid \sum_{}^{} \rho_j(x-0) \leq N \varepsilon \right\}\).
 
       Montrons que \(U\) est un voisinage de \(x\) pour la topologie métrique \((X,d)\).
 
@@ -878,7 +884,7 @@ On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topolog
        2 ^{m}d(x,y) \geq \frac{\rho_m(x-y)}{1 + \rho_m(x-y)} \geq  f(t).
      \end{gather*}
 
-     Donc on a \(\rho_m \leq  g(2 ^{m} d(x,y))\), où \(g\) est la réciproque de \(t \mapsto \frac{1}{1+t}\).
+     Donc on a \(\rho_m(x,y) \leq  g(2 ^{m} d(x,y))\), où \(g\) est la réciproque de \(t \mapsto \frac{1}{1+t}\).
     \end{enumerate}
   \end{enumerate}
 \end{proof}
@@ -888,7 +894,7 @@ On remarque par exemple que $\mathscr{F}([0, 1], \mathbb{R})$ muni de la topolog
 \end{prop}
 
 \begin{proof}
-  Cette proposition se démontre comme \ref{elc-metr}.
+  Cette proposition se démontre exactement comme \ref{elc-metr}.
 \end{proof}
 
 \begin{definition}

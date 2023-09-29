@@ -18,15 +18,15 @@
 
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
-   {\colorlet{shadecolor}{red!7}\begin{shaded}\begin{prototheorem}}
+   {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
    {\end{prototheorem}\end{shaded}}
 
-\newtheorem{protocorollary}[prototheorem]{Corollaire}
+\newtheorem*{protocorollary}{Corollaire}
 \newenvironment{corollary}
     {\colorlet{shadecolor}{violet!10}\begin{shaded}\begin{protocorollary}}
     {\end{protocorollary}\end{shaded}}
 
-\newtheorem{protolemma}[prototheorem]{Lemme}
+\newtheorem*{protolemma}{Lemme}
 \newenvironment{lemma}
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}

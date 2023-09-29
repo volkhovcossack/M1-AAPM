@@ -20,15 +20,15 @@
 
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
-   {\colorlet{shadecolor}{red!7}\begin{shaded}\begin{prototheorem}}
+   {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
    {\end{prototheorem}\end{shaded}}
 
-\newtheorem{protocorollary}[prototheorem]{Corollaire}
+\newtheorem*{protocorollary}{Corollaire}
 \newenvironment{corollary}
     {\colorlet{shadecolor}{violet!10}\begin{shaded}\begin{protocorollary}}
     {\end{protocorollary}\end{shaded}}
 
-\newtheorem{protolemma}[prototheorem]{Lemme}
+\newtheorem*{protolemma}{Lemme}
 \newenvironment{lemma}
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
@@ -1553,7 +1553,7 @@ Comme \(h\) est quelconque, on peut choisir \(h(x) = \mathds{1}_{\{ g \bg f \} }
 
 On obtient la formule de changement de variable :
 
-\begin{thm}
+\begin{thm}[Formule de changement de variables]
   \[f _{U_1 U_2}(u_1, u_2) = f _{X_1 X_2}(d_1(u_1, u_2), d_2(u_1, u_2)) \lvert \operatorname{det} J _{U_1 U_2}(u_1, u_2) \rvert \mathds{1}_{G(A)}(u_1, u_2).\]
 \end{thm}
 

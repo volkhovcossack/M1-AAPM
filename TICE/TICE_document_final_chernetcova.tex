@@ -18,15 +18,15 @@
 
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
-   {\colorlet{shadecolor}{red!7}\begin{shaded}\begin{prototheorem}}
+   {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
    {\end{prototheorem}\end{shaded}}
 
-\newtheorem{protocorollary}[prototheorem]{Corollaire}
+\newtheorem*{protocorollary}{Corollaire}
 \newenvironment{corollary}
     {\colorlet{shadecolor}{violet!10}\begin{shaded}\begin{protocorollary}}
     {\end{protocorollary}\end{shaded}}
 
-\newtheorem{protolemma}[prototheorem]{Lemme}
+\newtheorem*{protolemma}{Lemme}
 \newenvironment{lemma}
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
@@ -261,7 +261,7 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
   \end{enumerate}
 \end{exemple}
 
-\begin{exo}
+\begin{exo}[A faire chez vous ce soir avant de vous coucher]
   Soit \(G\) un groupe fini et soit \(\rho : G \longrightarrow GL(V)\) une représentation (complexe linéaire) de \(G\). Montrer que, pour tout \(g \in G\), l'endomorphisme \(\rho_g\) est diagonalisable.
 \end{exo}
 

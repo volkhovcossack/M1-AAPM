@@ -14,16 +14,35 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{dsfont}
-\usepackage{stmaryrd}
+\usepackage{framed}
 
-\newtheorem{prop}{Proposition}[section]
-\newtheorem{theorem}{Théorème}
-\newtheorem{definition}{Définition}[section]
+\newtheorem{prototheorem}{Théorème}[section]
+\newenvironment{thm}
+   {\colorlet{shadecolor}{red!7}\begin{shaded}\begin{prototheorem}}
+   {\end{prototheorem}\end{shaded}}
+
+\newtheorem{protocorollary}[prototheorem]{Corollaire}
+\newenvironment{corollary}
+    {\colorlet{shadecolor}{violet!10}\begin{shaded}\begin{protocorollary}}
+    {\end{protocorollary}\end{shaded}}
+
+\newtheorem{protolemma}[prototheorem]{Lemme}
+\newenvironment{lemma}
+    {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
+    {\end{protolemma}\end{shaded}}
+
+\newtheorem{protodefinition}{Définition}[section]
+\newenvironment{definition}
+    {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
+    {\end{protodefinition}\end{shaded}}
+
+\newtheorem{protoproposition}{Proposition}[section]
+\newenvironment{prop}
+    {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
+    {\end{protoproposition}\end{shaded}}
+
+
 \newtheorem*{remark}{Remarque}
-\newtheorem*{lemma}{Lemme}
-\newtheorem*{corollary}{Corollaire}
-\newtheorem*{mth}{Méthode}
-\newmdtheoremenv{thm}{Théorème}
 \newtheorem{exo}{Exercice}
 \newtheorem*{exemple}{Exemple}
 

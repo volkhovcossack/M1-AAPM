@@ -31,6 +31,7 @@
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
 
+\theoremstyle{definition}
 \newtheorem{protodefinition}{Définition}[section]
 \newenvironment{definition}
     {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
@@ -41,10 +42,13 @@
     {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
     {\end{protoproposition}\end{shaded}}
 
-
+\theoremstyle{remark}
 \newtheorem*{remark}{Remarque}
 \newtheorem{exo}{Exercice}
-\newtheorem*{exemple}{Exemple}
+\newtheorem*{protoexemple}{Exemple}
+\newenvironment{exemple}
+    {\colorlet{shadecolor}{gray!10}\begin{shaded}\begin{protoexemple}}
+    {\end{protoexemple}\end{shaded}}
 
 
 \newcommand*{\TakeFourierOrnament}[1]{{%
@@ -921,7 +925,7 @@ $\forall T \in E ^{*} = \mathscr{L}(E, \mathbb{R}) $.
     \]
 
     \[
-    (\beta ^{*}) ^{*} = \beta ^{**} = (\eta_1, \eta_2, \dots, \eta_n).
+    (\beta ^{*}) ^{*} = \beta ^{**} = (\varepsilon_1, \eta_2, \dots, \eta_n).
     \]
 
     \begin{equation} \label{base1}
@@ -1931,9 +1935,9 @@ Quels sont les coefficients de \(v_1 \wedge v_2\) dans la base \(\varepsilon _{1
 Donc si on choisit la base \(\{ \varepsilon _{23}, \varepsilon _{31}, \varepsilon _{12}\}\), on obtient \(\varepsilon _{31} = - \varepsilon _{13} = e _{1} \wedge e _{3}\). On obtient les coordonnées dans la base ordonnée \((\varepsilon _{23}, \varepsilon _{31}, \varepsilon _{12})\) de \(\Lambda _{2}(\mathbb{R}^3)\) de \(v_1 \wedge v_2 \in \Lambda _{2}(\mathbb{R}^3)\) est donnée par \(v_1 \times v_2\).
 
 \begin{definition}[Contraction d'un tenseur par vecteur]
-  Soit \(X \in E\). Pour tout \(\alpha \in \Omega ^{k}(E), 1 \leq k \leq n\). \(i_X ^{\alpha} \in \Omega ^{k-1}(E)\) pour
+  Soit \(X \in E\). Pour tout \(\alpha \in \Omega ^{k}(E), 1 \leq k \leq n\). \(i_X (\alpha)\in \Omega ^{k-1}(E)\) pour
 
-  \[i_X(\alpha)(v_1, v _{k-1}) \stackrel{\text{déf}}{=} \alpha(X,v_1, \dots, v _{k-1}).\]
+  \[i_X(\alpha)(v_1, \dots, v _{k-1}) \stackrel{\text{déf}}{=} \alpha(X,v_1, \dots, v _{k-1}).\]
 \end{definition}
 
 On a \(\Omega ^{0} \simeq \mathbb{R}\). Si \(\alpha \in \Omega ^{1}(E) = E ^{*}\), on a \(i_X(\alpha) = \alpha(X) \in \mathbb{R}\). En particulier, \(i_X\) est défini sur \(\Lambda ^{k}(E)\) pour tout \(k\).

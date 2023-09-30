@@ -16,6 +16,7 @@
 \usepackage{dsfont}
 \usepackage{framed}
 
+\theoremstyle{theorem}
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
    {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
@@ -31,6 +32,7 @@
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
 
+\theoremstyle{definition}
 \newtheorem{protodefinition}{Définition}[section]
 \newenvironment{definition}
     {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
@@ -41,10 +43,13 @@
     {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
     {\end{protoproposition}\end{shaded}}
 
-
+\theoremstyle{remark}
 \newtheorem*{remark}{Remarque}
 \newtheorem{exo}{Exercice}
-\newtheorem*{exemple}{Exemple}
+\newtheorem*{protoexemple}{Exemple}
+\newenvironment{exemple}
+    {\colorlet{shadecolor}{gray!10}\begin{shaded}\begin{protoexemple}}
+    {\end{protoexemple}\end{shaded}}
 
 
 \newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
@@ -52,6 +57,8 @@
 
 \newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}}
 \newcommand{\bg}{\ \biggg\ }
+
+\newcommand{\C}{\mathbb{C}}
 
 \title{\bsc{Théorie des représentations}}
 \date{\today}
@@ -68,7 +75,7 @@
 -% des références (labels), (OK)
 %- au moins une liste (OK)
 %- des commandes personnelles,
-%- des commandes mathématiques,
+%- des commandes mathématiques, (OK)
 %- au moins une image (importée ou créée avec Tikz), (OK)
 %- une bibliographie.
 
@@ -88,7 +95,7 @@
 
   \begin{enumerate}
     \item \(\forall x \in X, e \cdot x = x\) (où \(e\) est l'élément neutre de \(G\)) ;
-    \item \(\forall g, h \in G, \forall x \in X, g \cdot (h \cdot x) = (gh) \cdot x\).
+    \item \(\forall g, h \in G, \forall x \in X, g \cdot (h \cdot x) = \underbrace{(gh)}_{\text{LCI de }G}\cdot x\).
   \end{enumerate}
 
   On dit alors que \(G\) agit sur \(X\).
@@ -150,7 +157,9 @@
 
 
 \begin{exemple}
-  Le groupe \(G = SO(3)\) des rotations de \(\mathbb{R}^3\) de centre \(O\) agit sur l'ensemble \(\mathbb{R}^3\). Les orbites de cette action sont des sphères centrées en l'origine. L'action n'est pas transitive. L'action est fidèle, car la seule rotation fixant tous les points de \(\mathbb{R}^3\) est l'identité.
+  Le groupe \(G = SO(3)\) des rotations de \(\mathbb{R}^3\) de centre \(O\) agit sur l'ensemble \(\mathbb{R}^3\). Les orbites de cette action sont des sphères centrées en l'origine. L'action n'est pas transitive. L'action est fidèle, car la seule rotation fixant tous les points de \(\mathbb{R}^3\) est l'identité (cf figure \ref{action-groupe-rotation}).
+
+\end{exemple}
 
   \begin{figure}[h!]
     \centering
@@ -158,7 +167,7 @@
     \caption{L'action de \(G\) n'est pas transitive. En particulier, il n'existe pas de rotation \(r\) telle que \(\forall x \in \mathbb{R}^3, r(x) = O.\) }
     \label{action-groupe-rotation}
   \end{figure}
-\end{exemple}
+
 
 \subsection{Théorème de Lagrange}
 
@@ -180,7 +189,7 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
 \end{figure}
 
 \begin{definition}
-  Une représentation linéaire d'un groupe \(G\) est la donnée d'un \(\mathbb{C}\)-espace vectoriel \(V\) muni d'une action de groupes (à gauche) de \(G\) agissant de manière \textbf{linéaire} :
+  Une représentation linéaire d'un groupe \(G\) est la donnée d'un \(\C\)-espace vectoriel \(V\) muni d'une action de groupes (à gauche) de \(G\) agissant de manière \textbf{linéaire} :
 
   \[\begin{matrix}
     G \times V & \longrightarrow & V \\
@@ -196,7 +205,7 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
   \begin{enumerate}
     \item \(\forall x \in V, e \cdot x = e\);
     \item \(\forall g, g' \in G, \forall x \in V, g \cdot (g' \cdot x) = (gg')\cdot x\) ;
-    \item \(\forall g \in G, \forall x, y \in V, \forall \lambda, \mu \in \mathbb{C}, g \cdot (\lambda x + \mu y) = \lambda g \cdot x+ \mu g \cdot y \).
+    \item \(\forall g \in G, \forall x, y \in V, \forall \lambda, \mu \in \C, g \cdot (\lambda x + \mu y) = \lambda g \cdot x+ \mu g \cdot y \).
   \end{enumerate}
 \end{definition}
 
@@ -209,9 +218,9 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
 \begin{definition}[Divers]
   L'espace vectoriel \(V\) est appelé \textbf{l'espace de la représentation}.
 
-  La dimension de \(V\) (en tant que \(\mathbb{C}\)-espace vectoriel) est appelé le \textbf{degré} ou la dimension de la représentation.
+  La dimension de \(V\) (en tant que \(\C\)-espace vectoriel) est appelé le \textbf{degré} ou la dimension de la représentation.
 
-  Lorsque \(\rho\) est injectif, la représentation est dite \textbf{fidèle}. Le groupe \(G\) se représente alors de manière concrète comme un sous-groupe de \(GL(V)\). Lorsque \(V\) est de dimension finie (ce que nous allons supposer dorénavant), le choix d'une base du \(\mathbb{C}\)-espace vectoriel \(V\) fournit alors une représentation encore plus concrète comme groupe de matrices. En effet, si \(V \simeq \mathbb{C}^{n} \text{ et } \operatorname{dim}(V) = n, \text{ alors } GL(V) \simeq GL_n(\mathbb{C})\), \textbf{le groupe des matrices inversibles} à coefficients dans \(\mathbb{C}\).
+  Lorsque \(\rho\) est injectif, la représentation est dite \textbf{fidèle}. Le groupe \(G\) se représente alors de manière concrète comme un sous-groupe de \(GL(V)\). Lorsque \(V\) est de dimension finie (ce que nous allons supposer dorénavant), le choix d'une base du \(\C\)-espace vectoriel \(V\) fournit alors une représentation encore plus concrète comme groupe de matrices. En effet, si \(V \simeq \C^{n} \text{ et } \operatorname{dim}(V) = n, \text{ alors } GL(V) \simeq GL_n(\C)\), \textbf{le groupe des matrices inversibles} à coefficients dans \(\C\).
 \end{definition}
 
 \begin{remark}[Personnelle]
@@ -228,18 +237,18 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
     \item \emph{La représentation triviale.}
 
     \[\begin{matrix}
-    \rho : & G & \longrightarrow & GL(\mathbb{C}) \\
+    \rho : & G & \longrightarrow & GL(\C) \\
     \ & g & \longmapsto & \rho_g = \left(\operatorname{id} :\begin{matrix}
-    \mathbb{C} & \longrightarrow & \mathbb{C} \\
+    \C & \longrightarrow & \C \\
     x & \longmapsto & x
     \end{matrix}\right).
     \end{matrix}\]
 
     \item \emph{Les représentations de degré 1.} Ce sont des morphismes de groupes
 
-    \[\rho : G \longmapsto \mathbb{C} ^{*}.\]
+    \[\rho : G \longmapsto \C^{*}.\]
 
-    En effet, si \(V\) est un \(\mathbb{C}\)-espace vectoriel de dimension 1, alors \(GL(V) \simeq \mathbb{C}^{*}\) puisque les endomorphismes de \(V\) sont des homothéties
+    En effet, si \(V\) est un \(\C\)-espace vectoriel de dimension 1, alors \(GL(V) \simeq \C^{*}\) puisque les endomorphismes de \(V\) sont des homothéties
 
     \[\begin{matrix}
     f_{\lambda} : & V & \longrightarrow & V \\
@@ -249,13 +258,13 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
     et
 
     \[\begin{matrix}
-    GL(V) & \longrightarrow & \mathbb{C}^{*} \\
+    GL(V) & \longrightarrow & \C^{*} \\
     f _{\lambda} & \longmapsto & \lambda,
     \end{matrix}\]
 
     l'application qui a une homothétie fait correspondre son rapport, est un isomorphisme de groupes.
 
-    Si \(G\) est fini, alors tout élément de \(G\) est d'ordre fini (par le théorème \ref{lagrange}) et donc, pour tout \(g \in G\), \(\rho_g\) est une racine de l'unité dans \(\mathbb{C}\), et en particulier \(\rho_g\) est un nombre complexe de module 1 :
+    Si \(G\) est fini, alors tout élément de \(G\) est d'ordre fini (par le théorème \ref{lagrange}) et donc, pour tout \(g \in G\), \(\rho_g\) est une racine de l'unité dans \(\C\), et en particulier \(\rho_g\) est un nombre complexe de module 1 :
 
     \[\lvert \rho_g \rvert=1.\]
   \end{enumerate}
@@ -268,7 +277,7 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
 \begin{proof}[Correction]
   Supposons que \(\lvert G \rvert = n\). Soit \(g \in G\).
 
-  Par le théorème de Lagrange (cf théorème \ref{lagrange}), l'ordre de \(g\) divise celui de \(G\). Donc \(g^{n} = e\), où \(e\) est l'élément neutre de \(G\). Donc on a \((\rho_g)^{n} = \operatorname{id}_V\), d'où \(\rho_g^{n}-\operatorname{id}_V = 0\). Le polynôme \(X^{n}-1 \) est un polynôme annulateur de \(\rho_g\). Alors le polynôme minimal de \(\rho_g\) divise \(X^{n}-1\). Or \(X ^{n}-1\) n'a que des racines simples, à savoir les racines \(n\)-ièmes de l'unité de \(\mathbb{C}\) :
+  Par le théorème de Lagrange (cf théorème \ref{lagrange}), l'ordre de \(g\) divise celui de \(G\). Donc \(g^{n} = e\), où \(e\) est l'élément neutre de \(G\). Donc on a \((\rho_g)^{n} = \operatorname{id}_V\), d'où \(\rho_g^{n}-\operatorname{id}_V = 0\). Le polynôme \(X^{n}-1 \) est un polynôme annulateur de \(\rho_g\). Alors le polynôme minimal de \(\rho_g\) divise \(X^{n}-1\). Or \(X ^{n}-1\) n'a que des racines simples, à savoir les racines \(n\)-ièmes de l'unité de \(\C\) :
 
   \[\left\{ e^{\frac{2 i k \pi}{n}}, k \in \llbracket 0, n-1 \rrbracket \right\}.\]  %\{ 0, \dots, n-1 \} .
 

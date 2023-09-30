@@ -33,6 +33,7 @@
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
 
+\theoremstyle{definition}
 \newtheorem{protodefinition}{Définition}[section]
 \newenvironment{definition}
     {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
@@ -43,10 +44,13 @@
     {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
     {\end{protoproposition}\end{shaded}}
 
-
+\theoremstyle{remark}
 \newtheorem*{remark}{Remarque}
 \newtheorem{exo}{Exercice}
-\newtheorem*{exemple}{Exemple}
+\newtheorem*{protoexemple}{Exemple}
+\newenvironment{exemple}
+    {\colorlet{shadecolor}{gray!10}\begin{shaded}\begin{protoexemple}}
+    {\end{protoexemple}\end{shaded}}
 
 \newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
 \newcommand{\less}{\ \lesss\ }

@@ -16,6 +16,7 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{framed}
+\usepackage[Glenn]{fncychap}
 
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -1580,7 +1581,140 @@ On calcule \[f _{U_1 U_2} (u_1, u_2) = f _{X_1 X_2}(u_1 - u_2, u_2)\] et on obti
 
 Il s'agit du \textbf{produit de convolution}.
 
+\chapter{Convergence des variables aléatoires} \marginpar{02-10-2023}
 
+On a une suite de variables aléatoires \(\{ X_n \} _{n=1} ^{\infty} \) toutes définies sur \((\Omega, \mathscr{A}, \mathbb{P})\).
+
+Comment calculer \(\lim_{n \to \infty} X_n\) ?
+
+\begin{enumerate}
+  \item Convergence ``en probabilité'';
+  \item Convergence ``en moyenne'';
+  \item Convergence ``presque sûre'' ;
+  \item Convergence ``en loi'' \(\longrightarrow\) Théorème central limite.
+\end{enumerate}
+
+
+\section{Convergence en probabilité}
+
+\begin{definition}
+  Soit \(\{ X_n \} _{n=1}^{\infty}\) une suite de variables aléatoires définies toutes sur \((\Omega, \mathscr{A}, \mathbb{P} )\). On dira que \( X_n \) converge en probabilité vers la variable aléatoire \(X\) et on écrira
+
+  \[X_n \stackrel{\mathbb{P}}{\longrightarrow} X\]
+
+  si
+
+  \[\forall \varepsilon \bg 0, \mathbb{P}(\lvert X_n - X \rvert \bg 0) \underset{n \to \infty }{\longrightarrow} 0, \text{ i.e. } \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert \bg 0) = 0. \]
+\end{definition}
+
+\section{Convergence en moyenne \(L ^{p}\)}
+
+\begin{definition}
+  On dira que \(X_n\) converge en moyenne \(L ^{p}\) vers \(X\) si
+
+  \[\lim_{n \to \infty} \Vert X_n - X \Vert _{L ^{p}} = 0  \text{ ou } \]
+
+  \[\lim_{n \to \infty} \left(\int \lvert X_n(\omega) - X(\omega) \rvert ^{p} d \mathbb{P} \right).\]
+\end{definition}
+
+\begin{prop}
+  La convergence en moyenne \(L ^{p}\) entraîne la convergence en probabilité.
+\end{prop}
+
+\begin{proof}
+  Soit \(\varepsilon \bg 0\). Calculons
+
+  \begin{gather*}
+    \mathbb{P}(\lvert X_n-X \rvert \bg \varepsilon) \stackrel{\ref{Tchebychev}}{\leq} \frac{1}{ \varepsilon ^{p}} \underbrace{\mathbb{E}[\lvert X_n - X \rvert ^{p}]}_{\underset{n \to \infty}{\longrightarrow} 0 }.
+  \end{gather*}
+\end{proof}
+
+\begin{prop}[Inégalité de Tchebychev]\label{Tchebychev}
+  Pour \(\alpha \bg 0 \text{ et } p \geq 1\), on a
+
+  \[\mathbb{P}(\lvert X \rvert ^{p} \bg \alpha) \leq \frac{1}{\alpha} \mathbb{E}[\lvert X \rvert ^{p}].\]
+\end{prop}
+
+\begin{proof}
+  \begin{gather*}
+    \mathbb{E}[\lvert X \rvert ^{p}] = \int_{\Omega} \lvert X \rvert ^{p} d \mathbb{P} = \int_{\{ \lvert X \rvert ^{p} \bg \alpha \} }^{} \lvert X \rvert ^{p} d \mathbb{P} + \int_{\{ \lvert X \rvert ^{p}\less \alpha \} }^{}  \lvert X \rvert ^{p} d \mathbb{P} \\
+    \geq \mathbb{P}(\lvert X\rvert ^{p} \bg \alpha) + \underbrace{\int_{\{ \lvert X \rvert ^{p} \leq \alpha\} }^{} \lvert X \rvert ^{p} d \mathbb{P}}_{\geq 0}  \geq \mathbb{P}(\lvert X \rvert ^{p} \bg \alpha).
+  \end{gather*}
+\end{proof}
+
+\begin{prop}[Propriétés de la convergence en probabilité]
+
+  \
+
+  \begin{enumerate}
+    \item  Supposons que le vecteur aléatoire \((X_n, Y_n) _{n=1}^{\infty}\) est tel que
+     \[\begin{cases}
+        \mathbb{P}(\lvert X_n-X \rvert \bg \varepsilon) \underset{n \to \infty}{\longrightarrow} 0 \\
+        \mathbb{P}(\lvert Y_n-Y \rvert \bg \varepsilon) \underset{n \to \infty}{\longrightarrow} 0.
+      \end{cases}\]
+
+      Si \(h : \mathbb{R}^2 \to \mathbb{R}\) est continue sur \(\mathbb{R}^2\), alors la suite \(h(X_n, Y_n)\) converge en probabilités vers \(h(X, Y)\), i. e.
+
+      \[\mathbb{P}(\lvert h(X_n, Y_n) - h(X,Y) \rvert \bg \varepsilon) \underset{n \to \infty}{\longrightarrow} 0. \]
+
+    \item Si maintenant on a une suite \(X_n \stackrel{\mathbb{P}}{\longrightarrow} X\) et \(h\) est continue sur \(\mathbb{R}\), alors \(h(X_n) \stackrel{\mathbb{P}}{\longrightarrow} h(X)\).
+
+    \item Si \((X_n, Y_n) \stackrel{\mathbb{P}}{\longrightarrow} (X,Y)\), alors \(X_n+Y_n \stackrel{\mathbb{P}}{\longrightarrow} X+Y\), \(X_n Y_n \stackrel{\mathbb{P}}{\longrightarrow} XY\), \(\frac{X_n}{Y_n} \stackrel{\mathbb{P}}{\longrightarrow} \frac{X}{Y}\) si \(\mathbb{P}(Y=0)=0\).
+  \end{enumerate}
+
+
+\end{prop}
+
+
+\section{Convergence presque sûre}
+
+\begin{definition}
+  On dira que la suite \(\{ X_n \} _{n=1}^{\infty}\) converge presque sûrement vers la variable aléatoire \(X\) et on écrira \(X \stackrel{\text{P.S.}}{\longrightarrow} X\) s'il existe un ensemble négligeable \(N \in \mathscr{A} \) (\(\mathscr{A} \) est la \(\sigma\)-algèbre sur \(\Omega\)), \(\mathbb{P}(N) =0\) telle que
+
+  \[\forall \omega \in \Omega \setminus N, \text{ on a }  X_n(\omega) \underset{n \to \infty}{\longrightarrow} X(\omega).\]
+
+  Il s'agit de la convergence entre nombres.
+\end{definition}
+
+
+\begin{remark}[Notation]
+  Nous allons étudier \(X \stackrel{\text{P.S.}}{\longrightarrow} 0\). Sinon \(Y_n = X_n - X\).
+\end{remark}
+
+Nous allons introduire deux objets.
+
+\begin{definition}
+  Soit \(\{ A_n \} _{n=0} ^{\infty} \) une suite d'événements dans \(\mathscr{A}\) et on définit
+
+  \begin{gather*}
+    \lim_{n \to \infty} \inf A_n = \bigcup _{n=1}^{\infty} \bigcap _{k=n} ^{\infty} A_k \\
+    \lim_{n \to \infty} \sup A_n = \bigcap _{n=1}^{\infty} \bigcup _{k=n} ^{\infty} A_k.
+  \end{gather*}
+\end{definition}
+
+Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omega \in \bigcup _{k=n} ^{\infty}\).
+
+\begin{lemma}[De Borel-Cantelli]
+  Si \(\{ A_n \}_{n=0}^{\infty} \) est une suite d'événements telle que
+
+  \[\sum_{n=1}^{\infty} \mathbb{P}(A_n) \less \infty,\]
+
+  alors
+
+  \[\mathbb{P}(\lim_{n \to \infty} \sup A_n) = \mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n}^{\infty} A_k\right) = 0, \]
+
+  c'est-à-dire l'ensemble des points qui sont dans une infinité des \(\{ A_n \}\) à probabilité 0 si et seulement si presque tout point est dans un nombre fini d'éléments.
+\end{lemma}
+
+\begin{proof}
+  \begin{gather*}
+    \mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n}^{\infty}A_k\right) \leq \mathbb{P}\left(\bigcup _{k=n}^{\infty} A_k\right) \leq \sum_{k=n}^{\infty} \mathbb{P}(A_k) \underset{n \to \infty}{\longrightarrow} 0.
+  \end{gather*}
+
+  En effet, on a
+
+  \[\sum_{k=1}^{\infty} \mathbb{P}(A_k) \less \infty \implies \sum_{k=1}^{n-1} A_k + \sum_{k=n}^{\infty} A_k \less \infty.\]
+\end{proof}
 
 
 
@@ -1593,7 +1727,8 @@ Il s'agit du \textbf{produit de convolution}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Dénombrement}
+\chapter*{Dénombrement}
+\addcontentsline{toc}{chapter}{Dénombrement}
 
 \marginpar{15-09-2023}
 
@@ -1730,7 +1865,8 @@ Il s'agit de la \textbf{loi binomiale}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Travaux dirigés}
+\chapter*{Travaux dirigés}
+\addcontentsline{toc}{chapter}{Travaux dirigés}
 
 \begin{exo}
   Dans une bibliothèque, il y a $n$ livres sur une étagère repartis au hasard. Parmi ces $n$ livres, $k$ sont d'un même auteur $A$, les autres d'auteurs différents. Calculer la probabilité qu'au moins $p$ livres de $A$ se retrouvent côte à côte dans les cas suivants :

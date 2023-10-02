@@ -3,8 +3,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{lmodern}
-\usepackage[top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
-\usepackage{microtype}
+\usepackage[top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry} %mise en page
+\usepackage{microtype} %corrections typographiques
 \usepackage{mathtools, amssymb, amsthm}
 \usepackage{mdframed}
 \usepackage{hyperref}
@@ -13,8 +13,10 @@
 \usepackage{mathrsfs}
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
-\usepackage{dsfont}
-\usepackage{framed}
+\usepackage{dsfont} %pour écrire la fonction indicatrice notamment
+\usepackage{framed} %pour les théorèmes stylisés
+
+%%%%%%Théorèmes stylisés%%%%%%%%
 
 \theoremstyle{theorem}
 \newtheorem{prototheorem}{Théorème}[section]
@@ -51,8 +53,9 @@
     {\colorlet{shadecolor}{gray!10}\begin{shaded}\begin{protoexemple}}
     {\end{protoexemple}\end{shaded}}
 
+%%%%%%Commandes%%%%%%
 
-\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
+\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}} %pour le signe ``supérieur ou égal'' que je n'ai pas sur mon clavier
 \newcommand{\less}{\ \lesss\ }
 
 \newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}}
@@ -70,6 +73,7 @@
 
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%CONSIGNES%%%%%%%%%%%%%%%%%%%%%%%%%
 %Vous devez m'envoyer un fichier .tex (et éventuellement un fichier avec une image) que je peux compiler en un document pdf de 4 à 5 pages. Il est important dans votre fichier .tex que vous utilisiez :
 %- une table des matières, (OK)
 -% des références (labels), (OK)
@@ -213,7 +217,6 @@ La théorie des représentations a été introduite par Georg Frobenius (\ref{Fr
   Les deux premières propriétés proviennent du fait que la représentation linéaire est une \textbf{action de groupe} \(G\) et la dernière du fait que c'est une action \textbf{linéaire}.
 \end{remark}
 
-%ъуъ
 
 \begin{definition}[Divers]
   L'espace vectoriel \(V\) est appelé \textbf{l'espace de la représentation}.

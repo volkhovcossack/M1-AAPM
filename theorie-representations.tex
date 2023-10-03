@@ -1264,7 +1264,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
   Donc \((\operatorname{Ind}_g) _{g \in G}\) est une base de \(\mathscr{F}(G)\). En particulier, \(\operatorname{dim} _{\mathbb{C}}(\mathscr{F}(G)) = \lvert G \rvert\).
 \end{remark}
 
-\begin{lemma}[De Schur]
+\begin{lemma}[De Schur]\label{schur}
   Soit \(\rho : G \longrightarrow GL(V)\) et \( \rho' : G \longrightarrow GL(V')\) deux représentations linéaires irréductibles d'un groupe fini \(G\). Soit \(f : V \longrightarrow V'\) une application linéaire vérifiant :
 
   \[\forall g \in G, f \circ \rho_g = \rho_g' \circ f.\]
@@ -1308,7 +1308,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
   \end{enumerate}
 \end{proof}
 
-\begin{prop}
+\begin{prop}\label{syst-orth}
   Les caractères irréductibles d'un groupe \(G\) forment un système orthonormal de fonctions de l'espace vectoriel hermitien \(\mathscr{F}(G) \), i. e.
 
   \[\langle \chi, \chi' \rangle = \begin{cases}
@@ -1336,6 +1336,154 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
       1 \text{ si }  \rho \text{ et } \rho' \text{ son isomorphes. }
     \end{cases}
   \end{gather*}
+\end{proof}
+
+\marginpar{03-10-2023}
+
+\begin{exo}
+  On note \(\hat{G}\) l'ensemble des caractères linéaires d'un groupe \(G\), i. e. l'ensemble des morphismes \(\chi : G \longrightarrow \mathbb{C} ^{*}\) (ce sont les caractères des représentations de degré 1 (donc irréductibles) de \(G\)). On définit le produit \(\chi\chi'\) de deux caractères linéaires de \(G\) : pour \(g \in G\),
+
+  \[(\chi \chi')(g) = \chi(g)\chi'(g).\]
+
+  \begin{enumerate}
+    \item Montrer que \(\hat{G}\), muni  de ce produit, est un groupe abélien.
+    \item On rappelle que le caractère trivial  est défini par :
+    \[\begin{matrix}
+    \chi_0 : & G & \longrightarrow & \mathbb{C} ^{*} \\
+    \ & g & \longmapsto & 1.
+    \end{matrix}\]
+
+    Montrer que si \(G\) est fini et si \(\chi \in \hat{G}\), alors
+
+    \[\frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \chi(g) = \begin{cases}
+      1 \text{ si } \chi = \chi_0 \\
+      0 \text{ sinon. }
+    \end{cases}\]
+
+    \item En déduire les relations d'orthogonalité des caractères linéaires : si \(\chi, \chi' \in \hat{G}\), alors
+
+    \begin{gather*}
+      \langle \chi, \chi' \rangle = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{}  \overline{\chi(g)} \chi'(g) = \begin{cases}
+        1 \text{ si } \chi = \chi' \\
+        0 \text{ sinon. }
+      \end{cases}
+    \end{gather*}
+  \end{enumerate}
+
+  \end{exo}
+
+  \begin{proof}
+
+    \
+
+  \begin{enumerate}
+    \item \begin{itemize}
+      \item[$\star$] Le produit est bien une loi de composition interne dans \(\hat{G}\) car si \(\chi, \chi' \in \hat{G}\), alors \(\chi \chi' : G \longrightarrow \mathbb{C} ^{*}\) est bien un morphisme de groupes.
+
+      En effet, si \(g, g' \in G\), alors
+
+      \begin{gather*}
+        (\chi \chi')(gg') = \chi(gg') \chi'(gg') = \chi(g)\chi(g') \chi'(g)\chi'(g') = (\chi(g) \chi'(g))(\chi(g')\chi'(g')) = (\chi\chi')(g)(\chi\chi')(g').
+      \end{gather*}
+
+      \item[$\star$] La loi est associative, car la multiplication l'est dans \(\mathbb{C}\).
+      \item[$\star$] L'application \(\chi _{0} : \begin{matrix}
+      G & \longrightarrow & \mathbb{C} ^{*} \\
+      g & \longmapsto & 1
+      \end{matrix}\) est bien un morphisme de groupes et est l'élément neutre de \(\hat{G}\).
+
+      \item[$\star$] Si \(\chi \in \hat{G}\), alors le caractère linéaire \(\chi' : G \longrightarrow \mathbb{C} ^{*}\) défini par \[\chi'(g) = \frac{1}{\chi(g)} = (\chi'(g)) ^{-1} = \chi(g ^{-1})\]
+
+      vérifie \(\chi \chi' = \chi _{0} = \chi'\chi\), et donc \(\chi ^{-1} = \chi'\) est le symétrique de \(\chi\) dans \(\hat{G} \), car \(\chi ^{-1}\) est encore un morphisme de groupes. En effet, si \(g, g' \in G\), alors
+
+      \[\chi ^{-1}(gg') = \chi((gg') ^{-1}) = \chi ((g')^{-1} g ^{-1}) = \chi((g')^{-1}) \chi(g ^{-1}) = \chi ^{-1}(g') \chi ^{-1}(g) = \chi ^{-1}(g) \chi ^{-1}(g').\]
+
+      De plus, \(\chi \chi' = \chi' \chi, \forall \chi, \chi' \in \hat{G}\), c'est-à-dire \(\hat{G}\) est un groupe abélien.
+    \end{itemize}
+
+    \item Si \(\chi = \chi_0\), alors
+
+    \[\frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \chi_0(g) = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} 1 = 1.\]
+
+    Soit maintenant \(\chi \in \hat{G}\) tel que \(\chi \neq \chi_0\). Il existe alors \(a \in G\) tel que \(\chi(a) \neq 1\). On a :
+
+    \begin{gather*}
+      \frac{\chi(a)}{\lvert G \rvert} \sum_{g \in G}^{} \chi(g) = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \chi(a) \chi(g) = \frac{1}{\lvert G \rvert}\sum_{g \in G}^{}  \chi(ag)= \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \chi(g),
+    \end{gather*}
+
+    car l'application \(f_a\) définie par \(f_a : \begin{matrix}
+    G & \longrightarrow & G \\
+    g & \longmapsto & ag
+    \end{matrix}\) est une bijection. D'où :
+
+    \begin{gather*}
+      (\chi(a) - 1) \left(\frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \chi(g) \right) = 0.
+    \end{gather*}
+
+    Cette égalité a lieu dans \(\mathbb{C}\) qui est un corps, donc en particulier un anneau intègre et donc ne contient pas de diviseurs de 0. Or \(\chi(a) -1 \neq 0\), car \(\chi(a) \neq 1\). Donc
+
+    \[\frac{1}{\lvert G \rvert}\sum_{g \in G}^{} \chi(g) = 0.\]
+
+    \item Si \(\chi \in \hat{G}\), alors on a :
+
+    \begin{gather*}
+      \langle \chi, \chi \rangle  = \frac{1}{\lvert G \rvert} \sum_{g \in G} \overline{\chi(g)} \chi(g) = \frac{1}{\lvert G \rvert} \sum_{g \in G} \frac{1}{\chi(g)} \chi(g),
+    \end{gather*}
+
+    car, \(G\) étant fini, on a pour tout \(g \in G\), \(g ^{\lvert G \rvert} = e\) (par le théorème de Lagrange) et donc \(\chi(g ^{\lvert G \rvert})= \chi(g) ^{\lvert G \rvert}\), donc \(\chi(g)\) est une racine de l'unité dans \(\mathbb{C}\) ! En particulier, \(\chi(g)\) est un nombre complexe de module 1, et donc son conjugué est égal à son inverse
+
+    \[\overline{\chi(g)} = \frac{1}{\chi(g)}.\]
+
+    Donc \(\langle \chi, \chi' \rangle = \frac{1}{\lvert G \rvert} \sum_{g \in G} 1 = \frac{\lvert G \rvert}{\lvert G \rvert}=1. \)
+
+    \
+
+    Soient \(\chi, \chi' \in \hat{G}\) tels que \(\chi \neq \chi'\). Il existe donc \(a \in G\) tel que \(\chi(a) \neq \chi'(a)\). On a :
+
+    \begin{gather*}
+      \langle \chi, \chi' \rangle  = \frac{1}{\lvert G \rvert} \sum_{g \in G}^{} \overline{\chi(g)} \chi'(g) = \frac{1}{\lvert G \rvert} \sum_{g \in G} \overline{\chi(ag)} \chi'(ag)
+    \end{gather*}
+
+    grâce au même argument que dans la question précédente. D'où
+
+    \begin{gather*}
+      \langle \chi, \chi' \rangle = \frac{1}{\lvert G \rvert} \sum_{g \in G} \chi(a)\chi(g) \chi'(a)\chi'(g) \\
+       = \frac{\overline{\chi(a)} \chi'(a)}{\lvert G \rvert} \sum_{g \in G}^{} \overline{\chi(g)} \chi'(g)  = \overline{\chi(a)} \chi'(a) \langle \chi, \chi' \rangle,
+    \end{gather*}
+
+    d'où \((\overline{\chi(a)} - 1) \langle \chi, \chi' \rangle = 0\). On a donc \(\overline{\chi(a)} \chi'(a) - 1 = 0\) ou \(\langle \chi, \chi' \rangle = 0\). Or \(\overline{\chi(a)}\chi'(a) = 1 \iff \chi'(a) = \frac{1}{\overline{chi}(a)} = \chi(a)\). Or on a \(\chi'(a) \neq \chi(a)\). Donc \(\langle \chi, \chi' \rangle = 0\).
+  \end{enumerate}
+\end{proof}
+
+\section{Théorème de Frobenius}
+
+Soit \(G\) un groupe et soit \(\mathscr{F}(G) = \{ \text{fonctions } f : G \longrightarrow \mathbb{C} \} \) l'ensemble des fonctions définies sur \(G\) à valeurs dans \(\mathbb{C}\). Les fonctions \(\mathscr{F}(G)\) qui sont \textbf{constantes} sur  \textbf{les classes de conjugaison} de \(G\) sont appelées foncitons \textbf{centrales} sur \(G\). On note \(\mathscr{F}_C(G)\) l'ensemble des fonctions centrales :
+
+\[\mathscr{F}_C(G) := \{ f : G \longrightarrow \mathbb{C} ^{*}, \forall g, h \in G, f (ghg ^{-1}) = f(h)\}.\]
+
+On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(G\) sont des fonctions centrales sur \(G\). \(\mathscr{F}_C(G)\) est un sous-espace vectoriel de \(\mathscr{F}(G)\).
+
+\begin{thm}[De Frobenius]
+  Les caractères \textbf{irréductibles} d'un groupe \(G\) forment une \textbf{base orthonormale} de l'espace \(\mathscr{F}_C(G)\) de fonctions centrales sur \(G\).
+\end{thm}
+
+\begin{proof}[Sketch of proof]
+  On a déjà vu que les caractères irréductibles forment un système libre de fonctions de \(\mathscr{F}_C(G)\) (proposition \ref{syst-orth}). Notons \(F\) le sous-espace vectoriel engendré par les caractères irréductibles de \(G\). L'idée de la preuve est de vérifier que l'orthogonal  \(F ^{\perp}\) de \(F\) est réduit à 0 en utilisant de lemme de Schur (cf \ref{schur}).
+\end{proof}
+
+\begin{corollary}
+  Le nombre de (classes d'isomorphismes de) représentations irréductibles d'un groupe \(G\) est égal au nombre de classes de conjugaison de \(G\).
+\end{corollary}
+
+\begin{proof}
+  D'après le théorème de Frobenius, le nombre de représentations irréductibles d'un groupe \(G\) est égal à la dimension de l'espace vectoriel \(\mathscr{F}_C(G)\) des fonctions centrales sur \(G\). Or une fonction est centrale si et seulement si elle est constante sur chaque classe de conjugaison ; une fonction centrale \(\phi : G \longrightarrow \mathbb{C}\) peut donc s'écrire de manière unique sous la forme :
+
+  \[\phi = \sum_{C \in \operatorname{Conj}(G)} \lambda_C 1 _{C}, \]
+
+  où \(\operatorname{Conj}(G)\) est l'ensemble de classes de conjugaison de \(G\) et \(1 _{C}\) est la fonction indicatrice de \(C\), i. e. \(1_C(g) = \begin{cases}
+    1 \text{ si } g \in C\\
+    0 \text{ sinon }
+  \end{cases}\) et où \(\lambda_C \in \mathbb{C}\) (on a \(\lambda_C = \phi(g)\) où \(g\) est n'importe quel élément de \(C\)). Les fonctions indicatrices \(1_C\), pour \( C \in \operatorname{Conj}(G)\), forment donc une base de \(\mathscr{F}_C(G)\), qui, de ce fait, est de dimension le cardinal de \(\operatorname{Conj}(G)\).
 \end{proof}
 
 \end{document}

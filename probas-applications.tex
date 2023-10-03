@@ -1694,7 +1694,7 @@ Nous allons introduire deux objets.
 
 Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omega \in \bigcup _{k=n} ^{\infty}\).
 
-\begin{lemma}[De Borel-Cantelli]
+\begin{lemma}[De Borel-Cantelli]\label{Borel-Cantelli}
   Si \(\{ A_n \}_{n=0}^{\infty} \) est une suite d'événements telle que
 
   \[\sum_{n=1}^{\infty} \mathbb{P}(A_n) \less \infty,\]
@@ -1716,9 +1716,126 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
   \[\sum_{k=1}^{\infty} \mathbb{P}(A_k) \less \infty \implies \sum_{k=1}^{n-1} A_k + \sum_{k=n}^{\infty} A_k \less \infty.\]
 \end{proof}
 
+\marginpar{03-10-2023}
 
+\begin{lemma}[De Borel-Cantelli, deuxième]
+  Si \(\{ A_n \} \) sont \textbf{indépendantes} et \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) = + \infty \), alors
 
+  \[\mathbb{P}(\lim_{n \to \infty} \sup A_n) = 1.\]
+\end{lemma}
 
+\begin{exemple}
+  \(\Omega = [0,1], \beta \text{ \bsc{Borel} sur } [0, 1], \mathbb{P} = \text{ mesure de Lebesgue sur } [0,1]\),
+
+  \[A_n = \left(0, \frac{1}{n}\right].\]
+
+  Montrer que \(\lim_{n \to \infty} \sup A_n = \emptyset\), mais \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) =+ \infty\).
+\end{exemple}
+
+\begin{proof}
+  En TD. On tâchera de montrer que les événements \(A_n\) sont indépendants.
+\end{proof}
+
+\begin{exemple}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires telles que \(\mathbb{P}(X_n=0)=\frac{1}{n ^2}\). Donc par Borel-Cantelli on sait que
+
+  \[\sum_{n=1}^{\infty} \mathbb{P}(X_n = 0)=\sum_{n=1}^{\infty} \frac{1}{n ^2} \less \infty\]
+
+  et \(\mathbb{P}(\lim_{n \to \infty} \sup \{ X_n = 0 \}) = 0\). Interpréter le résultat.
+\end{exemple}
+
+\begin{proof}[Solution]
+  La probabilité que l'événément en question se produise une infinité de fois est 0 (Borel-Cantelli). Dans notre cas, presque sûrement (avec probabilité 1) \(X_n \neq 0\) pour tout \(n\) sauf un nombre fini de \(n\).
+\end{proof}
+
+\
+
+Revenons à la convergence presque sûre. Etudions \(X_n \stackrel{\text{P.S.}}{\longrightarrow} 0\). Fixons \(\varepsilon \bg 0\). On introduit
+
+\[E_n = \{ \lvert X_n \rvert \bg \varepsilon\}.\]
+
+Notons
+
+\[E(\varepsilon) = \lim_{n \to \infty} \sup E_n(\varepsilon) = \bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty} \{ \lvert X_k \rvert \bg \varepsilon \}, \]
+
+\[D = \bigcup _{\varepsilon \geq 0} \bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty} \{ \lvert X_k \rvert \bg \varepsilon \}.\]
+
+\(D\) \textbf{est l'ensemble des points qui ne convergent pas}.
+
+\begin{prop}
+  \(X_n \stackrel{\text{P.S.}}{\longrightarrow} 0\) si et seulement si \(\mathbb{P}(D) =0\) et si et seulement si
+
+  \[\forall \varepsilon \bg 0, \mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty} \{ \lvert X_k \rvert \bg \varepsilon\} \right) = 0.\]
+\end{prop}
+
+\begin{remark}
+  Quand \(\varepsilon \longrightarrow 0\), la suite
+
+  \[\bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty} \{ \lvert X_k \rvert \bg \varepsilon\}\] est croissante.
+\end{remark}
+
+\begin{prop}
+  Si la suite \(\{ X_n \} _{n=1} ^{\infty} \) vérifie \(\sum_{n=1}^{\infty} \mathbb{P}(\lvert X_n \rvert \bg \varepsilon) \less \infty\), alors \(X_n \stackrel{\text{P.S.}}{\longrightarrow} 0.\)
+\end{prop}
+
+\begin{proof}
+  On utilise le lemme de Borel-Cantelli (cf \ref{Borel-Cantelli}). Alors on a
+
+  \[\mathbb{P}\left(\lim_{n \to \infty} \sup \{ X_n \bg \varepsilon \} \right) = 0, \]
+
+  i. e.
+
+  \[\mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty} \{ \lvert X_k \rvert \bg \varepsilon\} \right) = 0.\]
+\end{proof}
+
+\begin{exemple}
+  Soit \(([0, 1], \beta \ (\text{\bsc{Borel}}), \lambda \ (\text{Leb}))\). On note \(X_n (x) = \mathds{1}_{[0, \frac{1}{n}]}, x \in [0, 1]\).
+
+  Montrer que \(X_n \stackrel{\text{P.S.}}{\longrightarrow} 0\), mais \(\sum_{n=1}^{\infty} \mathbb{P}(\lvert X_n \rvert \bg \varepsilon) = +\infty\).
+\end{exemple}
+
+\begin{proof}[Solution]
+  Sur feuille.
+\end{proof}
+
+\begin{prop}
+  Si \(\{ X_n \}\) converge presque sûrement, elle converge en probabilité. Par contre, si \(\{ X_n \}\) converge en probabilité, il existe une sous-suite qui converge presque sûrement.
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Soit \(X_n \stackrel{\text{P.S.}}{\longrightarrow} X\). L'ensemble de divergences est
+
+    \[D = \bigcup _{\frac{1}{l}} \bigcap _{n=1} ^{\infty} \bigcup _{k=n} ^{\infty}\left\{ \lvert X_k \rvert \bg \frac{1}{l}\right\}.\]
+
+    On voit que \(\bigcap _{n=1} ^{\infty}\bigcup _{k=n} ^{\infty} \left\{ \lvert X_k \rvert \bg \frac{1}{l} \right\} \subset D\). Alors
+
+    \begin{gather*}
+      0 = \mathbb{P}(D) \geq \mathbb{P}\left(\bigcap _{n=1} ^{\infty}\bigcup _{k=n} ^{\infty} \left\{ \lvert X_k \rvert \bg \frac{1}{l} \right\}\right) = \lim_{n \to \infty} \mathbb{P}\left(\bigcup _{k=n} ^{\infty} \left\{ \lvert X_k \rvert \bg \frac{1}{l} \right\}\right)\\
+      \geq \lim_{n \to \infty}  \mathbb{P}\left(\left\{ \lvert X _{k(n)} \rvert \bg \frac{1}{l} \right\} \right) \iff \lim_{n \to \infty} \mathbb{P}\left(\left\{ \lvert X _{k(n)} \rvert \bg \frac{1}{l}\right\}\right) = 0,
+    \end{gather*}
+
+    c'est-à-dire \(X_n\) converge en probabilité.
+
+    \item Soit \(\varepsilon \bg 0\) et \(\{ \eta_k \} _{k=1} ^{\infty}\) suite de nombres positifs tels que \(\sum_{k=1}^{\infty} \eta_k \less \infty\). Comme on a convergence en probabilité, \(\forall k \geq  1\), il existe \(n_k \geq 1\) tel que
+
+    \[\mathbb{P}(\lvert X _{n_k} \rvert \bg \varepsilon) \less \eta_k. \]
+
+    Donc
+
+    \begin{gather*}
+      \mathbb{P}\left(\sup_{ k \geq l } \{ \lvert X _{n_k} \bg \varepsilon \rvert \} \right) = \mathbb{P}\left(\bigcup _{k \geq l} \{ \lvert X_k \rvert \bg \varepsilon \} \right) \leq \sum_{k=l}^{\infty}  \mathbb{P}\left( \{ \lvert X _{n_k} \bg \varepsilon \rvert \} \right) \leq \sum_{k=l}^{\infty} \eta_k \underset{l \to \infty}{\longrightarrow}  0.
+    \end{gather*}
+  \end{enumerate}
+
+\end{proof}
+
+\begin{lemma}
+  \[\bigcup _{k \geq  n} \{ \lvert X_k \rvert \bg \varepsilon \} = \{ \sup_{ k \geq n } \lvert X_k \rvert \bg \varepsilon \}.\]
+\end{lemma}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

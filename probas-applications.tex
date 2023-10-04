@@ -1837,6 +1837,171 @@ Notons
   \[\bigcup _{k \geq  n} \{ \lvert X_k \rvert \bg \varepsilon \} = \{ \sup_{ k \geq n } \lvert X_k \rvert \bg \varepsilon \}.\]
 \end{lemma}
 
+\marginpar{04-10-2023}
+
+\section{Loi des grands nombres}
+
+Il existe deux ``versions'' de la loi des grands nombres :
+
+\begin{itemize}
+  \item[$\star$] faible ;
+  \item[$\star$] forte.
+\end{itemize}
+
+Si \(\{ X_n \} \) est une suite de variables aléatoires, on considère \(S_n = \frac{1}{n} \sum_{k=1}^{n} X_k\) (somme de Cèsaro).
+
+\paragraph{Cadre} On a une suite de variables aléatoires \(\{ X_n \} _{n=1}^{\infty}\) sur \((\Omega, \mathscr{A}, \mathbb{P})\). On considère \(S_n = \frac{1}{n}\sum_{k=1}^{n} X_n\).
+
+\subsection{Loi faible des grands nombres}
+
+
+\begin{definition}
+  Supposons que les variables aléatoires \(X_n\) soient centrées, i. e. \(X_n \text{ devient }  X_n - \mathbb{E}[X_n]\) (donc les \(X_n\) auront l'espérance nulle). On dira que la suite \(\{ X_n \}\) satisfait \textbf{la loi faible des grands nombres} si la suite \(S_n\) converge vers 0 \textbf{en probabilité}, c'est-à-dire
+
+  \[\forall \varepsilon \bg 0, \mathbb{P}(\lvert S_n \rvert \bg \varepsilon) \underset{n \to \infty}{\longrightarrow} 0.\]
+\end{definition}
+
+\begin{prop}\label{conv-L2}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires de \(L ^{2}(\mathbb{P})\) qui sont deux-à-deux non-corrélées et centrées. Pour tout \(n\), on pose :
+
+  \[\mathbb{V}ar(X_n) = \sigma_n ^2 \less \infty \]
+
+  et \[\frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
+
+  Alors \[\frac{1}{n} \sum_{k=1}^{n} X_k \stackrel{L ^{2}(\mathbb{P})}{\longrightarrow} 0 \]
+
+  et donc elle converge aussi en probabilités.
+\end{prop}
+
+\begin{definition}
+  Soient \(X_1, X_2\) deux variables aléatoires. On introduit
+
+  \[\operatorname{Cov}(X_1, X_2) = \mathbb{E}[X_1 X_2] - \mathbb{E}[X_1] \mathbb{E}[X_2].\]
+\end{definition}
+
+\begin{remark}
+  Si \(X_1, X_2\) sont indépendantes, on a que \(\mathbb{E}[X_1 X_2] = \mathbb{E}[X_1] \mathbb{E}[X_2]\).
+\end{remark}
+
+\begin{definition}
+  On dira que deux variables aléatoires \(X_1, X_2\) sont non-corrélées si \(\operatorname{Cov}(X_1,X_2) = 0\).
+\end{definition}
+
+Deux variables indépendantes sont non-corrélées, mais le contraire est en général faux.
+
+\begin{remark}[Rappel]
+  Si \(X\) est une variable aléatoire, on définit :
+
+  \[\mathbb{V}\operatorname{ar}(X) = \mathbb{E}[X ^2] - (\mathbb{E}[X])^2. \]
+\end{remark}
+
+\begin{prop}
+  \begin{enumerate}
+    \item \(\mathbb{V}\operatorname{ar}(\alpha X) = \alpha ^2 \mathbb{V}\operatorname{ar}(X)\).
+  \end{enumerate}
+\end{prop}
+
+\begin{remark}
+  \[\mathbb{V}\operatorname{ar}\left(\sum_{k=1}^{n} X_k \right) = \sum_{k=1}^{n} \mathbb{V}\operatorname{ar}(X_k) + 2 \sum_{1 \leq  j \leq k \leq n} \operatorname{Cov}(X_j, X_k).\]
+\end{remark}
+
+\begin{proof}[Démonstration de la proposition \ref{conv-L2}]
+  \begin{gather*}
+    \left\Vert \frac{1}{n} \sum_{k=1}^{n} X_k  \right\Vert _{L ^{2}}^{2} = \left(\int_{}^{} \frac{1}{n ^2} \left(\sum_{k=1}^{n} X_k \right)^2 \right) ^{\frac{1}{2}}.
+  \end{gather*}
+
+  On a \begin{gather*}
+    \left\Vert \frac{1}{n} \sum_{k=1}^{n} X_k  \right\Vert _{L ^{2}}^{2} = \mathbb{V}\operatorname{ar} \frac{1}{n} \sum_{k=1}^{n} X_k = \frac{1}{n ^2} \mathbb{V}\operatorname{ar}\left(\sum_{k=1}^{n} X_k \right) = \frac{1}{n ^2} \sum_{k=1}^{n}\mathbb{V}\operatorname{ar}(X_k),
+  \end{gather*}
+
+  car les variables aléatoires sont non-corrélées.
+
+  De plus, on a \[\frac{1}{n ^2} \sum_{k=1}^{n} \mathbb{V}\operatorname{ar}(X_k) = \frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
+
+  On vient de montrer que
+
+  \[S_n = \frac{1}{n} \sum_{k=1}^{n} X_k \stackrel{L ^2}{\longrightarrow} 0. \]
+\end{proof}
+
+\begin{prop}
+  Soit \(\{ X_n \} _{n=1}^{\infty}\) une suite de variables aléatoires \(L ^{2}(\mathbb{P})\) deux-à-deux non-corrélées. Posons \(\mu_n = \mathbb{E}[X_n]\) et supposons que
+
+  \begin{enumerate}
+    \item \(\frac{1}{n}\sum_{k=1}^{n} \mu_k \underset{n \to \infty}{\longrightarrow} \mu \) ;
+    \item \(\frac{1}{n ^2} \sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0\).
+  \end{enumerate}
+
+  Alors
+
+  \[\frac{1}{n} \sum_{k=1}^{n} X_k \stackrel{L ^2}{\longrightarrow} \mu.\]
+\end{prop}
+
+\begin{proof}
+  On utilise les théorèmes précédents. On écrit :
+
+  \begin{gather*}
+    \frac{1}{n} \sum_{k=1}^{n} \overbrace{(X_k - \mu_k)}^{\text{centrée}}
+  \end{gather*}
+
+  et on applique la proposition \ref{conv-L2}.
+\end{proof}
+
+\begin{prop}
+  Soit \(\{ X_n \} _{n=1}^{\infty}\) une suite de variables aléatoires de \(L ^{2}\) centrées \textbf{qui ont la même loi} et sont deux-à-deux non-corrélées. Alors
+
+  \[\frac{1}{n} \sum_{k=1}^{n} X_k \stackrel{L ^2}{\longrightarrow} 0.\]
+\end{prop}
+
+\begin{proof}
+  On applique \ref{conv-L2}.
+\end{proof}
+
+\begin{prop}
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} Soit \(\{ X_n \} _{n=1}^{\infty}\) une suite de variables aléatoires de classe \(L ^{2}(\mathbb{P})\) i. i. d. (indépendantes de même loi, \emph{independent identically distributed}). Alors
+
+  \[\frac{1}{n} \sum_{k=1}^{n}X_k \stackrel{L ^2}{\longrightarrow} \mu, \text{ où } \mu = \mathbb{E}[X_1].\]
+\end{prop}
+
+\begin{remark}
+  La dernière version reste vraie pour des variables aléatoires i. i. d. aussi si les variables sont de classe \(L^{1}(\mathbb{P})\).
+\end{remark}
+
+\begin{remark}
+  On peut remplacer \(L ^{2}\) par \(L ^{1}\).
+\end{remark}
+
+\subsection{Loi forte des grands nombres}
+
+\begin{thm}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires de classe \(L ^{1}\) centrées et i.i.d. Alors
+
+  \[\frac{1}{n}\sum_{k=1}^{n} X_k \stackrel{\text{P.S.}}{\longrightarrow} 0.\]
+\end{thm}
+
+\begin{remark}
+  Si les variables ne sont pas centrées, alors
+
+  \[\frac{1}{n}\sum_{k=1}^{n} X_k \stackrel{\text{P.S.}}{\longrightarrow} \mathbb{E}[X_1].\]
+\end{remark}
+
+\begin{proof}
+  Cf polycopié.
+\end{proof}
+
+\subsection{Convergence en loi}
+
+\subsubsection{Fonction caractéristique}
+
+Soit \(X\) une variable aléatoire sur \((\Omega, \mathscr{A}, \mathbb{P})\). On définit :
+
+\[\varphi_t(X) = \mathbb{E}[e ^{itX}] = \int e^{it X} d \mathbb{P}  = \int e^{itx} d P_X(x).\]
+
+Si en plus \(P_X\) a une densité \(f\), alors on écrira \(\varphi_t(X) = \int e^{itx}f(x)dx  \)
+
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

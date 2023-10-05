@@ -1457,7 +1457,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
 
 \section{Théorème de Frobenius}
 
-Soit \(G\) un groupe et soit \(\mathscr{F}(G) = \{ \text{fonctions } f : G \longrightarrow \mathbb{C} \} \) l'ensemble des fonctions définies sur \(G\) à valeurs dans \(\mathbb{C}\). Les fonctions \(\mathscr{F}(G)\) qui sont \textbf{constantes} sur  \textbf{les classes de conjugaison} de \(G\) sont appelées foncitons \textbf{centrales} sur \(G\). On note \(\mathscr{F}_C(G)\) l'ensemble des fonctions centrales :
+Soit \(G\) un groupe et soit \(\mathscr{F}(G) = \{ \text{fonctions } f : G \longrightarrow \mathbb{C} \} \) l'ensemble des fonctions définies sur \(G\) à valeurs dans \(\mathbb{C}\). Les fonctions \(\mathscr{F}(G)\) qui sont \textbf{constantes} sur  \textbf{les classes de conjugaison} de \(G\) sont appelées fonctions \textbf{centrales} sur \(G\). On note \(\mathscr{F}_C(G)\) l'ensemble des fonctions centrales :
 
 \[\mathscr{F}_C(G) := \{ f : G \longrightarrow \mathbb{C} ^{*}, \forall g, h \in G, f (ghg ^{-1}) = f(h)\}.\]
 
@@ -1471,7 +1471,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   On a déjà vu que les caractères irréductibles forment un système libre de fonctions de \(\mathscr{F}_C(G)\) (proposition \ref{syst-orth}). Notons \(F\) le sous-espace vectoriel engendré par les caractères irréductibles de \(G\). L'idée de la preuve est de vérifier que l'orthogonal  \(F ^{\perp}\) de \(F\) est réduit à 0 en utilisant de lemme de Schur (cf \ref{schur}).
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{nb-cl-iso}
   Le nombre de (classes d'isomorphismes de) représentations irréductibles d'un groupe \(G\) est égal au nombre de classes de conjugaison de \(G\).
 \end{corollary}
 
@@ -1493,7 +1493,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   \begin{gather*}
     \operatorname{Irr}(G) = \{ \rho : G \longrightarrow W, \text{ représentations irréductibles de } G \text{ à isomorphisme près } \}\\
-     = \{ \mathbb{C}-\text{espaces vectoriels} W, \text{ espaces des représentations irréductibles de } G \}.
+     = \{ \mathbb{C}-\text{espaces vectoriels } W, \text{ espaces des représentations irréductibles de } G \}.
   \end{gather*}
 \end{remark}
 
@@ -1521,7 +1521,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
     0 \text{ sinon. }
   \end{cases} \)
 
-  Donc \(\chi_W, \chi_V = m_W\).
+  Donc \(\langle \chi_W, \chi_V \rangle = m_W\).
 \end{proof}
 
 \begin{corollary}[Les caractères caractérisent les représentations]
@@ -1529,7 +1529,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 \end{corollary}
 
 \begin{proof}
-  D'après \ref{cor2}, si \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) sont deux représentations de \(G\) ayant même caractère \(\chi\) alors \(V\) et \(V'\) sont tous les deux isomorphes à :
+  D'après le corollaire \ref{cor2}, si \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) sont deux représentations de \(G\) ayant même caractère \(\chi\) alors \(V\) et \(V'\) sont tous les deux isomorphes à :
 
   \[\bigoplus _{W \in \operatorname{Irr}(G)} \langle \chi_W, \chi \rangle W.\]
 
@@ -1537,20 +1537,20 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 \end{proof}
 
 \begin{corollary}[Critère d'irréductibilité]
-  Une représentation \(\rho : G \longrightarrow GL(V)\) d'un groupe \(G\) est irréductible si et seulement si \(\langle \chi, \chi \rangle = 1 \).
+  Une représentation \(\rho : G \longrightarrow GL(V)\) d'un groupe \(G\) est irréductible si et seulement si \(\langle \chi, \chi \rangle = 1 \) où \(\chi\) est le caractère de \(\rho\).
 \end{corollary}
 
 \begin{proof}
   Si \(V \simeq \bigoplus _{W \in \operatorname{Irr}(G)} m_W W\), alors
 
   \begin{gather*}
-    \langle \chi_V, \chi_V \rangle = \left\langle \sum_{w \in \operatorname{Irr}(G)}^{} m_w \chi_W, \sum_{w \in \operatorname{Irr}(G)}^{} m_w \chi_W \right\rangle = \sum_{w \in \operatorname{Irr}(G)}^{} m_W ^2,
+    \langle \chi_V, \chi_V \rangle = \left\langle \sum_{w \in \operatorname{Irr}(G)}^{} m_W \chi_W, \sum_{w \in \operatorname{Irr}(G)}^{} m_W \chi_W \right\rangle = \sum_{w \in \operatorname{Irr}(G)}^{} m_W ^2,
   \end{gather*}
 
   car les caractères irréductibles de \(G\) forment une base orthonormale de l'espace vectoriel des fonctions centrales sur \(G\) par le théorème de Frobenius.  Puisque les \(m_W \in \mathbb{N}\), on en déduit que :
 
   \begin{gather*}
-    \langle \chi_V, \chi_V \rangle = 1 \text{ ssi tous les } m_W \text{ sont égaux à 0 saut un qui est égal à 1} \\
+    \langle \chi_V, \chi_V \rangle = 1 \text{ ssi tous les } m_W \text{ sont égaux à 0 sauf un qui est égal à 1} \\
     \text{ssi } V \simeq W \text{ ssi } V \in \operatorname{Irr}(G) \text{ ssi } \rho : G \longrightarrow GL(V) \text{ est une représentation irréductible.}
   \end{gather*}
 \end{proof}
@@ -1589,14 +1589,14 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   \ & g & \longmapsto & \rho_g : \left(\begin{matrix}
   V & \longrightarrow & V \\
   \varepsilon_x & \longmapsto & \varepsilon _{gx}
-  \end{matrix}\right.
+  \end{matrix}\right).
   \end{matrix}\]
 
   Montrons que si \(W\) est une représentation irréductible de \(G\), alors \(W\) apparaît dans la représentation régulière de \(G\) avec la multiplicité \(\operatorname{dim}(V)\).
 
   En effet, le caractère \(\chi\) de la représentation régulière est donné par :
 
-  \[\chi(l) = \left\lvert G \right\rvert \text{ et } \chi(g) = O \text{ pour tout } g \in G \setminus \{ e \}.\]
+  \[\chi(e) = \left\lvert G \right\rvert \text{ et } \chi(g) = 0 \text{ pour tout } g \in G \setminus \{ e \}.\]
 
   Or, d'après le corollaire \ref{cor2}, la multiplicité de \(W\) dans \(V\) est égale à :
 
@@ -1607,7 +1607,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   On en déduit que
 
   \begin{gather*}
-    \chi = \sum_{W \in \operatorname{Irr}(G)}(\operatorname{dim}(W)) \chi_W.
+    \chi = \sum_{W \in \operatorname{Irr}(G)}(\operatorname{dim}(W)) \cdot \chi_W.
   \end{gather*}
 
   En appliquant cette égalité à \(g = e\), on trouve :
@@ -1628,7 +1628,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   Si l'on note \(\operatorname{Conj}(G)\) l'ensemble des classes de conjugaison de \(G\), on a donc \(\sharp \operatorname{Conj}(G) = \left\lvert G \right\rvert\).
 
-  Or, d'après le corollaire 1, on a \(\sharp \operatorname{Irr}(G)= \sharp \operatorname{Conj}(G)\). De plus, d'après la formule de Burnside, on a :
+  Or, d'après le corollaire \ref{nb-cl-iso}, on a \(\sharp \operatorname{Irr}(G)= \sharp \operatorname{Conj}(G)\). De plus, d'après la formule de Burnside, on a :
 
   \[\sum_{W \in \operatorname{Irr}(G)} (\operatorname{dim}(W))^2 = \left\lvert G \right\rvert. \]
 
@@ -1679,7 +1679,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 \end{exo}
 
 \begin{proof}
-  Le groupe \(\mathbb{Z}/{ 2 }\mathbb{Z}\) est abélien. Ses représentations irréductibles sont toutes de degré 1. Elles coincident donc avec ses caractères linéaires. Leur nombre est égal à celui des classes de conjugaison de \(\mathbb{Z}/{ 2 }\mathbb{Z}\), à savoir 2, car \(\mathbb{Z}/{2}\mathbb{Z}\) est abélien. Les représentations irréductibles de \(\mathbb{Z}/{ 2 }\mathbb{Z}\) les représentations irréductibles de degré 1, à savoir les morphismes de groupes : \(\rho : \mathbb{Z}/{ 2 }\mathbb{Z} \longrightarrow \mathbb{C} ^{*}\).
+  Le groupe \(\mathbb{Z}/{ 2 }\mathbb{Z}\) est abélien. Ses représentations irréductibles sont toutes de degré 1. Elles coincident donc avec leurs caractères linéaires. Leur nombre est égal à celui des classes de conjugaison de \(\mathbb{Z}/{ 2 }\mathbb{Z}\), à savoir 2, car \(\mathbb{Z}/{2}\mathbb{Z}\) est abélien. Les représentations irréductibles de \(\mathbb{Z}/{ 2 }\mathbb{Z}\) les représentations irréductibles de degré 1, à savoir les morphismes de groupes : \(\rho : \mathbb{Z}/{ 2 }\mathbb{Z} \longrightarrow \mathbb{C} ^{*}\).
 
   On a la représentation triviale :
 
@@ -1737,7 +1737,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   De plus, on a : \(\chi(\overline{n}) = \chi(\underbrace{\overline{1} + \overline{1} + \dots + \overline{1}}_{n \text{ fois}}) = \chi(\overline{1})^{n}\). Donc \(\chi(\overline{1})\) est une racine \(n\)-ième de l'unité dans \(\mathbb{C}\). Il existe donc \(k \in \{ 0, \dots, n-1 \} \) tel que \(\chi(\overline{1}) = e^{\frac{2 i k \pi}{n}}\).
 
-  On a alors, pour tout \(r\) : \(\chi(\overline{r}) = \chi(\overline{1}) ^{r} = e^{\frac{2 i k \pi r}{n}}=: \chi_k(\overline{r})\). On botient donc les \(n\) représentations irréductibles de \(\mathbb{Z}/{n}\mathbb{Z}\) en considérant \(\chi_0, \dots, \chi _{n-1}\) définis par
+  On a alors, pour tout \(r\) : \(\chi(\overline{r}) = \chi(\overline{1}) ^{r} = e^{\frac{2 i k \pi r}{n}}=: \chi_k(\overline{r})\). On obtient donc les \(n\) représentations irréductibles de \(\mathbb{Z}/{n}\mathbb{Z}\) en considérant \(\chi_0, \dots, \chi _{n-1}\) définis par
 
   \[\begin{matrix}
   \chi_k : & \mathbb{Z}/{n}\mathbb{Z} & \longrightarrow & \mathbb{C}^{*} \\
@@ -1755,7 +1755,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   Le groupe \(\hat{\mathbb{Z}/{n}\mathbb{Z}}\) est cyclique d'ordre \(n\), engendré par
 
   \[\begin{matrix}
-  \chi_1 : & \mathbb{Z}/{n}\mathbb{Z} & \longrightarrow & \mathbb{C}^{*} \\
+  \chi : & \mathbb{Z}/{n}\mathbb{Z} & \longrightarrow & \mathbb{C}^{*} \\
   \ & \overline{r}  & \longmapsto & \chi_k(\overline{r}) = e^{\frac{2 i \pi r}{n}}.
   \end{matrix}\]
 \end{remark}

@@ -1701,7 +1701,7 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
 
   alors
 
-  \[\mathbb{P}(\lim_{n \to \infty} \sup A_n) = \mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n}^{\infty} A_k\right) = 0, \]
+  \[\mathbb{P}\left(\lim_{n \to \infty} \sup A_n\right) = \mathbb{P}\left(\bigcap _{n=1} ^{\infty} \bigcup _{k=n}^{\infty} A_k\right) = 0, \]
 
   c'est-à-dire l'ensemble des points qui sont dans une infinité des \(\{ A_n \}\) à probabilité 0 si et seulement si presque tout point est dans un nombre fini d'éléments.
 \end{lemma}
@@ -1713,7 +1713,7 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
 
   En effet, on a
 
-  \[\sum_{k=1}^{\infty} \mathbb{P}(A_k) \less \infty \implies \sum_{k=1}^{n-1} A_k + \sum_{k=n}^{\infty} A_k \less \infty.\]
+  \[\sum_{k=1}^{\infty} \mathbb{P}(A_k) \less \infty \implies \sum_{k=1}^{n-1}\mathbb{P}(A_k) + \sum_{k=n}^{\infty} \mathbb{P}(A_k) \less \infty.\]
 \end{proof}
 
 \marginpar{03-10-2023}
@@ -1721,27 +1721,27 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
 \begin{lemma}[De Borel-Cantelli, deuxième]
   Si \(\{ A_n \} \) sont \textbf{indépendantes} et \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) = + \infty \), alors
 
-  \[\mathbb{P}(\lim_{n \to \infty} \sup A_n) = 1.\]
+  \[\mathbb{P}\left(\lim_{n \to \infty} \sup A_n\right) = 1.\]
 \end{lemma}
 
 \begin{exemple}
-  \(\Omega = [0,1], \beta \text{ \bsc{Borel} sur } [0, 1], \mathbb{P} = \text{ mesure de Lebesgue sur } [0,1]\),
+  \(\Omega = [0,1], \beta \text{ \bsc{Borel} sur } [0, 1], \mathbb{P} \text{ mesure de Lebesgue sur } [0,1]\),
 
   \[A_n = \left(0, \frac{1}{n}\right].\]
 
-  Montrer que \(\lim_{n \to \infty} \sup A_n = \emptyset\), mais \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) =+ \infty\).
+  Montrer que \(\displaystyle\lim_{n \to \infty} \sup A_n = \emptyset\), mais \(\displaystyle\sum_{n=1}^{\infty} \mathbb{P}(A_n) =+ \infty\).
 \end{exemple}
 
 \begin{proof}
-  En TD. On tâchera de montrer que les événements \(A_n\) sont indépendants.
+  En TD. On tâchera de montrer que les événements \(A_n\) sont \textbf{ne} sont \textbf{pas} indépendants.
 \end{proof}
 
 \begin{exemple}
-  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires telles que \(\mathbb{P}(X_n=0)=\frac{1}{n ^2}\). Donc par Borel-Cantelli on sait que
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires telles que \(\mathbb{P}(X_n=0)=\displaystyle\frac{1}{n ^2}\). Donc par Borel-Cantelli on sait que
 
   \[\sum_{n=1}^{\infty} \mathbb{P}(X_n = 0)=\sum_{n=1}^{\infty} \frac{1}{n ^2} \less \infty\]
 
-  et \(\mathbb{P}(\lim_{n \to \infty} \sup \{ X_n = 0 \}) = 0\). Interpréter le résultat.
+  et \(\mathbb{P}\left(\displaystyle\lim_{n \to \infty} \sup \{ X_n = 0 \}\right) = 0\). Interpréter le résultat.
 \end{exemple}
 
 \begin{proof}[Solution]
@@ -1848,15 +1848,15 @@ Il existe deux ``versions'' de la loi des grands nombres :
   \item[$\star$] forte.
 \end{itemize}
 
-Si \(\{ X_n \} \) est une suite de variables aléatoires, on considère \(S_n = \frac{1}{n} \sum_{k=1}^{n} X_k\) (somme de Cèsaro).
+Si \(\{ X_n \} \) est une suite de variables aléatoires, on considère \(S_n = \displaystyle\frac{1}{n} \displaystyle\sum_{k=1}^{n} X_k\) (somme de Cèsaro).
 
-\paragraph{Cadre} On a une suite de variables aléatoires \(\{ X_n \} _{n=1}^{\infty}\) sur \((\Omega, \mathscr{A}, \mathbb{P})\). On considère \(S_n = \frac{1}{n}\sum_{k=1}^{n} X_n\).
+\paragraph{Cadre} On a une suite de variables aléatoires \(\{ X_n \} _{n=1}^{\infty}\) sur \((\Omega, \mathscr{A}, \mathbb{P})\). On considère \(S_n = \displaystyle\frac{1}{n}\displaystyle\sum_{k=1}^{n} X_k\).
 
 \subsection{Loi faible des grands nombres}
 
 
 \begin{definition}
-  Supposons que les variables aléatoires \(X_n\) soient centrées, i. e. \(X_n \text{ devient }  X_n - \mathbb{E}[X_n]\) (donc les \(X_n\) auront l'espérance nulle). On dira que la suite \(\{ X_n \}\) satisfait \textbf{la loi faible des grands nombres} si la suite \(S_n\) converge vers 0 \textbf{en probabilité}, c'est-à-dire
+  Supposons que les variables aléatoires \(X_n\) soient \emph{centrées}, i. e. \(X_n \text{ devient }  X_n - \mathbb{E}[X_n]\) (donc les \(X_n\) auront l'espérance nulle). On dira que la suite \(\{ X_n \}\) satisfait \textbf{la loi faible des grands nombres} si la suite \(S_n\) converge vers 0 \textbf{en probabilité}, c'est-à-dire
 
   \[\forall \varepsilon \bg 0, \mathbb{P}(\lvert S_n \rvert \bg \varepsilon) \underset{n \to \infty}{\longrightarrow} 0.\]
 \end{definition}
@@ -1864,9 +1864,9 @@ Si \(\{ X_n \} \) est une suite de variables aléatoires, on considère \(S_n = 
 \begin{prop}\label{conv-L2}
   Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires de \(L ^{2}(\mathbb{P})\) qui sont deux-à-deux non-corrélées et centrées. Pour tout \(n\), on pose :
 
-  \[\mathbb{V}ar(X_n) = \sigma_n ^2 \less \infty \]
+  \[\mathbb{V}(X_n) = \sigma_n ^2 \less \infty \]
 
-  et \[\frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
+  et on suppose que \[\frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
 
   Alors \[\frac{1}{n} \sum_{k=1}^{n} X_k \stackrel{L ^{2}(\mathbb{P})}{\longrightarrow} 0 \]
 
@@ -1892,31 +1892,34 @@ Deux variables indépendantes sont non-corrélées, mais le contraire est en gé
 \begin{remark}[Rappel]
   Si \(X\) est une variable aléatoire, on définit :
 
-  \[\mathbb{V}\operatorname{ar}(X) = \mathbb{E}[X ^2] - (\mathbb{E}[X])^2. \]
+  \[\mathbb{V}(X) = \mathbb{E}[X ^2] - (\mathbb{E}[X])^2. \]
 \end{remark}
 
 \begin{prop}
   \begin{enumerate}
-    \item \(\mathbb{V}\operatorname{ar}(\alpha X) = \alpha ^2 \mathbb{V}\operatorname{ar}(X)\).
+    \item \(\mathbb{V}(\alpha X) = \alpha ^2 \mathbb{V}(X)\).
   \end{enumerate}
 \end{prop}
 
 \begin{remark}
-  \[\mathbb{V}\operatorname{ar}\left(\sum_{k=1}^{n} X_k \right) = \sum_{k=1}^{n} \mathbb{V}\operatorname{ar}(X_k) + 2 \sum_{1 \leq  j \leq k \leq n} \operatorname{Cov}(X_j, X_k).\]
+  \[\mathbb{V}\left(\sum_{k=1}^{n} X_k \right) = \sum_{k=1}^{n} \mathbb{V}(X_k) + 2 \sum_{1 \leq  j \leq k \leq n} \operatorname{Cov}(X_j, X_k).\]
 \end{remark}
 
 \begin{proof}[Démonstration de la proposition \ref{conv-L2}]
+
+  On rappelle la définition de la convergence \(L ^{2}\).
+
   \begin{gather*}
     \left\Vert \frac{1}{n} \sum_{k=1}^{n} X_k  \right\Vert _{L ^{2}}^{2} = \left(\int_{}^{} \frac{1}{n ^2} \left(\sum_{k=1}^{n} X_k \right)^2 \right) ^{\frac{1}{2}}.
   \end{gather*}
 
   On a \begin{gather*}
-    \left\Vert \frac{1}{n} \sum_{k=1}^{n} X_k  \right\Vert _{L ^{2}}^{2} = \mathbb{V}\operatorname{ar} \frac{1}{n} \sum_{k=1}^{n} X_k = \frac{1}{n ^2} \mathbb{V}\operatorname{ar}\left(\sum_{k=1}^{n} X_k \right) = \frac{1}{n ^2} \sum_{k=1}^{n}\mathbb{V}\operatorname{ar}(X_k),
+    \left\Vert \frac{1}{n} \sum_{k=1}^{n} X_k  \right\Vert _{L ^{2}}^{2} = \mathbb{V} \left(\frac{1}{n} \sum_{k=1}^{n} X_k\right)= \frac{1}{n ^2} \mathbb{V}\left(\sum_{k=1}^{n} X_k \right) = \frac{1}{n ^2} \sum_{k=1}^{n}\mathbb{V}(X_k),
   \end{gather*}
 
   car les variables aléatoires sont non-corrélées.
 
-  De plus, on a \[\frac{1}{n ^2} \sum_{k=1}^{n} \mathbb{V}\operatorname{ar}(X_k) = \frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
+  De plus, on a \[\frac{1}{n ^2} \sum_{k=1}^{n} \mathbb{V}(X_k) = \frac{1}{n ^2}\sum_{k=1}^{n} \sigma_k ^2 \underset{n \to \infty}{\longrightarrow} 0. \]
 
   On vient de montrer que
 
@@ -1997,6 +2000,10 @@ Soit \(X\) une variable aléatoire sur \((\Omega, \mathscr{A}, \mathbb{P})\). On
 \[\varphi_t(X) = \mathbb{E}[e ^{itX}] = \int e^{it X} d \mathbb{P}  = \int e^{itx} d P_X(x).\]
 
 Si en plus \(P_X\) a une densité \(f\), alors on écrira \(\varphi_t(X) = \int e^{itx}f(x)dx  \)
+
+\subsection{Lien entre convergences}
+
+
 
 
 
@@ -2150,6 +2157,8 @@ Il s'agit de la \textbf{loi binomiale}.
 \chapter*{Travaux dirigés}
 \addcontentsline{toc}{chapter}{Travaux dirigés}
 
+Dans ce document, vous ne trouverez que les énoncés des exercices, les corrections étant manuscrites. La numérotation dans les feuilles manuscrites correspond à celle dans ce document.
+
 \begin{exo}
   Dans une bibliothèque, il y a $n$ livres sur une étagère repartis au hasard. Parmi ces $n$ livres, $k$ sont d'un même auteur $A$, les autres d'auteurs différents. Calculer la probabilité qu'au moins $p$ livres de $A$ se retrouvent côte à côte dans les cas suivants :
   \begin{enumerate}
@@ -2207,6 +2216,52 @@ Il s'agit de la \textbf{loi binomiale}.
   \end{enumerate}
 \end{exo}
 
+\begin{exo}
+  Sur l'espace probabilisé \((\Omega, \mathscr{A}, \mathbb{P})\), on considère le vecteur aléatoire \((X, Y)\) à valeurs dans \(\mathbb{R}^2\) et de loi \(P_X\) à densité
+
+  \[f _{XY}(x,y) = \alpha(1-x ^2) \mathds{1}_{[0, 1]}(x)y e^{-3y} \mathds{1}_{[0, \infty)}(y), \]
+
+  où \(\alpha \in \mathbb{R}\).
+
+  \begin{enumerate}
+    \item Déterminer \(\alpha\).
+    \item Déterminer les lois marginales.
+    \item Calculer \(\mathbb{P}(0 \less X \leq 2, Y \geq 1)\).
+    \item Calculer la matrice de dispersion \(D\) de \((X,Y)\):
+
+    \[D= \left(\begin{matrix}
+      \mathbb{V}(X) & \operatorname{Cov}(X,Y) \\
+      \operatorname{Cov}(Y,X) & \mathbb{V}(Y)
+    \end{matrix}\right).\]
+  \end{enumerate}
+
+
+\end{exo}
+
+\begin{exo}
+  Soient \(X\) et \(Y\) deux variables aléatoires indépendantes et de même loi \(e^{-x}\mathds{1}_{[0, \infty)}(x)\). Déterminer la loi conjointe des nouvelles variables \(U = X+Y\) et \(V = \displaystyle\frac{X}{X+Y}\) et montrer que \(V\) a une loi uniforme sur \([0,1]\).
+\end{exo}
+
+\begin{exo}
+  Soient \(X\) et \(Y\) deux variables aléatoires dont \(Y\) est de densité \(f _{Y}(y)\) et posons \(Z = X+Y\).
+
+  \begin{enumerate}
+    \item Prenons \(X\) et \(Y\) indépendantes. Montrer que \(Z\) est à densité indépendante de la nature de \(X\). \emph{On peut essayer avec \(X\) qui suit une loi binomiale}.
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Deux variables aléatoires indépendantes avec densités :
+
+  \[f_X(x) = \frac{1}{\pi} \frac{1}{\sqrt{ 1- x ^2 }}, \left\lvert x \right\rvert \less 1,\]
+
+  \[f_Y(y) = \frac{y}{\sigma ^2}e^{- \frac{y}{2 \sigma ^2}}.\]
+  
+
+  Soit \(Z = X \cdot Y\). Montrer que \(Z\) a la loi \(\mathscr{N}(0, \sigma^2)\), avec
+
+  \[F _{\mathscr{N}}(t) = \frac{1}{\sigma \sqrt{ 2 \pi } } e^{-\frac{t ^2}{2 \sigma ^2}}.\]
+\end{exo}
 
 
 

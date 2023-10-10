@@ -55,13 +55,15 @@
 
 %%%%%%Commandes%%%%%%
 
-\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}} %pour le signe ``supérieur ou égal'' que je n'ai pas sur mon clavier
+\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}} %pour le signe ``strictement inférieur'' que je n'ai pas sur mon clavier
 \newcommand{\less}{\ \lesss\ }
 
-\newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}}
+\newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}} %idem, mais pour le signe ``strictement supérieur''
 \newcommand{\bg}{\ \biggg\ }
 
 \newcommand{\C}{\mathbb{C}}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 \title{\bsc{Théorie des représentations}}
 \date{\today}
@@ -78,12 +80,14 @@
 %- une table des matières, (OK)
 -% des références (labels), (OK)
 %- au moins une liste (OK)
-%- des commandes personnelles,
+%- des commandes personnelles, (OK)
 %- des commandes mathématiques, (OK)
 %- au moins une image (importée ou créée avec Tikz), (OK)
-%- une bibliographie.
+%- une bibliographie. (OK)
 
 \section{Prérequis}
+
+Cette section s'inspire majoritairement de \cite{notes_m54}.
 
 \subsection{Action de groupe sur un ensemble}
 
@@ -180,6 +184,8 @@
 \end{thm}
 
 \section{Représentations linéaires des groupes finis}
+
+Cette section est tirée de \cite{notes_m74}.
 
 \subsection{Représentations, représentations isomorphiques, représentations irréductibles}
 
@@ -307,6 +313,42 @@ Définissons tout d'abord la notion de somme directe de représentations.
 
 \paragraph{Rappel d'algèbre linéaire}
 
+On se réferera à \cite{mpsi_maths} pour plus de détails.
+
+\begin{definition}
+  Soient \(F\) et \(G\) deux sous-espaces vectoriels d'un même espace vectoriel \(E\). On note \(F+G\) l'ensemble de tous les vecteurs de \(E\) somme d'un vecteur de \(F\) et d'un vecteur de \(G\) :
+
+  \[F+G = \{ x+y ; x \in F, y \in G \} = \{ v \in E \mid \exists (x,y) \in F \times G, v=x+y\}. \]
+
+\end{definition}
+
+\begin{definition}[Sous-espaces supplémentaires]
+  Soient \(E\) un espace vectoriel et \(F, G\) deux sous-espaces vectoriels de \(E\). On dit que deux espaces \(F\) et \(G\) sont supplémentaires dans \(E\) et on note \(E = F \oplus G\) si :
+
+  \begin{enumerate}
+    \item \(F+ G = E\), i.e. tous les vecteurs de \(E\) peuvent s'écrire comme une somme d'un vecteur de \(F\) et d'un vecteur de \(G\) ;
+    \item \(F \cap G = \emptyset\), i. e. le seul vecteur commun à \(F\) et \(G\) est le vecteur nul.
+  \end{enumerate}
+\end{definition}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.5]{suppl.png}
+  \caption{Dans \(\mathbb{R}^2\), on peut dire que \(W_a\) est le supplémentaire de \(U\).}
+  \label{suppl}
+\end{figure}
+
+\begin{prop}[Caractérisation de sous-espaces vectoriels supplémentaires]
+  Soient \(F\) et \(G\) deux sous-espaces vectoriels dans un espace vectoriel \(E\). On a \(E = F \oplus G\) si et seulement si poour tout \(v \in E\), il existe un unique \((x,y) \in E^2\) tel que :
+
+  \begin{itemize}
+    \item[$\star$] \(v= x+y\) ;
+    \item[$\star$] \(x \in F\) ;
+    \item[$\star$] \(y \in G\).
+  \end{itemize}
+\end{prop}
+
+On peut maintenant introduire un résultat fondamental en théorie des représentations linéaires des groupes finis.
 
 \begin{thm}[De Maschke]
   Toute représentation linéaire complexe de degré fini est somme directe de représentations irréductibles.
@@ -317,7 +359,8 @@ Définissons tout d'abord la notion de somme directe de représentations.
 \end{lemma}
 
 
-
+\bibliographystyle{apalike}
+\bibliography{bibliographie}
 
 
 \end{document}

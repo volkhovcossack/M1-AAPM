@@ -636,7 +636,7 @@ Il y a la forme analytique et la forme géométrique de ce théorème.
 
 On l'applique aux espaces vectoriels normés, espaces localement convexes,...
 
-\begin{thm}[Norme sur un espace dual]
+\begin{thm}[Norme sur un espace dual] \label{norm-dual}
   Soit $X$ espace vectoriel normé, $X'$ formes linéaires continues sur $X$, $X'$ est un espace vectoriel normé. La norme sur $X'$ est définie de la façon suivante :
 
   \[
@@ -965,6 +965,188 @@ Montrons que \(\mathscr{S}(\mathbb{R})\) est complet. On va regarder \(\rho _{0,
   \end{lemma}
 \end{enumerate}
 
+\marginpar{10-10-2023}
 
+\subsection{Topologie forte et topologie faible sur les espaces de Banach}
+
+Soient \((E, \left\Vert \cdot \right\Vert) \) un espace de Banach (réel ou complexe) et \((E', \left\Vert \cdot \right\Vert')\) son dual topologique. On rappelle que
+
+\[E' = \{ l \in \mathscr{L}(E, \mathbb{R}), \exists C \bg 0, \forall x \in E, \left\lvert \langle l,x \rangle  \right\rvert \leq C \left\Vert x \right\Vert^2 \}, \]
+
+avec la norme sur le dual définie dans \ref{norm-dual}.
+
+\((E', \left\Vert \cdot \right\Vert')\) est un espace de Banach, un cas particulier de \(\mathscr{L}(E,F)\), avecn pour \(u \in \mathscr{L}(E,F)\),
+
+\[\left\Vert u \right\Vert _{\mathscr{L}(E,F)} = \sup_{ x \in E, \left\Vert x \right\Vert_E \leq 1 }  \left\Vert u(x) \right\Vert_F. \]
+
+On affaiblit \((E,\left\Vert \cdot \right\Vert )\). Alors \(\sigma(E,E')\) est la topologie la moins fine qui rend continue toutes les formes linéaires sur \(E\). \(X \sim \sigma(E,E')\) est muni des semi-normes \(\left\lvert \langle l,x \rangle  \right\rvert = \rho_l(x)\). Un voisinage de 0 est défini de la manière suivante :
+
+\[\mathcal{O} _{\underline{l}, \varepsilon} = \{ x \in E : \sup_{ 1 \leq  i \leq n} \langle l_i, x \rangle \less \varepsilon \}, \underline{l} = (l_1, \dots, l_n).\]
+
+\subsubsection{Comparaison des topologies \((E, \left\Vert \cdot \right\Vert)\) et \(\sigma(E,E')\)}
+
+\begin{lemma}
+  Soit \(E\) un espace de Banach. Alors la norme définie
+
+  \[x = \sup_{ l \in E', \left\Vert l \right\Vert \leq 1  } \left\lvert \langle l,x \rangle  \right\rvert = \langle l_0,x \rangle.  \]
+
+  est telle que le \(\sup\) est atteint. On a \(\sup = \max\).
+\end{lemma}
+
+\begin{proof}
+  On a \(x \neq 0\) par la définition de \(\left\Vert \cdot \right\Vert'\). Alors
+
+  \[\left\lvert \left\langle l,\frac{x}{\left\Vert x \right\Vert } \right\rangle  \right\rvert \leq \left\Vert l \right\Vert' \leq 1.\]
+
+  Alors \[\left\lvert \langle l,x \rangle  \right\rvert \leq  \left\Vert x \right\Vert \text{ pour tout } l \in E' \text{ tel que } \left\Vert l \right\Vert' \leq 1.\]
+
+  Soit \(x_0\) et \(F\) tel que \(F = \mathbb{R} x_0\). Alors \(\forall \lambda \in \mathbb{R}, l_0(\lambda x_0) = \lambda\) et \(\left\Vert l_0 \right\Vert = \left\Vert x_0 \right\Vert.\) Par Hahn-Banach, on peut prolonger \(l_0\) en \(L_0\) sur tout l'espace de Banach.
+\end{proof}
+
+\begin{prop}
+  \[(E,\left\Vert \cdot \right\Vert) \prec \sigma(E,E').\]
+
+  Donc \(X \sim \sigma(E, E')\) est un espace localement convexe.
+\end{prop}
+
+\begin{proof}
+  On a
+
+  \[\rho_l(x) = \left\lvert \langle l,x \rangle  \right\rvert \leq \left\Vert l \right\Vert' \left\Vert x \right\Vert.  \]
+\end{proof}
+
+\begin{proof}[Autre démonstration]
+  Montrons que \(\mathcal{O} _{\underline{l}, \varepsilon}\) est un ouvert de \((E, \left\Vert \cdot \right\Vert)\), i. e. \(\left\Vert x \right\Vert \less \delta\). On prend \(n\) formes linéaires \(l_i, i \in \{ 1, \dots, n \}\) et on considère
+
+  \[ \left\Vert x \right\Vert = \sup_{ \left\Vert l \right\Vert' \leq 1  } \left\lvert \langle l,x \rangle  \right\rvert. \]
+
+  Or \(\left\lvert \langle l_i,x \rangle  \right\rvert \less \varepsilon\) ...
+\end{proof}
+
+\begin{proof}
+  Montrons que \(\sigma(E,E')\) est séparé. Soient \(x_1, x_2\) distincts. Montrons qu'il existe \(\mathcal{O}_1\) et \(\mathcal{O}_2\) de \(\sigma(E,E')\) tels que \(\mathcal{O}_1 \cap \mathcal{O}_2 = \emptyset\).
+
+  Par Hahn-Banach, pour \(A = \{ x_1 \}, B = \{ x_2 \} \) compacts et convexes. Pour tout \((x,y) \in A \times B\), on a
+
+  \[\langle l,x \rangle \less \alpha \less \langle l,y \rangle.\]
+
+  Donc
+
+  \[\langle l,x_1 \rangle \less \alpha \less \langle l,x_2 \rangle.\]
+
+  On a \(x_1 \in \mathcal{O} _{\alpha,l}^{1} =\{ x : \langle l,x \rangle \less \alpha\}\) et \(\mathcal{O} _{\alpha,l} ^{2} = \{ y : \langle l,y \rangle \bg \alpha\}\), ces ouverts séparent \(x_1\) et \(x_2\).
+\end{proof}
+
+
+\begin{thm}
+  \((E, \left\Vert \cdot \right\Vert )\) est strictement plus fine que \(\sigma(E, E')\) sauf en dimension finie.
+\end{thm}
+
+\begin{proof}
+  On considère \(S = \{ \left\Vert x \right\Vert =1 \}\). Alors \(S = \overline{S}\), son adhérence.
+
+  Soit \(x_0\) de norme plus petite que 1. Montrons que pour tout \(V\) voisinage de 0 dans \(\mathscr{T}\), \(V \cap S \neq \emptyset\). On a
+
+  \[V = \{ x : \left\lvert \langle l_i,x - x_0 \rangle  \right\rvert \less \varepsilon, 1 \leq i \leq n \}.\]
+
+  Comme \(\operatorname{dim}(E) = \infty\), il existe \(y_0 \neq 0\) tel que \(\langle l_i, y_0 \rangle =0, \forall i\). On a
+
+  \begin{gather*}
+    g(t) = \left\Vert x_0 + t y_0 \right\Vert.
+  \end{gather*}
+
+  On a \(g(0) = \left\Vert x_0 \right\Vert \less 1\) et \(g(\infty) = +\infty\). \(g\) est continue, donc il existe \(t_0 \in (0, \infty)\) tel que \(\left\Vert x_0 + t_0 y_0 \right\Vert = 1\). Donc \(x_0 + t_0 y_0 \in S\) et \(x_0 + t_0 y_0 \in V\), car
+
+  \[\left\lvert \langle l_i, (x_0 + t_0 y_0) - x_0 \rangle  \right\rvert = \left\lvert \langle l_i, t_0 y_0 \rangle  \right\rvert = \left\lvert t_0 \langle l_i, y_0 \rangle  \right\rvert = 0 \less \varepsilon.\]
+\end{proof}
+
+\begin{remark}
+  \(\forall t \in \mathbb{R}, \langle l_i, x_0 + t y_0 \rangle = 0\). Alors \(V\) contient toute une droite.
+\end{remark}
+
+\begin{remark}
+  Pour \(E\) Banach séparable, \(B_E\) boule unité fermée de \((E,\left\Vert \cdot \right\Vert)\) est métrisable pour \(\sigma(E,E')\).
+
+  Si \(E\) est réfléxif, alors \(B_E = \{ \left\Vert x \right\Vert \leq 1 \} \) est un espace métrique compact pour \(\mathcal{O}(E, E')\).
+\end{remark}
+
+\subsection{Théorème de Banach-Steinhaus, suites faiblement et fortement convergentes}
+
+\begin{thm}
+  Soient \(E,F\) espaces de Banach et \((T_a) _{a \in A} \in \mathscr{L}(E,F)\) tel que
+
+  \[\forall x \in E, \sup_{ a \in A } \left\Vert T_a x \right\Vert _{F} \less + \infty.\]
+
+  Alors \[\sup_{ a \in A } \left\Vert T_a \right\Vert \less +\infty \text{ (bornée en norme),}\]
+
+  ie \(\exists C \bg 0, \forall x \in E, \forall \alpha \in A, \left\Vert T_\alpha(x)  \leq C \left\Vert x \right\Vert  \right\Vert\).
+\end{thm}
+
+
+\begin{corollary}
+  Soit \(T_n \in \mathscr{L}(E,F)\) avec \(\left\Vert T_n \right\Vert \less +\infty\) avec \(\forall x \in E, T_n x \underset{n \to \infty}{\longrightarrow}y \in F\). On note \(y = Tx\). Alors \(T \in \mathscr{L}(E,F)\) et \(T = \lim \inf  T_n\).
+\end{corollary}
+
+\begin{proof}
+  Montrons que \(T_n\) est linéaire. En effet,
+
+  \begin{gather*}
+    T_n(\lambda x + \lambda' x') = \lambda T_n(x)+ \lambda'T_n(x').
+  \end{gather*}
+
+  Par passage à la limite, on obtient \(T(\lambda x+ \lambda' x') = \lambda T(x) + \lambda' T(x')\).
+
+  Montrons l'autre partie du corollaire. Par Banach-Steinhaus, si on considère \(A = \mathbb{N}\), pour tout \(x \in E\), \(T_n x\) est convergente, donc bornée, i. e. \(\left\Vert T_n x \right\Vert \less \infty\), donc \(\displaystyle\sup_{ n } T_n \less C\) comme \(\left\Vert T_n x \right\Vert \leq \left\Vert T_n \right\Vert \left\Vert x \right\Vert\).
+
+  Par passage à la limite, on obtient \(\left\Vert T x \right\Vert \leq C \left\Vert x \right\Vert\), avec \(C = \lim \inf \left\Vert T_n \right\Vert\).
+\end{proof}
+
+\begin{definition}
+  Soit \(E\) espace de Banach. \(B \subset E\) est bornée si et seulement si \[\exists C \geq 0, \forall x \in B, \left\Vert x \right\Vert \leq C. \]
+\end{definition}
+
+\begin{corollary}
+  \(B \subset E\) est bornée si et seulement si \(\forall l \in E', l(B) \subset \mathbb{R}\) est borné.
+\end{corollary}
+
+\paragraph{Suites faiblement et fortement convergentes}
+
+\begin{definition}[Suite fortement convergente]
+  \(x_n \in E, x_n \longrightarrow x \iff \left\Vert x_n -x \right\Vert \longrightarrow 0\).
+\end{definition}
+
+\begin{definition}[Suite fortement convergente]
+  \(x_n \in E, x_n \longrightarrow x \iff \forall l \in E', \langle l,x_n \rangle \longrightarrow \langle l,x \rangle\).
+\end{definition}
+
+
+\begin{corollary}
+
+  \
+
+  \begin{enumerate}
+    \item Si \(x_n \longrightarrow x\) dans \((E, \left\Vert \cdot \right\Vert)\), alors \(x_n \longrightarrow x\) dans \(\sigma(E,E')\).
+    \item Si \(x_n \longrightarrow x\), alors \(x_n\) est bornée dans \(E\) et \(\left\Vert x \right\Vert_E \leq \lim \inf \left\Vert x_n \right\Vert\).
+    \item Si \(x_n \longrightarrow x\) et \(l_n \longrightarrow l\), alors \(\langle l_n,x_n \rangle \longrightarrow \langle l,x \rangle\).
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Soit \(l \in E'\). Alors
+
+    \[\left\lvert \langle l,x_n - x \rangle  \right\rvert \leq \left\Vert l \right\Vert' \left\Vert x_n -x \right\Vert  \underset{n \to \infty}{\longrightarrow} 0.\]
+
+    \item \(T_n : E \longrightarrow \mathbb{R}\). Alors on définit
+
+    \[T_n l = \langle l, x_n \rangle \longrightarrow \langle l,x \rangle =  T l,  \]
+
+    car \(x_n\) tend faiblement vers \(x\). Alors d'après le corollaire, \(\sup \left\Vert T_n \right\Vert \less \infty\), avec \(T \in (E')' = E''\) et \(\left\Vert T \right\Vert'' \leq \lim \inf \left\Vert x_n \right\Vert\), donc \(\left\lvert T l \right\rvert = \left\lvert \langle l,x \rangle  \right\rvert \) par passage à la limite.
+
+    \item \[\langle l_n,x_n \rangle - \langle l,x \rangle = \langle l, x_n - x \rangle + \langle l, x_n - x \rangle.\]
+
+    Or \(\langle l, x_n - x \rangle \longrightarrow 0\), car \(x_n \longrightarrow x\) et \(\langle l, x_n - x \rangle \longrightarrow 0\), car \(\left\lvert \langle l_n -l, x_n \rangle  \right\rvert \leq  \left\Vert l_n - l \right\Vert \left\Vert x_n \right\Vert \longrightarrow 0 \).
+  \end{enumerate}
+\end{proof}
 
 \end{document}

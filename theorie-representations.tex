@@ -1928,7 +1928,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   On a \(\chi(G) \subset \mu_n(\mathbb{C})\), où \(n=\left\lvert G \right\rvert\).
 
-  Puisque \((\mathbb{C}, \times)\) est un groupe abélien, on a donc que \(\chi(G)\) est abélien. D'après le premier théorème d'isomorphisme, on a :
+  Puisque \((\mathbb{C}^{*}, \times)\) est un groupe abélien, on a donc que \(\chi(G)\) est abélien. D'après le premier théorème d'isomorphisme, on a :
 
   \[G/ \operatorname{Ker}(\chi) \simeq \operatorname{Im}(\chi) = \chi(G).\]
 
@@ -1955,6 +1955,185 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 \emph{Quel est le nombre de classes d'isomorphismes de représentations irréductibles de degré 1 du groupe symétrique \(\mathfrak{S}_n\) pour \(n \geq 3\) ?}
 
 On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S}_n : \mathfrak{A}_n] = 2\). Donc \([\mathfrak{S}_n : D(\mathfrak{S}_n)]= 2\). \(\mathfrak{S}_n\) admet donc deux représentations irréductibles de dimension 1 (à isomorphisme près).
+
+\marginpar{11-10-2023}
+
+\begin{exo}
+  On considère le groupe symétrique \(\mathfrak{S}_n\) avec \(n \geq 2\).
+
+  \begin{enumerate}
+    \item Soit \(\rho : \mathfrak{S}_n \longrightarrow \mathbb{C}^{*}\) un morphisme de groupes.
+    \begin{enumerate}
+      \item Montrer que \(\mathfrak{S}_n\) est engendré par les transpositions.
+      \item Si \(\tau\) est une transposition, montrer que \(\rho(\tau) = \pm 1 \in \{1, -1\}\).
+      \item Montrer que si \(\tau\) et \(\tau'\) sont deux transpositions de \(\mathfrak{S}_n\), alors \(\rho(\tau) = \rho(\tau')\).
+      \item En déduire que les seules représentations de degré 1 de \(\mathfrak{S}_n\) sont le représentation triviale et la signature.
+    \end{enumerate}
+
+    \item On considère le groupe symétrique \(\mathfrak{S}_{3}\).
+    \begin{enumerate}
+      \item Montrer que \(\mathfrak{S}_{3}\) admet une unique représentation linéaire irréductible de degré 2.
+      \item Montrer que la transposition \(\tau = (2 \ 3)\) et le 3-cycle \(\sigma = (1 \ 2 \ 3)\) engendrent à elles deux \(\mathfrak{S}_{3}\) et que \(\sigma \tau = \tau \sigma^2\).
+      \item Soit \(\rho : \mathfrak{S}_{3} \longrightarrow GL(V)\) une représentation linéaire irréductible de degré 2 de \(\mathfrak{S}_{3}\).
+      \begin{enumerate}
+        \item Déterminer les valeurs propres possibles de l'endomorphisme \(\rho _{\sigma}\).
+        \item Soit \(x \in V\) un vecteur propre de \(\rho _{\sigma}\). Montrer que \(\rho _{\tau}(x)\) est un vecteur propre de \(\rho _{\sigma}\). En déduire que le sous-espace vectoriel \(\operatorname{Vect}(x, \rho _{\tau}(x))\) est stable par la représentation \(\rho\) et qu'il est égal à \(V\).
+        \item Déterminer les matrices de \(\rho _{\sigma}\) et \(\rho _{\tau}\) dans la base \(\mathcal{B} = (x, \rho _{\tau}(x))\).
+        \item On note \(\chi\) le caractère de la représentation \(\rho\). Quelles sont les valeurs prises par \(\chi\) ? Montrer que \(\chi\) est irréductible.
+      \end{enumerate}
+      \item Dresser la table des caractères irréductibles du groupe \(\mathfrak{S}_{3}\).
+    \end{enumerate}
+  \end{enumerate}
+\end{exo}
+
+\begin{proof}[Correction]
+
+  \
+
+  \begin{enumerate}
+    \item \begin{enumerate}
+      \item Toute permutation peut s'écrire comme produit de cycles (à supports disjoints). De plus, tout cycle \((i_1 \ \dots \ i_r)\) s'écrit comme produit de transpositions :
+
+      \[(i_1 \ \dots \ i_r) = (i_1 \ i_2) (i_2 \ i_3) \dots (i _{r-1} \ i_r).\]
+
+      En conclusion, toute permutation peut s'écrire comme produit de transpositions : \(\mathfrak{S}_n\) est bien engendré par les transpositions.
+      \item Puisque \(\tau\) est une transposition, on a \(\tau \circ \tau = \tau^2 = \operatorname{id}\). On a :
+
+      \begin{gather*}
+        1 = \rho(\operatorname{id}) = \rho(\tau \circ \tau) \underset{\rho \text{ morphisme}}{=} \rho(\tau) \rho(\tau) = \rho(\tau)^2
+      \end{gather*}
+
+      Donc \(\rho(\tau)\) est une racine carrée de 1 dans \(\mathbb{C}\), d'où \(\rho(\tau)=1 \text{ ou } \rho(\tau)=-1 \)
+
+      \item Puisque deux permutations de \(\mathfrak{S}_n\) sont conjuguées entre elles si et seulement si elles ont le même type, on en déduit que les transpositions (qui sont des permutations de type (2)) sont conjuguées dans \(\mathfrak{S}_n\). Il existe donc \(\sigma \in \mathfrak{S}_n\) telle que :
+
+      \[\tau' = \sigma \tau \sigma ^{-1}.\]
+
+      D'où
+
+      \begin{gather*}
+        \rho(\tau') = \rho(\sigma \tau \sigma ^{-1}) = \rho(\sigma)\rho(\tau)\rho(\sigma^{-1}) = \rho(\sigma) \rho(\sigma ^{-1}) \rho(\tau),
+      \end{gather*}
+
+      car \((\mathbb{C}^{*}, \times)\) est abélien.
+
+      Donc \(\rho(\tau') = \rho(\tau)\).
+
+      \item Ou bien \(\rho(\tau)=1\) pour toute transposition de \(\mathfrak{S}_n\) et alors on aura que \(\rho(\sigma) = 1\) pour tout \(\sigma \in \mathfrak{S}_n\) et \(\rho :\begin{matrix}
+      \mathfrak{S}_n & \longrightarrow & \mathbb{C}^{*} \\
+       \sigma & \longmapsto & 1
+      \end{matrix} \) est alors la représentation triviale.
+
+      Ou bien \(\rho(\tau) = -1\) pour toute transposition de \(\mathfrak{S}_n\) et alors \(\rho = \varepsilon\) est le morphisme signature.
+    \end{enumerate}
+    \item
+    \begin{enumerate}
+      \item La partition de \(\mathfrak{S}_{3}\) en classes de conjugaison est la suivante : \(\{ \{ id \}, \{ \text{transpositions}\}, \{ 3\text{-cycles} \}\}\). On en déduit que \(\mathfrak{S}_{3}\) admet 3 représentations irréductibles (à isomorphisme près).
+
+      De plus, d'après la formule de Burnside, on a
+
+      \[\sum_{W \in \operatorname{Irr}(\mathfrak{S}_{3})} (\operatorname{dim}(W)) ^2 = \left\lvert \mathfrak{S}_{3} \right\rvert.\]
+
+      De plus, \(\mathfrak{S}_{3}\) admet exactement deux représentations irréductibles de degré 1. D'où
+
+      \[1 ^2 + 1 ^2+ d ^2 = 6,\]
+
+      où \(d\) est le degré de la représentation irréductible non de degré 1 de \(\mathfrak{S}_{3}\).  D'où \(d=2\).
+
+      En conclusion, \(\mathfrak{S}_{3}\) admet 3 représentation irréductibles : deux de degré 1 et une de degré 2.
+
+      \item Posons \(H = \langle \tau, \sigma \rangle\) le sous-groupe de \(\mathfrak{S}_{3}\) engendré par \(\tau\) et \(\sigma\).
+
+      On a \(\tau ^2 = e \in H\), \(\tau \in H, \sigma \in H, \sigma ^2 = (1 \ 3 \ 2), \sigma \tau = (1 \ 2)\in H, \tau \sigma = (1 \ 3)\in H\).
+
+      Conclusion : \(H = \mathfrak{S}_{3}\), donc \(\tau\) et \(\sigma\) engendrent \(\mathfrak{S}_{3}\).
+
+      \item
+      \begin{enumerate}
+        \item Puisque \(\sigma\) est un 3-cycle, c'est donc un élément de \(\mathfrak{S}_3\) d'ordre 3 et donc on a \(\sigma ^3 = e\). D'où \(\operatorname{id}_V = \rho(e) = \rho(\sigma ^3) = \rho _{\sigma ^3} = \rho(\sigma)^3 = \rho _{\sigma}^3\). D'où
+
+        \[\rho _{\sigma} ^3 - \operatorname{id}_V = 0.\]
+
+        Donc \(\rho _{\sigma}\) est une racine du polynôme \(X ^3-1\). Le polynôme \textbf{minimal} \(m\) de \(\rho _{\sigma}\) est donc un diviseur de \(X ^3 - 1\) et les racines de \(m _{\rho _{\sigma}}\) sont précisément les valeurs propres de \(\rho _{\sigma}\). Les valeurs propres de \(\rho _{\sigma}\) sont donc les racines cubiques de l'unité dans \(\mathbb{C}\), à savoir appartiennent à \(\{ 1, j, j ^2 \}\), avec \(j = e^{\frac{2i \pi}{3}} = - \frac{1}{2} + i \frac{\sqrt{ 3 }}{2}\).
+        \item Notons \(\lambda \in \{ 1, j, j^2 \}\) la valeur propre de \(\rho _{\sigma}\) associée au vecteur propre \(x\). On a :
+
+        \begin{gather*}
+          \rho _{\sigma}(\rho _{\tau}(x)) = (\rho _{\sigma} \circ \rho _{\tau})(x) = \rho _{\sigma \tau}(x) = \rho _{\tau \sigma ^2}(x) = (\rho _{\tau} \circ \rho _{\sigma ^2})(x) \\
+          = \rho _{\tau}(\rho _{\sigma}( \underbrace{\rho _{\sigma}(x)}_{\lambda x})) = \lambda ^2 \rho _{\tau}(x).
+        \end{gather*}
+
+        Donc \(\rho _{\tau}(x)\) est un vecteur propre de \(\rho _{\sigma}\) pour la valeur propre \(\lambda ^2\).
+
+        Posons \(W := \operatorname{Vect}(x, \rho _{\tau}(x))\) et montrons que \(W\) est stable par la représentation \(\rho\). On doit montrer que \(\forall g \in \mathfrak{S}_{3}, \rho _{g}(W) \subset W\).
+
+        Or \(\mathfrak{S}_{3} = \langle \tau, \sigma \rangle\). Il suffit donc de montrer que \(\rho _{\tau}(W) \subset W\) et \(\rho _{\sigma}(W) \subset W\).
+
+        D'une part, on a : \(\rho _{\tau}(x) \in W\) (évident) et \(\rho _{\tau}(\rho _{\tau}(x)) = \rho _{\tau ^2}(x) = \rho _{e}(x) = \operatorname{id}(x) =x \in V\) et donc \(\rho _{\tau}(W) \subset W\).
+
+        D'autre part : \(\rho _{\sigma}(x) = \lambda x \in W\) et \(\rho _{\sigma}(\rho _{\tau}(x)) = \lambda ^2 \rho _{\tau}(x)\in W\). Donc \(\rho _{\sigma}(W) \subset W\).
+
+        Enfin, par irréductibilité de la représentation \(\rho\) d'espace \(V\), on en déduit, puisque \(W\) est un sous-espace vectoriel de \(V\) stable par \(\rho\), que \(W = V\).
+        \item Remarquons que le vecteur propre \(x\) de \(\rho _{\tau}\) ne peut avoir pour valeur propre \(\lambda = 1\), car sinon la droite engendrée par le vecteur \(x+ \rho _{\tau}(x)\) serait invariante par la représentation \(\rho\), ce qui contredirait l'irréductibilité de \(\rho\).
+
+        En effet, si \(y = x+ \rho _{\tau}(x)\) et si \(\lambda = 1\), alors
+
+        \begin{gather*}
+          \rho _{\tau}(g) = \rho _{\tau}(x+ \rho _{\tau}(x)) = \rho _{\tau}(x)+ \rho _{\tau ^2}(x) = \rho _{\tau}(x)+x=y
+        \end{gather*}
+
+        et
+
+        \begin{gather*}
+          \rho _{\sigma}(y) = \rho _{\sigma}(x+ \rho _{\tau}(x)) = \rho _{\sigma}(x) + \rho _{\sigma \tau}(x) = \lambda x + \rho _{\sigma}(\rho _{\tau}(x)) \\
+          = \lambda x + \lambda ^2 \rho _{\tau}(x) \underset{\lambda=1}{=} x + \rho _{\tau}(x) = y.
+        \end{gather*}
+
+        Quitte à remplacer \(x\) par \(\rho _{\tau}(x)\), on peut supposer que \(\lambda = j\) (car si \(x\) est vecteur propre de \(\rho _{\sigma}\) de valeur propre \(\lambda\), alors \(\rho _{\tau}(x)\) est vecteur propre de \(\rho _{\sigma}\) de valeur propre \(\lambda ^2\)).
+
+      %  On a :
+
+        %\begin{gather*}
+        %  \operatorname{Mat}_{\mathcal{B}}(\rho _{\sigma}) =
+        %\end{gather*}
+
+        On calcule \(\rho _{\sigma}(x) = jx\) et \(\rho _{\sigma}(\rho _{\tau}(x)) = j ^2 \rho _{\tau}(x)\). D'où
+
+        \begin{gather*}
+          \operatorname{Mat}_{\mathcal{B}}(\rho _{\sigma}) = \begin{pmatrix}
+          j & 0 \\
+          0 & j ^2
+          \end{pmatrix}.
+        \end{gather*}
+
+        De même, on a \(\rho _{\tau}(x) = \rho _{\tau}(x)\) et \(\rho _{\tau}(\rho _{\tau}(x)) = \rho _{\tau ^2}(x) = x\), d'où
+
+        \begin{gather*}
+          \operatorname{Mat} _{\mathcal{B}}(\rho _{\tau}) = \begin{pmatrix}
+          0 & 1 \\
+          1 & 0
+          \end{pmatrix}.
+        \end{gather*}
+        \item \[\begin{matrix}
+        \chi : & \mathfrak{S}_{3} & \longrightarrow & \mathbb{C}^{*} \\
+        \ & g & \longmapsto & \operatorname{Tr}(\rho _{g})\\
+        \ & e & \longmapsto & \operatorname{Tr}(\operatorname{id}) = 2 \\
+        \ & \tau & \longmapsto & \operatorname{Tr}(\operatorname{Mat}(\rho _{\tau})) = 0 \\
+        \ & \sigma & \longmapsto & \operatorname{Tr}(\operatorname{Mat} _{\mathcal{B}}(\rho _{\sigma})) = j ^2 + j = -1.
+      \end{matrix}\]
+
+        On a
+
+        \begin{gather*}
+          \langle \chi, \chi \rangle = \frac{1}{\left\lvert \mathfrak{S}_{3} \right\rvert} \sum_{g \in \mathfrak{S}_{3}} \overline{\chi(g)} \chi(g) = \frac{1}{6}(2 ^2 + 3 \times 0 ^2 + 2 \times(-1) ^2)  = \frac{6}{6} = 1.
+        \end{gather*}
+
+        Donc \(\chi\) est bien un caractère \textbf{irréductible} de \(\mathfrak{S}_{3}\).
+      \end{enumerate}
+
+      \item 
+    \end{enumerate}
+  \end{enumerate}
+\end{proof}
 
 
 

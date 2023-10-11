@@ -15,6 +15,7 @@
 \usepackage{stmaryrd}
 \usepackage{framed}
 \usepackage[Glenn]{fncychap}
+\usepackage[all]{xy}
 
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -954,23 +955,32 @@ De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$,
 
 \begin{definition}
   Deux représentations linéaires \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) d'un groupe \(G\) sont dites \textbf{isomorphes} ou équivalentes s'il existe un isomorphisme d'espaces vectoriels (ici application linéaire bijective) \(f: V \to V'\) tel que l'on ait : \[\forall g \in G, \rho'_g \circ f  = f \circ \rho_g.\]
+
+  On peut exprimer cette condition par la commutativité du diagramme suivant :
+
+  \begin{equation*}
+    \xymatrix{
+    G\ar[r]^-{\rho}\ar[d]_-{\rho'}&GL(V)\ar[dl]^-{\tilde{f}}\ar@{}@<-1.5ex>[dl]|{\circlearrowright}\\
+    GL(V')
+    }
+  \end{equation*}
 \end{definition}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.3]{figures/rep-iso2.png}
-  \caption{Représentations linéaires isomorphes.}
-  \label{}
-\end{figure}
+%\begin{figure}[h!]
+%  \centering
+%  \includegraphics[scale=0.3]{figures/rep-iso2.png}
+%  \caption{Représentations linéaires isomorphes.}
+%  \label{}
+%\end{figure}
 
-On peut exprimer cette condition par la commutativité du diagramme suivant :
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.3]{figures/rep-iso.png}
-  \caption{Diagramme commutatif de deux représentations isomorphes.}
-  \label{}
-\end{figure}
+
+%\begin{figure}[h!]
+%  \centering
+%  \includegraphics[scale=0.3]{figures/rep-iso.png}
+%  \caption{Diagramme commutatif de deux représentations isomorphes.}
+%  \label{}
+%\end{figure}
 
 \begin{remark}
   Dire que le diagramme ci-dessus commute, c'est dire que
@@ -978,6 +988,13 @@ On peut exprimer cette condition par la commutativité du diagramme suivant :
   \[\tilde{f} \circ \rho = \rho'.\]
 
   D'où, pour tout \(g \in G\), \(\rho'_g = \tilde{f} (\rho_g) = f \circ \rho_g \circ f ^{-1} \), i. e. \( \rho_g' \circ f = f \circ \rho_g\).
+
+  \begin{equation*}
+    \xymatrix{
+  V\ar[r]^-{f}\ar[d]_-{\rho_g}\ar@{}[rd]|{\circlearrowright}&V'\ar[d]^-{\rho_g'}\\
+  V\ar[r]_-{f}&V'
+  }
+  \end{equation*}
 \end{remark}
 
 \begin{remark}
@@ -1936,6 +1953,13 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   On en déduit par la proposition \ref{se-factorise} que le morphisme \(\chi\) se factorise par \(G/D(G)\) :
 
+  \begin{equation*}
+    \xymatrix{
+    G\ar[rr]^-{\chi}\ar[dr]_-{\pi}&\ar@{}@<0.8ex>[d]|{\circlearrowright}&\mathbb{C}^{*}\ar[dl]^-{\check{\chi}}\\
+    &C&
+    }
+  \end{equation*}
+
   Il y a donc une bijection entre l'ensemble des représentations irréductibles de degré 1 de \(G\) et l'ensemble des représentations irréductibles de degré 1 de \(G/D(G)\) :
 
   \[\begin{matrix}
@@ -2130,7 +2154,45 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
         Donc \(\chi\) est bien un caractère \textbf{irréductible} de \(\mathfrak{S}_{3}\).
       \end{enumerate}
 
-      \item 
+      \item On a
+
+      \[\begin{matrix}
+      \rho_0 : & \mathfrak{S}_{3} & \longrightarrow & \mathbb{C}^{*} \\
+      \ & g & \longmapsto & 1
+      \end{matrix} \text{ et } \chi_0 = \rho_0, \]
+
+      \[\begin{matrix}
+      \rho _{\varepsilon} : & \mathfrak{S}_{3} & \longrightarrow & \mathbb{C}^{*} \\
+      \ & g & \longmapsto & \varepsilon(g)
+      \end{matrix} \text{ et } \chi _{\varepsilon} = \rho _{\varepsilon}, \]
+
+      \[\begin{matrix}
+      \rho : & \mathfrak{S}_{3} & \longrightarrow & GL_2(\mathbb{C}) \\
+      \ & \tau = (1 \ 2 ) & \longmapsto & \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+      \end{pmatrix} \\
+      \ & \sigma = (1 \ 2 \ 3) & \longmapsto & \begin{pmatrix}
+      j & 0 \\
+      0 & j^2
+      \end{pmatrix}
+      \end{matrix} \text{ avec pour caractère } \chi.  \]
+
+      On obtient la table des caractères suivante :
+
+      \begin{center}
+        \begin{tabular}{|c|c|c|c|}
+          \hline
+          \(\mathfrak{S}_{3}\) & \(e\) & \((1 \ 2) _{3}\) & \((1 \ 2 \ 3) _{2}\) \\
+          \hline
+          \(\chi_0\) & 1 & 1 & 1 \\
+          \hline
+          \(\chi _{\varepsilon}\) & 1 & -1 & 1 \\
+          \hline
+          \(\chi\) & 2 & 0 & -1 \\
+          \hline
+        \end{tabular}
+      \end{center}
     \end{enumerate}
   \end{enumerate}
 \end{proof}

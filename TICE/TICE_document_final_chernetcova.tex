@@ -153,9 +153,9 @@ Cette section s'inspire majoritairement de \cite{notes_m54}.
   On dit que l'action est \textbf{transitive} ou que \(G\) agit transitivement sur \(X\) s'il n'y a qu'une seule orbite.
 
   Le \textbf{noyau de l'action} est le noyau du morphisme
-  \(\begin{matrix}
-  \pi : & G & \longrightarrow & \mathfrak{S}_{X}  \\
-  \ & g & \longmapsto & \pi_g
+  \(\pi : \begin{matrix}
+   G & \longrightarrow & \mathfrak{S}_{X}  \\
+   g & \longmapsto & \pi_g
   \end{matrix}\) associé, i. e. l'ensemble
 
   \[\operatorname{Ker}(\pi) \stackrel{\text{déf.}}{=} \{ g \in G \mid \forall x \in X, g \cdot x = x \}. \]
@@ -189,14 +189,9 @@ Cette section est tirée de \cite{notes_m74}.
 
 \subsection{Représentations, représentations isomorphiques, représentations irréductibles}
 
-La théorie des représentations a été introduite par Georg Frobenius (\ref{Frobenius}) au \textsc{xix}\ieme ~siècle.
+La théorie des représentations a été introduite par Georg \bsc{Frobenius}  au \textsc{xix}\ieme ~siècle.
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.3]{Frobenius.jpg}
-  \caption{Georg Frobenius}
-  \label{Frobenius}
-\end{figure}
+
 
 \begin{definition}
   Une représentation linéaire d'un groupe \(G\) est la donnée d'un \(\C\)-espace vectoriel \(V\) muni d'une action de groupes (à gauche) de \(G\) agissant de manière \textbf{linéaire} :
@@ -339,7 +334,7 @@ On se réferera à \cite{mpsi_maths} pour plus de détails.
 \end{figure}
 
 \begin{prop}[Caractérisation de sous-espaces vectoriels supplémentaires]
-  Soient \(F\) et \(G\) deux sous-espaces vectoriels dans un espace vectoriel \(E\). On a \(E = F \oplus G\) si et seulement si poour tout \(v \in E\), il existe un unique \((x,y) \in E^2\) tel que :
+  Soient \(F\) et \(G\) deux sous-espaces vectoriels dans un espace vectoriel \(E\). On a \(E = F \oplus G\) si et seulement si pour tout \(v \in E\), il existe un unique \((x,y) \in E^2\) tel que :
 
   \begin{itemize}
     \item[$\star$] \(v= x+y\) ;
@@ -351,7 +346,7 @@ On se réferera à \cite{mpsi_maths} pour plus de détails.
 On peut maintenant introduire un résultat fondamental en théorie des représentations linéaires des groupes finis.
 
 \begin{thm}[De Maschke]
-  Toute représentation linéaire complexe de degré fini est somme directe de représentations irréductibles.
+  Toute représentation linéaire complexe de degré fini est \textbf{somme directe de représentations irréductibles}.
 \end{thm}
 
 \begin{lemma}

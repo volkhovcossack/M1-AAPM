@@ -53,11 +53,13 @@
     {\end{protoexemple}\end{shaded}}
 
 
-\newcommand{\lesss}{\rotatebox[origin=c]{90}{$\land$}}
-\newcommand{\less}{\ \lesss\ }
+\newcommand{\lesss}{<}
+\newcommand{\less}{\lesss}
 
-\newcommand{\biggg}{\rotatebox[origin=c]{90}{$\lor$}}
-\newcommand{\bg}{\ \biggg\ }
+\newcommand{\biggg}{>}
+\newcommand{\bg}{\biggg}
+
+
 
 \title{\bsc{Théorie des représentations}}
 \date{2023-2024}
@@ -1955,7 +1957,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
   \begin{equation*}
     \xymatrix{
-    G\ar[rr]^-{\chi}\ar[dr]_-{\pi}&\ar@{}@<0.8ex>[d]|{\circlearrowright}&\mathbb{C}^{*}\ar[dl]^-{\check{\chi}}\\
+    G\ar[rr]^-{\chi}\ar[dr]_-{\pi}&\ar@{}@<0.8ex>[d]|{\circlearrowright}&\mathbb{C}^{*}\ar@{.>}[dl]^-{\check{\chi}}\\
     &C&
     }
   \end{equation*}

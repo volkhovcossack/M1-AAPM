@@ -14,6 +14,7 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{framed}
+\usepackage{marginnote}
 \usepackage[Glenn]{fncychap}
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -1109,7 +1110,7 @@ On affaiblit \((E,\left\Vert \cdot \right\Vert )\). Alors \(\sigma(E,E')\) est l
   \(B \subset E\) est bornée si et seulement si \(\forall l \in E', l(B) \subset \mathbb{R}\) est borné.
 \end{corollary}
 
-\subsubsection{Suites faiblement et fortement convergentes}
+\subsection{Suites faiblement et fortement convergentes}
 
 \begin{definition}[Suite fortement convergente]
   Soit \(x_n \text{ une suite de }  E\). On dit que \(x_n\) est fortement convergente lorsque \(x_n \longrightarrow x \iff \left\Vert x_n -x \right\Vert \longrightarrow 0\).
@@ -1134,6 +1135,9 @@ On affaiblit \((E,\left\Vert \cdot \right\Vert )\). Alors \(\sigma(E,E')\) est l
 \end{corollary}
 
 \begin{proof}
+
+  \
+
   \begin{enumerate}
     \item Soit \(l \in E'\). Alors
 
@@ -1150,5 +1154,100 @@ On affaiblit \((E,\left\Vert \cdot \right\Vert )\). Alors \(\sigma(E,E')\) est l
     Or \(\langle l, x_n - x \rangle \longrightarrow 0\), car \(x_n \longrightarrow x\) et \(\langle l, x_n - x \rangle \longrightarrow 0\), car \(\left\lvert \langle l_n -l, x_n \rangle  \right\rvert \leq  \left\Vert l_n - l \right\Vert \left\Vert x_n \right\Vert \longrightarrow 0 \).
   \end{enumerate}
 \end{proof}
+
+
+
+\subsection{Topologie faible \(\ast\)}\marginnote{13-10-2023}
+
+On considère \(E\) espace de Banach avec \((E, \left\Vert \cdot \right\Vert ) \prec \sigma(E,E')\). On construit la topologie \(\ast \sigma(E', E)\) une topologie sur \(E'\).
+
+La topologie forte sur \(E' = F\) est donnée par la norme
+
+\[\left\Vert l \right\Vert' = \sup_{\left\Vert x \right\Vert \leq 1} \left\lvert \langle l,x \rangle  \right\rvert.\]
+
+Sur \(E\), on a aussi \(\sigma(F, F') = \sigma(E',E'')\). Si \(E = E''\) (i. e. \(E\) est réfléxif), alors la topologie \(\sigma(E',E'')\) se confond avec la topologie faible \(\sigma(E,E')\). Par contre, si \(E\) s'injecte dans \(E''\), on a besoin de définir une autre topologie \(\ast \sigma(E',E)\) moins fine que \(\sigma(E',E'')\).
+
+\begin{prop}
+  Il existe une isométrie \(J : E \hookrightarrow E''\).
+\end{prop}
+
+\begin{proof}
+  On définit une application \(J : E \longrightarrow E''\) telle que
+
+  \[\langle Jx,x' \rangle \stackrel{\text{déf}}{=} \langle x',x \rangle.\]
+
+  Montrons que \(\left\Vert Jx \right\Vert' = \left\Vert x \right\Vert\).
+
+  On a besoin d'introduire le résultat suivant :
+
+  \begin{lemma}
+    \[\left\Vert x \right\Vert = \sup_{\left\Vert l \right\Vert' \leq 1} \left\lvert \langle l,x \rangle  \right\rvert = \max _{\left\Vert l \right\Vert' \leq 1} \left\lvert \langle l,x \rangle  \right\rvert.\]
+  \end{lemma}
+
+  Donc \(\left\Vert Jx \right\Vert = \left\Vert x \right\Vert\) en prenant
+
+  \[\sup_{\substack{x' \in E'\\ \left\Vert x' \right\Vert \leq 1}} \left\lvert \langle x',x \rangle  \right\rvert = \left\Vert x \right\Vert.\]
+\end{proof}
+
+\begin{remark}
+  \(J\) n'est pas unitaire (non surjectif si \(E\) n'est pas réfléxif).
+\end{remark}
+
+\begin{exemple}
+  On considère \(E = L ^{1}\). Soit \(f \in L ^{1}\), alors \(J f \in L ^{\infty}\) et on a :
+
+  \[\langle Jf, g \rangle = \langle g,f \rangle  = \int g(x)f(x)dx \ (f : \mathbb{R}^d \longrightarrow \mathbb{R}).\]
+
+  Mais \(g(0)\) ne peut pas s'écrire comme une intégrale \(\int_{}^{} g(x)f(x) dx, \forall f \in L ^{1}\) si \(g \in C _{0}^{0} (\mathbb{R}^d) \subset L ^{\infty}\).
+\end{exemple}
+
+\begin{prop}
+  \(\ast \sigma(E',E)\) est séparée.
+\end{prop}
+
+\begin{proof}
+  Soient \(l_1, l_2 \in E'\) tels que \(l_1 \neq l_2\), alors il existe \(x \in E\) tel que \(l_1(x) \neq l_2(x)\), donc
+
+  \[\langle l_1,x \rangle \neq \langle l_2,x \rangle,\]
+
+  ce qui implique que \(\langle l_1,x \rangle \less \alpha \less \langle l_2,x \rangle\).
+
+  On a \(\mathcal{O}_1 = \{ l \in E' : \langle l,x \rangle \less \alpha\}\) ouvert de \(E'\) et \(\mathcal{O}_2 = \{ l \in E', \langle l,x \rangle \bg \alpha\}\).
+\end{proof}
+
+\begin{remark}
+  Pour \(x\) fixé, l'application \(l \longmapsto \left\lvert \langle l,x \rangle  \right\rvert\) semi-norme de \(E'\).
+\end{remark}
+
+\begin{prop}[Autres propriétés]
+  \(\ast \sigma(E',E)\) n'est pas métrisable.
+\end{prop}
+
+\begin{remark}
+  \(E\) est séparable et réfléxif si et seulement si \(E'\) est séparable et réfléxif.
+\end{remark}
+
+\begin{thm}
+  Si \(E\) est un Banach séparable, alors la boule unité fermée
+
+  \[B_E = \{ \left\Vert l \right\Vert \leq 1 \}\]
+
+  est métrisable pour \(\ast \sigma\).
+\end{thm}
+
+\begin{prop}
+  Soit \(\xi : E' \longrightarrow \mathbb{R}\) avec (\(\xi \in E''\)). Si \(\xi\) est continue pour \(\ast \sigma(E,E')\), il existe \(x \in E, \xi = Jx\) et
+
+  \[\langle \xi, l \rangle = \langle l,x \rangle.\]
+\end{prop}
+
+\begin{thm}[De représentation de Riecz]
+  Si \(\xi \in \mathscr{H}' = \mathscr{H}\), alors
+
+  \[\forall l \in \mathscr{H}, \langle \xi, l \rangle = \langle l,x \rangle.\]
+\end{thm}
+
+
+
 
 \end{document}

@@ -1,0 +1,1037 @@
+'.text.tex.latex':
+  "définir fonction":
+    'prefix':'fct'
+    'body':"""
+    \\\\begin{matrix}
+    ${1:nom} : & ${2:départ} & \\\\longrightarrow & ${3:arrivée} \\\\\\\\
+    \\\\ & ${4:variable} & \\\\longmapsto & ${5:expression}
+    \\\\end{matrix}"""
+
+  'Définition':
+    'prefix':'def'
+    'body':"""
+    \\\\begin{definition}[${1:}]
+      ${2:}
+    \\\\end{definition}
+    """
+
+  'Théorème':
+    'prefix':'thm'
+    'body':"""
+    \\\\begin{thm}[${1:nom}]
+      ${2:}
+    \\\\end{thm}
+    """
+
+  'Carré':
+    'prefix':'2'
+    'body':"""^2"""
+
+  'Cube':
+    'prefix':'3'
+    'body':"""^3"""
+
+  'Puissance':
+    'prefix':'pp'
+    'body':"""^{${1:}}"""
+
+  'Indice':
+    'prefix':'yy'
+    'body':"""_{${1:}}"""
+
+  'Subset':
+    'prefix':'cc'
+    'body':"""
+    \\\\subset"""
+
+  'Valeur absolue':
+    'prefix':'abs'
+    'body':"""
+    \\\\left\\\\lvert ${1:} \\\\right\\\\rvert
+    """
+
+  ###Algèbre###
+
+  'Matrice':
+    'prefix':'matrice'
+    'body':"""
+    \\\\begin{pmatrix}
+    ${1:}
+    \\\\end{pmatrix}
+    """
+
+  'Déterminant':
+    'prefix':'det'
+    'body':"""
+    \\\\operatorname{det}(${1:})
+    """
+
+  'Z/nZ':
+    'prefix':'quotient'
+    'body':"""
+    \\\\mathbb{Z}/{${1:}}\\\\mathbb{Z}${2:}
+    """
+
+  "Ordre":
+    'prefix':'ord'
+    'body':"""
+    ord( ${1:} )"""
+
+
+  'Limite':
+    'prefix':'lim'
+    'body':"""
+    \\\\lim_{${1:} \\\\to} ${2:}
+    """
+
+  'Limite_n':
+    'prefix':'limn'
+    'body':"""
+    \\\\lim_{n \\\\to \\\\infty} ${1:}
+    """
+
+  "Tend vers":
+    'prefix':'tend'
+    'body':"""
+    \\\\underset{${1:} \\\\to ${2:}}{\\\\longrightarrow} ${3:}
+    """
+
+
+  "Infty":
+    'prefix':'oo'
+    'body':"""
+    \\\\infty"""
+
+  "Sum":
+    'prefix':'sum'
+    'body':"""
+    \\\\sum_{${1:}}^{${2:}} ${3:}
+    """
+
+  "Crochets de dualité":
+    'prefix':'dual'
+    'body':"""
+    \\\\langle ${1:} \\\\rangle ${2:}
+  """
+
+  "Serie":
+    'prefix':'serie'
+    'body':"""
+    \\\\sum_{n=1}^{\\\\infty} ${1:}
+    """
+
+  "Dérivée partielle":
+    'prefix':'part'
+    'body':"""
+    \\\\frac{\\\\partial ${1:} }{\\\\partial ${2:}} ${3:}
+    """
+
+  "Overline":
+    'prefix':'barre'
+    'body':"""
+    \\\\overline{${1:}}
+    """
+
+  "En extension":
+    'prefix':'ens '
+    'body':"""
+    \\\\{ ${1:} \\\\}"""
+
+  "Racine carrée":
+    'prefix':'sqrt'
+    'body':"""
+    \\\\sqrt{ ${1:} } ${2:}"""
+
+  "Vecteur":
+    'prefix':'vect'
+    'body':"""
+    \\\\overrightarrow{ ${1:} } ${2:}"""
+
+  "Inférieur ou égal":
+    'prefix':'leq'
+    'body':"""
+    \\\\leq """
+
+  "Supérieur ou égal":
+    'prefix':'geq'
+    'body':"""
+    \\\\geq """
+
+  "Borne supérieure":
+    'prefix':'sup'
+    'body':"""
+    \\\\sup_{${1:}}"""
+
+  "Borne inférieure":
+    'prefix':'inf'
+    'body':"""
+    \\\\inf_{ ${1:} } ${2:}"""
+
+  "Accollade":
+    'prefix':'lbrace'
+    'body':"""
+    \\\\left \\\\lbrace ${1:} \\\\right. ${2:}"""
+
+  "Array":
+    'prefix':'array'
+    'body':"""
+    \\\\begin{array}
+      ${1:}
+    \\\\end{array} ${2:}
+    """
+
+  "Inverse":
+    'prefix':'inv'
+    'body':"""
+    ^{-1}"""
+
+  "Partie entière":
+    'prefix':'floor'
+    'body':"""
+    \\\\lfloor ${1:} \\\\rfloor ${2:}
+    """
+
+  "PGCD":
+    'prefix':'pgcd'
+    'body':"""
+    ${1:} \\\\wedge ${2:}
+    """
+
+  "Crochets entiers":
+    'prefix':'ent'
+    'body':"""
+    \\\\llbracket ${1:} \\\\rrbracket ${2:}
+    """
+
+  "Bigcap":
+    'prefix':'bca'
+    'body':"""
+    \\\\bigcap_{${1:}} ${2:}"""
+
+  "Bigcup":
+    'prefix':'bcu'
+    'body':"""
+    \\\\bigcup_{${1:}} ${2:}"""
+
+  "Intégrale":
+    'prefix':'int'
+    'body':"""
+    \\\\int_{${1:}}^{${2:}} ${3:}"""
+
+  "Dérivée":
+    'prefix':'ddx'
+    'body':"""
+    \\\\frac{d ${1:fonction}}{d ${2:variable}}
+    """
+
+  "Texte dans l'expression mathématique":
+    'prefix':'text'
+    'body':"""
+    \\\\text{ ${1:} } ${2:}
+    """
+
+  "Chapeau":
+    'prefix':'hat'
+    'body':"""
+    \\\\widehat{${1:}} ${2:}
+    """
+
+  "Exponentielle":
+    'prefix':'exp'
+    'body':"""
+    e^{${1:}} ${2:}
+    """
+
+  "Intersection":
+    'prefix':'inter'
+    'body':"""
+    \\\\cap"""
+
+  "Réunion":
+    'prefix':'union'
+    'body':"""
+    \\\\cup """
+
+  "APCR":
+    'prefix':'apcr'
+    'body':"""
+    \\\\exists n_0 \\\\in \\\\mathbb{N}, \\\\forall n \\\\geq n_0,
+    """
+
+  "Croix multiplication":
+    'prefix':'times'
+    'body':"""
+    \\\\times
+    """
+
+  "Probabilité":
+    'prefix':'prob'
+    'body':"""
+    \\\\mathbb{P}(${1:})
+    """
+
+  "Espérance":
+    'prefix':'esp'
+    'body':"""
+    \\\\mathbb{E}[${1:}]
+    """
+
+  "Fraktur":
+    'prefix':'frak'
+    'body':"""
+    \\\\mathfrak{${1:}}
+    """
+
+  "Privé de":
+    'prefix':"prive"
+    'body':"""
+    \\\\setminus"""
+
+  "Mathscript":
+    'prefix':'scr'
+    'body':"""
+    \\\\mathscr{${1:}} ${2:}
+    """
+
+  "Norme":
+    'prefix':'norm'
+    'body':"""
+    \\\\left\\\\Vert ${1:} \\\\right\\\\Vert ${2:}
+    """
+
+  "Dot":
+    'prefix':'dot'
+    'body':"""
+    \\\\dot{${1:}} ${2:}
+    """
+
+  "Ensemble Z":
+    'prefix':'Z'
+    'body':"""
+    \\\\mathbb{Z}
+    """
+
+  "Ensemble N":
+    'prefix':'N'
+    'body':"""
+    \\\\mathbb{N}
+    """
+
+
+  "Ensemble R":
+    'prefix':'R'
+    'body':"""
+    \\\\mathbb{R}
+    """
+
+  'Ensemble C':
+    'prefix':'C'
+    'body':"""
+    \\\\mathbb{C}
+    """
+
+  "Démonstration":
+    'prefix':'demo'
+    'body':"""
+    \\\\begin{proof}
+      ${1:}
+    \\\\end{proof}
+    """
+
+  "Montrons que":
+    'prefix':'mq'
+    'body':"""
+    Montrons que"""
+
+  "Pour tout":
+    'prefix':'forall'
+    'body':"""
+    \\\\forall
+    """
+
+  "Il existe":
+    'prefix':'exists'
+    'body':"""
+    \\\\exists
+    """
+
+  "Date du jour":
+    'prefix':'ajd'
+    'body':"""
+    \\\\marginnote{${1:date}}
+    """
+
+  "Produit":
+    'prefix':'prod'
+    'body':"""
+    \\\\prod_{${1:}}^{${2:}} ${3:}
+    """
+
+  "Coefficient binomial":
+    'prefix':'binom'
+    'body' : """
+    \\\\binom{${1:}}{${2:}}
+    """
+
+  "R^2":
+    'prefix':'r2'
+    'body':"""
+    \\\\mathbb{R}^2
+    """
+
+  "R^3":
+    'prefix':'r3'
+    'body':"""
+    \\\\mathbb{R}^3
+    """
+
+  "R^n":
+    'prefix':'rn'
+    'body':"""
+    \\\\mathbb{R}^n
+    """
+
+  "De classe C^1":
+    'prefix':'c1'
+    'body':"""
+    \\\\mathcal{C}^1
+    """
+
+  "De classe C^2":
+    'prefix':'c2'
+    'body':"""
+    \\\\mathcal{C}^2
+    """
+
+  "De classe C^k":
+    'prefix':'ck'
+    'body':"""
+    \\\\mathcal{C}^k
+    """
+
+  "Mapsto":
+    'prefix':'map'
+    'body':"""
+    \\\\mapsto """
+
+  "In":
+    'prefix':'in'
+    'body':"""
+    \\\\in"""
+
+  "Notin":
+    'prefix':'nin'
+    'body':"""
+    \\\\notin """
+
+  "Dérivée n-ième":
+    'prefix':'dn'
+    'body':"""
+    ^{(n)}"""
+
+  "Dérivée k-ième":
+    'prefix':'dk'
+    'body':"""
+    ^{(${1:})}"""
+
+#Greek alphabet
+
+  "Alpha":
+    'prefix':'aa'
+    'body':"""
+    \\\\alpha
+    """
+
+  "Beta":
+    'prefix':'be'
+    'body':"""
+    \\\\beta"""
+
+  "Gamma":
+    'prefix':'ggg'
+    'body':"""
+    \\\\Gamma"""
+
+  "gamma":
+    'prefix':'gg'
+    'body':"""
+    \\\\gamma"""
+
+  "Delta":
+    'prefix':'ddd'
+    'body':"""
+    \\\\Delta"""
+
+  "delta":
+    'prefix':'dd'
+    'body':"""
+    \\\\delta"""
+
+  "Epsilon":
+    'prefix':'ee'
+    'body':"""
+    \\\\varepsilon"""
+
+  "Eta":
+    'prefix':'eee'
+    'body':"""
+    \\\\eta"""
+
+  "Zeta":
+    'prefix':'zz'
+    'body':"""
+    \\\\zeta"""
+
+  "theta":
+    'prefix':'th'
+    'body':"""
+    \\\\theta"""
+
+  "Theta":
+    'prefix':'thh'
+    'body':"""
+    \\\\Theta
+    """
+
+  "Kappa":
+    'prefix':'kk'
+    'body':"""
+    \\\\kappa
+    """
+
+  "Lambda":
+    'prefix':'ll'
+    'body':"""
+    \\\\lambda"""
+
+  "Mu":
+    'prefix':'mm'
+    'body':"""
+    \\\\mu
+    """
+
+  "Nu":
+    'prefix':'nn'
+    'body':"""
+    \\\\nu
+    """
+
+  "Omega":
+    'prefix':'ooo'
+    'body':"""
+    \\\\Omega"""
+
+  "omega":
+    'prefix':'ww'
+    'body':"""
+    \\\\omega
+    """
+
+  "Xi":
+    'prefix':'xxx'
+    'body':"""
+    \\\\Xi
+    """
+
+  "xi":
+    'prefix':'xx'
+    'body':"""
+    \\\\xi
+    """
+
+  "Pi":
+    'prefix':'pi'
+    'body':"""
+    \\\\pi
+    """
+
+  "Rho":
+    'prefix':'rr'
+    'body':"""
+    \\\\rho"""
+
+  "Sigma":
+    'prefix':'sss'
+    'body':"""
+    \\\\Sigma"""
+
+  "sigma":
+    'prefix':'ss'
+    'body':"""
+    \\\\sigma"""
+
+  "tau":
+    'prefix':'tt'
+    'body':"""
+    \\\\tau"""
+
+  "phi":
+    'prefix':'phi'
+    'body':"""
+    \\\\varphi"""
+
+  "Phi":
+    'prefix':'phii'
+    'body':"""
+    \\\\Phi"""
+
+  "psi":
+    'prefix':'psi'
+    'body':"""
+    \\\\psi"""
+
+#Usual template
+
+  "template":
+    'prefix':'cours'
+    'body':"""
+    \\\\documentclass[french]{book}
+    \\\\usepackage[utf8x]{inputenc}
+    \\\\usepackage[T1]{fontenc}
+    \\\\usepackage{babel}
+    \\\\usepackage{lmodern}
+    \\\\usepackage[top=2cm,bottom=2cm,left=3cm,right=3cm]{geometry}
+    \\\\usepackage{microtype}
+    \\\\usepackage{mathtools, amssymb, amsthm}
+    \\\\usepackage{mdframed}
+    \\\\usepackage{hyperref}
+    \\\\usepackage{graphicx}
+    \\\\usepackage{xcolor}
+    \\\\usepackage{mathrsfs}
+    \\\\usepackage{wrapfig}
+    \\\\usepackage{stmaryrd}
+    \\\\usepackage{dsfont}
+    \\\\usepackage{framed}
+    \\\\usepackage{marginnote}
+    \\\\usepackage[Glenn]{fncychap}
+
+    \\\\newtheorem{prototheorem}{Théorème}[section]
+    \\\\newenvironment{thm}
+       {\\\\colorlet{shadecolor}{orange!10}\\\\begin{shaded}\\\\begin{prototheorem}}
+       {\\\\end{prototheorem}\\\\end{shaded}}
+
+    \\\\newtheorem*{protocorollary}{Corollaire}
+    \\\\newenvironment{corollary}
+        {\\\\colorlet{shadecolor}{violet!10}\\\\begin{shaded}\\\\begin{protocorollary}}
+        {\\\\end{protocorollary}\\\\end{shaded}}
+
+    \\\\newtheorem*{protolemma}{Lemme}
+    \\\\newenvironment{lemma}
+        {\\\\colorlet{shadecolor}{pink!15}\\\\begin{shaded}\\\\begin{protolemma}}
+        {\\\\end{protolemma}\\\\end{shaded}}
+
+    \\\\theoremstyle{definition}
+    \\\\newtheorem{protodefinition}{Définition}[section]
+    \\\\newenvironment{definition}
+        {\\\\colorlet{shadecolor}{green!5}\\\\begin{shaded}\\\\begin{protodefinition}}
+        {\\\\end{protodefinition}\\\\end{shaded}}
+
+    \\\\newtheorem{protoproposition}{Proposition}[section]
+    \\\\newenvironment{prop}
+        {\\\\colorlet{shadecolor}{blue!5}\\\\begin{shaded}\\\\begin{protoproposition}}
+        {\\\\end{protoproposition}\\\\end{shaded}}
+
+    \\\\theoremstyle{remark}
+    \\\\newtheorem*{remark}{Remarque}
+    \\\\newtheorem{exo}{Exercice}
+    \\\\newtheorem*{protoexemple}{Exemple}
+    \\\\newenvironment{exemple}
+        {\\\\colorlet{shadecolor}{gray!10}\\\\begin{shaded}\\\\begin{protoexemple}}
+        {\\\\end{protoexemple}\\\\end{shaded}}
+
+
+    \\\\newcommand{\\\\lesss}{\\\\rotatebox[origin=c]{90}{$\\\\land$}}
+    \\\\newcommand{\\\\less}{\\\\ \\\\lesss\\\\ }
+
+    \\\\newcommand{\\\\biggg}{\\\\rotatebox[origin=c]{90}{$\\\\lor$}}
+    \\\\newcommand{\\\\bg}{\\\\ \\\\biggg\\\\ }
+
+    \\\\title{\\\\bsc{${1:Titre du cours}}}
+    \\\\date{${2:Date}}
+
+    \\\\begin{document}
+
+    \\\\maketitle
+
+    \\\\tableofcontents
+
+    ${3:Ecrire texte ici...}
+
+    \\\\end{document}
+    """
+
+  "Logarithme népérien":
+    'prefix':'ln'
+    'body':"""
+    \\\\ln(${1:})
+    """
+
+  "Le groupe symétrique":
+    'prefix':'sym'
+    'body':"""
+    \\\\mathfrak{S}_{${1:}}
+    """
+
+  "Image":
+    'prefix':'im'
+    'body':"""
+    \\\\operatorname{Im}(${1:fonction})
+    """
+
+  "Noyau":
+    'prefix':'ker'
+    'body':"""
+    \\\\operatorname{Ker}(${1:fonction})"""
+
+  "Ensemble vide":
+    'prefix':'vide'
+    'body':"""
+    \\\\emptyset"""
+
+  "N'est pas égal":
+    'prefix':"neq"
+    'body':"""
+    \\\\neq"""
+
+  "Intégrale double":
+    'prefix':'iint'
+    'body':"""
+    \\\\iint_{${1:}}"""
+
+  "Intégrale triple":
+    'prefix':'iiint'
+    'body':"""
+    \\\\iiint_{${1:}}"""
+
+  "Mathring":
+    'prefix':'ring'
+    'body':"""
+    \\\\mathring{${1:}}"""
+
+  "Remarque":
+    'prefix':'remark'
+    'body':"""
+    \\\\begin{remark}
+      ${1:}
+    \\\\end{remark}"""
+
+  "Groupe symétrique":
+    'prefix':'symn'
+    'body':"""
+    \\\\mathfrak{S}_n"""
+
+  "Groupe alterné":
+    'prefix':"altn"
+    'body':"""
+    \\\\mathfrak{A}_n"""
+
+  "Isomorphe":
+    'prefix':'iso'
+    'body':"""
+    \\\\simeq"""
+
+
+
+  "Modulo":
+    'prefix':'modulo'
+    'body':"""
+    \\\\equiv"""
+
+  "Ouvert":
+    'prefix':'ouv'
+    'body':"""
+    \\\\mathcal{O}"""
+
+  "Les entiers de 1 à n":
+    'prefix':'1n'
+    'body':"""
+    \\\\{1, \\\\dots, n \\\\}"""
+
+  "Strictement positif":
+    'prefix':'pszero'
+    'body':"""
+    \\\\bg 0"""
+
+  "Implique":
+    'prefix':'implies'
+    'body':"""
+    \\\\implies"""
+
+  "Ensemble des parties":
+    'prefix':'enspart'
+    'body':"""
+    \\\\mathscr{P}(${1:})"""
+
+  "Proposition":
+    'prefix':'prop'
+    'body':"""
+    \\\\begin{prop}
+      ${1:}
+    \\\\end{prop}"""
+
+  "Composition de fonctions":
+    'prefix':'rond'
+    'body':"""
+    \\\\circ"""
+
+  "Distingué":
+    'prefix':'disting'
+    'body':"""
+    \\\\triangleleft"""
+
+  "Topologie engendrée par une base":
+    'prefix':'topob'
+    'body':"""
+    \\\\mathcal{O}_{\\\\mathcal{B}}"""
+
+  "Norme sur E":
+    'prefix':'norme'
+    'body':"""
+    \\\\Vert ${1:} \\\\Vert_E"""
+
+  "Norme sur F":
+    'prefix':'normf'
+    'body':"""
+    \\\\Vert ${1:} \\\\Vert"""
+
+  "Fonction sinus":
+    'prefix':'sin'
+    'body':"""
+    \\\\sin(${1:})"""
+
+  "Fonction cosinus":
+    'prefix':'cos'
+    'body':"""
+    \\\\cos(${1:})"""
+
+  "Fonction tangente":
+    'prefix':'tan'
+    'body':"""
+    \\\\tan(${1:})"""
+
+  "Point de multiplication":
+    'prefix':'pt'
+    'body':"""
+    \\\\cdot"""
+
+  "d rond":
+    'prefix':'drond'
+    'body':"""
+    \\\\part"""
+
+  "Extension corps":
+    'prefix':'extens'
+    'body':"""
+    \\\\begin{array}{c}
+    ${1:} \\\\\\\\
+    \\\\mid \\\\\\\\
+    ${2:}
+    \\\\end{array} """
+
+  "Limite sup":
+    'prefix':'limsup'
+    'body':"""
+    \\\\uplim_{${1:}} ${2:} """
+
+  "Limite inf":
+    'prefix':'liminf'
+    'body':"""
+    \\\\lowlim_{${1:}} ${2:}"""
+
+  "Rationnels":
+    'prefix':'Q'
+    'body':"""
+    \\\\mathbb{Q}"""
+
+  "Lp" :
+    'prefix':'Lp'
+    'body':"""
+    \\\\mathscr{L}^{${1:}}"""
+
+  "Exemple":
+    'prefix':'exemple'
+    'body':"""
+    \\\\begin{exemple}
+      ${1:}
+    \\\\end{exemple}"""
+
+  'Exercice':
+    'prefix':'exercice'
+    'body':"""
+    \\\\begin{exo}
+      ${1:}
+    \\\\end{exo}
+    """
+
+  'Corollaire':
+    'prefix':'corollary'
+    'body':"""
+    \\\\begin{corollary}
+      ${1:}
+    \\\\end{corollary}
+    """
+
+  'Lemme':
+    'prefix':'lemme'
+    'body':"""
+    \\\\begin{lemma}
+      ${1:}
+    \\\\end{lemma}
+    """
+
+
+
+  "Tilde":
+    'prefix':'tilde'
+    'body':"""
+    \\\\tilde{${1:}}"""
+
+  "Distinction de cas":
+    'prefix':'cases'
+    'body':"""
+    \\\\begin{cases}
+      ${1:}
+    \\\\end{cases}
+    """
+
+  'Substack':
+    'prefix':'substack'
+    'body':"""
+    \\\\substack {${1:}}
+    """
+
+  "Cardinal":
+    'prefix':"card"
+    'body':"""
+    \\\\sharp(${1:})"""
+
+  "Attention":
+    'prefix':'danger'
+    'body':"""
+    {\\\\fontencoding{U}\\\\fontfamily{futs}\\\\selectfont\\\\char 66\\\\relax}"""
+
+  "Underbrace":
+    'prefix':'underbrace'
+    'body':"""
+    \\\\underbrace{${1:texte normal}}_{${2:texte en-dessous}}
+    """
+
+  "Overbrace":
+    'prefix':'overbrace'
+    'body':"""
+    \\\\overbrace{${1:texte normal}}^{${2:texte au-dessus}}
+    """
+
+  "Ecrire au-dessus":
+    'prefix':'dessus'
+    'body':"""
+    \\\\stackrel{${1:texte au-dessus}}{${2:texte normal}}
+    """
+
+  "Ecrire en-dessous":
+    'prefix':'dessous'
+    'body':"""
+    \\\\underset{${1:texte en-dessous}}{${2:texte normal}}
+    """
+
+  "Fonction indicatrice":
+    'prefix':'ind'
+    'body':"""
+    \\\\mathds{1}_{${1:}}
+    """
+
+  "Inline math":
+    'prefix':'im'
+    'body':"""
+    \\\\(${1:}\\\\)
+    """
+
+  "Display math":
+    'prefix':'dm'
+    'body':"""
+    \\\\[${1:}\\\\]"""
+
+  "Complémentaire d'un ensemble":
+    'prefix':'comp'
+    'body':"""
+    ^{C}
+    """
+
+  "Produit tensoriel":
+    'prefix':'tens'
+    'body':"""
+    \\\\otimes
+    """
+
+  "Inclus ou égal":
+    'prefix':'cce'
+    'body':"""
+    \\\\subseteq
+    """
+
+  "Etoile":
+    'prefix':'star'
+    'body':"""
+    \\\\star"""
+
+  "Big Lambda":
+    'prefix':'lll'
+    'body':"""
+    \\\\Lambda"""
+
+  "Signature":
+    'prefix':"sgn"
+    'body':"""
+    \\\\operatorname{sgn}(${1:})"""
+
+  "Dimension":
+    'prefix':'dim'
+    'body':"""
+    \\\\operatorname{dim}(${1:})"""
+
+  "Trace":
+    'prefix':'tr'
+    'body':"""
+    \\\\operatorname{Tr}(${1:})"""
+
+  "R^k":
+    'prefix':'rk'
+    'body':"""
+    \\\\mathbb{R}^k"""
+
+  "Points de suspension":
+    'prefix':'ddo'
+    'body':"""
+    \\\\dots"""
+
+  "Chi":
+    'prefix':'chi'
+    'body':"""
+    \\\\chi"""
+
+  "Variance":
+    'prefix':'var'
+    'body':"""
+    \\\\mathbb{V}(${1:})"""
+
+  "Flèche pointant à droite":
+    'prefix':'flech'
+    'body':"""
+    \\\\longrightarrow"""
+
+  "Blablabla":
+    'prefix':'bla'
+    'body':"""
+    blablablablabla"""
+
+  "Texte":
+    'prefix':"txt"
+    'body':"""
+    truc ${1:} machin"""
+
+  "Fraction":
+    'prefix':'frac'
+    'body':"""
+    \\\\frac{${1:}}{${2:}}
+    """
+

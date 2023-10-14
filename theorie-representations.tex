@@ -14,6 +14,7 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{framed}
+\usepackage{marginnote}
 \usepackage[Glenn]{fncychap}
 \usepackage[all]{xy}
 
@@ -238,7 +239,7 @@ On munit l'ensemble quotient $\mathbb{Z}/{ n }\mathbb{Z}$ d'une structure de gro
   est un isomorphisme d'anneaux et la réciproque est vraie.
 \end{thm}
 
-\marginpar{19-09-2023}
+\marginnote{19-09-2023}
 
 \section{Groupe diédral}
 
@@ -686,9 +687,8 @@ C'est bien une action de groupes, car
   \]
 \end{enumerate}
 
-\emph{Cette action est-elle transitive, fidèle ? Quelle est l'orbite d'un élément ?}
+\emph{Cette action est-elle transitive, fidèle ? Quelle est l'orbite d'un élément ?}\marginnote{20-09-2023}
 
-\marginpar{20-09-2023}
 
 Soit $x \in G$. L'orbite de $x$ est :
 
@@ -952,10 +952,10 @@ De plus, $\forall  g \in G, $ la bijection $\rho_g$ est un endomorphisme de $V$,
 
   \end{enumerate}
 \end{exemple}
-\marginpar{26-09-2023}
 
 
-\begin{definition}
+
+\begin{definition}\marginnote{26-09-2023}
   Deux représentations linéaires \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) d'un groupe \(G\) sont dites \textbf{isomorphes} ou équivalentes s'il existe un isomorphisme d'espaces vectoriels (ici application linéaire bijective) \(f: V \to V'\) tel que l'on ait : \[\forall g \in G, \rho'_g \circ f  = f \circ \rho_g.\]
 
   On peut exprimer cette condition par la commutativité du diagramme suivant :
@@ -1139,9 +1139,9 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
   \end{enumerate}
 \end{prop}
 
-\marginpar{27-09-2023}
 
-\begin{proof}
+
+\begin{proof}\marginnote{27-09-2023}
 
   \
   Soit \(\rho : G \longrightarrow GL(V)\) représentation linéaire d'un groupe fini \(G\) de caractère \(\chi _{\rho}\).
@@ -1357,9 +1357,9 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
   \end{gather*}
 \end{proof}
 
-\marginpar{03-10-2023}
 
-\begin{exo}
+
+\begin{exo}\marginnote{03-10-2023}
   On note \(\hat{G}\) l'ensemble des caractères linéaires d'un groupe \(G\), i. e. l'ensemble des morphismes \(\chi : G \longrightarrow \mathbb{C} ^{*}\) (ce sont les caractères des représentations de degré 1 (donc irréductibles) de \(G\)). On définit le produit \(\chi\chi'\) de deux caractères linéaires de \(G\) : pour \(g \in G\),
 
   \[(\chi \chi')(g) = \chi(g)\chi'(g).\]
@@ -1505,9 +1505,9 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   \end{cases}\) et où \(\lambda_C \in \mathbb{C}\) (on a \(\lambda_C = \phi(g)\) où \(g\) est n'importe quel élément de \(C\)). Les fonctions indicatrices \(1_C\), pour \( C \in \operatorname{Conj}(G)\), forment donc une base de \(\mathscr{F}_C(G)\), qui, de ce fait, est de dimension le cardinal de \(\operatorname{Conj}(G)\).
 \end{proof}
 
-\marginpar{04-10-2023}
 
-\begin{remark}[Notation]
+
+\begin{remark}[Notation]\marginnote{04-10-2023}
   Si \(G\) est un groupe fini, on note \(\operatorname{Irr}(G)\) l'ensemble des (classes d'isomorphismes de) représentations irréductibles de \(G\) qu'on identifie parfois à l'espace de ces représentations irréductibles.
 
   \begin{gather*}
@@ -1779,9 +1779,9 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   \end{matrix}\]
 \end{remark}
 
-\marginpar{10-10-2023}
 
-\section{Nombre de représentations irréductibles de degré 1}
+
+\section{Nombre de représentations irréductibles de degré 1}\marginnote{10-10-2023}
 
 \begin{definition}
   Soit \(G\) un groupe. Un \textbf{commutateur} de \(G\) est un élément de la forme :
@@ -1982,9 +1982,9 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
 
 On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S}_n : \mathfrak{A}_n] = 2\). Donc \([\mathfrak{S}_n : D(\mathfrak{S}_n)]= 2\). \(\mathfrak{S}_n\) admet donc deux représentations irréductibles de dimension 1 (à isomorphisme près).
 
-\marginpar{11-10-2023}
 
-\begin{exo}
+
+\begin{exo}\marginnote{11-10-2023}
   On considère le groupe symétrique \(\mathfrak{S}_n\) avec \(n \geq 2\).
 
   \begin{enumerate}
@@ -2150,8 +2150,14 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
         On a
 
         \begin{gather*}
-          \langle \chi, \chi \rangle = \frac{1}{\left\lvert \mathfrak{S}_{3} \right\rvert} \sum_{g \in \mathfrak{S}_{3}} \overline{\chi(g)} \chi(g) = \frac{1}{6}(2 ^2 + 3 \times 0 ^2 + 2 \times(-1) ^2)  = \frac{6}{6} = 1.
+          \langle \chi, \chi \rangle = \frac{1}{\left\lvert \mathfrak{S}_{3} \right\rvert} \sum_{g \in \mathfrak{S}_{3}} \overline{\chi(g)} \chi(g) = \frac{1}{6}(2 ^2 + \textcolor{red}{3} \times 0 ^2 + \textcolor{blue}{2} \times(-1) ^2)  = \frac{6}{6} = 1.
         \end{gather*}
+
+        \begin{remark}[Personnelle]
+          \textcolor{red}{3} correpond au nombre de \textcolor{red}{transpositions} dans \(\mathfrak{S}_{3}\) et \textcolor{blue}{2} correspond au nombre de \textcolor{blue}{3-cycles}. Puisque les transpositions (respectivement les 3-cycles) sont conjugués dans \(\mathfrak{S}_{3}\), la valeur de \(\rho_g\) et donc de \(\chi(g)\) est identique pour chaque transposition (respectivement pour chaque 3-cycle), donc on multiplie par 3 (respectivement par 2).
+        \end{remark}
+
+        \
 
         Donc \(\chi\) est bien un caractère \textbf{irréductible} de \(\mathfrak{S}_{3}\).
       \end{enumerate}

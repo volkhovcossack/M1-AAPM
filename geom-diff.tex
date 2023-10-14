@@ -15,6 +15,7 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{framed}
+\usepackage{marginnote}
 \usepackage[Glenn]{fncychap}
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -564,10 +565,10 @@ Notons que $\forall y \in V, x \in W, f(x)=y$,
 
 En particulier, il existe $W$ tel que $Df(x)$ est inversible pour tout $x \in W$.
 
-\subsection{Théorème du rang}
+\subsection{Théorème du rang}\marginnote{20-09-2023}
 
 
-\marginpar{20-09-2023}
+
 
 \begin{thm}[Du rang]
   $f : U \to \mathbb{R}^m$, $U \subset \mathbb{R}^n$ de classe $\mathcal{C}^r, r \geq 1$.  Supposons que $\forall x \in U$,
@@ -1228,9 +1229,9 @@ Donc $\forall \overrightarrow{ v } \in \mathbb{R}^n, g(\overrightarrow{ v } ) = 
 
 On en déduit que $g \longrightarrow \alpha_g$ est injective.
 
-\marginpar{27-09-2023}
 
-\begin{exemple}
+
+\begin{exemple}\marginnote{27-09-2023}
   \(T : \mathbb{R}^2 \to \mathbb{R}, Tx =  2x_1+ 5x_2 \). On définit \(\alpha : \mathbb{R}^2 \times \mathbb{R}^2 \to \mathbb{R}\), \(\alpha((x_1, x_2), (x_1', x_2')) = x_1 x_2'-x_2 x_1', \alpha \in \Omega ^2(\mathbb{R}^2)\).
 
   Ecrire le produit tensoriel entre \(\alpha\) et \(T\)...
@@ -1294,7 +1295,7 @@ On rappelle que l'on peut associer à un vecteur \(v \in E\) un vecteur contrava
 
 avec la base \(\{ e _{i_1} \otimes \dots \otimes e _{i_l} \mid 1 \leq i_j \leq  n, 1 \leq j \leq l \}\).
 
-On a \(\operatorname{dim}(\infty _{l}(E)) = n ^{l}\) et \( \forall \alpha \in \Omega _{l}(E)\),
+On a \(\operatorname{dim}(\Omega_{l}(E)) = n ^{l}\) et \( \forall \alpha \in \Omega _{l}(E)\),
 
 \[\alpha = \sum_{1 \leq i_1, \dots, i_l \leq n}^{} \alpha(e ^{i_1}, \dots, e ^{i_l}) e _{i_1} \otimes \dots \otimes e _{i_l}.\]
 
@@ -1307,7 +1308,7 @@ On va essayer de définir
 On a alors le schéma suivant :
 
 \begin{gather*}
-  F \stackrel{T}{\longrightarrow} F \stackrel{S}{\longrightarrow} G \\
+  E \stackrel{T}{\longrightarrow} F \stackrel{S}{\longrightarrow} G \\
   \Omega _{l}(E) \underset{\Omega _{l}(T)}{\longrightarrow}\Omega _{l}(F) \underset{\Omega _{l}(S)}{\longrightarrow} \Omega _{l}(G).
 \end{gather*}
 

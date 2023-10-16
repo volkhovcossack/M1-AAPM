@@ -1367,7 +1367,7 @@ Les produits scalaires sur un espace vectoriel sont des tenseurs 2-covariants.
 
   \begin{gather}
     \alpha(v,w) = \left(\sum_{1 \leq i,j \leq n}^{} a _{ij} e ^{i} \otimes e ^{j} \right) \left(\sum _{k} x_k e_k, \sum_{l}^{} y_l e_l\right) \\
-    = \sum_{i,j,k,l}^{} a _{ij} e ^{i}(k) e ^{j}(e_l) x_k y_l   = \sum_{i,j,k,l}^{} a _{ij} \delta _{k} ^{i} \delta _{l} ^{j} x_k y_l   = \sum_{i,j}^{} a _{ij} x_i y_j.
+    = \sum_{i,j,k,l}^{} a _{ij} e ^{i}(e_k) e ^{j}(e_l) x_k y_l   = \sum_{i,j,k,l}^{} a _{ij} \delta _{k} ^{i} \delta _{l} ^{j} x_k y_l   = \sum_{i,j}^{} a _{ij} x_i y_j.
   \end{gather}
 \end{definition}
 
@@ -1409,17 +1409,17 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 \begin{definition}
   \( \alpha \in \Omega ^{k}(E)\) est dite un \textbf{tenseur extérieur} (aussi appelé tenseur antisymétrique) si
 
-  \[\forall v_1, \dots, v_k \in E, \forall \sigma \in S_k, \alpha(v _{\sigma_1, \dots, v _{\sigma_k}}) = \operatorname{sgn}(\sigma) \alpha(v_1, \dots, v_n).\]
+  \[\forall v_1, \dots, v_k \in E, \forall \sigma \in S_k, \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) = \operatorname{sgn}(\sigma) \alpha(v_1, \dots, v_k).\]
 \end{definition}
 
-\begin{prop}
+\begin{prop}\label{prop-tens-ext}
   Les trois assertions suivantes sont équivalentes :
 
   \begin{enumerate}
     \item \(\alpha\) est extérieur ;
     \item \(\forall \sigma \in S_k \text{ telle que }  \sigma\) est une transposition,
 
-    \[\forall v_1, \dots, v_k, \alpha(v _{\sigma_1, \dots, v _{\sigma_k}}) = - \alpha(v_1, \dots, v_k) ;\]
+    \[\forall v_1, \dots, v_k, \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) = - \alpha(v_1, \dots, v_k) ;\]
 
     \item \(\forall v_1, \dots, v_k \in E\), s'il existe \(i, j \in \{ 1, \dots, k \} \) tels que \(v_i = v_j, i \neq j\), alors \(\alpha(v_1, \dots, v_k) = 0\).
   \end{enumerate}
@@ -1432,7 +1432,7 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 
   \begin{enumerate}
     \item \((1) \implies (2)\). On a \(\operatorname{sgn}(\text{transposition}) = -1\).
-    \item \((2) \implies (3)\). Donné \(i,j\) tel que \(v_i = v_j, i \neq j\). On considère la transposition qui échange \(i\) et \(j\) et on a
+    \item \((2) \implies (3)\). Donné \(i,j\) tels que \(v_i = v_j, i \neq j\). On considère la transposition qui échange \(i\) et \(j\) et on a
 
     \[\alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) = - \alpha(v_1, \dots, v_k), \]
 
@@ -1440,34 +1440,39 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 
     \[\alpha(v_1, \dots, v_k) = - \alpha(v_1, \dots, v_k) \implies \alpha(v_1, \dots,v_k) = 0.\]
 
-    \item \((2) \implies (1)\). Si \(\sigma = \sigma _{(1)} \dots \sigma _{(l)}\), \(\sigma _{(j)}\) sont des transpositions, alors
+    \item \((2) \implies (1)\). Si \(\sigma = \sigma _{(1)} \dots \sigma _{(l)}\), avec pour tout \(j\), \(\sigma _{(j)}\) est une transposition, alors
 
     \[\alpha(v _{\sigma_1}, \dots,v _{\sigma_k}) = (-1) ^{l}\alpha(v_1, \dots, v_k) = \operatorname{sgn}(\sigma)\alpha(v_1, \dots, v_k).\]
 
     \item \((3) \implies (2)\). \(\sigma\) est une transposition telle que \(\sigma_i = j, \sigma_j = i\). Les \(v_1, \dots, v_k\) sont donnés. On écrit :
 
     \begin{gather*}
-      \alpha(v_1, \dots, \underbrace{v_i+v_j}_{\text{position }i}, \underbrace{v_i+ v_j}_{\text{position }j}, \dots, v_k) = 0.
+      \alpha(v_1, \dots, \underbrace{v_i+v_j}_{\text{position }i},\dots, \underbrace{v_i+ v_j}_{\text{position }j}, \dots, v_k) = 0.
     \end{gather*}
 
     Mais
 
-    \begin{gather*}
+    \begin{gather}
       \alpha(v_1, \dots, v_i + v_j, \dots, v_i + v_j, \dots, v_k) \\
        = \alpha(v_1, \dots, v_i, \dots, v_i+v_j, \dots, v_k) + \alpha(v_1, \dots, v_j, \dots, v_i+v_j, \dots, v_k) \\
-      = \alpha(v_1, \dots, v_i, \dots, v_i, \dots, v_k) + \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) \\
-      + \alpha(v_1, \dots, v_j,\dots, v_i, \dots, v_k) + \alpha(v_1, \dots, v_j, \dots, v_j, \dots, v_k).
-    \end{gather*}
+      = \underbrace{\alpha(v_1, \dots, v_i, \dots, v_i, \dots, v_k)}_{=0} + \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) \label{bcp-de-alpha1}\\
+       + \alpha(v_1, \dots, v_j,\dots, v_i, \dots, v_k) + \underbrace{\alpha(v_1, \dots, v_j, \dots, v_j, \dots, v_k)}_{=0}. \label{bcp-de-alpha2}
+    \end{gather}
 
-    On a donc
+    On a d'une part \(\ref{bcp-de-alpha1}+ \ref{bcp-de-alpha2} = 0\) et d'autre part :
 
     \begin{gather*}
-      \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) = -\alpha(v_1, \dots, v_j, \dots, v_i, \dots, v_k) = \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}).
+      \alpha(v_1, \dots, v_i, \dots, v_j, \dots, v_k) = -\alpha(v_1, \dots, v_j, \dots, v_i, \dots, v_k) = \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}),
     \end{gather*}
+
+    ce qui donne le résultat souhaité.
   \end{enumerate}
 \end{proof}
 
 \begin{exemple}
+
+  \
+
   \begin{enumerate}
     \item \(\alpha(v,w) = \alpha((v',v ^2), (w', w ^2)) = v'w ^2 - v ^2 w'\). On vérifie facilement qu'il est antisymétrique.
     \item Plus généralement, pour chaque \(v_1, \dots, v_k \in \mathbb{R}^k\),
@@ -1479,27 +1484,27 @@ Pour aller vers les formes différentielles, on a besoin d'une sous-catégorie d
 \end{exemple}
 
 \begin{corollary}
-  Si \(\{ v_1, \dots,v_k \} \) n'est pas libre (i. e. linéairement dépendant), \(\alpha(v_1, \dots, v_k) = 0\).
+  Si la famille \(\{ v_1, \dots,v_k \} \) n'est pas libre (i. e. linéairement dépendante), \(\alpha(v_1, \dots, v_k) = 0\).
 \end{corollary}
 
 \begin{proof}
-  Si la famille n'est pas libre, il existe \(i\) tel que \(v_i = \sum_{j \neq i}^{} c_j v_j \).
+  Si la famille n'est pas libre, il existe \(i\) tel que \(v_i = \sum_{j \neq i}^{} c_j v_j \) et la démonstration est la même que pour la proposition \ref{prop-tens-ext}.
 \end{proof}
 
-On suppose que \(\operatorname{dim}(E) = n\) et \(k \bg n\). Alors si \(\alpha \in \Omega ^{k}(E)\) est un tenseur extérieur,
+On suppose que \(\operatorname{dim}(E) = n\) et \(k \bg n\). Si \(\alpha \in \Omega ^{k}(E)\) est un tenseur extérieur, alors, par convention, on écrit :
 
 \[\forall v_1, \dots, v_k \in E, \alpha(v_1, \dots, v_k) = 0.\]
 
 \
 
-On définit maintenant
+On définit maintenant l'ensemble des tenseurs extérieurs, à savoir
 
 \[\Lambda ^{k}(E) := \{ \alpha \in \Omega ^{k}(E), \alpha \text{ est tenseur extérieur}\}. \]
 
 \begin{prop}
   \(\Lambda ^{k}(E)\) est un sous-espace vectoriel, i. e.
 
-  \[\forall \alpha, \beta \in \Lambda ^{k}(E), c \in \mathbb{R}, (c \alpha + \beta) \in \Lambda ^{k}(E).\]
+  \[\forall \alpha, \beta \in \Lambda ^{k}(E) \text{ et }  c \in \mathbb{R}, (c \alpha + \beta) \in \Lambda ^{k}(E).\]
 \end{prop}
 
 \emph{Quelle est la dimension de \(\Lambda ^{k}(E)\) ?}
@@ -1519,11 +1524,11 @@ On va définir pour chaque choix d'indices \(1 \leq i_1 \less i_2 \less \dots \l
 \end{exemple}
 
 \begin{prop}
-  \(\varepsilon ^{i_1 \dots i_k} \in \Lambda ^{k}(E)\).
+  \(\varepsilon ^{i_1 \dots i_k} \in \Lambda ^{k}(E)\), autrement dit \(\varepsilon ^{i_1 \dots i_k}\) est un \textbf{tenseur extérieur}.
 \end{prop}
 
 \begin{proof}
-  Si \( \tau \in S_k\) fixé, alors
+  Soit \( \tau \in S_k\) fixé. On a :
 
   \begin{gather*}
     \varepsilon ^{i_1 \dots i_k}(v _{\tau_1}, \dots, v _{\tau_k}) = \sum_{\sigma \in S_k}^{} \operatorname{sgn}(\sigma) e ^{i_1}\otimes \dots \otimes e ^{i_k}(v _{\sigma \tau_1}, \dots, v _{\sigma \tau_k}) \\
@@ -1544,7 +1549,7 @@ On va définir pour chaque choix d'indices \(1 \leq i_1 \less i_2 \less \dots \l
 
 \end{proof}
 
-Une autre manière pour proposer des éléments de base \(\forall 1 \leq i_1 \less i_2 \less \dots \less i_k \leq n\) et \(1 \leq j_1 \less \dots \less j_k \leq n\) : on va définir
+Il existe une autre manière pour proposer des éléments de base \(\forall 1 \leq i_1 \less i_2 \less \dots \less i_k \leq n\) et \(1 \leq j_1 \less \dots \less j_k \leq n\). On va définir
 
 \[\overline{\varepsilon}^{i_1 \dots i_k}(e _{j_1}, \dots, e _{j_k}) \stackrel{\text{déf}}{=} \delta _{j_1} ^{i_1} \delta _{j_2} ^{i_2} \dots \delta _{j_k} ^{i_k}.\]
 
@@ -1552,14 +1557,18 @@ Si \(j_s = j_l\) pour \(s \neq l\), alors \(\overline{\varepsilon} ^{i_1 \dots i
 
 Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre croissant, on les réordonne par une permutation \(\sigma \in S_k\) avec \(1 \leq \sigma _{j_1} \less \dots \less \sigma _{j_k} \leq n\). On définit
 
-\[\overline{ \varepsilon} ^{i_1 \dots i_k}(e _{j_1}, \dots, e _{j_k}) \stackrel{\text{déf}}{=} \operatorname{sgn}(\sigma) \delta_{i_1} ^{j_1}\dots \delta _{i_k} ^{j_k}.\]
+\[\overline{ \varepsilon} ^{i_1 \dots i_k}(e _{j_1}, \dots, e _{j_k}) \stackrel{\text{déf}}{=} \operatorname{sgn}(\sigma) \delta_{j_1} ^{i_1}\dots \delta _{j_k} ^{i_k}.\]
 
-\emph{Est-ce que on a \(\overline{\varepsilon} = \varepsilon \) pour tout choix de \(1 \leq i_1 \less \dots \less i_k \leq n\) ?} (exercice).
+\begin{exo}
+  Est-ce que on a \(\overline{\varepsilon} = \varepsilon \) pour tout choix de \(1 \leq i_1 \less \dots \less i_k \leq n\) ?
+\end{exo}
+
+
 
 \(\overline{\varepsilon} \) est prolongé par \(k\)-linéarité sur tout élément \((v_1, \dots, v_k) \in E ^{k}\).
 
 \begin{thm}
-  \(\{ \overline{\varepsilon} ^{i_1 \dots i_k}, \text{ pour tout } 1 \leq i_1 \less \dots \less i_k \leq n \} \) forme une base pour \(\Lambda ^{k}(E)\).
+  \(\{ \overline{\varepsilon} ^{i_1 \dots i_k}, \text{ pour tout } 1 \leq i_1 \less \dots \less i_k \leq n \} \) forme une base pour \(\Lambda ^{k}(E)\), l'espace vectoriel des tenseurs extérieurs.
 \end{thm}
 
 \begin{proof}

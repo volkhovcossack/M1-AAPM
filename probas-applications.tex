@@ -1992,17 +1992,192 @@ Deux variables indépendantes sont non-corrélées, mais le contraire est en gé
   Cf polycopié.
 \end{proof}
 
-\subsection{Convergence en loi}
-
-\subsubsection{Fonction caractéristique}
-
-Soit \(X\) une variable aléatoire sur \((\Omega, \mathscr{A}, \mathbb{P})\). On définit :
-
-\[\varphi_t(X) = \mathbb{E}[e ^{itX}] = \int e^{it X} d \mathbb{P}  = \int e^{itx} d P_X(x).\]
-
-Si en plus \(P_X\) a une densité \(f\), alors on écrira \(\varphi_t(X) = \int e^{itx}f(x)dx  \)
-
 \subsection{Lien entre convergences}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.4]{figures/Cvg2va.png}
+  \caption{Schéma résumant les liens entre convergences de variables (plus compliqué que celui donné en cours). La double flèche est une implication et la flèche simple est une implication dans certains cas.}
+  \label{}
+\end{figure}
+
+\section{Convergence en loi}
+
+\subsection{Fonction caractéristique}\marginnote{16-10-2023}
+
+\begin{definition}
+  Soit \((\Omega, \mathscr{A}, \mathbb{P})\) un espace probabilisé. On définit la fonction caractéristique de la variable aléatoire réelle \(X\) de la manière suivante :
+
+  \[\varphi_t(X) = \mathbb{E}[e ^{itX}] = \int_{\Omega} e^{it X} d \mathbb{P}  = \int_{\mathbb{R}} e^{itx} d P_X(x).\]
+\end{definition}
+
+\begin{remark}[Cas particulier]
+  Si \(X\) est à densité \(f _{X}(x)\), alors :
+
+  \[\varphi _{X}(t) = \int_{\mathbb{R}} e^{itx} f_X(x)dx.  \]
+
+  Il s'agit de la transformée de Fourier.
+\end{remark}
+
+\begin{prop}[Propriétés de la fonction caractéristique]
+
+  \
+
+  \begin{enumerate}
+    \item \(\varphi_X\) est définie et continue \(\forall t \in \mathbb{R}\), en particulier elle est \textbf{uniformément continue}.
+    \item \(\varphi _{aX+b}(t) = e^{itb}\varphi_X(at) \) ;
+    \item Si \(\{ X_i \}_{i=1}^{\infty}\) sont indépendantes et on écrit \(S_n = \displaystyle \sum_{i=1}^{n}X_i\), alors
+    \[\varphi _{X_n}(t) = \varphi _{X_1}(t)- \varphi _{X_n}(t).\]
+
+    Si en plus les \(\{ X_i \}\) ont la même loi, alors
+
+    \[\varphi _{S_n}(t) = \varphi _{X_1}(t) ^{n}.\]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Il faut que \(\varphi_X \in L ^{1}(\mathbb{P})\), i. e. \(\varphi_X \in L ^{1}(\mathbb{R}, P_X)\). Alors
+
+    \[\int_{\Omega}^{} \left\lvert e^{itX}\right\rvert d \mathbb{P} = \int d \mathbb{P}=1.\]
+
+    \item Montrons que \(\varphi_X\) est uniformément continue.
+
+    On a
+
+    \begin{gather*}
+      \varphi_X(t) - \varphi_X(t_0) = \left\lvert \int_{}^{} \left(e^{itX} - e^{it_0 X}\right) \right\rvert = \int_{}^{} \left\lvert iX e^{i \xi X} \right\rvert  \left\lvert t-t_0 \right\rvert d \xi \\
+      \leq \left\lvert t-t_0 \right\rvert \int_{}^{} \left\lvert X \right\rvert d \mathbb{P},
+    \end{gather*}
+
+    ce qui veut dire que la fonction est lipschitzienne, donc uniformément continue.
+
+    \item On a
+
+    \begin{gather*}
+      \varphi _{S_n} = \int_{\Omega} e^{it}(X_1 + \dots + X_n) d \mathbb{P} = \int_{\Omega}^{} e^{itX_1} \dots e^{itX_n} d \mathbb{P} = \mathbb{E}[e^{itX_1}\dots e^{itX_n}] = \prod_{i=1}^{n} \mathbb{E}[e^{itX_i}] = \prod_{i=1}^{n} \varphi _{X_i}(t).
+    \end{gather*}
+  \end{enumerate}
+\end{proof}
+
+\begin{exemple}[Calculs des fonctions caractéristiques]
+
+  \
+
+  \begin{enumerate}
+    \item \(X\) est une variable aléatoire binomiale \(B(n,p)\). On rappelle que
+
+    \[\mathbb{P}(X=k) = C ^{k}_{n} p ^{k}(1-p)^{n-k}.\]
+
+    Alors
+
+    \begin{gather*}
+      \varphi_X(t) = \int e^{itX} d \mathbb{P} = \int e^{itx} d P_X(x) = \sum_{k=0}^{n} e^{itk} C ^{k}_{n} p ^{k}(\underbrace{1-p}_{=q})^{n-k} =(q + p e^{it})^{n}.
+    \end{gather*}
+
+    \item \(X\) est de Bernoulli \(B(p)\), avec \(\mathbb{P}(X=1) = p\) et \(\mathbb{P}(X=0)=1-p\). Alors
+
+    \begin{gather*}
+      \varphi_X(t) = e^{it}p+q.
+    \end{gather*}
+
+    \item Variable de Gauss avec \(X\) qui a la loi \(\mathscr{N}(0,1)\).
+
+    \begin{gather*}
+      \varphi_X(t) = \frac{1}{\sqrt{ 2 \pi } }\int_{\mathbb{R}}^{} e^{itx} e^{-\frac{x ^2}{2}}dx = \frac{1}{\sqrt{ 2 \pi }} \int_{}^{} (\cos(tx)+ i \sin(tx)) e^{-\frac{x ^2}{2}}dx = \frac{1}{\sqrt{ 2 \pi } } \int_{\mathbb{R}} i \cos(tx) e^{-\frac{x ^2}{2}}dx,
+    \end{gather*}
+
+    car
+
+    \begin{gather*}
+      i \int_{}^{} \sin(tx) e^{- \frac{x ^2}{2}} dx = 0 \text{ (fonction impaire).}
+    \end{gather*}
+
+    %On intègre par parties :
+
+    %\begin{gather*}
+    %  \frac{1}{\sqrt{2\pi} \int_{\mathbb{R}} \cos(tx) e^{- \frac{x ^2}{2}} dx} = \frac{1}{\sqrt{2\pi}}
+    %\end{gather*}
+  %\end{enumerate}
+
+  On dérive \(\varphi_X(t)\). Si
+
+  \begin{gather*}
+    \varphi_X(t) = \int_{\mathbb{R}} \cos(tx) e^{- \frac{x ^2}{2}}dx,
+  \end{gather*}
+
+  alors
+
+  \begin{gather*}
+    \varphi_X'(t) = \int_{\mathbb{R}} -x \sin(tx)e^{- \frac{x ^2}{2}} dx = \underbrace{\left[\sin(tx) e^{-\frac{x ^2}{2}} \right]_{-\infty}^{+\infty}}_{=0} - \int_{-\infty}^{+\infty} t \cos(tx)e^{-\frac{x ^2}{2}} dx = - t \varphi_X(t),
+  \end{gather*}
+
+  ce qui montre que \(\varphi_X'(t) = -t \varphi_X(t)\), i. e.
+
+  \[\frac{d \varphi_X(t)}{dt} = - t \varphi_X(t).\]
+
+  C'est une équation différentielle du premier ordre. On utilise la méthode des quadratures pour la résoudre. On a :
+
+  \[\frac{d \varphi_X(t)}{\varphi_X(t)} = - t dt,\]
+
+  ce qui donne, quand on intègre,
+
+  \begin{gather*}
+    \int_{\varphi_X(0)}^{\varphi_X(t)} \frac{d \varphi_X(t)}{\varphi_X(t)} = -\int_{0}^{t} t dt,
+  \end{gather*}
+
+  ce qui donne \(\ln(\varphi_X(t)) = - \displaystyle \frac{t ^2}{2}\), i. e. \(\varphi_X(t) = e^{- \frac{t ^2}{2}}.\)
+\end{enumerate}
+\end{exemple}
+
+\begin{prop}
+  Supposons que \(\mathbb{E}[\left\lvert X \right\rvert ^{n}] \less \infty\) (moment d'ordre \(n\) fini). Alors \(\varphi_X ^{(r)}(t)\) existe pour \(r \leq n\) où \(\varphi_X ^{(r)}\) dénote la dérivée d'ordre \(r\) de \(\varphi_X\) par rapport à \(t\) et :
+
+  \begin{gather*}
+    \varphi_X ^{(r)}(t) = \int_{\mathbb{R}} (ix)^{r} e^{itx} d P_X(x)
+  \end{gather*}
+
+  et
+
+  \begin{gather*}
+    \mathbb{E}[X ^{r}] = \frac{\varphi_X ^{(r)}(0)}{i ^{r}} \text{ pour } r \leq n.
+  \end{gather*}
+
+  De plus, on a :
+
+  \begin{gather*}
+    \varphi(t) = \sum_{k=0}^{n} \frac{(it)^{k}}{k!} \mathbb{E}[X ^{k}]+ \frac{(it)^{n}}{n!} \varepsilon_n(t),
+  \end{gather*}
+
+  avec \(\left\lvert \varepsilon_n(t) \right\rvert \leq 3 \mathbb{E}[\left\lvert X \right\rvert ^{n}] \underset{t \to 0}{\longrightarrow} 0\).
+\end{prop}
+
+\begin{remark}
+  Si \(\mathbb{E}[\left\lvert X \right\rvert ^{n}] \less \infty \implies \mathbb{E}[\left\lvert X \right\rvert ^{r}] \less \infty\), avec \(r \leq n\).
+\end{remark}
+
+\begin{proof}
+  Soit \(n \geq  1\), on fait la preuve pour \(r=1\). On élimine l'indice \(X\) dans \(\varphi_X(t)\). On doit contrôler
+
+  \begin{gather}
+    \lim_{h \to 0} \frac{\varphi(t+h) - \varphi(t)}{h} = \lim_{h \to 0}  \frac{[e^{i(t+h)x}-e^{itx}  ]}{h}d P_X(t) = \int_{\mathbb{R}} \lim_{h \to 0} \left[\frac{e^{i(t+h)x} - e^{itx}}{h}\right] d P_X(x).  \label{lim_int}
+  \end{gather}
+
+  On développe la quantité \(e^{ix(t+h)}\) dans le point 0 :
+
+  \begin{gather*}
+    \frac{e^{ix(t+h)} - e^{itx}  }{h} = \frac{e^{ixt}+ e^{ixt}ixh+ O(h^2)- e^{itX}}{h} \approx e^{ixt}ix + O(h).
+  \end{gather*}
+
+  L'égalité \ref{lim_int} devient :
+
+  \[\ref{lim_int} = \int_{\mathbb{R}} ix e^{itx} d P_X(x) \less \infty.\]
+
+\end{proof}
 
 
 
@@ -2248,6 +2423,7 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
 
   \begin{enumerate}
     \item Prenons \(X\) et \(Y\) indépendantes. Montrer que \(Z\) est à densité indépendante de la nature de \(X\). \emph{On peut essayer avec \(X\) qui suit une loi binomiale}.
+    \item Soit maintenant \(X\) une variable gaussienne \(\mathscr{N}(0, 1)\) et \(Y=XB\) où \(\mathbb{P}(B=1) = \mathbb{P}(X=-1) = \frac{1}{2}\). Montrer que \(X\) et \(Y\) sont dépendantes et que \(Z = X+Y\) n'est pas à densité.
   \end{enumerate}
 \end{exo}
 

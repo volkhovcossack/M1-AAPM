@@ -2205,6 +2205,165 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
   \end{enumerate}
 \end{proof}
 
+\begin{exo}\marginnote{16-10-2023}
+  Montrer que si \(\sigma \in \mathfrak{A}_n\), alors les conjugués de \(\sigma\) dans \(\mathfrak{S}_n\) forment une (respectivement deux) classe(s) de conjugaison dans \(\mathfrak{A}_n\) s'il existe une permutation impaire commutant à \(\sigma\) (respectivement sinon (c'est-à-dire s'il n'existe pas de permutation impaire)).
+\end{exo}
+
+\begin{proof}
+  \begin{remark}
+    La classe de conjugaison dans \(\mathfrak{S}_n\) et dans \(\mathfrak{A}_n\) de \(\sigma\) est :
+
+    \[\operatorname{Conjug}_{\mathfrak{S}_n}(\sigma) = \{ \tau \sigma \tau ^{-1}, \tau \in \mathfrak{S}_n\} \text{ et }\operatorname{Conjug}_{\mathfrak{A}_n}(\sigma) = \{ \tau \sigma \tau ^{-1}, \tau \in \mathfrak{A}_n\}. \]
+  \end{remark}
+
+  On peut faire agir le groupe \(\mathfrak{S}_n\) sur lui-même par conjugaison :
+
+  \[\begin{matrix}
+  \mathfrak{S}_n \times \mathfrak{S}_n   & \longrightarrow & \mathfrak{S}_n \\
+   (\sigma, \tau) & \longmapsto & \sigma \cdot \tau = \sigma \tau \sigma ^{-1}.
+  \end{matrix}\]
+
+  Si \(\tau \in \mathfrak{S}_n\), alors :
+
+  \[\operatorname{Orb}_{\mathfrak{S}_n}(\tau):=\{ \sigma \cdot \tau, \sigma \in \mathfrak{S}_n \} = \{ \sigma \tau \sigma ^{-1}, \sigma \in \mathfrak{S}_n \} = \operatorname{Conjug}_{\mathfrak{S}_n}(\tau).\]
+
+  \begin{gather*}
+    \operatorname{Stab}_{\mathfrak{S}_n}(\tau) = \{ \sigma \in \mathfrak{S}_n \mid \sigma \cdot \tau = \tau \} = \{ \sigma \in \mathfrak{S}_n \mid \sigma \tau \sigma ^{-1} = \tau \} \\
+    = \{ \sigma \in \mathfrak{S}_n \mid \sigma \tau = \tau \sigma \} = \text{centralisateur}_{\mathfrak{S}_n}(\tau).
+  \end{gather*}
+
+  On a
+
+  \[\sharp\operatorname{Orb}_{\mathfrak{S}_n}(\tau) = [\mathfrak{S}_n : \operatorname{Stab}_{\mathfrak{S}_n}(\tau)].\]
+
+  On peut aussi faire agir le groupe alterné \(\mathfrak{A}_n\) sur lui-même par conjugaison :
+
+  \[\begin{matrix}
+  \mathfrak{A}_n \times \mathfrak{A}_n & \longrightarrow & \mathfrak{A}_n \\
+   (\sigma,\tau) & \longmapsto & \sigma \tau \sigma ^{-1}.
+  \end{matrix}\]
+
+  Si \(\tau \in \mathfrak{A}_n\), alors
+
+  \[\operatorname{Orb}_{\mathfrak{A}_n}(\tau) = \operatorname{Conjug}_{\mathfrak{A}_n}(\tau)\]
+
+  et
+
+  \[\operatorname{Stab}_{\mathfrak{A}_n}(\tau) = \text{centralisateur}_{\mathfrak{A}_n}(\tau)\]
+
+  et on a :
+
+  \[\sharp\operatorname{Orb}_{\mathfrak{A}_n}(\tau) = [\mathfrak{A}_n : \operatorname{Stab}_{\mathfrak{A}_n}(\tau)].\]
+
+  Soit \(\sigma \in \mathfrak{A}_n\). Supposons qu'il n'existe pas de permutation impaire qui commute avec \(\sigma\). Alors \(\operatorname{Stab}_{\mathfrak{S}_n}(\sigma) = \operatorname{Stab}_{\mathfrak{A}_n}(\sigma)\).
+
+  D'où
+
+  \begin{gather*}
+    \sharp(\operatorname{Orb}_{\mathfrak{S}_n}(\sigma)) = [\mathfrak{S}_n : \operatorname{Stab}_{\mathfrak{S}_n}(\sigma)] = [\mathfrak{S}_{n} : \operatorname{Stab}_{\mathfrak{A}_n}(\sigma)] \\
+    = [\mathfrak{S}_n : \mathfrak{A}_n] \times [\mathfrak{A}_n : \operatorname{Stab}_{\mathfrak{A}_n}(\sigma)] = 2 \times [\mathfrak{A}_n : \operatorname{Stab}_{\mathfrak{A}_n}(\sigma)] = \sharp(\operatorname{Orb}_{\mathfrak{S}_n}(\sigma)).
+  \end{gather*}
+
+  Si \(\operatorname{Stab}_{\mathfrak{A}_n}(\sigma)\) est d'indice \(\geq  2\) dans \(\operatorname{Stab}_{\mathfrak{S}_n}(\sigma)\), alors \(\operatorname{Stab}_{\mathfrak{A}_n}(\sigma) \geq  \sharp \operatorname{Orb}_{\mathfrak{S}_n}(\sigma)\), d'où l'égalité, car \(\operatorname{Orb}_{\mathfrak{A}_n}(\sigma) \subset \operatorname{Orb}_{\mathfrak{S}_n}(\sigma)\).
+\end{proof}
+
+\begin{exo}[Problème donné au partiel en octobre 2022]
+
+  \
+
+  \begin{enumerate}
+    \item Combien le groupe \(\mathfrak{S}_n\) admet de classes d'isomorphismes de représentations irréductibles ?
+    \item On fait agir \(\mathfrak{S}_{4}\) sur lui-même par conjugaison et on considère le 3-cycle \(\sigma = (1 \ 2 \ 3)\) dans \(\mathfrak{S}_{4}\).
+    \begin{enumerate}
+      \item Quel est l'ordre du stabilisateur de \(\sigma \text{ dans } \mathfrak{S}_{4}\) ?
+      \item En déduire qu'il n'existe pas de permutation impaire qui commute avec \(\sigma\).
+      \item En déduire que les conjugués de \(\sigma\) dans \(\mathfrak{S}_{4}\) forment deux classes de conjugaison de \(\sigma\) dans \(\mathfrak{S}_{4}\).
+    \end{enumerate}
+    \item Combien \(\mathfrak{A}_4\) admet-il de classes d'isomorphisme de représentations irréductibles ?
+    \item Soit \(K = \{ e, (1 \ 2)(3 \ 4), (1 \ 3)(2 \ 4), (1 \ 4)(2 \ 3)\}\).
+    \begin{enumerate}
+      \item Montrer que \(K\) est un sous-groupe distingué de \(\mathfrak{S}_{4}\).
+      \item Montrer que \(K\) est isomorphe au groupe de Klein.
+      \item Le groupe quotient \(\mathfrak{A}_4/ K\) est-il abélien ?
+      \item Déterminer le sous-groupe dérivé \(D(\mathfrak{A}_{4})\) de \(\mathfrak{A}_4\).
+      \item En déduire le nombre de représentations irréductibles de degré 1 (à isomorphisme près) de \(\mathfrak{A}_4\) et celui de degré supérieur. 
+    \end{enumerate}
+  \end{enumerate}
+\end{exo}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item La partition de \(\mathfrak{S}_4\) en classes de conjugaison est la suivante (car deux permutations de \(\mathfrak{S}_{4}\) sont conjuguées si et seulement si elles ont le même type). Dans \(\mathfrak{S}_{4}\), on a :
+
+    \begin{gather*}
+      \mathfrak{S}_{4} = \underbrace{\operatorname{Conjug}(\operatorname{id})}_{=\{ \operatorname{id}\}} \cup \underbrace{\operatorname{Conjug}((1 \ 2))}_{\text{transpositions}, \sharp = 6} \cup \underbrace{\operatorname{Conjug}((1 \ 2 \ 3))}_{\text{3-cycles}, \sharp = 8} \cup \underbrace{\operatorname{Conjug}((1 \ 2)(3 \ 4))}_{\text{type (2,2)}, \sharp = 3} \cup \underbrace{\operatorname{Conjug}(1 \ 2 \ 3 \ 4)}_{\text{4-cycles}, \sharp = 6}.
+    \end{gather*}
+
+    Le nombre de représentations irréductibles de \(\mathfrak{S}_{4}\) est égal au nombre de ses classes de conjugaison, à savoir 5.
+
+    \item \begin{enumerate}
+      \item On a
+
+      \begin{gather*}
+        [\mathfrak{S}_{4}: \operatorname{Stab}_{\mathfrak{S}_{4}}(\sigma)] = \sharp \operatorname{Orb}_{\mathfrak{S}_{4}}(\sigma) = \sharp \operatorname{Conjug}_{\mathfrak{S}_{4}}(\sigma) = \sharp \{ \text{3-cycles de } \mathfrak{S}_{4}\}.
+      \end{gather*}
+
+      D'où
+
+      \[\left\lvert \operatorname{Stab}_{\mathfrak{S}_{4}}(\sigma)\right\rvert = \frac{\left\lvert \mathfrak{S}_{4} \right\rvert}{\sharp \operatorname{Orb}_{\mathfrak{S}_{4}}(\sigma)} = \frac{24}{8} = 3.\]
+
+      \begin{remark}
+        Le nombre de \(r\)-cycles dans \(\mathfrak{S}_n\) (\(r \leq n\)) est égal à :
+
+        \[\frac{A ^{r}_{n}}{r} = \frac{n!}{r(n-r)!}.\]
+
+        Par exemple, le nombre de 3-cycles dans \(\mathfrak{S}_{4}\) est
+
+        \[\frac{4!}{3 \times 1!} = 8.\]
+      \end{remark}
+
+      \item Le stabilisateur de \(\sigma\) dans \(\mathfrak{S}_{4}\) est le centralisateur de \(\sigma\) dans \(\mathfrak{S}_{4}\) (dans ce cas précis), à savoir l'ensemble des permutations de \(\mathfrak{S}_{4}\) qui commutent avec \(\sigma\). Or :
+
+      \begin{itemize}
+        \item \(e\) commute avec \(\sigma\) ;
+        \item \(\sigma\) commute avec \(\sigma\) ;
+        \item \(\sigma^{-1} = \sigma^2\) commute avec \(\sigma\).
+      \end{itemize}
+
+      Puisque \(\operatorname{Stab}_{\mathfrak{S}_{4}}(\sigma)\) est d'ordre 3, on a donc :
+
+      \[\operatorname{Stab}_{\mathfrak{S}_{4}}(\sigma) = \{ e, \sigma, \sigma^2 \}.\]
+
+      Or les permutations \(e, \sigma, \sigma ^2\) sont toutes paires, d'où le résultat.
+
+      \item On a \[\operatorname{Conjug}_{\mathfrak{S}_{4}}(\sigma) = \{ \text{3-cycles de } \mathfrak{S}_{4}\} = \{ (1 \ 2 \ 3), (1 \ 3 \ 2), (1 \ 2 \ 4), (1 \ 4 \ 2), (1 \ 3 \ 4), (1 \ 4 \ 3), (2 \ 3 \ 4), (2 \ 4 \ 3)\}.\]
+
+      Cette classe de conjugaison dans \(\mathfrak{S}_{4}\) se décompose en deux classes de conjugaison dans \(\mathfrak{S}_{4}\) en quatre éléments chacune.
+
+      \[\operatorname{Conjug}_{\mathfrak{A}_4}((1 \ 2 \ 3)) = \{ (1 \ 2 \ 3), (1 \ 4 \ 2), (1 \ 3 \ 4), (2 \ 4 \ 3) \}\]
+
+      et
+
+      \[\operatorname{Conjug}_{\mathfrak{S}_{4}}((1 \ 3 \ 2)) = \{ (1 \ 3 \ 2), (1 \ 2 \ 4), (1 \ 4 \ 3), (2 \ 3 \ 4) \}.\]
+
+      \begin{remark}
+        En revanche, les types (2,2) constituent une classe de conjugaison dans \(\mathfrak{A}_4\), car il existe une permutation impaire qui commute avec \((1 \ 2)(3 \ 4)\), à savoir \((1 \ 2)\).
+      \end{remark}
+    \end{enumerate}
+
+    \item On a :
+
+    \begin{gather*}
+      \mathfrak{A}_4 = \{ \text{permutations paires de } \mathfrak{S}_{4}\} = \{ \operatorname{id}\} \cup \{ \text{3-cycles} \} \cup \{ \text{type (2,2)}\} \\
+      = \operatorname{Conjug}_{\mathfrak{A}_{4}}(\operatorname{id}) \cup \operatorname{Conjug}_{\mathfrak{A}_{4}}((1 \ 2 \ 3)) \cup\operatorname{Conjug}_{\mathfrak{S}_{4}}((1 \ 3 \ 2)) \cup  \operatorname{Conjug}_{\mathfrak{A}_{4}}((1 \ 2)(3 \ 4)).
+    \end{gather*}
+
+    \(\mathfrak{A}_4\) admet donc 4 représentations irréductibles à isomorphisme près.
+  \end{enumerate}
+\end{proof}
 
 
 \end{document}

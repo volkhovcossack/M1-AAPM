@@ -1581,7 +1581,7 @@ Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre cro
     \begin{gather*}
       \sum_{1 \leq i_1 \less \dots \less i_k \leq  n}^{} c _{i_1 \dots i_k} \overline{\varepsilon} ^{i_1 \dots i_k} = 0 \\
       \implies \forall 0 \leq j_1 \less \dots \less j_k \leq n, \sum_{1 \leq i_1 \less \dots \less i_k \leq n}^{} c _{i_1 \dots i_k} \overline{\varepsilon} ^{i_1 \dots i_k}(e _{j_1}, \dots, e _{j_k}) = 0 \\
-      \implies 0 = \sum_{1 \leq i_1 \less \dots i_k \leq  n}^{} c _{i_1 \dots i_k} \delta ^{i_1} _{j_1}\dots \delta _{j_1} ^{i_1} = c _{j_1 \dots j_k}.
+      \implies 0 = \sum_{1 \leq i_1 \less \dots i_k \leq  n}^{} c _{i_1 \dots i_k} \delta ^{i_1} _{j_1}\dots \delta _{j_k} ^{i_k} = c _{j_1 \dots j_k}.
     \end{gather*}
 
     \item Ils génèrent \(\Lambda ^{k}(E)\) : exercice.
@@ -1590,16 +1590,16 @@ Si \(j_1, \dots, j_k\) sont \(k\) indices différents, mais pas dans l'ordre cro
 
 \emph{Quelle est la dimension de \(\Lambda ^{k}(E)\) ?}
 
-C'est \(\operatorname{dim}(\Lambda ^{k}(E)) = \binom{n}{k} = \frac{n!}{k! (n-k)!}\).
+C'est \(\operatorname{dim}(\Lambda ^{k}(E)) = \displaystyle\binom{n}{k} = \displaystyle\frac{n!}{k! (n-k)!}\).
 
 Par convention, \(\operatorname{dim}(\Lambda ^{0}(E)) =1 \text{ et } \Lambda ^{k}(E) = \mathbb{R}\), \(\Lambda ^{k}(E) = \{ 0 \} \) si \(k \less 0\) et \[\operatorname{dim}(\Lambda ^{1}(E)) = \frac{n!}{1!(n-1)!} = n \text{ et } \operatorname{dim}(\Lambda ^{n}(E)) = \frac{n!}{(n-n)! 0!} = 1. \]
 
 \begin{prop}
-  Si \(\alpha \in \Lambda ^{k}(F)\), \(T \in \mathscr{L}(E, F) \), \((\Omega ^{k}(T))(\alpha) \in \Lambda ^{k}(E)\).
+  Si \(\alpha \in \Lambda ^{k}(F)\), \(T \in \mathscr{L}(E, F) \), alors \((\Omega ^{k}(T))(\alpha) \in \Lambda ^{k}(E)\), avec \(\Omega ^{k}(T) : \Omega ^{k}(F) \longrightarrow \Omega ^{k}(E)\).
 \end{prop}
 
 \begin{proof}
-  Si \(\beta = (\Omega ^{k}(E))(\alpha)\), \(v_1, \dots, v_k \in E\),
+  Si \(\beta = (\Omega ^{k}(T))(\alpha)\), \(v_1, \dots, v_k \in E\),
 
   \begin{gather*}
     \beta(v_1, \dots, v_k) = \alpha(T(v_1), \dots, T(v_k)).
@@ -1636,10 +1636,10 @@ On écrit
 
     Donc \[\overline{\varepsilon} ^{1 2 \dots n}(v_1, \dots, v_n) = \operatorname{det}[v_1 \ \dots \ v_n]. \]
 
-    C'est le volume \(n\)-dimensionnel signé de parallélipipède crée par \((v_1, \dots, v_n)\) (ordonné). On dit que \(\overline{\varepsilon} ^{1 \dots n} \) est l'élément de volume sur \(\Lambda ^{k}(E)\) et on va le noter par \(w = \overline{\varepsilon}^{1 \dots n}\).
+    C'est le volume \(n\)-dimensionnel signé de parallélipipède crée par \((v_1, \dots, v_n)\) (ordonné). On dit que \(\overline{\varepsilon} ^{1 \dots n} \) est l'élément de volume sur \(\Lambda ^{k}(E)\) et on va le noter par \(\omega = \overline{\varepsilon}^{1 \dots n}\).
 
     \begin{gather*}
-      w(v_1, \dots, v_n) = \text{ volume signé de parallélipipède créé par } v_1, \dots, v_n = \{\sum_{i=1}^{n} \lambda_i v_i, 0 \leq  \lambda_i \leq 1\}.
+      \omega(v_1, \dots, v_n) = \text{ volume signé de parallélipipède créé par } v_1, \dots, v_n = \left\{\sum_{i=1}^{n} \lambda_i v_i, 0 \leq  \lambda_i \leq 1\right\}.
     \end{gather*}
   \end{enumerate}
 \end{exemple}
@@ -1669,7 +1669,7 @@ On écrit
   \end{gather*}
 \end{remark}
 
-Dans le cas général, \(w = \overline{\varepsilon} ^{1 \dots n} \in \Lambda ^{k}(E)  \) est le seul élément de base pour cet espace de dimension 1. Si \(T : E \to E\) transpormation linéaire \(\Lambda ^{k}(T) : \Lambda ^{k}(E) \longrightarrow \Lambda ^{k}(E)\), mais \(\operatorname{dim}(\Lambda ^{n}(E)) = 1\). S'il existe \( c \in \mathbb{R}, \forall \alpha \in \Lambda ^{n}(E)(\alpha), \Lambda ^{n}(T)(\alpha) = c \alpha\).
+Dans le cas général, \(\omega = \overline{\varepsilon} ^{1 \dots n} \in \Lambda ^{k}(E)  \) est le seul élément de base pour cet espace de dimension 1. Si \(T : E \to E\) transpormation linéaire \(\Lambda ^{k}(T) : \Lambda ^{k}(E) \longrightarrow \Lambda ^{k}(E)\), mais \(\operatorname{dim}(\Lambda ^{n}(E)) = 1\). S'il existe \( c \in \mathbb{R}, \forall \alpha \in \Lambda ^{n}(E), \Lambda ^{n}(T)(\alpha) = c \alpha\).
 
 \begin{definition}
   \(\operatorname{det}(T) := c\).
@@ -1797,7 +1797,7 @@ La réciproque est aussi vraie.
   Etre de la même orientation est une relation d'équivalence sur la collection de bases sur \(E\). Il y a deux classes d'équivalence.
 \end{remark}
 
-Si on fait la théorie sur \(\mathbb{C}\) (qui n'est pas un corps ordonné), on ne peut pas définir une orientation. Si \(\omega(e_1, \dots, e_n) \in \mathbb{C}\), il n'y a pas de signe (Kahler).
+Si on fait la théorie sur \(\mathbb{C}\) (qui n'est pas un corps ordonné), on ne peut pas définir une orientation. Si \(\omega(e_1, \dots, e_n) \in \mathbb{C}\), il n'y a pas de signe (K\"ahler).
 
 \
 

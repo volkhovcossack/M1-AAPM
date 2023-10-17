@@ -1555,7 +1555,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   Réciproquement, si \(\rho\) et \(\rho'\) sont isomorphes, alors \(\chi _{\rho} = \chi _{\rho'}\) (déjà vu).
 \end{proof}
 
-\begin{corollary}[Critère d'irréductibilité]
+\begin{corollary}[Critère d'irréductibilité]\label{critere}
   Une représentation \(\rho : G \longrightarrow GL(V)\) d'un groupe \(G\) est irréductible si et seulement si \(\langle \chi, \chi \rangle = 1 \) où \(\chi\) est le caractère de \(\rho\).
 \end{corollary}
 
@@ -2289,8 +2289,29 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
       \item Déterminer le sous-groupe dérivé \(D(\mathfrak{A}_{4})\) de \(\mathfrak{A}_4\).
       \item En déduire le nombre de représentations irréductibles de degré 1 (à isomorphisme près) de \(\mathfrak{A}_4\) et celui de degré supérieur.
     \end{enumerate}
+
+    \item \marginnote{17-10-2023} Soit \(\chi\) un caractère linéaire \(\mathfrak{A}_4\), i. e. un morphisme de groupes de \(\mathfrak{A}_4\) et à valeurs dans \(\mathbb{C}^*\).
+
+    \begin{enumerate}
+      \item Montrer que le morphisme \(\chi\) se factorise par \(\mathfrak{A}_4 / D(\mathfrak{A}_4)\), i. e. qu'il existe un morphisme \(\check{\chi} : \mathfrak{A}_4 / D(\mathfrak{A}_4) \longrightarrow \mathbb{C}^{*}\) tel que \(\check{\chi} \circ \pi = \chi\).
+      \item En déduire que \(\chi(\tau)\) est d'ordre divisant 3 pour tout \(\tau \in \mathfrak{A}_{4}\).
+      \item En déduire les caractères de degré 1, i. e. les représentations de degré 1, de \(\mathfrak{A}_{4}\).
+    \end{enumerate}
+
+    \item Soit \(\rho : \mathfrak{A}_{4} \longrightarrow GL(V)\) la représentation de permutation associée à l'action naturelle de \(\mathfrak{A}_{4}\) sur \(\{ 1, 2, 3, 4\}\). On rappelle que l'espace \(V\) de cette représentation est \(\mathbb{C}^{4}\) muni de l'action de \(\mathfrak{A}_{4}\) définie, dans la base canonique \((e_1, e_2, e_3, e_4)\) par \(\sigma \cdot e_i = e _{\sigma(i)}\) pour tout \(\sigma \in \mathfrak{A}_{4}\).
+    \begin{enumerate}
+      \item Montrer que \(V\) se décompose sous la forme \(V' \oplus W\) où \(V'\) est la droite engendrée par le vecteur \(v' = e_1 + e_2 + e_3 + e_4\) et \(W\) est l'hyperplan d'équation \(x_1 + x_2 + x_3 + x_4 = 0\).
+      \item Montrer que les sous-espaces vectoriels \(V'\) et \(W\) sont stables par la représentation \(\rho\).
+      \item Soient \(\chi_V\), \(\chi _{V'}\) et \(\chi_W\) les caractères respectivement des représentations \(V, V'\) et \(W\).
+      Montrer que \(\chi_V = \chi _{V'}+ \chi _{W}\).
+      \item Rappeler que vaut le caractère d'une représentation de permutation. En déduire les valeurs de \(\chi_V\) sue les classes de conjugaison de \(\mathfrak{A}_{4}\).
+      \item Montrer que \(\chi _{V'}\) est le caractère trivial et en déduire les valeurs du caractère \(\chi_W\).
+      \item Montrer que le caractère \(\chi_W\) est irréductible.
+    \end{enumerate}
   \end{enumerate}
 \end{exo}
+
+%%%%Solution%%%%%
 
 \begin{proof}
 
@@ -2300,7 +2321,7 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
     \item La partition de \(\mathfrak{S}_4\) en classes de conjugaison est la suivante (car deux permutations de \(\mathfrak{S}_{4}\) sont conjuguées si et seulement si elles ont le même type). Dans \(\mathfrak{S}_{4}\), on a :
 
     \begin{gather*}
-      \mathfrak{S}_{4} = \underbrace{\operatorname{Conjug}(\operatorname{id})}_{=\{ \operatorname{id}\}} \cup \underbrace{\operatorname{Conjug}((1 \ 2))}_{\text{transpositions}, \sharp = 6} \cup \underbrace{\operatorname{Conjug}((1 \ 2 \ 3))}_{\text{3-cycles}, \sharp = 8} \cup \underbrace{\operatorname{Conjug}((1 \ 2)(3 \ 4))}_{\text{type (2,2)}, \sharp = 3} \cup \underbrace{\operatorname{Conjug}(1 \ 2 \ 3 \ 4)}_{\text{4-cycles}, \sharp = 6}.
+      \mathfrak{S}_{4} = \underbrace{\operatorname{Conjug}(\operatorname{id})}_{=\{ \operatorname{id}\}} \cup \underbrace{\operatorname{Conjug}((1 \ 2))}_{\text{transpositions}, \sharp = 6} \cup \underbrace{\operatorname{Conjug}((1 \ 2 \ 3))}_{\text{3-cycles}, \sharp = 8} \cup \underbrace{\operatorname{Conjug}((1 \ 2)(3 \ 4))}_{\text{type (2,2)}, \sharp = 3} \cup \underbrace{\operatorname{Conjug}((1 \ 2 \ 3 \ 4))}_{\text{4-cycles}, \sharp = 6}.
     \end{gather*}
 
     Le nombre de représentations irréductibles de \(\mathfrak{S}_{4}\) est égal au nombre de ses classes de conjugaison, à savoir 5.
@@ -2369,7 +2390,7 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
     \begin{enumerate}
       \item \(K\) contient l'élément neutre ainsi que toutes les permutations de type (2,2). On sait que dans \(\mathfrak{S}_n\), deux permutations sont conjuguées si et seulement si elles ont le même type. Cela implique que \(K\) est stable par conjugaison. Donc il est distingué dans \(\mathfrak{S}_n\).
       \item Il existe deux groupes d'ordre 4 à isomorphisme près : le groupe cyclique \(\mathbb{Z}/{4}\mathbb{Z}\) et le groupe de Klein. Le groupe \(K\) n'est pas abélien, donc il ne peut être isomorphe à \(\mathbb{Z}/{4}\mathbb{Z}\). Il est forcément isomorphe au groupe de Klein.
-      \item Le quotient \(\mathfrak{A}_4 / K\) est d'ordre \(\frac{\left\lvert \mathfrak{A}_4 \right\rvert}{\left\lvert K \right\rvert} = \frac{12}{4}=3\). Comme 3 est premier, le quotient \(\mathfrak{A}_4 / K\) est cyclique, donc abélien. 
+      \item Le quotient \(\mathfrak{A}_4 / K\) est d'ordre \(\frac{\left\lvert \mathfrak{A}_4 \right\rvert}{\left\lvert K \right\rvert} = \frac{12}{4}=3\). Comme 3 est premier, le quotient \(\mathfrak{A}_4 / K\) est cyclique, donc abélien.
       \item On a d'une part \(K \subset D(\mathfrak{A}_4)\). D'autre part, \(K \triangleleft D(\mathfrak{A}_4)\). Par la proposition \ref{prop-group-deriv}, comme \(\mathfrak{A}_4 / K\) est abélien, \(D(\mathfrak{A}_4) \subset K\). Par conséquent, \(D(\mathfrak{A}_4) = K\).
       \item Par le théorème \ref{nb-rep-deg-1}, comme \(\mathfrak{A}_4\) est un groupe fini, le nombre de ses représentations irréductibles de degré 1 est égal à l'indice \([\mathfrak{A}_4 : D(\mathfrak{A}_4)]\) dans \(\mathfrak{A}_4\). Or \(D(\mathfrak{A}_4) = K\). Par conséquent,
 
@@ -2389,6 +2410,104 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
 
       ce qui donne \(d ^2 = 9\). On obtient ainsi \(d=3\).
     \end{enumerate}
+    \item \begin{enumerate}
+      \item Le morphisme \(\chi\) se factorise par \(\pi\) si et seulement si \(\operatorname{Ker}(\chi)\) contient \(D(\mathfrak{A}_4)\) (cf proposition \ref{se-factorise}). Or, d'après le premier théorème d'isomorphisme, on a :
+
+      \[\mathfrak{A}_{4} / \operatorname{Ker}(\chi) \simeq \operatorname{Im}(\chi) = \chi(\mathfrak{A}_{4}) \subset \mathbb{C}^{*},\]
+
+      on en déduit que \(\operatorname{Im}(\chi)\) est abélien (car tout sous-groupe d'un groupe abélien est abélien), et donc que le quotient \(\mathfrak{A}_{4} / \operatorname{Ker}(\chi)\) est abélien (en tant que groupe isomorphe à un groupe abélien).
+      Or, si \(G\) est un groupe et \(H\) un sous-groupe distingué de \(G\), alors le quotient \(G / H\) est abélien si et seulement si \(D(G)\subset H\). On en déduit donc que \(\operatorname{Ker}(\chi)\) contient le sous-groupe dérivé de \(\mathfrak{A}_{4}\). En conclusion, le morphisme \(\chi\) se factorise par \(\mathfrak{A}_{4} / D(\mathfrak{A}_{4})\).
+      \item Soit \(\tau \in \mathfrak{A}_{4}\). Considérons \(\pi(\tau) = \overline{\tau} \in \mathfrak{A}_{4}/D(\mathfrak{A}_{4})\). Puisque \(D=K\), alors \(\left\lvert \mathfrak{A}_{4}/ D(\mathfrak{A}_{4}) \right\rvert = \frac{\left\lvert \mathfrak{A}_{4} \right\rvert}{\left\lvert K \right\rvert} = \frac{12}{4}=3\).
+      Par le théorème de Lagrange, \(\overline{\tau}\) est donc d'ordre divisant 3, i. e. \((\overline{\tau})^3 = \overline{e}\).
+
+      D'où \(\check{\chi}(\overline{e}) = \check{\chi}(\overline{\tau}^{3}) = (\check{\chi}(\tau))^3\). Donc \(\chi(\overline{\tau})\) est d'ordre divisant 3, i. e. \(\check{\chi}(\pi(\tau))\) est d'ordre divisant 3, i. e. \(\chi(\tau)\) est d'ordre divisant 3.
+      \item On rappelle que \(\mathfrak{A}_{4}\) comprend 4 classes de conjugaison :
+
+      \begin{gather*}
+        \operatorname{Conjug}_{\mathfrak{S}_{4}}(e) = \{ e \} ; \\
+        \operatorname{Conjug}_{\mathfrak{S}_{4}}((1 \ 2)(3 \ 4)) = \text{type (2,2)} ; \\
+        \operatorname{Conjug}_{\mathfrak{S}_{4}}((1 \ 2 \ 3)) ; \\
+        \operatorname{Conjug}_{\mathfrak{S}_{4}}((1 \ 3 \ 2)).
+      \end{gather*}
+
+      D'autre part, on a :
+
+      \begin{gather*}
+        \pi((1 \ 2)(3 \ 4)) = \overline{(1 \ 2)(3 \ 4)} = (1 \ 2)(3 \ 4)D(\mathfrak{A}_{4}) = \overline{e},
+      \end{gather*}
+
+      car \((1 \ 2)(3 \ 4) \in D(\mathfrak{A}_{4})\).
+
+      D'où \(\check{\chi} \circ \pi((1 \ 2)(3 \ 4)) = \check{\chi}(\overline{e}) = 1\), donc \(\chi((1 \ 2)(3 \ 4)) = 1\).
+      Puisque les racines cubiques de l'unité dans \(\mathbb{C}\) sont 1, \(j\) et \(j^2\), où \(j = e^{\frac{2 i \pi}{3}} = - \frac{1}{2} + i \frac{\sqrt{3}}{2}\), les caractères de degré 1 de \(\mathfrak{A}_{4}\) sont donc :
+
+      \[\begin{matrix}
+      \chi_0 : & \mathfrak{A}_{4} & \longrightarrow & \mathbb{C}^{*} \\
+      \ & \tau & \longmapsto & 1,
+      \end{matrix}\]
+
+      \[\begin{matrix}
+      \chi_1 : & \mathfrak{A}_{4} & \longrightarrow & \mathbb{C}^{*} \\
+      \ & \operatorname{id} & \longmapsto & 1 \\
+      \ & (1 \ 2)(3 \ 4) & \longmapsto & 1 \\
+      \ & (1 \ 2 \ 3) & \longmapsto & j \\
+      \ & (1 \ 3 \ 2) & \longmapsto & j^2,
+      \end{matrix}\]
+
+      \[\begin{matrix}
+      \chi : & \mathfrak{A}_{4} & \longrightarrow & \mathbb{C}^{*} \\
+      \ & \operatorname{id} & \longmapsto & 1 \\
+      \ & (1 \ 2)(3 \ 4) & \longmapsto & 1 \\
+      \ & (1 \ 2 \ 3) & \longmapsto & j ^2 \\
+      \ & (1 \ 3 \ 2) & \longmapsto & j,
+      \end{matrix}\]
+
+      et de même sur les classes de conjugaison.
+    \end{enumerate}
+    \item \begin{enumerate}
+      \item On a \(V' \cap W = \{ 0 \}\). En effet, si \(v \in V' \cap W\), alors il existe \(\lambda \in \mathbb{C}\) tel que \(v = \lambda v' = \lambda e_1 + \dots + \lambda e_4\), et on a également : \(\lambda + \lambda + \lambda + \lambda = 0\). D'où \(\lambda = 0\) et donc \(v = 0 _{\mathbb{C}^{4}}\).
+
+      De plus, \(\operatorname{dim}(V') = 1\) et \(\operatorname{dim}(W)=3\), d'où \(\operatorname{dim}(V')+ \operatorname{dim}(W) = 4 = \operatorname{dim}(V) =\operatorname{dim}(\mathbb{C} ^{4})\). Donc \(V = V' \oplus W\).
+      \item Montrons que, pour tout \(\tau \in \mathfrak{A}_{4}\), on a \(\rho _{\tau}(V')\subset V'\) et \(\rho _{\tau}(W) \subset W\), i. e. \(\forall \tau \in \mathfrak{A}_{4}, \forall v \in V', \rho _{\tau}(v) \in V'\) et \(\forall \tau \in \mathfrak{A}_{4}, \forall w \in W, \rho _{\tau}(w) \in W\).
+
+      Soient \(\tau \in \mathfrak{A}_{4}\). Il existe donc \(\lambda \in \mathbb{C}\) tel que \(v =  \lambda v' = \lambda e_1 + \dots + \lambda e_4\). On a
+
+      \begin{gather*}
+        \rho _{\tau}(v) = \rho _{\tau}(\lambda v') = \lambda \rho _{\tau}(v') = \lambda \rho _{\tau}(e_1 + \dots e_4) \\
+        = \lambda(\rho _{\tau}(e_1) + \dots + \rho _{\tau}(e_4)) = \lambda (e _{\tau(1)} + \dots + e _{\tau(4)}) = \lambda v',
+      \end{gather*}
+
+      car \(\tau\) est un élément de \(\mathfrak{A}_{4}\). Conclusion : \(\rho _{\tau}(v) \in V'\).
+
+      Soient \(\tau \in \mathfrak{A}_{4}\) et \(w \in W\). Posons \(w = \displaystyle\sum_{i=1}^{4} w_i e_i \). On a
+      \begin{gather*}
+        \rho _{\tau}(w) = \rho _{\tau}\left(\sum_{i=1}^{4} w_i e_i \right) = \sum_{i=1}^{4} w_i \rho _{\tau}(e_i) = \sum_{i=1}^{4} w_i e _{\tau(i)}.
+      \end{gather*}
+
+      Donc \(\rho _{\tau}(w) \in W\), car \(w_1 + \dots + w_4 = 0\) (car \(w \in W\)). Conclusion : \(W\) est stable par la représentation \(\rho\).
+      \item En effet, puisque \(V = V' \oplus W\) et que \(V'\) et \(W'\) sont stables par \(\rho\), on obtient le résultat.
+      \item Puisque \(\rho\) est la représentation de permutations de \(\mathfrak{A}_{4}\), on en déduit que, pour tout \(\tau \in \mathfrak{A}_{4}\), la trace de \(\rho _{\tau}\), i. e. \(\chi_V(\tau)\), est égale au nombre de points fixes de \(\tau\) agissant sur \(\{ 1, 2, 3, 4 \}\). On a donc \(\chi_V(\operatorname{id}) = 4\), \(\chi_V((1 \ 2)(3 \ 4)) = 0\), \(\chi_V((1 \ 3 \ 2)) = 1\).
+      \item Le vecteur \(e_1 + \dots + e_4\) est laissé fixé par toute permutation de \(\mathfrak{A}_{4}\). On en déduit que \(\chi _{V'}\) est le caractère trivial \(\chi_V(\tau) = 1, \forall \tau \in \mathfrak{A}_{4}\). De plus, on a
+
+      \[\chi_V = \chi _{V'} + \chi_W,\]
+
+      d'où
+
+      \begin{itemize}
+        \item \(\chi_V(\operatorname{id}) = \chi_V(\operatorname{id}) - \chi _{V'}(\operatorname{id}) = 4-1 = 3\) ;
+        \item \(\chi_W((1 \ 2) (3 \ 4)) = \chi_V((1 \ 2) (3 \ 4)) - \chi _{V'}((1 \ 2) (3 \ 4)) = 0 -1 = -1\) ;
+        \item \(\chi_W ((1 \ 2 \ 3)) = \chi _{V}((1 \ 2 \ 3)) - \chi _{V'}((1 \ 2 \ 3)) = 1 - 1 = 0\) ;
+        \item \(\chi_W ((1 \ 3 \ 2)) = \chi_V((1 \ 2 \ 3)) - \chi _{V'}((1 \ 2 \ 3)) = 1 - 1 = 0\).
+      \end{itemize}
+
+      \item On utilise le critère d'irréductibilité des caractères \ref{critere}.
+
+      \begin{gather*}
+        \langle \chi_W, \chi_W \rangle = \frac{1}{\left\lvert \mathfrak{A}_{4} \right\rvert} \sum_{\tau \in \mathfrak{A}_{4}} \overline{\chi(\tau)} \chi(\tau) = \frac{1}{12}(1 \cdot 3^2 + 3 \cdot (-1)^2 + 4 \cdot 0 + 4 \cdot 0) = \frac{12}{12}=1.
+      \end{gather*}
+
+      Cela permet de conclure que \(\chi_W\) est irréductible. 
+      \end{enumerate}
   \end{enumerate}
 \end{proof}
 

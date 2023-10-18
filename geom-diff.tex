@@ -16,6 +16,7 @@
 \usepackage{stmaryrd}
 \usepackage{framed}
 \usepackage{marginnote}
+\usepackage{float}
 \usepackage[Glenn]{fncychap}
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -1610,7 +1611,7 @@ Par convention, \(\operatorname{dim}(\Lambda ^{0}(E)) =1 \text{ et } \Lambda ^{k
 
 On écrit
 
-\[\Lambda ^{k}(T) \stackrel{\text{déf}}{=} \Omega ^{k}(E) _{\mid \Lambda ^{k}(E)}.\]
+\[\Lambda ^{k}(T) \stackrel{\text{déf}}{=} \Omega ^{k}(T) _{\mid \Lambda ^{k}(E)}.\]
 
 \begin{exemple}
   \begin{enumerate}
@@ -1669,7 +1670,7 @@ On écrit
   \end{gather*}
 \end{remark}
 
-Dans le cas général, \(\omega = \overline{\varepsilon} ^{1 \dots n} \in \Lambda ^{k}(E)  \) est le seul élément de base pour cet espace de dimension 1. Si \(T : E \to E\) transpormation linéaire \(\Lambda ^{k}(T) : \Lambda ^{k}(E) \longrightarrow \Lambda ^{k}(E)\), mais \(\operatorname{dim}(\Lambda ^{n}(E)) = 1\). S'il existe \( c \in \mathbb{R}, \forall \alpha \in \Lambda ^{n}(E), \Lambda ^{n}(T)(\alpha) = c \alpha\).
+Dans le cas général, \(\omega = \overline{\varepsilon} ^{1 \dots n} \in \Lambda ^{k}(E)  \) est le seul élément de base pour cet espace de dimension 1. Si \(T : E \to E\) transpormation linéaire \(\Lambda ^{k}(T) : \Lambda ^{k}(E) \longrightarrow \Lambda ^{k}(E)\), mais \(\operatorname{dim}(\Lambda ^{n}(E)) = 1\) s'il existe \( c \in \mathbb{R}, \forall \alpha \in \Lambda ^{n}(E), \Lambda ^{n}(T)(\alpha) = c \alpha\).
 
 \begin{definition}
   \(\operatorname{det}(T) := c\).
@@ -1678,6 +1679,8 @@ Dans le cas général, \(\omega = \overline{\varepsilon} ^{1 \dots n} \in \Lambd
 \begin{exo}
   Si \(E = \mathbb{R}^n, T(v) = A \lvert \overrightarrow{ v }  \rangle \) pour la base standart, alors \(\operatorname{det}(T) = \operatorname{det}(A)\).
 \end{exo}
+
+\
 
 On considère \(T : \mathbb{R}^n \to \mathbb{R}^n\), \( \alpha \in \Lambda ^{n}(\mathbb{R}^n)\),
 
@@ -1695,7 +1698,7 @@ Mais
   \operatorname{det}(T) = \omega(T(e_1), \dots, T(e_n)) = \operatorname{det}[ T(e_1), \dots, T(e_n)]. \label{det2}
 \end{equation}
 
-\(\ref{det1}, \ref{det2} \implies \operatorname{det}(T) = \operatorname{det}(A)\).
+\(\ref{det1}, \ref{det2} \text{ impliquent que }  \operatorname{det}(T) = \operatorname{det}(A)\).
 
 \(\operatorname{det}(T)\) est défini directement indépendemment d'une base de \(E\). Donc
 
@@ -1753,7 +1756,7 @@ Comme \(\omega\) est linéairement dépendant, par contraposée, \(\{ T(e_1), \d
   \implies \operatorname{det}(A) = \sum_{\sigma \in S_n}^{} \operatorname{sgn}(\sigma) A _{\sigma_1 1} A _{\sigma_2 2} \dots A _{\sigma_n n}.
 \end{gather*}
 
-\subsection{Les élément de volumes et orientation}
+\subsection{Les éléments de volumes et orientation}
 
 On a défini
 
@@ -1988,5 +1991,601 @@ On a \(\Omega ^{0} \simeq \mathbb{R}\). Si \(\alpha \in \Omega ^{1}(E) = E ^{*}\
   Donc quand on dit que \(i_X(\omega) \in \Lambda ^{n-1}(F)\), on est en train de considérer \(i_X(\omega) _{\mid F ^{n-1}}\) en réalité.
 \end{remark}
 
+\section{Analyse tensorielle sur les ouverts de \(\mathbb{R}^n\)}\marginnote{18-10-2023}
+
+\subsection{Motivation}
+
+On veut faire une analyse (calcul différentiel) sur les surfaces, courbes, variétés (les objets courbes de dimensions supérieures).
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/motiv1.png}
+  \caption{Dans ce cas, \(\mathbb{R}^2\) est tangent partout.}
+  \label{}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.2]{figures/motiv2.png}
+  \caption{Dans ce cas, chaque vecteur tangent est à l'intérieur et chaque plan tangent est différent.}
+  \label{}
+\end{figure}
+
+\begin{definition}
+  Soit \(U \subseteq \mathbb{R}^2\) un ouvert. Pour tout \(a \in U\), l'espace tangent
+
+  \[T_a U \stackrel{\text{déf}}{=} \{ a \} \times \mathbb{R}^{n},\]
+
+  et est muni d'un espace vectoriel de manière suivante :
+
+  \[\forall u,v \in \mathbb{R}^n, \underbrace{(a,u)}_{\in T_a U} + (a,v) = (a, u+v),\]
+
+  \[\forall r \in \mathbb{R}, \forall v \in \mathbb{R}^n, r(a,u) = (a, ru).\]
+\end{definition}
+
+\(T_a U\) devient un espace vectoriel linéairement isomorphe à \(\mathbb{R}^n\). Géométriquement on peut penser à \(T_a U\) comme un vecteur de \(\mathbb{R}^n\) basé en un point \(a\).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/plan_tangent.png}
+  \caption{Exemple d'un plan tangent à \(U\).}
+  \label{}
+\end{figure}
+
+\subsection{Dérivation d'une fonction}
+
+\begin{definition}
+  Soit \(f : U \to \mathbb{R}^n\). Pour tout \(a \in U, Df(a) : \mathbb{R}^n \longrightarrow \mathbb{R}^m\). C'est une application linéaire.
+
+  On va définir
+
+  \[d_a f = df(a) : T_a U \longrightarrow \mathbb{R}^n,\]
+
+  avec \[\underbrace{d f((a,\overrightarrow{v} ))}_{a \in U,\overrightarrow{v} \in \mathbb{R}^n  } = Df(a)(\overrightarrow{v}).\]
+
+  Si \(a \neq b\), \(d_a f\) ne peut pas agir sur \(T_a U\) (formellement, ce n'est pas défini.
+
+  On dit que \(d_a f\) est la dérivée de \(f\) au point \(a\).
+\end{definition}
+
+\begin{remark}[Personnelle]
+  C'est la différentielle définie sur un espace tangent.
+\end{remark}
+
+\begin{remark}
+  Si \(m=1\), \(d_a f \in \mathscr{L}(T_a U, \mathbb{R})\), c'est-à-dire que \(d_a f \in (T_a U) ^{*}\).
+\end{remark}
+
+
+\begin{remark}[Notation]
+  \(T_a ^{*} U := (T_a U)^{*} \simeq \{ a \} \times (\mathbb{R}^n)^{*}\).
+\end{remark}
+
+\begin{definition}
+  Le fibré tangent sur \(U\) est
+
+  \[T U := \bigcup _{a \in U} \underset{(a,\overrightarrow{ v } ), \overrightarrow{ v } \in \mathbb{R}^n }{T_a U} \simeq U \times \mathbb{R}^n\]
+
+  et le fibré cotangent est \[T ^{*} U := \bigcup _{a \in U} \underset{(a,f), f \in (\mathbb{R}^*)^{n}}{T_a ^{*} U} \simeq U \times (\mathbb{R}^{*})^{n}. \]
+\end{definition}
+
+Avec ce formalisme, la différentielle de \(f : U \longrightarrow \mathbb{R}^n\) est définie par \( df : U \longrightarrow T ^{*} U\) et \(\forall a \in U, d f(a) = d_a f \in T_a ^{*} U \subseteq T ^{*} U\).
+
+\begin{remark}
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} Une condition nécessaire pour qu'une application \(\alpha : U \longrightarrow T ^{*} U\) soit une différentielle soit dans la forme \(\alpha = df\) est que pour tout \(a \in U, \alpha(a) \in T ^{*} U\).
+\end{remark}
+
+Si on définit \(\pi : T_a ^{*} \longrightarrow U\) par \(\pi(a,f) = a\), cette condition nécessaire est équivalente que de dire que \(\pi \circ \alpha = \mathds{1}_{U}\).
+
+\begin{exemple}[De différentielle]
+  Projection sur le composant \(j\) :
+
+  On a \(x ^{ j} : U \longrightarrow \mathbb{R}\) telle que
+
+  \[x ^{j}(a_1, \dots, a_n) = a_j.\]
+
+  \[d_a x ^{j}(a, \overrightarrow{v}) = D x ^{j}(a)(\overrightarrow{v}) = \left[\frac{\partial x ^{j} }{\partial x_1}, \dots, \frac{\partial x ^{j} }{\partial x_n}\right] \left[\begin{matrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{matrix}\right] = [0, \dots, 0, \underset{\text{en } j}{1},0, \dots, 0] \left[\begin{matrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{matrix}\right] = v_j.\]
+\end{exemple}
+
+On a \(d x ^{j} : U \longrightarrow T ^{*} U\). Pour tout \(a \in U\), \(d x ^{j}(a) \in T_a^{*}U\).
+
+Donc \(d x ^{j}(a) = (a,f)\) où \(f \in (\mathbb{R}^n)^{*}\). Pour tout \(\overrightarrow{ v }  \in \mathbb{R}^n\), \(f(\overrightarrow{v}) = v_j\). Pour \(e_i \in \mathbb{R}^n, f(e_i) = \delta _{i}^{j}\), donc \(f = e_j\), l'élément de la base duale. On a alors
+
+\[d x ^{j}(a)=(a, e ^{j}).\]
+
+Donc \((d x ^{1}(a), \dots, d x ^{n}(a))\) est une base naturelle pour \(T_a^{*} U\). La base duale de cette base dans \(T_a U \simeq (T_a ^{*}U)^{*}\) est décrite par la notation suivante :
+
+\[\left(\frac{\partial  }{\partial x ^{1}}(a), \dots, \frac{\partial  }{\partial x ^{n}}(a)\right) = ((a,e_1), \dots, (a,e_n)).\]
+
+On a \(\displaystyle\frac{\partial  }{\partial x ^{j}}(a) = (a, e_j), (d x ^{j}(a))\displaystyle\left(\frac{\partial  }{\partial x ^{i}}\right) = \delta^{j}_{i}\).
+
+On suppose que \(E= T_a U\). On peut construire \(\Omega ^{k}(T_a U), \Omega _{l}(T_a U) = \Omega _{l}(T_a ^{*} U), \Omega _{l}^{k}(T_a U)\) qui sont des \((l,k)\)-tenseurs sur \(T_a U\).
+
+On peut aussi définir \(\Lambda ^{k}(T_a U)\) (tenseurs extérieurs covariants), \(\Lambda _{l}(T_a U) = \Lambda ^{l}(T_a ^{*}U)\) (tenseurs extérieurs contravariants), \(\Lambda ^{k}_{l}(T_a U)\).
+
+\begin{definition}
+  On définit \[(T ^{k}_{l})_a U = \Omega ^{k}_{l}(T_a U)\] et \[(\Lambda _{l}^{k})_a U  \stackrel{\text{déf}}{=} (\Lambda ^{k}_{l})(T_a U).\]
+\end{definition}
+
+Si \(k=l=0\), on ne va pas les écrire.
+
+\begin{definition}
+  On peut alors définir les fibrés tensoriels et tensoriels extérieurs par :
+
+  \[T ^{k}_{l} U := \bigcup _{a \in U} (T ^{k}_{l})_a U \text{  et } \Lambda ^{k}_{l} := \bigcup _{a \in U} (\Lambda ^{k}_{l})_a U.\]
+\end{definition}
+
+
+
+Très souvent on va avoir affaire aux fibrés où soit \(k\) soit \(l\) vaut 0. Par exemple,
+
+\begin{gather*}
+  \Lambda ^{k} U = \bigcup _{a \in U} \Lambda_a^{k} U = \bigcup _{a \in U} \Lambda ^{k}(T_a U), \\
+  T ^{k} U = \bigcup _{a \in U} T_a ^{k} U = \bigcup _{a \in U} \Omega ^{k}(T_a U).
+\end{gather*}
+
+Si \(\alpha \in T _{l}^{k} U\), alors il existe \(a \in U\) tel que \(\alpha \in (T_l ^{k})_a U = \Omega ^{k}_{l}(T_a U)\). Donc \(\alpha\) est une application \((k+l)\)-linéaire sur \(\underbrace{T_1 U \times \dots \times T_a U}_{k \text{ fois}} \times \underbrace{(T_a U)^{*} \times \dots \times (T_a U)^{*}}_{l \text{ fois}}\).
+
+Mais une telle application peut être identifiée par une application \((k+l)\)-linéaire sur \[\underbrace{\mathbb{R}^n \times \dots \mathbb{R}^n}_{k \text{ fois}} \times \underbrace{(\mathbb{R}^n)^{*} \times \dots \times (\mathbb{R}^n)^{*}}_{l \text{ fois}}\] avec les isomorphismes \(T_a U \simeq \mathbb{R}^n\), \(T_a ^{*} U \simeq (\mathbb{R}^n)^{*}\).
+
+Donc \(\Omega ^{k}_{l}(T_a U) \simeq \{ a \} \times \Omega ^{k}_{l}(\mathbb{R}^n)\) et on a une projection bien définie sur la première composante
+
+\[\tau _{l}^{k} : \Omega _{l}^{k}(T_a U) \longrightarrow U, \tau _{l}^{k}(a, \tilde{\alpha}) = a.\]
+
+Donc si \(\alpha \in T _{l}^{k}U \), on a \(\tau _{l}^{k}(\alpha)\) est le point \(a \in U\) pour lequel \(\alpha \in (T _{l}^{k})_a U\).
+
+\begin{definition}
+  Un champ tensoriel sur \( U \subseteq \mathbb{R}^n\) est une application
+
+  \[\alpha : U \longrightarrow T _{l}^{k} U\]
+
+  telle que \[\tau _{l}^{k} \circ \alpha = \mathds{1}_{U}, \text{ avec } \tau _{l}^{k}(\alpha(a))=a.\]
+\end{definition}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/ch_tensoriel.png}
+  \caption{Exemple d'un champ tensoriel}
+  \label{}
+\end{figure}
+
+\(\alpha\) est aussi appelée parfois une section du fibré tensoriel \(T ^{k}_{l} U\).
+
+Si \(\alpha\) est un champ tensoriel, pour tout \(a \in U\), \(\alpha(a) \in \Omega _{l}^{k}(T_a U)\).
+
+L'ensemble \((e ^{i_1} \otimes \dots \otimes e ^{i_k} \otimes e _{j_1} \otimes \dots \otimes e _{j_k})\) est une base de \(\Omega _{l}^{k}(\mathbb{R}^n)\) où \(1 \leq i_1, \dots, i_k, j_1, \dots, j_l \leq  n\). Maintenant la base de \(\Omega^{k}_{l}(T_a U)\) devient
+
+\[d x ^{i_1}(a) \otimes \dots \otimes d x ^{i_k}(a) \otimes \frac{\partial }{\partial d x ^{j_1} }(a) \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}(a).\]
+
+Donc pour tout \(a \in U\), il existe des coefficients \(a _{i_1 \dots i_k}^{j_1 \dots j_l}(a) \in \mathbb{R}\) tels que :
+
+\[\alpha(a) = \sum_{\substack{1 \leq  i_1, \dots, i_k \leq  n \\ 1 \leq j_1, \dots, j_l \leq  n}}^{} a ^{j_1 \dots j_l}_{i_1 \dots i_k} d x ^{i_1} \otimes \dots \otimes d x ^{i_k} \otimes \frac{\partial  }{\partial x ^{j_1}}(a) \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}(a).\]
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/cylindre_tens.png}
+  \caption{Cylindre \(S ^{1} \times \mathbb{R}^2\). On peut ``couper'' et considérer les cylindres \(S ^{1} \times [-1, 1]\).}
+  \label{}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/ruban_mobius.jpg}
+  \caption{Le Ruban de Mobius n'est pas équivalent à \(S ^{1} \times [-1, 1]\)}
+  \label{}
+\end{figure}
+
+Donc
+
+\[\alpha = \sum_{1 \leq  i_1, \dots, i_k, j_1, \dots, j_l \leq  n} a _{i_1 \dots i_k}^{j_1 \dots j_l} d x ^{i_1} \otimes \dots \otimes d x ^{i_k} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}\]
+
+où \(a _{i_1 \dots i_k} ^{j_1 \dots j_l} : U \longrightarrow \mathbb{R}\) est une application.
+
+\begin{definition}
+  On dit que le champ vectoriel \(\alpha\) est de classe \(\mathcal{C}^r\) si \(\forall i_1, \dots, i_k, j_1, \dots, j_l\), le coefficient \[\alpha _{i_1 \dots i_k}^{j_1 \dots j_l} \in \mathcal{C}^r(U).\]
+\end{definition}
+
+Donc on peut parler de régularité de \(\alpha : U \longrightarrow \mathbb{R} ^{n+ n ^{k+l}}\) directement, mais dans ce cas là, la définition revient à la même.
+
+\subsubsection{Exemple très important : la métrique riemanienne}
+
+\begin{definition}
+  Soit \(U \subseteq \mathbb{R}^n\) ouvert. Une métrique riemanienne sur \(U\) est un champ tensoriel 2-covariant (de type (0,2)) symétrique, positif-défini ur \(U\).
+\end{definition}
+
+Si \(g\) est une métrique riemanienne sur \(U\), \(g : U \longrightarrow T ^2 U\).
+
+Pour tout \(x \in U, g(a) \in \Omega ^{2}(T_a U)\), avec \(\tau ^2 \circ g = \mathds{1}_{U}\).
+
+\[\forall \overrightarrow{ u }, \overrightarrow{ v } \in T_a U, g(a)(\overrightarrow{ u }, \overrightarrow{ v }  ) = g(a)(\overrightarrow{ v }, \overrightarrow{ u }) \text{ (symétrie)}.\]
+
+Donc cela revient à dire que \(g(a)\) est un produit scalaire sur \(T_a U\) (mais qui dépend de \(a\)).
+
+La métrique riemanienne est donc un champ tensoriel de type (0,2) tel que \(\forall a \in U\), \(g(a)\) est un produit scalaire sur \(T_a U\).
+
+Donc \[g = \sum_{1 \leq  i_1, i_2 \leq n} g _{i_1 i_2} d x ^{i_1} \otimes d x ^{i_2} = \sum_{1 \leq i, j \leq n} g _{ij} d x ^{i} \otimes d x ^{j}.\]
+
+\emph{Quelle est la condition sur les coefficients \(g _{ij}\) pour que \(g\) devienne une métrique riemanienne ?}
+
+Pour tout \(x \in U\), on peut former la matrice \[G_a = [g _{ij}(a)]_{n \times n}.\]
+
+\begin{prop}
+  \(g(a)\) est une métrique riemanienne sur \(T_a U\) si et seulement si \(g(a)\) est un produit scalaire.
+\end{prop}
+
+\begin{lemma}
+  \(g(a)\) est un produit scalaire sur \(T_a U\) si et seulement si \(G_a\) est une matrice symétrique définie positive.
+\end{lemma}
+
+\begin{proof}
+  \begin{gather*}
+    g(a)\left(\frac{\partial  }{\partial x ^{i'}}, \frac{\partial  }{\partial x ^{j'}}\right) = \sum_{1 \leq i, j \leq  n} g _{ij}(a) d x ^{i}(a) \otimes d x ^{j}(a) \left(\frac{\partial  }{\partial x ^{i'}}(a), \frac{\partial  }{\partial d x ^{j'}}  \right) \\
+    = \sum_{1 \leq i,j \leq n} g _{ij}(a) d ^{i}(a)\left(\frac{\partial  }{\partial x ^{i}}(a) \right) d x ^{j}(a) \left(\frac{\partial  }{\partial x ^{j}}(a) \right)  = \sum_{1 \leq i, j \leq n} g _{ij}(a) \delta _{i'}^{i} \delta _{j'}^{j} = g _{i'j'}(a).
+  \end{gather*}
+
+  Donc \(\forall i, j\),
+
+  \[g _{i'j'}(a) = g(a) \left(\frac{\partial  }{\partial x ^{i'}(a)},\frac{\partial  }{\partial x ^{j'}}(a) \right) = g(a)\left(\frac{\partial  }{\partial x ^{j'}(a)},\frac{\partial  }{\partial x ^{i'}}(a) \right) = g _{j'i'}(a), \]
+
+  ce qui implique que \(^{t}G_a = G_a\), donc \(G_a\) est symétrique.
+\end{proof}
+
+Supposons que \(g(a)\) est défini positif.
+
+\begin{gather*}
+  g(a)(\overrightarrow{v}) = \sum_{i,j}^{} d x ^{i}(a) \otimes d x ^{j}(a)(\overrightarrow{v}, \overrightarrow{v}),
+\end{gather*}
+
+avec
+
+%\begin{gather*}
+%  \overrightarrow{v} = \sum_{j=1}^{n} v ^{j} \frac{\partial  }{\partial x ^{j}} = \sum_{i,j} g _{i,j} (a) d x ^{i}(a) \otimes d x ^{j}(a) \left(\sum_{i'} \frac{\partial  }{\partial x ^{i'}}(a), \sum_{j'} v ^{j'} \frac{\partial  }{\partial x ^{j'}}(a)\right) \\
+%  = \sum_{i,j} \sum_{i',j'} g _{ij}(a)v ^{i'} v ^{j'} d x ^{i}(a) \left(\frac{\partial  }{\partial x ^{i'}}(a)\right)  d x ^{j}(a) \frac{\partial  }{\partial x ^{j'}}(a) \right)  = \sum_{\substack{i,j\\i' = i\\j'=j}} g _{ij}(a) v ^{i} v ^{j} \\
+%  = [ v ^{1} \dots v ^{n}] [G_a] \left[\begin{matrix}
+%    v ^{1} \\
+%    \vdots \\
+%    v ^{n}
+%  \end{matrix}\right] = \tilde{\overrightarrow{v}} \cdot G_a \tilde{\overrightarrow{v}}.
+%\end{gather*}
+
+Donc \(\tilde{\overrightarrow{v}} G_a \tilde{\overrightarrow{v}} \geq 0\) pour tout \(\overrightarrow{v} \in \mathbb{R}^n\) et \(\tilde{\overrightarrow{v}} \cdot G_a \tilde{\overrightarrow{v}} = 0 \iff \tilde{\overrightarrow{v}} = 0\), ce qui implique que \(G_a\) est défini positif.
+
+Le sens réciproque est démontré par les mêmes calculs en faisant ...
+
+\paragraph{Commentaires}
+
+\begin{enumerate}
+  \item Si \(G \in r ^{n+n}\) est symétrique et défini positif, alors \(\forall \overrightarrow{u}, \overrightarrow{v} \in \mathbb{R}^n\),
+
+  \begin{gather*}
+    \langle \overrightarrow{u} \mid \overrightarrow{v} \rangle _{G} := \overrightarrow{u} \cdot G \overrightarrow{v} = ^{t} \overrightarrow{u} G \overrightarrow{v} = \langle \overrightarrow{u} \mid G \mid \overrightarrow{v} \rangle
+  \end{gather*}
+
+  est un produit scalaire.
+
+  \item Si \(\langle \overrightarrow{u} \mid \overrightarrow{v} \rangle \) est un produit scalaire sur \(\mathbb{R}^n\), alors il existe une matrice \(G\) dans \(\mathbb{R} ^{n+n}\) symétrique, définie positive telle que
+
+  \[\langle \overrightarrow{u},\overrightarrow{v} \rangle _{*} = \langle \overrightarrow{u} \mid G \mid \overrightarrow{v} \rangle,  \]
+
+  avec \(G = [g _{ij}] _{i,j}\) et \(g _{ij} = \langle e _{i} \mid e _{j} \rangle _{*} \).
+\end{enumerate}
+
+Donc pour la métrique riemanienne,
+
+\[g = \sum_{i,j} g _{ij} d x^{i} \otimes d x^{j}, \]
+
+avec \[g _{ij}(a) = g \left(\frac{\partial  }{\partial x ^{i}}(a), \frac{\partial  }{\partial x ^{j}}(a)\right).\]
+
+Pour tout \(i\), \(\frac{\partial  }{\partial x ^{i}}(a) = (a, e_i) \in T_a U\) et
+
+\[\left(\frac{\partial  }{\partial x ^{1}}(a), \dots, \frac{\partial  }{\partial x ^{n}}(a)\right)\]
+
+est une base de \(T_a U = \{ a \} \times \mathbb{R}^n, a \in U\).
+
+\(g : U \longrightarrow T ^2 U, \tau ^2 \circ g (a) = a, \forall a \in U\) si et seulement si \(\forall a \in U, g(a) \in T_a U\).
+
+La métrique \(g\) est de classe \(\mathcal{C}^r\) si et seulement si \(\forall i, j, g _{ij} : U \longrightarrow \mathbb{R}\) est de classe \(\mathcal{C}^r\) (par définition).
+
+\begin{exemple}[La métrique euclidienne]
+  \[g = \sum_{i=1}^{n} d x^{i} \otimes d x^{i}\]
+
+  et \[\forall a \in U, G_a = I _{n+n} \in \mathbb{R} ^{n+n}.\]
+
+  Supposons \(\gamma : [a,b] \longrightarrow U\) différentiable, avec \([a,b] \subset \mathbb{R}\).
+
+  On a, pour \(\gamma(t) = (x ^{1}(t), \dots, x ^{n}(t) )\), \((\gamma)'(t) = (x ^{1})'(t), \dots, (x ^{n})'(t)\),
+
+  \begin{gather*}
+    L(\gamma) = \int_{a}^{b} \left\Vert \gamma'(t) \right\Vert  dt = \int_{a}^{b}(\gamma'(t) \cdot I _{n+n} \gamma'(t)) ^{\frac{1}{2}}dt = \int_{a}^{b}\langle \gamma'(t) \mid \gamma'(t) \rangle _{I _{n+n}}^{\frac{1}{2}}dt
+  \end{gather*}
+\end{exemple}
+
+
+  On va définir, pour \(\gamma : (a,b) \longrightarrow U\),
+
+  \[T \gamma : \underbrace{T _{(a,b)}}_{(t,\overrightarrow{v}), \overrightarrow{v} \in \mathbb{R}}  \longrightarrow \underbrace{T U}_{(c,\overrightarrow{w}), c \in U, \overrightarrow{w} \in \mathbb{R}^n}.\]
+
+  \(g(\gamma(t))\) est un produit scalaire sur \(T _{\gamma(t)} U\) et
+
+  \[T \gamma(t,\overrightarrow{v}) = (\gamma(t), \overrightarrow{v}\gamma'(t)).\]
+
+  Choisissons \(\{ 1 \}\) comme base de \(\mathbb{R}\). Alors
+
+  \begin{enumerate}
+    \item \[T \gamma _{\mid T _{t}(a,b)} : T _{t (a,b)} \longrightarrow T _{\gamma(t)} U.\]
+
+    \item \(T \gamma (t,1) = (\gamma(t), \gamma'(t))\), avec \((t, 1)\) élément de base pour \(T _{t (a,b)}\).
+  \end{enumerate}
+
+  On définit alors
+
+  \[L _{g}(\gamma) := \int_{a}^{b}g(\gamma(t))(T \gamma(t,1),T \gamma (t,1))^{\frac{1}{2}} dt. \]
+
+Si \(g = \sum_{}^{} g _{ij} d x^{i} \otimes d x^{j}\) et \(G_c = [g _{ij}(c)], \forall c \in U\), on obtient
+
+\[L _{g}(\gamma) = \int_{a}^{b} \langle \gamma'(t) \mid G _{\gamma(t)} \mid \gamma'(t) \rangle ^{\frac{1}{2}}dt.\]
+
+\begin{remark}
+  Si \(c, d \in U, c \neq d, \forall \gamma : [a,b] \longrightarrow U\) tel que \(\gamma(a)=c, \gamma(b)=d\) différentiable sur \((a,b)\), \(L_g(\gamma) \bg 0\).
+\end{remark}
+
+\begin{exo}
+  Si \(\gamma'(t) = 0\), alors \( \gamma(t) \equiv \text{constant} \implies c=d \text{ impossible}\). Il exsite \(t_0 \in (a,b)\) tel que \(\gamma'(t_0) \neq 0 \implies \langle \gamma'(t_0) \mid G _{\gamma(t_0)} \mid \gamma'(t_0) \rangle  \bg 0\). Utiliser la continuité des acteurs pour conclure.
+\end{exo}
+
+\begin{definition}[Rappel : distance, espace métrique]
+
+\end{definition}
+
+\[\forall x, y \in U, d _{g}(x,y) = \inf \{ L _{g}(\gamma), \gamma : [a,b] \longrightarrow U, \gamma \text{ différentiable sur } [a,b], \gamma(a) = x, \gamma(b)=b\}.\]
+
+\begin{thm}
+  Si \( U \subseteq \mathbb{R}^n\) connexe par arcs et \(g\) est une métrique riemanienne continue sur \(U\), alors
+
+  \[d_g : U \times U \longrightarrow \mathbb{R}\]
+
+  est une distance sur \(U\) et \((U, d_g)\) devient un espace métrique.
+\end{thm}
+
+\begin{remark}[Point technique]
+  Si \(U\) est connexe par arcs, \(\forall x, y \in U, \exists \gamma \in \mathcal{C}^0([0, 1], U)\), avec \(\gamma(0) = x, \gamma(1) = y\), alors (analyse réelle, on utilise le fait que \(U\) est ouvert) il existe \(\gamma \in \mathcal{C}^1([0,1], U)\) avec \(\gamma(0)=x, \gamma(1)=y\).
+\end{remark}
+
+Donc il existe un élément de \(\{ \gamma \in \mathcal{C}^1([a,b], U) \mid \gamma(a) = x, \gamma(b) = y\}\), avec \(a = 0, b=1\). Comme \(\gamma \in \mathcal{C}^1([a,b])\), \(\left\lvert \gamma'(t)\right\rvert\) est continue sur \([a,b]\) implique que il existe \(M \bg 0 \) tel que \( \forall t \in [a,b], \left\Vert \gamma'(t) \right\Vert \leq M\) et \(G _{\gamma(t)} :  [a,b] \longrightarrow \mathbb{R}^{n+n}\) est aussi continue.
+
+Cela implique que \( t \longmapsto \langle \gamma'(t) \mid G _{\gamma(t)} \mid \gamma'(t)\rangle\) est continue sur \([a,b]\), ce qui implique que il existe \(\tilde{M}\) tel que
+
+\[\forall t \in [a,b], \langle \gamma'(t) \mid G _{\gamma(t)} \mid \gamma'(t) \rangle ^{\frac{1}{2}} \leq \tilde{M},\]
+
+ce qui implique que
+
+\[L _{g}(\gamma) = \int_{a}^{b}\langle \gamma'(t)\mid G _{\gamma(t)} \mid \gamma'(t) \rangle \leq \tilde{M}(b-a) \less + \infty, \]
+
+donc \(d_g(x,y)\) ne peut être \(+\infty\), \(d_g(x,y) \in \mathbb{R} _{+}\). Donc \(d_g : U \times U \longrightarrow \mathbb{R}\) est justifié.
+
+\begin{remark}
+
+  \
+
+  \begin{enumerate}
+    \item Si \(U\) n'est pas connexe, il faut faire attention que le chemin droit de \(x\) à \(y\) peut sortir de \(U\) et n'est pas éligible pour évaluer \(L _{g}(\gamma)\).
+    \item Même si \(U\) est connexe, il n'y a pas de raison que le chemin sur le segment droit joignant \(x\) à \(y\) est le chemin le plus court :
+
+    \[\gamma(t) = x + t(y-x), \gamma : [0, 1] \longrightarrow U.\]
+
+    Il peut arriver que \[d_g(x,y) \less L_g(\gamma) = \int_{0}^{1} \langle y-x \mid G _{\gamma(t)} \mid y-x \rangle dt. \]
+
+    \item Pas toutes les métriques \(d\) des espaces métriques \((X,d)\) où \(X\) est un ouvert de \(\mathbb{R}^n\) sont  les distances \(d_g\) pour la métrique riemanienne. Par exemple, \(d(x,y) = 1 \text{ si } x=y \text{ et } d(x,y) =0\) sinon ne peut pas dériver de la métrique riemanienne.
+
+    \item On peut remplacer les chemins \(\gamma\) par les chemins \(\mathcal{C}^1\) par morceaux ou bien par les chemins polygonaux.
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  \((U,g)\) où \(g\) est une métrique riemanienne et \(U \subseteq \mathbb{R}^n\) est un exemple d'une variété riemanienne.
+\end{definition}
+
+\begin{definition}
+  Supposons que \((x, \overrightarrow{v}), (x, \overrightarrow{v}) \in T_x U\) pour \(x \in U\). Alors l'angle entre ces deux vecteurs est défini par
+
+  \[\sphericalangle (x,\overrightarrow{u}), (x, \overrightarrow{v}) = \cos ^{-1}\left(\frac{g(x)((x,\overrightarrow{u}), (x,\overrightarrow{v}))}{\left\Vert (x,\overrightarrow{u}) \right\Vert _{g} \left\Vert (x,\overrightarrow{v}) \right\Vert  }\right).\]
+\end{definition}
+
+\begin{remark}[Rappel]
+  Pour tout produit scalaire \(\langle \mid \rangle _{*}\), l'inégalité de Cauchy-Schwarz est valide, c'est-à-dire :
+
+  \[\forall \overrightarrow{u}, \overrightarrow{v} \in E, \left\lvert \langle \overrightarrow{u} \mid \overrightarrow{v} \rangle  \right\rvert \leq  \langle \overrightarrow{u} \mid \overrightarrow{u} \rangle _{*}^{\frac{1}{2}} \langle \overrightarrow{v} \mid \overrightarrow{v} \rangle _{*} ^{\frac{1}{2}}.  \]
+
+  Donc pour tout \(\overrightarrow{u}, \overrightarrow{v} \in T_x U, \left\lvert g(a)(\overrightarrow{u}, \overrightarrow{v}) \right\rvert \leq  \left\Vert \overrightarrow{u} \right\Vert _{g} \left\Vert \overrightarrow{v} \right\Vert _{g}\).
+\end{remark}
+
+Avec la notation qu'on a eu sur la norme \( \left\Vert  \cdot \right\Vert _{g} \), on a, pour tout \(\gamma : [a,b] \longrightarrow \mathbb{R}\) différentiable,
+
+\[L _{g}(\gamma) = \int_{a}^{b} \underbrace{\left\Vert T \gamma(t,1) \right\Vert _{g}}_{(\gamma(t), \gamma'(t))} dt.\]
+
+\begin{exemple}[Demi-plan de Poincaré (exemple de variété riemanienne) de dimension 2 et de géométrie non-euclidienne]
+
+  \[U = \{ (x,y) \in \mathbb{R}^2 \mid y \bg 0 \}.\]
+
+  On définit une métrique riemanienne sur \(U\) par
+
+  \[g = \sum_{i=1}^{2}  g _{ii} d x^{i} \otimes d x^{i}, g _{ij}(x,y) = \delta _{ij} \frac{1}{y ^2} G _{(x,y)} = \left[\begin{matrix}
+    \frac{1}{y ^2} & 0 \\
+    0 & \frac{1}{y ^2}
+  \end{matrix}\right]. \]
+\end{exemple}
+
+\begin{definition}
+  Si pour une métrique riemanienne \(g\) donnée sur \(U\), il existe une fonction \(h : U \longrightarrow \mathbb{R}\) telle que
+
+  \[\forall a \in U, g(a) = h(a) I _{n \times n} = \left[\begin{matrix}
+    h(a) & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & h(a)
+  \end{matrix}\right].\]
+
+  On dit que \(g\) est une métrique conformale.
+\end{definition}
+
+Donc la métrique
+
+\[g(x,y) = \frac{1}{y ^2}(dx \otimes dx + d y \otimes d y)\]
+
+est une métrique riemanienne.
+
+La géométrie induite par \(g\) sur le demi-plan est la géométrie hyperbolique, connue aussi sous le nom de la géométrie de Lebachowski.
+
+\begin{thm}
+  Si \(g\) est une métrique conformale sur \(U\) et \(\overrightarrow{u}, \overrightarrow{v} \in T_a U\) pour \(a \in U\), alors
+
+  \[\sphericalangle _{g} \overrightarrow{u}, \overrightarrow{v} = \sphericalangle \overrightarrow{u}, \overrightarrow{v}\]
+
+  pour la métrique standart euclidienne.
+\end{thm}
+
+Si \(\overrightarrow{w} \in T _{(x,y)} U\) pour \((x,y) \in U\) quelconque, avec \(\overrightarrow{w} = (w_1, w_2)\), on a :
+
+\[\left\Vert \overrightarrow{w} \right\Vert _{g} = (g(x,y)(\overrightarrow{w}, \overrightarrow{w})) ^{\frac{1}{2}} = \left(\frac{1}{y ^2} \left\Vert \overrightarrow{w}^2 \right\Vert \right) ^{\frac{1}{2}} = \frac{\left\Vert \overrightarrow{w} \right\Vert }{y}.\]
+
+Si \(\gamma : [0, \infty) \longrightarrow U\), avec \(\gamma(0) = (x_0, y_0)\), \(\overrightarrow{w} =(0, -y) \in T _{(x,y)} U\), on cherche \(\gamma(t)\) tel que
+
+\[\gamma'(t) =(0, -\gamma_2(t)),\]
+
+avec \(\gamma(t) = (x(t), y(t)), \gamma_1(t) = x(t), \gamma_2(t) = y(t)\),
+
+\[\begin{cases}
+  x'(t) =0, x(t) \equiv x_0 \\
+  y'(t)=0, y(t) \equiv y_0,
+\end{cases}\]
+
+alors \(y(t) = y_0 e^{-t} \). Donc \(\gamma(t) = (x_0, y_0 e^{-t})\) est le chemin partant de \((x_0, y_0)\) d'une manière verticale vers l'horizon \(y=0\) avec la vitesse hyperbolique constante.
+
+On voit bien que \(\gamma(t) =(x_0, 0)\) donne \(t = +\infty\).
+
+\
+
+Il y a aussi le disque de Poincaré (Escher hyperbolic disc).
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/escher.jpg}
+  \caption{Escher hyperbolic disc}
+  \label{}
+\end{figure}
+
+Il faudra encore développer les techniques nécessaires pour pouvoir démontrer que les lignes droites par rapport à la métrique hyperbolique sur le demi-plan de Poincaré sont effectivement des demi-cercles centrés sur la ligne \(y=0\). Ces lignes droites sont appelées les géodésies de \((U,g)\) dans la géométrie différentielle.
+
+Voici une première définition de la géodésie (de manière rudimentaire plus géométrique que mécanique) :
+
+\begin{definition}
+  On dit que \(\gamma([a,b])\) est un segment géodésique dans \((U,g)\) si pour \(x = \gamma(a), y = \gamma(b), x, y \in U\),
+
+  \[d _{g}(x,y) = L _{g}(\gamma).\]
+
+  Une courbe \(\mathscr{C} \subseteq U\) est une géodésie de \((U,g)\) quand
+
+  \[C = \bigcup _{i \in I} \mathscr{C}_i \]
+
+  où chaque \(\mathscr{C}_i\) est un segment géodésique tel que \(\forall n \in \mathbb{Z}, C_n \cap C _{n+1}\) est un singleton.
+\end{definition}
+
+\begin{remark}[Rappel]
+  Soit \(\beta : E \times E \longrightarrow \mathbb{R}\) un produit scalaire sur un espace vectoriel \(E\). Soit \(f \in E ^{*}\), avec \(\operatorname{dim}(E) = n\). Alors il existe un vecteur \(\overrightarrow{v_f}\) unique tel que
+
+  \[\forall \overrightarrow{w} \in E, f(\overrightarrow{w}) = \beta(\overrightarrow{v_f}, \overrightarrow{w}).\]
+\end{remark}
+
+\begin{exemple}
+  Soit \(\beta\) donné par la matrice \(B \in \mathbb{R}^{n \times n}\) symétrique définie positive sur une base \((e_1, \dots, e_n)\) de \(E\). On a
+
+  \[f(\overrightarrow{w}) = f \left(\sum_{i} w_i e_i \right) = \sum_{i} w_i f(e_i), \]
+
+  avec \(\overrightarrow{v_f} = \sum_{j=1}^{n} x_j e_j \) (\((x_1, \dots, x_n)\) inconnues).
+
+  \begin{gather*}
+    \beta(\overrightarrow{v_f}, \overrightarrow{w}) = \langle \overrightarrow{v_f} \mid B \mid \overrightarrow{w} \rangle = \sum_{i,j=1}^{n} x_j b _{ij} w_i,
+  \end{gather*}
+
+  \(B = [b _{ij}] _{n \times n}\). On veut que \(\forall (w_i)_{i=1}^{n}\),
+
+  \[\sum_{i} x_i f(e_i) = \sum_{i,j=1} x_j b _{ij} w_i\]
+
+  si et seulement si
+
+  \[\forall i, \sum_{j=1}^{n} b _{ij} x_j = f(e_i) \in \mathbb{R}.\]
+
+  \begin{equation}\label{truc-long}
+    [b _{ij}] \left[\begin{matrix}
+      x_1 \\
+      \vdots \\
+      x_n
+    \end{matrix}\right] = \left[\begin{matrix}
+      f(e_1) \\
+      \vdots \\
+      f(e_n)
+    \end{matrix}\right].
+  \end{equation}
+
+  \(f\) étant donné, comme \(\operatorname{det}(B) \neq 0\), il existe un unique \(x = (x_1, \dots, x_n) \in \mathbb{R}^n\) qui satisfait \ref{truc-long}, et donc
+
+  \[\overrightarrow{v_f} = \sum_{i} x_i e_i \] est la réponse unique.
+\end{exemple}
+
+\begin{definition}[Rappel : gradient euclidien]
+  Soit \(f : U \longrightarrow \mathbb{R} \text{ différentiable } , U \subseteq \mathbb{R}^n\) et
+
+  \[\nabla f(a) = (\partial_1 f(a), \dots, \partial_n f(a)).\]
+\end{definition}
+
+\(Df(a) : \mathbb{R}^n \longrightarrow \mathbb{R}\) application linéaire de \((\mathbb{R}^n)^{*}\).
+
+\[\forall \overrightarrow{v} \in \mathbb{R}^n, Df(a)(\overrightarrow{v}) = \langle Df(a), \overrightarrow{v}\rangle\]
+
+avec la métrique euclidienne.
+
+\
+
+Soit \((U,g)\) une métrique riemanienne, \(U \subseteq \mathbb{R}^n\), \(f : U \longrightarrow \mathbb{R}\) une application partout différentiable \(df : U \longrightarrow T ^{*} U\),
+
+\[\forall a \in U, d_a f \in T ^{*}_{a} U = (T_a U)^{*},\]
+
+où \(g(a)\) est un produit scalaire sur \(T_a U\). On prend \(E = T_a U, d_a f \in E ^{*}, \beta = g(a)\).
+
+Donc il y a un vecteur unique \(\nabla_g f(a) \in T_a U\) tel que
+
+\[\forall \overrightarrow{w} \in T_a U, d_a f(\overrightarrow{w}) = g(a) (\nabla_g f(a), \overrightarrow{w}).\]
+
+Si \(g = \sum_{i,j} g _{ij} d x^{i} \otimes d x^{j}\), \(\nabla_g f(a) \in T_a U\), on a déjà vu que pour la métrique euclidienne \(g = eu\),
+
+\[\nabla _{eu}f(a) = \sum_{i=1}^{n} \frac{\partial f }{\partial x ^{i}}(a) \frac{\partial  }{\partial x ^{i}}.\]
+
+On peut aussi écrire
+
+\[\nabla_g f(a) = \sum_{i=1}^{n}(?)_i \frac{\partial  }{\partial x ^{i}}(a).\]
+
+Si \(\nabla _{g}f(a) = \sum_{i=1}^{n}c_i \frac{\partial  }{\partial x_i}(a)\), on écrit
+
+\[\nabla _{g} f(a) = \mid \nabla_g f(a)\rangle = \left[\begin{matrix}
+  c_1 \\
+  \vdots \\
+  c_n
+\end{matrix}\right] = ?\]
+
+Pour tout \(i\), on a \(d_a f\left(\frac{\partial  }{\partial x ^{i}}(a) \right) = g(a) (\nabla _{g}f(a), \frac{\partial  }{\partial x ^{i}}(a))\). Cela implique que
+
+%\begin{gather*}
+%  \forall i \in \{1, \dots, n \}, G_a =[g _{ij}], g(a)\left(\nabla _{g}f(a), \frac{\partial  }{\partial x ^{i}}(a) \right) = \left\langle e_i \mid G_a \mid  \nabla _{g}f(a) \right\rangle = \part_{i}f(a)
+%\end{gather*}
+
+si et seulement si \(G_a \mid \nabla _{g}f(a) \rangle \)
 
 \end{document}

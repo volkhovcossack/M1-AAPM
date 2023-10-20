@@ -14,7 +14,9 @@
 \usepackage{wrapfig}
 \usepackage{stmaryrd}
 \usepackage{framed}
+\usepackage{dsfont}
 \usepackage{marginnote}
+\usepackage{svg}
 \usepackage[Glenn]{fncychap}
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -1246,6 +1248,161 @@ Sur \(E\), on a aussi \(\sigma(F, F') = \sigma(E',E'')\). Si \(E = E''\) (i. e. 
 
   \[\forall l \in \mathscr{H}, \langle \xi, l \rangle = \langle l,x \rangle.\]
 \end{thm}
+
+
+
+\chapter{Théorie de distributions}\marginnote{17-10-2023}
+
+La théorie de distributions utilise une grande variété des fonctions test.
+
+Ainsi une mesure de Radon \(\mu\) sur un espace localement compact \(\Omega\) (par exemple un ouvert de \(\mathbb{R}^{d}\)) est une distribution d'ordre 0 agissant \(\mathcal{C}^{0}_{0}\) (noté encore \(\mathcal{K}(\Omega)\)) notamment par
+
+\[\langle \mu, f \rangle = \int_{\Omega} f(x)d \mu(x).\]
+
+%Soit \(a _{\varphi} \in \mathcal{C}^{\infty}_{0}(\Omega)\), un espace de fonctions \(\mathcal{C}^{\infty}\) à support compact.
+
+Sur \(\Omega = \mathbb{R}^{d}\), il suffit de prendre l'espace de Schwarz \(\mathcal{S}(\mathbb{R}^{d})\) qui est un espace de Fréchet. Par contre si \(\Omega\) est un ouvert borné, il y a des problèmes sur les bords de \(\Omega\).
+
+On cherche aussi les fonctions test dans \(\mathcal{K}(\Omega)\) ou \(\mathcal{C}^{1}_{0}\) qui ne sont ni des espaces de Banach, ni des espaces de Fréchet. On choisit généralement \(\mathcal{C}^{0}_{0}(\Omega)\).
+
+Les espaces fonctionnels sont rangés en deux catégories :
+
+\begin{itemize}
+  \item Les espaces de Lebesgue ;
+  \item Les espaces de fonctions différentiables.
+\end{itemize}
+
+\section{Espaces de Lebesgue}
+
+\subsection{Mesure de Lebesgue}
+
+Il est important de rappeler la notion d'espace mesuré.
+
+\begin{definition}[Rappel : tribu]
+ Soit \(X\) un ensemble. On dit qu'une collection d'ensembles \(\mathcal{T}\) est une tribu si
+
+ \begin{enumerate}
+   \item \(X \in \mathcal{T}\) et \(\emptyset \in \mathcal{T}\) ;
+   \item Si \(A \in \mathcal{T}\), alors \(A ^{C} \in \mathcal{T}\) ;
+   \item Si \((A_n)_{n \in \mathbb{N}}\) est une suite de \(\mathcal{T}\), alors
+
+   \[\bigcup _{n \in \mathbb{N}} A_n \in \mathcal{T}.\]
+ \end{enumerate}
+
+ On dit que \((X, \mathcal{T})\) est un espace mesurable.
+\end{definition}
+
+\begin{remark}
+  \(\mathcal{T}\) est aussi stable par intersection dénombrable, l'intersection étant complémentaire à la réunion...
+\end{remark}
+
+\begin{definition}[Mesure]
+  Soit \((X, \mathcal{T})\) un espace mesurable. On dit qu'une application \(\mu : X \longrightarrow [0, \infty)\) est une mesure si :
+  \begin{enumerate}
+    \item \(\mu(\emptyset) = 0\) ;
+    \item Pour toute suite \((A_n)\) de \(\mathcal{T}\) disjointe, on a
+
+    \[\mu\left(\bigcup _{n \in \mathbb{N}} A_n\right) = \sum_{n \in \mathbb{N}} \mu(A_n). \]
+  \end{enumerate}
+
+  On dit alors que \((X, \mathcal{T}, \mu)\) est un espace mesuré.
+\end{definition}
+
+\begin{exemple}
+  Pour \(\mathbb{R}^{d}\), \(\mathcal{T}\) est la tribu borélienne engendrée par les pavés \(\displaystyle \prod_{i=1}^{d} [a_i,b_i)\), avec \(a_i, b_i \in \mathbb{R}\). On peut aussi l'engendrer par les ``quadrants'' \(\displaystyle \prod_{i=1}^{d} [a_i, \infty) \).
+
+  La mesure de Lebesgue se calcule comme suit. Si \(d=1\), alors \(\mu([a,b)) = b-a\). Pour les pavés, on aura :
+
+  \[\mu\left( \prod_{i=1}^{d} [a_i, b_i) \right) = \prod_{i=1}^{d}(b_i - a_i).\]
+
+  Elle se caractérise par le fait d'être stable par translation.
+\end{exemple}
+
+Pour avoir une théorie cohérente, il faut compléter \(B(R ^{d}) \longrightarrow \overline{\mathcal{T}}\) (la tribu borélienne) en ajoutant des ensembles négligeables. Ainsi \(\overline{\mathcal{T}}\) est la plus petite tribu contenant \(\mathcal{T}\) et les ensembles négligeables.
+
+\begin{definition}
+  \(A \in \mathbb{R}^{d}\), i. e. \(A\) est mesurable si et seulement si \(A \in \overline{\mathcal{T}}\).
+\end{definition}
+
+\begin{remark}
+  A toute fin utile, on considérera que tous les ensemble sont mesurables.
+\end{remark}
+
+\emph{Comment mesurer les fonctions \(\mu(F)\) ?}
+
+On peut utiliser :
+
+\begin{itemize}
+  \item L'intégrale de Riemann ;
+  \item L'intégrale de Lebesgue.
+\end{itemize}
+
+\subsection{Intégrale des fonctions positives}
+
+Soit \((X, \mathcal{T}, \mu)\) un espace normé mesuré.
+
+\begin{definition}[Fonction mesurable]
+  On dit que \(f : X \longrightarrow \mathbb{R}\) est mesurable si pour tout borélien \(B\) de \(\mathbb{R}\), on a \(f ^{-1}(B) \in \mathcal{T}\).
+\end{definition}
+
+\begin{prop}[Axiomes]
+  Il existe une application définie sur l'ensemble mesurable des fonctions mesurables positives de \(\mathbb{R}^{d}\), à valeurs dans \(\mathbb{R}\), notée \(f \longmapsto \int_{}^{} f(x)dx \) qui réalise les propriétés suivantes :
+
+  \begin{enumerate}
+    \item \emph{Linéarité :} pour tous \(\alpha, \beta \geq  0\), on a
+
+    \[\int_{}^{}(\alpha f(x)+ \beta g(x)) dx = \alpha \int f(x) dx + \beta \int g(x)dx. \]
+
+    \item \emph{Croissance :} si \(\forall x, f(x) \leq g(x)\), alors
+
+    \[\int_{}^{} f(x) dx \leq \int_{}^{} g(x) dx.  \]
+
+    \item \emph{Normalisation :} pour tout pavé \(A = \prod_{i=1}^{d} [a_i, b_i)\), on a
+
+    \[\int_{}^{} \mathds{1}_{A}(x)dx = \mu(A).\]
+
+    \item \emph{Théorème de Beppo-Levi :} si \((f_n)\) est une suite croissante de fonctions mesurables, alors
+
+    \begin{equation}\label{Beppo-Levi}
+      \underbrace{\int_{}^{} \lim_{n \to \infty} f_n(x)dx}_{\int_{}^{}f(x)dx} = \lim_{n \to \infty} \int_{}^{} f_n(x)dx \leq + \infty.
+    \end{equation}
+  \end{enumerate}
+\end{prop}
+
+Au lieu d'intégrer \(f\) sur tout \(\mathbb{R}\), on peut l'intégrer seulement sur la partie où elle est mesurable en posant :
+
+\[\int_{A}^{}f(x)dx = \int_{}^{}f(x)\mathds{1}_{A}(x)dx.\]
+
+\begin{thm}
+  On peut calculer l'intégrale \(\int_{A} f(x)dx \) de toute fonction mesurable positive par :
+
+  \[\int_{A} f(x)dx = \sup \sum_{i=0}^{n-1} (t _{i+1}-t_i) \mu(A \cap \{ f_i \geq t_i \}) \]
+
+  où le \(\sup\) est pris sur toutes les subdivisions finies sur l'axe des \(y\), \(t_0 \less t_1 \less \dots \less t_n, n \in \mathbb{N}\) et dont le pas tend vers 0.
+\end{thm}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=1]{figures/riem.png}
+  \caption{Subdivisions et sommes de Riemann}
+  \label{subdiv_riemann}
+\end{figure}
+
+\begin{prop}
+  Si \(f\) est à valeurs positives, alors
+
+  \[\int_{}^{}f(x)dx = 0 \text{ si et seulement si } f=0 \text{ p.p. }   \]
+\end{prop}
+
+\begin{proof}
+  Posons \(A = \{ x \in X, f(x) \neq 0 \}\). Alors \(f(x) \leq \lim_{n \to \infty} n \mathds{1}_{A}(x)\) si \(\mu(A) = 0\). On obtient par \ref{Beppo-Levi} :
+
+  \[\int_{}^{}f(x)dx \lim_{n \to \infty} \int_{A}^{}dx = 0.  \]
+
+  Réciproquement, si \(\int_{}^{}f(x)dx =0 \), alors on remarque que \(\mathds{1}_{A}(x) \leq \lim_{n \to \infty} n f_n(x)\) et on a encore par \ref{Beppo-Levi} :
+
+  \[\mu(A) = \int_{A}^{}\mathds{1}_{A}(x)dx \leq \lim_{n \to \infty} n \int_{}^{}f(x)dx = 0.\]
+\end{proof}
 
 
 

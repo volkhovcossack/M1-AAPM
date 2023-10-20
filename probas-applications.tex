@@ -1605,7 +1605,7 @@ Comment calculer \(\lim_{n \to \infty} X_n\) ?
 
   si
 
-  \[\forall \varepsilon \bg 0, \mathbb{P}(\lvert X_n - X \rvert \bg 0) \underset{n \to \infty }{\longrightarrow} 0, \text{ i.e. } \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert \bg 0) = 0. \]
+  \[\forall \varepsilon \bg 0, \mathbb{P}(\lvert X_n - X \rvert \bg \varepsilon) \underset{n \to \infty }{\longrightarrow} 0, \text{ i.e. } \lim_{n \to \infty} \mathbb{P}(\lvert X_n - X \rvert \bg \varepsilon) = 0. \]
 \end{definition}
 
 \section{Convergence en moyenne \(L ^{p}\)}
@@ -1719,7 +1719,7 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
 
 \marginnote{03-10-2023}
 
-\begin{lemma}[De Borel-Cantelli, deuxième]
+\begin{lemma}[De Borel-Cantelli, deuxième]\label{Borel-Cantelli2}
   Si \(\{ A_n \} \) sont \textbf{indépendantes} et \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) = + \infty \), alors
 
   \[\mathbb{P}\left(\lim_{n \to \infty} \sup A_n\right) = 1.\]
@@ -2009,7 +2009,7 @@ Deux variables indépendantes sont non-corrélées, mais le contraire est en gé
 \begin{definition}
   Soit \((\Omega, \mathscr{A}, \mathbb{P})\) un espace probabilisé. On définit la fonction caractéristique de la variable aléatoire réelle \(X\) de la manière suivante :
 
-  \[\varphi_t(X) = \mathbb{E}[e ^{itX}] = \int_{\Omega} e^{it X} d \mathbb{P}  = \int_{\mathbb{R}} e^{itx} d P_X(x).\]
+  \[\varphi_t(X) = \mathbb{E}\left[e ^{itX}\right] = \int_{\Omega} e^{it X} d \mathbb{P}  = \int_{\mathbb{R}} e^{itx} d P_X(x).\]
 \end{definition}
 
 \begin{remark}[Cas particulier]
@@ -2150,7 +2150,7 @@ Deux variables indépendantes sont non-corrélées, mais le contraire est en gé
   De plus, on a :
 
   \begin{gather*}
-    \varphi(t) = \sum_{k=0}^{n} \frac{(it)^{k}}{k!} \mathbb{E}[X ^{k}]+ \frac{(it)^{n}}{n!} \varepsilon_n(t),
+    \varphi(t) = \sum_{k=0}^{n} \frac{(it)^{k}}{k!} \mathbb{E}[X ^{k}]+ \underbrace{\frac{(it)^{n}}{n!} \varepsilon_n(t)}_{\text{erreur}},
   \end{gather*}
 
   avec \(\left\lvert \varepsilon_n(t) \right\rvert \leq 3 \mathbb{E}[\left\lvert X \right\rvert ^{n}] \underset{t \to 0}{\longrightarrow} 0\).
@@ -2179,6 +2179,160 @@ Deux variables indépendantes sont non-corrélées, mais le contraire est en gé
 
 \end{proof}
 
+\begin{thm}\marginnote{20-10-2023}
+  Soient \(X\) et \(Y\) deux variables aléatoires telles que \(\varphi_X(t) = \varphi_Y, \forall t \in \mathbb{R}\). Donc \(P_X = P_Y\). \textbf{Les fonctions caractéristiques caractérisent complétement la loi}.
+\end{thm}
+
+\begin{thm}[\bsc{Formule d'inversion de Levy}]
+  Soit \(X\) une variable aléatoire de fonction caractéristique
+
+  \[\varphi_X(t) = \int_{\mathbb{R}} e^{itx}d P_X(x).\]
+
+  Soient \(x\) et \(y\) deux points où la fonction de répartition \(F_X\) est continue. Alors
+
+  \[F_X(b) - F_X(a) = \lim_{c \to +\infty} \frac{1}{2 \pi} \int_{-c}^{c} \frac{e^{-ita} - e^{-itb}}{it} \varphi_X(t)dt \text{ (intégrale impropre de Riemann).} \]
+\end{thm}
+
+On rappelle que la loi \(P_X\) est la mesure de Lebesgue-Stieltjes construite avec \(F_X\), i. e.
+
+\[P_X((a,b]) = F_X(b)-F_X(a).\]
+
+\begin{thm}
+  Soit \(\varphi_X \in L ^{1}(\mathbb{R})\), i. e. \(\int_{\mathbb{R}} \left\lvert \varphi_X(t) \right\rvert dt \less \infty\). Alors la densité de \(X\) existe et
+
+  \[f_X(x) = \frac{1}{2 \pi} \int_{\mathbb{R}} e^{itx} \varphi_X(t)dt.  \]
+\end{thm}
+
+\chapter{Convergence en loi}
+
+\section{Convergence de mesures bornées sur \(\mathbb{R}^n\)}
+
+On note \(\mathscr{M}\) l'ensemble de mesures positives sur \(\mathbb{R}^n\) muni de la tribu de \bsc{Borel}.
+
+On note \(\mathscr{M}(b)\) l'ensemble de mesures de \(\mathscr{M}\) telles que si \(\mu \in \mathscr{M}(b)\), alors \(\mu(\mathbb{R}^n) \leq b\). Ce sont les mesures bornées par \(b\).
+
+Enfin on note \(\mathscr{M}^{1}\) les mesures de probabilité \(\mu \in \mathscr{M}^{1}\) telle que \(\mu(\mathbb{R}^n) = 1\).
+
+Avant de construire les topologies, on introduit deux classes de fonctions :
+
+\begin{enumerate}
+  \item \(\mathscr{C}_0(\mathbb{R}^n)\) qui sont les fonctions tendant vers 0 à l'infini, c'est-à-dire
+
+  \[\forall \varepsilon \bg 0, \exists K _{\varepsilon} \text{ compact tel que } \left\lvert f(x) \right\rvert \less \varepsilon, \forall x \in K _{\varepsilon}^{C}.\]
+  \item \(\mathscr{C}_b(\mathbb{R}^n)\), l'ensemble des fonctions bornées :
+
+  \[\forall x \in \mathbb{R}, \left\lvert f(x) \right\rvert \leq b.\]
+\end{enumerate}
+
+\begin{definition}
+  Sur \(\mathscr{M}\) on définit deux topologies, \textsf{faible} et \texttt{étroite}. Il s'agit des deux topologies moins fines qui rendent continues les applications :
+
+  \begin{gather*}
+    \mu \longmapsto \int_{}^{} f d \mu, f \in \mathcal{C}_0(\mathbb{R}^n) \text{ (faible),} \\
+    \mu \longmapsto \int_{}^{} d f \mu, f \in \mathscr{C}_b(\mathbb{R}^n) \text{ (étroite).}
+  \end{gather*}
+\end{definition}
+
+Pour \(\mu_1, \mu_2 \in \mathscr{M}\), on définit
+
+\[d(\mu_1, \mu_2) = \sum_{k=1}^{\infty} \frac{\left\lvert \int_{}^{} f_k d \mu_1 - \int_{}^{} f_k d \mu_2  \right\rvert}{2 ^{k}},\]
+
+où \(\{ f_k \}\) est une suite dense dans \(\mathscr{C}_{0,b}(\mathbb{R}^n)\).
+
+\subsection{Convergence}
+
+\begin{definition}
+  Prenons une suite \(\{ \mu_n \} \in \mathscr{M}\).
+
+  On dira que \(\mu_n\) converge \textsf{faiblement} vers \(\mu \in \mathscr{M}\) si
+
+  \[\lim_{n \to \infty} \int f d \mu_n = \int f d \mu, \forall f \in \mathscr{C}_0(\mathbb{R}^n).\]
+
+  Elle converge \texttt{étroitement} si :
+
+  \[\lim_{n \to \infty} \int f d \mu_n = \int f d \mu, \forall f \in \mathscr{C}_b(\mathbb{R}^n).\]
+\end{definition}
+
+\begin{remark}
+  La convergence étroite implique la convergence faible.
+\end{remark}
+
+En probabilité, on utilisera surtout la convergence étroite.
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item Sur \(\mathscr{M}^{1}\), les deux topologies co\"incident.
+    \item \emph{``Théorème de Banach-Ailogu''} L'espace \(\mathscr{M}(b)\) est compact pour la topologie faible, c'est-à-dire toute suite de mesures bornées (par \(b\)) admet une sous-suite convergente faiblement vers une mesure \(\mu \in \mathscr{M}(b)\).
+    \item Soit \(\{ \mu_n \}\) et \(\mu \in \mathscr{M}(b)\) telle que \(\mu_n \longrightarrow \mu\) faiblement. Alors la suite \(\{ \mu_n \}\) converge étroitement vers \(\mu\) si
+
+    \[\lim_{k \to \infty} \mu_k(\mathbb{R}^n) = \mu(\mathbb{R}^n).\]
+  \end{enumerate}
+\end{prop}
+
+\begin{definition}
+  Soit \(\mu\) un élément de \(\mathscr{M}\). Un borélien \(A\) est appelé de \(\mu\)-continuité si
+
+  \begin{gather*}
+    \mu(\underset{\tiny\text{frontière}}{\partial A}) = 0.
+  \end{gather*}
+\end{definition}
+
+\begin{thm}
+  Soit \(\{ \mu_n \}_{n=1}^{\infty}\) une suite de mesures dans \(\mathscr{M}(b)\). Les deux assertions sont alors équivalentes :
+
+  \begin{enumerate}
+    \item \(\mu_n\) converge étroitement vers \(\mu\) ;
+    \item Pour tout borélien \(A\) de \(\mu\)-continuité, on a
+
+    \[\lim_{n \to \infty} \mu_k(A) = \mu(A).\]
+  \end{enumerate}
+\end{thm}
+
+On va parler maintenant de la convergence en loi.
+
+Soit \(\forall n \in \mathbb{N}\) une suite de variables aléatoires \(X_n\) définies sur les espaces \((\Omega_n, \mathscr{A}_n, \mathbb{P}_n)\). Soit \(X\) une autre variable aléatoire réelle à valeurs dans \(\mathbb{R}^{d}\) et définie sur \((\Omega, \mathscr{A}, \mathbb{P})\).
+
+\begin{definition}
+  La suite \(\{ X_n \}_{n=1}^{\infty}\) converge en loi (en distribution) vers \(X\) si la suite des lois \(P _{X_n}\) converge étroitement vers \(P_X\), et on écrira :
+
+  \[P _{X_n} \stackrel{\mathscr{L}}{\longrightarrow} P_X.\]
+\end{definition}
+
+\begin{definition}
+  Soit \(\{ X_k \}_{k=1}^{\infty}\) une suite de variables aléatoires sur \((\Omega_k, \mathscr{A}_k, \mathbb{P}_k)\) et soit \(\mu\) une probabilité sur \(\mathbb{R}^{d}\). La suite \(\{ X_k \}_{k=1}^{\infty}\) converge étroitement vers \(\mu\) si la suite \(P _{X_n}\) converge étroitement vers \(\mu\) et on écrira
+
+  \[X_n \stackrel{\mathscr{L}}{\longrightarrow} \mu.\]
+\end{definition}
+
+\begin{remark}
+  Ici, on ne connaît pas forcément la variable aléatoire limite. On connaît seulement la distribution limite.
+\end{remark}
+
+\begin{thm}[Levy]
+  A nouveau on a la suite \(\{ X_k \}_{k=1}^{\infty}\) avec \(X_k \in (\Omega_k, \mathscr{A}_k, \mathbb{P}_k)\).
+
+  \begin{enumerate}
+    \item Supposons que \(X_k\) converge en loi vers la variable aléatoire \(X\) définie sur \((\Omega, \mathscr{A}, \mathbb{P})\). Alors
+
+    \[\lim_{k \to \infty} \varphi _{X_k}(t) = \varphi_X(t), \forall t \in \mathbb{R}.\]
+    \item Supposons que \(\varphi _{X_k}(t)\) converge simplement (pour tout \(t \in \mathbb{R}\)) vers une fonction \(\varphi(t)\) qui est continue en 0. Alors \(\varphi\) est la fonction caractéristique d'une mesure de probabilité \(\mu\) et \(P _{X_n}\) converge étroitement vers \(\mu\), c'est-à-dire on a
+
+    \[X_k \stackrel{\mathscr{L}}{\longrightarrow} \mu.\]
+
+    En plus, il existe une variable aléatoire \(X\) \textbf{non unique} telle que
+
+    \[X_k \stackrel{\mathscr{L}}{\longrightarrow} X.\]
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  \begin{gather*}
+    \varphi _{X_k}(t) = \int_{\mathbb{R}}^{} \underset{\substack{\text{continue} \\ \text{bornée}}}{e^{itx_k}} d P _{X_k}(x_k)  = \int_{\mathbb{R}} e^{itx} d P_X(x).
+  \end{gather*}
+\end{proof}
 
 
 
@@ -2438,6 +2592,40 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
   Soit \(Z = X \cdot Y\). Montrer que \(Z\) a la loi \(\mathscr{N}(0, \sigma^2)\), avec
 
   \[F _{\mathscr{N}}(t) = \frac{1}{\sigma \sqrt{ 2 \pi } } e^{-\frac{t ^2}{2 \sigma ^2}}.\]
+\end{exo}
+
+\begin{exo}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables indépendantes de loi
+
+  \begin{gather*}
+    \mathbb{P}(X_n = 0) = 1 - \frac{1}{n}, \\
+    \mathbb{P}(X_n = 1) = \frac{1}{n}.
+  \end{gather*}
+
+  \begin{enumerate}
+    \item Montrer que la suite \(\{ X_n \}\) converge en probabilité vers 0.
+    \item Montrer que la suite \(\{ X_n \}\) diverge presque sûrement.
+
+    \emph{Idée : utiliser le deuxième Borel-Cantelli \ref{Borel-Cantelli2}.}
+
+    \item On a \(\{ X_n \}_{n=1}^{\infty}\) de variables aléatoires indépendantes telles que
+
+    \[\mathbb{P}(X_n=0) = 1 - \frac{1}{n ^2} \ ; \ \mathbb{P}(X_n = n ^2) = \frac{1}{n ^2}.\]
+
+    Montrer que \(X_n\) converge presque sûrement vers 0.
+
+    Montrer que \(\{ X_n \}\) ne converge pas vers 0 dans \(L ^{1}\).
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  \
+  
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires indépendantes de loi exponentielle \(\mathscr{E}(2) = 2 e^{- 2x}\). Montrer que la suite
+
+  \[\frac{1}{\ln(n)} \max _{1 \leq k \leq n} X_k\]
+
+  converge en probabilités vers \(\frac{1}{2}\).
 \end{exo}
 
 

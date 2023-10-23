@@ -2218,7 +2218,7 @@ Avant de construire les topologies, on introduit deux classes de fonctions :
 \begin{enumerate}
   \item \(\mathscr{C}_0(\mathbb{R}^n)\) qui sont les fonctions tendant vers 0 à l'infini, c'est-à-dire
 
-  \[\forall \varepsilon \bg 0, \exists K _{\varepsilon} \text{ compact tel que } \left\lvert f(x) \right\rvert \less \varepsilon, \forall x \in K _{\varepsilon}^{C}.\]
+  \[\forall \varepsilon \bg 0, \exists K _{\varepsilon} \text{ compact tel que } \left\lvert f(x) \right\rvert \less \varepsilon, \forall x \in (K _{\varepsilon})^{C}.\]
   \item \(\mathscr{C}_b(\mathbb{R}^n)\), l'ensemble des fonctions bornées :
 
   \[\forall x \in \mathbb{R}, \left\lvert f(x) \right\rvert \leq b.\]
@@ -2269,10 +2269,12 @@ En probabilité, on utilisera surtout la convergence étroite.
     \item Soit \(\{ \mu_n \}\) et \(\mu \in \mathscr{M}(b)\) telle que \(\mu_n \longrightarrow \mu\) faiblement. Alors la suite \(\{ \mu_n \}\) converge étroitement vers \(\mu\) si
 
     \[\lim_{k \to \infty} \mu_k(\mathbb{R}^n) = \mu(\mathbb{R}^n).\]
+
+    La réciproque est aussi vraie.
   \end{enumerate}
 \end{prop}
 
-\begin{definition}
+\begin{definition}\label{mu-cont}
   Soit \(\mu\) un élément de \(\mathscr{M}\). Un borélien \(A\) est appelé de \(\mu\)-continuité si
 
   \begin{gather*}
@@ -2286,7 +2288,7 @@ En probabilité, on utilisera surtout la convergence étroite.
   \begin{enumerate}
     \item \(\mu_n\) converge étroitement vers \(\mu\) ;
     \item Pour tout borélien \(A\) de \(\mu\)-continuité, on a
-
+texte normal
     \[\lim_{n \to \infty} \mu_k(A) = \mu(A).\]
   \end{enumerate}
 \end{thm}
@@ -2302,7 +2304,7 @@ Soit \(\forall n \in \mathbb{N}\) une suite de variables aléatoires \(X_n\) dé
 \end{definition}
 
 \begin{definition}
-  Soit \(\{ X_k \}_{k=1}^{\infty}\) une suite de variables aléatoires sur \((\Omega_k, \mathscr{A}_k, \mathbb{P}_k)\) et soit \(\mu\) une probabilité sur \(\mathbb{R}^{d}\). La suite \(\{ X_k \}_{k=1}^{\infty}\) converge étroitement vers \(\mu\) si la suite \(P _{X_n}\) converge étroitement vers \(\mu\) et on écrira
+  Soit \(\{ X_k \}_{k=1}^{\infty}\)  une suite de variables aléatoires sur \((\Omega_k, \mathscr{A}_k, \mathbb{P}_k)\) et soit \(\mu\) une probabilité sur \(\mathbb{R}^{d}\). La suite \(\{ X_k \}_{k=1}^{\infty}\) converge étroitement vers \(\mu\) si la suite \(P _{X_n}\) converge étroitement vers \(\mu\) et on écrira
 
   \[X_n \stackrel{\mathscr{L}}{\longrightarrow} \mu.\]
 \end{definition}
@@ -2315,12 +2317,12 @@ Soit \(\forall n \in \mathbb{N}\) une suite de variables aléatoires \(X_n\) dé
   A nouveau on a la suite \(\{ X_k \}_{k=1}^{\infty}\) avec \(X_k \in (\Omega_k, \mathscr{A}_k, \mathbb{P}_k)\).
 
   \begin{enumerate}
-    \item Supposons que \(X_k\) converge en loi vers la variable aléatoire \(X\) définie sur \((\Omega, \mathscr{A}, \mathbb{P})\). Alors
+    \item \label{Levy1}Supposons que \(X_k\) converge en loi vers la variable aléatoire \(X\) définie sur \((\Omega, \mathscr{A}, \mathbb{P})\). Alors
 
     \[\lim_{k \to \infty} \varphi _{X_k}(t) = \varphi_X(t), \forall t \in \mathbb{R}.\]
     \item Supposons que \(\varphi _{X_k}(t)\) converge simplement (pour tout \(t \in \mathbb{R}\)) vers une fonction \(\varphi(t)\) qui est continue en 0. Alors \(\varphi\) est la fonction caractéristique d'une mesure de probabilité \(\mu\) et \(P _{X_n}\) converge étroitement vers \(\mu\), c'est-à-dire on a
 
-    \[X_k \stackrel{\mathscr{L}}{\longrightarrow} \mu.\]
+    \[P _{X_k}\stackrel{\mathscr{L}}{\longrightarrow} \mu.\]
 
     En plus, il existe une variable aléatoire \(X\) \textbf{non unique} telle que
 
@@ -2328,16 +2330,252 @@ Soit \(\forall n \in \mathbb{N}\) une suite de variables aléatoires \(X_n\) dé
   \end{enumerate}
 \end{thm}
 
+\begin{proof}\marginnote{23-10-2023}
+
+  \
+
+  \begin{enumerate}
+    \item
+      \begin{gather*}
+        \varphi _{X_k}(t) = \int_{\mathbb{R}}^{} \underset{\substack{\text{continue} \\ \text{bornée}}}{e^{itx_k}} d P _{X_k}(x_k)  \underset{k \to +\infty }{\longrightarrow}  \int_{\mathbb{R}} e^{itx} d P_X(x).
+      \end{gather*}
+
+    \item On dénote \(P _{X_n} = P_n\). Par compacité, il existe une sous-suite \(n_k\) telle que \(P _{n_k} \longrightarrow \mu\), avec \(\mu\) une mesure bornée (\(\in \mathscr{M}(b)\)), et cette convergence est faible. L'objectif est de démontrer que \(\mu\) est une mesure de probabilité. On y arrive si on montre que
+
+    \[\lim_{k \to +\infty} P _{n_k}(\mathbb{R}^d) = \mu(\mathbb{R}^d). \]
+
+    Grâce à ce résultat-là, on montrera aussi que la convergence est étroite.
+
+    \textbf{\emph{Astuce}} \ Soit \(\nu\) une mesure bornée quelconque et soit \(\varphi _{\nu}\) sa fonction caractéristique. On a
+
+    \[\varphi _{\nu}(t) = \int_{\mathbb{R}^d} e^{itx} d \nu(x).\]
+
+    On construit (pour \(\nu \bg 0\))
+
+    \begin{gather*}
+      \frac{1}{u} \int_{0}^{u} \varphi _{\nu}(t)dt = \frac{1}{u}\int_{0}^{u}\left(\int_{\mathbb{R}^d} e^{itx}d \nu(x)  \right) \stackrel{\text{Fubini}}{=} \frac{1}{u}\int_{\mathbb{R}} \left(\int_{0}^{u} e^{itx}dt  \right) d \nu(x)  = \frac{1}{u} \int_{\mathbb{R}} \frac{e^{ixu}-1 }{iux}d \nu(x).
+    \end{gather*}
+
+    On applique ces calculs à la mesure \(\mu\)texte normal :
+
+    \begin{gather}
+      \frac{1}{u} \int_{0}^{u} \varphi_\mu(t)dt = \int_{\mathbb{R}} \underbrace{\frac{e^{ixu}-1 }{iux}}_{\substack{\text{continue},\\\in \mathscr{C}_b(\mathbb{R}^d)}}d \mu(x)  = \lim_{k \to +\infty} \int_{\mathbb{R}^d} \frac{e^{iux}-1}{iux} d P _{n_k}  = \lim_{k \to+\infty} \frac{1}{u} \int_{0}^{u} \varphi_{P_{n_k}}(t)dt.  \label{equation45}
+    \end{gather}texte au-dessus
+
+    On observe que \(\left\lvert \varphi_{P_{n_k}}(t) \right\rvert \leq \varphi _{P _{n_k}}(0) = 1\), donc on peut passer à la limite dans l'intégrale :
+
+    \begin{gather*}
+      \ref{equation45} = \frac{1}{u} \int_{0}^{u} \lim_{k \to \infty}  \varphi _{P _{n_k}}(t)dt = \frac{1}{u} \int_{0}^{u} \varphi(t)dt.
+    \end{gather*}
+
+    On a trouvé que
+
+    \[\frac{1}{u}\int_{0}^{u} \underbrace{\varphi_\mu(t)dt}_{\substack{\text{cont. en 0} \\ \text{car fct car.}}} = \frac{1}{u} \int_{0}^{u} \underbrace{\varphi(t)}_{\substack{\text{cont. en 0}\\ \text{par hyp.}}}dt. \]
+
+    Par le théorème de la valeur moyenne,
+
+    \begin{gather*}
+      \lim_{u \to 0}\frac{1}{u} \int_{0}^{u} \varphi_\mu(t)dt = \varphi_\mu(0),\\
+      \lim_{u \to 0}\frac{1}{u} \int_{0}^{u} \varphi(t)dt = \varphi(0).
+    \end{gather*}
+
+    Il faut se rappeler qu'on doit montrer que \(\mu(\mathbb{R}^d) = 1\). En effet,
+
+    \begin{gather*}
+      \mu(\mathbb{R}^d) = \int_{\mathbb{R}^d}e^{i0x} d \mu(x) = \varphi_\mu(0) = \varphi(0) \stackrel{\text{hyp}}{=} \lim_{k \to \infty} \varphi _{P _{n_k}}(0) = \lim_{k \to \infty} \int_{\mathbb{R}^d} e^{i 0 x} d P _{n_k}(x) = 1.
+    \end{gather*}
+
+    Donc \(P _{n_k}\) converge aussi étroitement vers \(\mu\) (mesure de probabilité).
+
+    \
+
+    Par la première partie du théorème de Levy \ref{Levy1}, la convergence étroite de \(P _{n_k} \longrightarrow \mu\) entraîne que \(\varphi _{P _{n_k}}(t) \longrightarrow \varphi _{\mu}(t)\).
+
+    \textbf{Mais} aussi \(\varphi _{P _{n_k}}(t) \longrightarrow \varphi(t)\). Donc on a établi que \(\varphi_\mu(t) = \varphi(t)\). Pour une autre sous-suite, on a \(\varphi _{P _{n_j}} \longrightarrow \varphi _{\mu'}(t) = \varphi(t)\).
+
+    Donc toutes les fonctions caractéristiques correspondant à des \(\mu\) différentes sont \emph{égales}. Il y a une correspondance biunivoque entre \(\varphi\) et \(\mu\). On en déduit que toutes les ``\(\mu\)'' sont égales, ce qui implique que toutes les sous-suites qu'on peut engendrer à partir de \(P_n\) ont la même limite. On a ainsi montré que
+
+    \[P_n \stackrel{\text{étroite}}{\longrightarrow} \mu.\]
+  \end{enumerate}
+\end{proof}
+
+\textbf{\emph{Question}} \ \emph{Y a-t-il une variable aléatoire sur un certain espace probabilisé qui a \(\mu\) comme loi ?}
+
+On prend \((\Omega, \mathscr{A}, \mathbb{P}) = (\mathbb{R}^d, \mathscr{B}(\mathbb{R}^d), \mu)\) et \(X : \Omega \longrightarrow \mathbb{R}^d\) est telle que \(X = \operatorname{id}\).
+
+\begin{prop}
+  Supposons que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\) (en loi). Soit \(f\) une fonction continue de \(\mathbb{R}^d\) à valeurs dans \(\mathbb{R}\). Alors
+
+  \[f(X_n) \stackrel{\prec}{\longrightarrow} f(x).\]
+\end{prop}
+
+\begin{thm}[La convergence en probabilité implique la convergence en loi]
+  Soit \(\{ X_n \}\) une suite de variables aléatoires définies sur le même espace \((\Omega, \mathscr{A}, \mathbb{P})\) à valeurs dans \(\mathbb{R}^d\). Supposons que \(X_n\) converge en probabilité vers la variable aléatoire \(X\). Alors \(X_n\) converge aussi en loi vers \(X\).
+\end{thm}
+
 \begin{proof}
+  Si l'on veut montrer que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\), il suffit, pour \(f \in \mathscr{C}_b(\mathbb{R}^d)\), de montrer que
+
+  \[\int_{}^{} f d P _{X_n} \underset{n \to +\infty}{\longrightarrow} \int_{}^{} f d P_X \text{ (étroite).}\]
+
+  En effet,
+
   \begin{gather*}
-    \varphi _{X_k}(t) = \int_{\mathbb{R}}^{} \underset{\substack{\text{continue} \\ \text{bornée}}}{e^{itx_k}} d P _{X_k}(x_k)  = \int_{\mathbb{R}} e^{itx} d P_X(x).
+    \left\lvert \int_{}^{} f d P _{X_n} - \int_{}^{} f d P_X   \right\rvert \stackrel{\text{transfert}}{=} \left\lvert \int_{\Omega}^{} f \circ X_n d \mathbb{P} - \int_{\Omega}^{} f \circ X_n d \mathbb{P}  \right\rvert = \left\lvert \int_{}^{} [f \circ X_n - f \circ X] d \mathbb{P}  \right\rvert \\
+    = \int_{\{ \left\lvert f \circ X_n - f \circ X \right\rvert \bg \varepsilon \}} \left\lvert f \circ X_n - f \circ X \right\rvert d \mathbb{P} + \int_{\{ \left\lvert f \circ X_n - f \circ X \right\rvert \less \varepsilon\}} \left\lvert f \circ X_n - f \circ X \right\rvert d \mathbb{P} \\
+    \leq \varepsilon + 2 \left\Vert f \right\Vert _{\infty} \underset{\longrightarrow 0 \text{ quand } n \longrightarrow \infty}{\mathbb{P}(\left\lvert f \circ X_n - f \circ X \right\rvert \bg \varepsilon)}.
   \end{gather*}
 \end{proof}
 
+%On envoie \(n \longrightarrow \infty\) et donc \(\mathbb{P}(\left\lvert f \circ X_n - f \circ X \right\rvert) \longrightarrow \infty\). On envoie après \(\varepsilon \longrightarrow 0\).
 
 
+\begin{thm}
+  Soit \(\{ X_n \}\) une suite de variables aléatoires toutes définies sur un même \((\Omega, \mathscr{A}, \mathbb{P})\) à valeurs dans \(\mathbb{R}^d\). Supposons que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} \text{constante} =c\). Alors \(X_n \stackrel{\mathbb{P}}{\longrightarrow} c\).
+\end{thm}
 
+\begin{proof}
+  \(\mu_n \stackrel{\mathscr{L}}{\longrightarrow} \mu\) si et seulement si pour tout borélien \(A\) de \(\mu\)-continuité, \(\mu_n(A) \longrightarrow \mu\).
 
+  On sait que \(P _{X_n} \stackrel{\mathscr{L}}{\longrightarrow} \delta _{\{ c \}}\) (loi de la variable aléatoire limite \(X = c\)). On dénote avec \(B(c, \varepsilon)\) la boule fermée de centre \(c\) et de rayon \(\varepsilon\). On note que \(\delta _{\{ c \}}(\partial B(c, \varepsilon)) = 0\). Donc \(B(c, \varepsilon)\) est un ensemble de \(\delta _{\{ c \}}\)-continuité. Donc par la définition \ref{mu-cont}, on sait que
+
+  \[\lim_{n \to \infty} P _{X_n}(B(c, \varepsilon)) = \delta _{\{ c \}}(B(c,\varepsilon))=1,\]
+
+  donc
+
+  \[\lim_{n \to \infty} P_X(x, \left\lvert x-c \right\rvert \bg \varepsilon) = 0.\]
+\end{proof}
+
+\begin{exemple}
+  Sur \((\Omega, \mathscr{A}, \mathbb{P})\) on a une variable aléatoire de Bernoulli \(X\) de paramètre \(\displaystyle\frac{1}{2}\). On pose \(X_n = X\). On a que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\). On considère \(Y = 1 - X\). Elle est encore de Bernoulli de paramètre \(\displaystyle \frac{1}{2}\) et \(X_n \stackrel{\mathscr{L}}{\longrightarrow} Y\). Montrer que \(X_n\) ne converge pas en probabilité vers \(Y\).
+\end{exemple}
+
+\begin{proof}
+  \(\forall f \in \mathscr{C}_b,\) on doit montrer que \(\int f d P _{X_n} \longrightarrow \int f d P_Y\). On a
+
+  \[\underbrace{f(0) \frac{1}{2}+ f(1) \frac{1}{2}}_{X} = \underbrace{f(1)\frac{1}{2} + f(0)\frac{1}{2}}_{Y}, \]
+
+  donc \(X_n\) converge en probabilité vers \(Y\).
+
+  On a
+
+  \begin{gather*}
+    \mathbb{P}(\left\lvert X_n - Y \right\rvert \bg \varepsilon) = \mathbb{P}(\left\lvert X - Y \right\rvert \bg \varepsilon) = \mathbb{P}(\left\lvert X - 1 + X \right\rvert \bg \varepsilon) = \mathbb{P}(\left\lvert 2 X - 1 \right\rvert \bg \varepsilon).
+  \end{gather*}
+
+  On a \(\mathbb{P}(\left\lvert 2 X -1  \right\rvert =1) = 1\), donc \(X_n\) ne converge pas en probabilité vers \(Y\).
+\end{proof}
+
+\begin{thm}
+  Soit \(\{ X_n \}\) une suite de variables aléatoires définies sur des espaces \((\Omega_n, \mathscr{A}_n, \mathbb{P}_n)\) avec chacune une fonction de répartition \(F _{X_n}\). Soit \(X\) une autre variable aléatoire définie sur \((\Omega, \mathscr{A}, \mathbb{P})\) avec fonction de répartition \(F_X\). La suite \(\{ X_n \}\) converge en loi vers \(X\) si et seulement si \(F _{X_n}(t)\) converge vers \(F_X(t)\) dans les points de continuité de cette dernière.
+\end{thm}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item \emph{Partie nécessaire.} On suppose que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\). Soit \(t\) un point où \(F_X\) est continue. On veut montrer que \(F _{X_n}(t) \longrightarrow F_X(t)\).
+
+    Prenons l'ensemble \((-\infty, t]\). Cet ensemble-là est de \(P_X\)-continuité, car
+
+    \begin{gather*}
+      P_X(\{ t \}) = F_X(t) - F_{X-0}(t)=0.
+    \end{gather*}
+
+    Donc
+
+    \[\lim_{n \to \infty} F _{X_n}(t) = \lim_{n \to \infty} P _{X_n}((-\infty, t]) = P_X((-\infty, t]) = F_X(t).\]
+
+    \item \emph{Partie suffisante.} Par hypothèse, \(F _{X_n}(t) \longrightarrow F_X(t)\) et \(F _{X_n}\) est continue en \(t\). On va montrer que \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\).
+
+    On sait que les points où \(F_X\) n'est pas continue sont au plus dénombrables. Etant donné \(f \in \mathscr{C}_b(\mathbb{R})\), on introduit une fonction en escalier \(g : \mathbb{R} \longrightarrow \mathbb{R}\) de type
+
+    \[g(x) = \sum_{j=1}^{n} \alpha_j \mathds{1}_{[a_j, b_j]}, a_j \less b_j \leq a _{j+1} \less b _{j+1} \]
+
+    et les points \(\{ a_j, b_j \}\) sont de continuité par \(F_X\) et en plus
+
+    \[\left\Vert F_X(t)-g(t) \right\Vert_{\infty} \less \varepsilon. \]
+
+    On a
+
+    \begin{gather*}
+      \int_{\mathbb{R}} g(t) d P _{X_n}(t) = \sum_{j=1}^{k} \alpha_j P _{X_n}([a_j,b_j]) = \sum_{j=1}^{k} \alpha_j [F(b_j)-F(a_j)].
+    \end{gather*}
+
+    On a alors :
+
+    \begin{gather*}
+      \lim_{n \to \infty} \int_{\mathbb{R}}^{} g(t) d P _{X_n}(t) = \lim_{n \to \infty} \sum_{j=1}^{k} \alpha_j[F _{X_n}(b_j) - F _{X_n}(a_j)] \\
+      = \sum_{j=1}^{k} \alpha_j[F_X(b_j)- F_X(a_j)] = \int_{\mathbb{R}}^{}g(t)d P_X(t).
+    \end{gather*}
+
+    Soit \(f \in \mathscr{C}_b(\mathbb{R})\). On écrit
+
+    \begin{gather*}
+      \left\lvert \int_{}^{}f d P _{X_n} - \int_{}^{}f d P_X   \right\rvert \leq \left\lvert \int_{}^{}(f-g)d P _{X_n}  \right\rvert + \left\lvert \int_{}^{}g d P _{X_n} - \int_{}^{}g d P_X   \right\rvert + \left\lvert \int_{}^{} (g-f)d P_X  \right\rvert \\
+      \leq  2 \left\Vert f-g \right\Vert _{\infty} + \left\lvert \int g d P _{X_n}- \int_{}^{} g d P_X  \right\rvert \leq 2 \varepsilon + \left\lvert \int_{}^{} g d P _{X_n} - \int g d P_X  \right\rvert.
+    \end{gather*}
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}[De Schiffe, pour les variables à densité]
+  Soit \(\{ X_n \}\) une suite de variables aléatoires définies sur \((\Omega, \mathscr{A}_n, \mathbb{P}_n)\) et avec des densités \(f _{X_n}\). Si la suite \(f _{X_n}\) converge Lebesgue-presque partout vers une fonction \(f\) telle que \(\displaystyle\int f d \operatorname{Leb}\) est croissante, alors la suite \(X_n\) converge en loi vers la mesure \(f d \operatorname{Leb}\).
+\end{lemma}
+
+\subsection{Variables discrètes}
+
+\begin{prop}
+  Soit \(\{ X_n \}\) suite de variables discrètes sur le même espace \((\Omega, \mathscr{A}, \mathbb{P})\) à valeurs dans \(\mathbb{Z}\). On a l'équivalence entre les assertions suivantes :
+
+  \begin{enumerate}
+    \item \(X_n \stackrel{\mathscr{L}}{\longrightarrow} X\) ;
+    \item \(\displaystyle \lim_{n \to \infty} \mathbb{P}(\underset{r \in \mathbb{Z}}{X_n = r}) = \mathbb{P}(X=r)\).
+  \end{enumerate}
+\end{prop}
+
+\begin{thm}[Central limite]\marginnote{ \ {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}}
+  Soit \(\{ X_n \}\) une suite de variables aléatoires indépendantes et de même loi et de classe \(L ^2(\mathbb{P})\). Posons \(\mu = \mathbb{E}[X_1]\), \(\sigma ^2 = \mathbb{V}(X_1) \ (0 \less \sigma)\). Soit \(S_n = \displaystyle \sum_{j=1}^{n} X_j\). On écrit :
+
+  \[\frac{S_n - \mu_n}{\sigma \sqrt{n}} = \frac{\sum_{j=1}^{n} X_j - n \mu}{\sigma \sqrt{n} }.\]
+
+  Alors
+
+  \[\mathbb{P}\left(\frac{S_n - \mu n}{\sigma \sqrt{n} } \leq t \right) = \frac{1}{\sqrt{ 2 \pi \sigma}} \int_{-\infty}^{t} e^{- \frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2} dx.\]
+
+  On aura
+
+  \[\frac{S_n - \mu n}{\sigma \sqrt{n}} \stackrel{\mathscr{L}}{\longrightarrow} \mathscr{N}(\mu, \sigma ^2).\]
+\end{thm}
+
+\begin{proof}
+  On introduit
+
+  \begin{gather*}
+    \overline{X_n} = \frac{X_n}{n} = \frac{1}{n} \sum_{j=1}^{n} X_j, \\
+    Y_n = \frac{S_n - \mu n}{\sigma \sqrt{n}} = \frac{\overline{X_n}-\mu}{\frac{\sigma}{\sqrt{n}}}.
+  \end{gather*}
+
+  Considérons la variable centrée \(X_n - \mu = X_1 - \mu\). On a
+
+  \begin{gather*}
+    \varphi _{X_1 - \mu}(t) = 1 - \frac{t ^2 \sigma ^2}{2} + o(t ^3).
+  \end{gather*}
+
+  L'espérance de \(X_1 - \mu\) est nulle. La variance de \(X_1\) est \(\sigma ^2\).
+
+  On a
+
+  \begin{gather*}
+    Y_n = \frac{\sum_{j=1}^{n}(X_j - \mu)}{\sigma \sqrt{n}}.
+  \end{gather*}
+
+  La fonction caractéristique de cette variable vaut :
+
+  \begin{gather*}
+    \varphi _{Y_n}(t) = \varphi _{X_1 - \mu} \left(\frac{t}{\sigma \sqrt{n}}\right)^{n} = \left[1 - \frac{1}{2} \frac{\sigma ^2 t ^2}{\sigma ^2 n} + o(t ^2)\right] = \left[1 - \frac{1}{2}\frac{t ^2}{n} + o(t ^2)\right] \longrightarrow e^{- \frac{t ^2}{2}}.
+  \end{gather*}
+\end{proof}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2620,7 +2858,7 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
 
 \begin{exo}
   \
-  
+
   Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires indépendantes de loi exponentielle \(\mathscr{E}(2) = 2 e^{- 2x}\). Montrer que la suite
 
   \[\frac{1}{\ln(n)} \max _{1 \leq k \leq n} X_k\]

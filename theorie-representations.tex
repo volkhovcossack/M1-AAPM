@@ -1850,8 +1850,8 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   \
 
   \begin{enumerate}
-    \item \(\left\lvert \mathfrak{A}_3 \right\rvert = \frac{3!}{2}=3\), or 3 est premier, donc \(\mathfrak{A}_3\) est \textbf{cyclique}, donc \textbf{abélien}.
-    \item On a \(D(\mathfrak{S}_{3}) \triangleleft \mathfrak{S}_3\). Or les seuls sous-groupes distingués de \(\mathfrak{S}_{3}\) sont \(\{ id \}, \mathfrak{S}_{3}, \mathfrak{A}_3\). Donc \(D(\mathfrak{S}_{3}) = \{ e \} \text{ ou } D(\mathfrak{S}_{3}) \mathfrak{S}_{3} \text{ ou } D(\mathfrak{S}_{3}) = \mathfrak{A}_{3}\).
+    \item \(\left\lvert \mathfrak{A}_3 \right\rvert = \frac{3!}{2}=3\), or 3 est premier, donc \(\mathfrak{A}_3\) est \textbf{cyclique}, donc \textbf{abélien}. Donc \(D(\mathfrak{A}_{3}) = \{ e \}\).
+    \item On a \(D(\mathfrak{S}_{3}) \triangleleft \mathfrak{S}_3\). Or les seuls sous-groupes distingués de \(\mathfrak{S}_{3}\) sont \(\{ id \}, \mathfrak{S}_{3}, \mathfrak{A}_3\). Donc \(D(\mathfrak{S}_{3}) = \{ e \} \text{ ou } D(\mathfrak{S}_{3}) = \mathfrak{S}_{3} \text{ ou } D(\mathfrak{S}_{3}) = \mathfrak{A}_{3}\).
 
     Or \(\mathfrak{S}_{3}\) n'est pas abélien, donc \(D(\mathfrak{S}_{3}) \neq \{ id \}\). De plus, la signature d'un commutateur est égale à 1, car la signature est un morphisme de groupes et donc, pour tous \(x, y \in G\) :
 
@@ -1871,13 +1871,13 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
       \mathfrak{A}_4 = \{ e \} \cup \{ 3\text{-cycles} \} \cup \{ \text{type } (2, 2)\}.
     \end{gather*}
 
-    Les types (2, 2) de \(\mathfrak{A}_{4}\), à savoir les produits de deux transpositions à support disjoint sont :
+    Les types (2,2) de \(\mathfrak{A}_{4}\), à savoir les produits de deux transpositions à support disjoint sont :
 
     \begin{gather*}
       (1 2)(3 4), (1 3)(2 4), (1 4) (2 3).
     \end{gather*}
 
-    Le sous-groupe \(V = \{ id,  (1 2)(3 4), (1 3)(2 4), (1 4) (2 3)\}\) est distingué dans \(\mathfrak{A}_4\), car stable par conjugaison : \(V \triangleleft \mathfrak{A}_4\).
+    Le sous-groupe \(V = \{ \operatorname{id},  (1 2)(3 4), (1 3)(2 4), (1 4) (2 3)\}\) est distingué dans \(\mathfrak{A}_4\), car stable par conjugaison : \(V \triangleleft \mathfrak{A}_4\).
 
     On montre que c'est le seul sous-groupe distingué propre de \(\mathfrak{A}_4\).
 
@@ -1896,9 +1896,12 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   \end{enumerate}
 \end{proof}
 
-\begin{exo}
-  Montrer que, pour \(n \bg 4\), on a \(D(\mathfrak{A}_n) = \mathfrak{A}_n\) et \(D(\mathfrak{S}_n) = \mathfrak{A}_n\).
-\end{exo}
+\begin{prop}
+  \begin{exo}
+    Montrer que, pour \(n \bg 4\), on a \(D(\mathfrak{A}_n) = \mathfrak{A}_n\) et \(D(\mathfrak{S}_n) = \mathfrak{A}_n\).
+  \end{exo}
+\end{prop}
+
 
 \begin{remark}
   On a \(\mathfrak{A}_n \subset D(\mathfrak{S}_n)\), car les 3-cycles sont des commutateurs. En effet,

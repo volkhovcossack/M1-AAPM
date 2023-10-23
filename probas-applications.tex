@@ -1746,7 +1746,7 @@ Si \(\omega \in \lim_{n \to \infty} \sup A_n\), alors \(\forall k \geq n , \omeg
 \end{exemple}
 
 \begin{proof}[Solution]
-  La probabilité que l'événément en question se produise une infinité de fois est 0 (Borel-Cantelli). Dans notre cas, presque sûrement (avec probabilité 1) \(X_n \neq 0\) pour tout \(n\) sauf un nombre fini de \(n\).
+  La probabilité que l'événement en question se produise une infinité de fois est 0 (Borel-Cantelli). Dans notre cas, presque sûrement (avec probabilité 1) \(X_n \neq 0\) pour tout \(n\) sauf un nombre fini de \(n\).
 \end{proof}
 
 \
@@ -2288,7 +2288,6 @@ En probabilité, on utilisera surtout la convergence étroite.
   \begin{enumerate}
     \item \(\mu_n\) converge étroitement vers \(\mu\) ;
     \item Pour tout borélien \(A\) de \(\mu\)-continuité, on a
-texte normal
     \[\lim_{n \to \infty} \mu_k(A) = \mu(A).\]
   \end{enumerate}
 \end{thm}
@@ -2356,11 +2355,11 @@ Soit \(\forall n \in \mathbb{N}\) une suite de variables aléatoires \(X_n\) dé
       \frac{1}{u} \int_{0}^{u} \varphi _{\nu}(t)dt = \frac{1}{u}\int_{0}^{u}\left(\int_{\mathbb{R}^d} e^{itx}d \nu(x)  \right) \stackrel{\text{Fubini}}{=} \frac{1}{u}\int_{\mathbb{R}} \left(\int_{0}^{u} e^{itx}dt  \right) d \nu(x)  = \frac{1}{u} \int_{\mathbb{R}} \frac{e^{ixu}-1 }{iux}d \nu(x).
     \end{gather*}
 
-    On applique ces calculs à la mesure \(\mu\)texte normal :
+    On applique ces calculs à la mesure \(\mu\) :
 
     \begin{gather}
       \frac{1}{u} \int_{0}^{u} \varphi_\mu(t)dt = \int_{\mathbb{R}} \underbrace{\frac{e^{ixu}-1 }{iux}}_{\substack{\text{continue},\\\in \mathscr{C}_b(\mathbb{R}^d)}}d \mu(x)  = \lim_{k \to +\infty} \int_{\mathbb{R}^d} \frac{e^{iux}-1}{iux} d P _{n_k}  = \lim_{k \to+\infty} \frac{1}{u} \int_{0}^{u} \varphi_{P_{n_k}}(t)dt.  \label{equation45}
-    \end{gather}texte au-dessus
+    \end{gather}
 
     On observe que \(\left\lvert \varphi_{P_{n_k}}(t) \right\rvert \leq \varphi _{P _{n_k}}(0) = 1\), donc on peut passer à la limite dans l'intégrale :
 
@@ -2864,6 +2863,42 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
   \[\frac{1}{\ln(n)} \max _{1 \leq k \leq n} X_k\]
 
   converge en probabilités vers \(\frac{1}{2}\).
+\end{exo}
+
+\begin{exo}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires de carré intégrable et de même espérance \(\mu\). On pose \(S_n = \displaystyle \sum_{k=1}^{n}X_k\) et on suppose que
+
+  \[\frac{1}{n ^{\beta}} \mathbb{V}(S_n) \underset{n \to \infty}{\longrightarrow} 0 \text{ avec } \beta \bg 0.\]
+
+  Pour quelles valeurs de \(\beta\) la suite \(\frac{S_n}{n} \longrightarrow \mu\) en norme \(L ^2(\mathbb{P})\) (et donc en probabilité) ?
+\end{exo}
+
+\begin{exo}
+  On lance plusieurs fois et de manière indépendante deux dés. Soit \(X\) le nombre de lancers de premier dé nécessaires pour obtenir 1 et \(Y\) la variable aléatoire qui donne le nombre de lancers du deuxième dé nécessaires pour obtenir 5 ou 6.
+
+  \begin{enumerate}
+    \item Calculer les lois de \(X\) et \(Y\).
+    \item On pose \(Z  = \max(X,Y)\). Déterminer \(F_Z(n) = \mathbb{P}(Z \leq n)\).
+    \item Calculer \(\mathbb{P}(Z =n)\).
+
+    \emph{Idée.} Exprimer \(\mathbb{P}(Z = n)\) en terme de \(F_Z(n)\) et \(F_Z(n-1)\).
+
+    \item Calculer la loi de \(W = \min(X,Y)\).
+    \item Calculer \(\mathbb{P}(X \geq Y)\).
+
+    \emph{Idée.} L'événement \(X \geq  Y\) est donnée par la réunion des événements \(x \geq y\) pris sur les valeurs \(y\) de \(Y\).
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Soit \(f_n, n \geq 1\) la fonction définie par
+
+  \[f_n(x) = \mathds{1}_{\mathbb{R}^{+}}(x)n ^2 e^{-\frac{n ^2 x ^2}{2}}.\]
+
+  \begin{enumerate}
+    \item Montrer que \(f_n\) est une densité de probabilité.
+    \item Montrer que la suite de variables aléatoires \(X_n\) qui est de densité \(f_n\) converge en probabilités vers une variable aléatoire à déterminer.
+  \end{enumerate}
 \end{exo}
 
 

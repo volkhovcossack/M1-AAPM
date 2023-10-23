@@ -17,6 +17,7 @@
 \usepackage{marginnote}
 \usepackage[Glenn]{fncychap}
 \usepackage[all]{xy}
+\usepackage{textgreek}
 
 
 \newtheorem{prototheorem}{Théorème}[section]
@@ -85,7 +86,7 @@ Considérons la relation binaire suivante sur $G$ :
 
 Pour $x, y \in G$, $x \equiv _{d} y \mod H$ ssi $x y ^{-1} \in H$. C'est une relation d'équivalence. Elle est dite de congruence à gauche modulo $H$.
 
-\begin{proof}
+\begin{proof}[Preuve]
   En effet, si $x \in G$, alors $x x ^{-1} = e \in H$, donc $x \mod _{g} = x \mod H$. La relation est donc réflexive.
 
   De plus, si $x, y \in G$ tels que $x \equiv _{g} y \mod H$, alors $x y ^{-1} \in H$. $H$ étant un sous-groupe de $G$, il est donc stable par passage au symétrique. D'où $(x y ^{-1} ) ^{-1}  \in H$, i. e. $y x ^{-1} \in H$, c'est-à-dire $y \equiv _{g} x \mod H$.
@@ -146,7 +147,7 @@ On note alors $H \triangleleft G$.
   \end{gather*}
 \end{prop}
 
-\begin{proof}
+\begin{proof}[Proof]
   Cette loi est bien définie, i. e. elle ne dépend pas du choix des représentants des classes d'équivalence.
 \end{proof}
 
@@ -282,7 +283,7 @@ s:
 
 On vérifie que l'on a $r ^{n} = 1 = id$, $s ^2 = 1 =id$ et $rs = r ^{-1} $.
 
-\begin{proof}
+\begin{proof}[Bevis]
   En effet, si $z \in \mathbb{C}$, alors
 
   \[
@@ -418,7 +419,7 @@ Si $H$ est un sous-groupe d'un groupe $G$, ses \textbf{conjugués} dans $G$ sont
   Montrer qu'il n'existe pas de groupes simples d'ordre 15.
 \end{exo}
 
-\begin{proof}
+\begin{proof}[Dokaz]
   Soit $G$ un groupe d'ordre $3 \times 5 = 15$. D'après le premier théorème de Sylow, $G$ admet au moins un 3-Sylow.
 
   Soit $n_3$ le nombre de 3-Sylow de G. Par le deuxième théorème de Sylow, on a
@@ -493,7 +494,7 @@ On peut voir une action comme un morphisme de groupes de $G$ dans le groupe sym�
     \end{array}$ est un morphisme de groupes, alors $(g,x) \mapsto g \cdot x :=p_g(x)$ est une action de $G$ sur $X$.
 \end{prop}
 
-\begin{proof}
+\begin{proof}[A\textpi\'o\textdelta\textepsilon\textiota\textxi\textiota]
 
   \
 
@@ -657,7 +658,7 @@ Cela établit deux bijections réciproques entre l'ensemble des actions de $G$ s
   \]
 \end{thm}
 
-\begin{proof}
+\begin{proof}[Prueba]
   \[
   \sharp(X) = \sum_{i=1}^{m} \sharp(Orb(x_i)),
   \]
@@ -1090,7 +1091,7 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
 \end{remark}
 
 
-\begin{proof}[Démonstration du lemme \ref{lemme-maschke}]
+\begin{proof}[Dimonstrazione del lemma \ref{lemme-maschke}]
   Si \(W\) est un sous-espace vectoriel de \(V\) stable sous l'action de \(G\), alors le supplémentaire \textbf{orthogonal} de \(W\) est lui aussi stable sous l'action puisque : \(W \subset V\) stable sous l'action de \(G\) par \(\rho\), i. e. \( \forall g \in G, \rho_g(W) \subset W\). On a
 
   \[W ^{\perp} := \{  x \in V \mid \langle x, w \rangle _{\rho} = 0,  \forall w \in W \}.\]
@@ -1104,7 +1105,7 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
   car \(\rho _{g ^{-1} }(w) \in W\).
 \end{proof}
 
-\begin{proof}[Démonstration du théorème \ref{Maschke}]
+\begin{proof}[Dokazatelstvo teoremy \ref{Maschke}]
   Si \(\operatorname{dim}(V)=1\) ou si \(V\) est irréductible, c'est démontré.
 
   Si \(\operatorname{dim}(V) \geq 2\) et \(V\) est non irréductible, alors \(V\) possède une sous-représentation \(W\) distincte de \(\{ 0 \} \) et \(V\). Si \(\langle \cdot, \cdot \rangle _{\rho}\) est un produit scalaire hermitien sur \(V\) invariant sous l'action de \(G\), le supplémentaire orthogonal \(W ^{\perp}\) de \(W\) est lui aussi stable par \(G\). On a alors \(V = W \oplus W'\) et \(W\) et \(W'\) sont de dimensions inférieures à celle de \(V\).
@@ -1141,7 +1142,7 @@ Réciproquement, si \(p\) est une application linéaire de \(V\) sur lui-même v
 
 
 
-\begin{proof}\marginnote{27-09-2023}
+\begin{proof}[\k{I}rodymas]\marginnote{27-09-2023}
 
   \
   Soit \(\rho : G \longrightarrow GL(V)\) représentation linéaire d'un groupe fini \(G\) de caractère \(\chi _{\rho}\).
@@ -1294,7 +1295,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
   \end{enumerate}
 \end{lemma}
 
-\begin{proof}
+\begin{proof}[Dow\'od]
 
   \
 
@@ -1338,7 +1339,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
   si \(\chi, \chi'\) ne sont pas des caractères irréductibles de \(G\).
 \end{prop}
 
-\begin{proof}
+\begin{proof}[Todiste]
   Soient \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) deux représentations irréductibles de \(G\) et soient \(\chi \text{ et } \chi'\) leurs caractères associés.
 
   Soit \(g \in G\), notons \(\operatorname{Mat}(\rho_g) = (a _{ij}(g)) _{1 \leq i, j \leq d}, \operatorname{Mat}(\rho_g') = (a _{ij}'(g)) _{1 \leq i, j \leq d'}\), où \(d = \operatorname{deg}(\chi) = \operatorname{dim}(V)\) et \(d' = \operatorname{deg}(\chi') = \operatorname{dim}(V')\). On a :
@@ -1391,7 +1392,7 @@ Soit \(G\) un groupe fini. On considère le \(\mathbb{C}\)-espace vectoriel \(\m
 
   \end{exo}
 
-  \begin{proof}
+  \begin{proof}[T\~{o}end]
 
     \
 
@@ -1494,7 +1495,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   Le nombre de (classes d'isomorphismes de) représentations irréductibles d'un groupe \(G\) est égal au nombre de classes de conjugaison de \(G\).
 \end{corollary}
 
-\begin{proof}
+\begin{proof}[Kanıt]
   D'après le théorème de Frobenius, le nombre de représentations irréductibles d'un groupe \(G\) est égal à la dimension de l'espace vectoriel \(\mathscr{F}_C(G)\) des fonctions centrales sur \(G\). Or une fonction est centrale si et seulement si elle est constante sur chaque classe de conjugaison ; une fonction centrale \(\phi : G \longrightarrow \mathbb{C}\) peut donc s'écrire de manière unique sous la forme :
 
   \[\phi = \sum_{C \in \operatorname{Conj}(G)} \lambda_C 1 _{C}, \]
@@ -1522,7 +1523,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   En particulier, il ne dépend de la décomposition et \[V \simeq \bigoplus _{W \in \operatorname{Irr}(G)} \langle \chi_W, \chi_V \rangle W.\]
 \end{corollary}
 
-\begin{proof}
+\begin{proof}[Firndé]
   On a
 
   \begin{gather*}
@@ -1547,7 +1548,7 @@ On a vu que les caractères \(\chi _{\rho}\) des représentations \(\rho\) de \(
   Deux représentations d'un même groupe fini sont isomorphes si et seulement si elles ont même caractère.
 \end{corollary}
 
-\begin{proof}
+\begin{proof}[Borhan]
   D'après le corollaire \ref{cor2}, si \(\rho : G \longrightarrow GL(V)\) et \(\rho' : G \longrightarrow GL(V')\) sont deux représentations de \(G\) ayant même caractère \(\chi\) alors \(V\) et \(V'\) sont tous les deux isomorphes à :
 
   \[\bigoplus _{W \in \operatorname{Irr}(G)} \langle \chi_W, \chi \rangle W.\]
@@ -2516,6 +2517,219 @@ On a \(D(\mathfrak{S}_n) = \mathfrak{A}_n\) pour \(n \geq 3\). Or \([\mathfrak{S
       \end{enumerate}
   \end{enumerate}
 \end{proof}
+
+\chapter{Groupes orthogonaux et unitaires} \marginnote{23-10-2023}
+
+\section{Théorème de classification des endomorphismes orthogonaux de \(\mathbb{R}^3\)}
+
+\begin{definition}
+  Une matrice \(M \in \mathcal{M}_n(\mathbb{R})\) est dite \textbf{orthogonale} si \(^{t}M M = I\).
+
+  L'ensemble
+
+  \[O _{n} = \{ M \in \mathcal{M}_n(\mathbb{R}) \mid ^{t}M M = I \}\]
+
+  est un sous-groupe de \(GL_n(\mathbb{R})\) appelé \textbf{le sous-groupe orthogonal} de degré \(n\) sur \(\mathbb{R}\).
+\end{definition}
+
+\begin{remark}
+  Si \(M \in O _{n}(\mathbb{R})\), alors \(\operatorname{det}(M)^2 = 1\), ce qui implique que \(\operatorname{det}(M) = \pm 1\).
+\end{remark}
+
+
+\begin{prop}[Rappel]
+  Les assertions suivantes sont équivalentes :
+
+  \begin{enumerate}
+    \item \(M \in O_n(\mathbb{R})\) ;
+    \item Les colonnes de \(M\) forment une base orthonormale de \(\mathbb{R}^{n}\) ;
+    \item L'endomorphisme \(f\) associé à \(\mathbb{R}^n\) est un endomorphisme \textbf{orthogonal} ;
+    \item \(f\) conserve la norme \(\left\Vert f(x) \right\Vert = \left\Vert x \right\Vert\) pour tout \(x \in \mathbb{R}^n\) ;
+    \item Pout toute base orthonormée \(\mathcal{B}\) de \(\mathbb{R}^n\), \(f(\mathcal{B})\) est encore une base orthonormée de \(\mathbb{R}^n\).
+  \end{enumerate}
+\end{prop}
+
+\begin{definition}
+  Le sous-ensemble
+
+  \[SO_n(\mathbb{R}) := \{ M \in O_n(\mathbb{R}) \mid \operatorname{det}(M) = \pm 1 \}\]
+
+  est un sous-groupe de \(O_n(\mathbb{R})\), appelé \textbf{groupe spécial orthogonal} de degré \(n\) sur \(\mathbb{R}\).
+\end{definition}
+
+\subsection{Cas particulier en dimension 2 et 3}
+
+\subsubsection{Dimension 2}
+
+
+En dimension 2 (pour \(n=2\)), on a :
+
+  \begin{gather*}
+    O_2(\mathbb{R}) = \left\{  \begin{pmatrix}
+    \cos(\theta) & - \varepsilon\sin(\theta) \\
+    \sin(\theta) & - \varepsilon\cos(\theta)
+  \end{pmatrix}, \theta \in \mathbb{R}, \varepsilon = \pm 1 \right\} \\
+  = \left\{ R _{\theta} = \begin{pmatrix}
+  \cos(\theta) & - \sin(\theta) \\
+  \sin(\theta) & \cos(\theta)
+\end{pmatrix}, \theta \in \mathbb{R} \right\} \bigcup \left\{ S _{\varphi} = \begin{pmatrix}
+\cos(\varphi) & \sin(\varphi) \\
+\sin(\varphi) & \cos(\varphi)
+\end{pmatrix}, \varphi \in \mathbb{R} \right\},
+  \end{gather*}
+
+  où \(R _{\theta}\) est la rotation d'angle \(\theta\) et \(S _{\varphi}\) est la réflexion (symétrie orthogonale par rapport à un hyperplan) par rapport à la droite \(D\) passant par l'origine et faisant un angle \(\displaystyle\frac{\varphi}{2}\) avec l'axe des abscisses.
+
+\subsubsection{Dimension 3}
+
+En dimension 3 (pour \(n=3\)), on a :
+
+  \begin{thm}[De classification des endomorphismes orthogonaux de \(\mathbb{R}^3\)]
+    Soit \(f \in O_3(\mathbb{R}) \setminus \{ \operatorname{id} \}\).
+
+    \begin{enumerate}
+      \item Si \(\operatorname{det}(f) = 1\), alors \(f\) est une \textbf{rotation} de \(\mathbb{R}^3\).
+      \item Si \(\operatorname{det}(f) = -1\), alors :
+
+      \begin{enumerate}
+        \item Ou bien \(f\) est une \textbf{réflexion} de \(\mathbb{R}^3\) ;
+        \item Ou bien \(f\) est \textbf{la composée d'une rotation} de \(\mathbb{R}^3\) et de la \textbf{réflexion} par rapport au plan orthogonal à l'axe de cette rotation.
+      \end{enumerate}
+    \end{enumerate}
+  \end{thm}
+
+
+\section{Le groupe unitaire et spécial unitaire}
+
+\begin{definition}
+  Si \(M \in \mathcal{M}_n(\mathbb{C}), M = (a _{ij})_{i,j}\), on définit l'adjointe (ou transconjuguée) de \(M\) la matrice :
+
+  \[M ^{*} := ^{t}\overline{M} = (b _{ij}), \text{ avec }  b _{ij} = \overline{a _{ji}}.\]
+\end{definition}
+
+Rappelons que l'espace vectoriel \(\mathbb{C}^{n}\) est muni du produit scalaire hermitien
+
+\[\begin{matrix}
+  \mathbb{C}^n \times \mathbb{C}^n & \longrightarrow & \mathbb{C} \\
+ (v, w) & \longmapsto & (v \mid w) = \sum_{i=1}^{n} \overline{v_i} w_i.
+\end{matrix}\]
+
+C'est une forme sesquilinéaire, ce qui veut dire qu'elle est
+
+\begin{enumerate}
+  \item antilinéaire par rapport à la première place, i. e. \[\forall \lambda \in \mathbb{C}, \langle \lambda v+v' \mid w \rangle = \overline{\lambda}\langle v \mid w \rangle, \]
+  \item linéaire par rapport à la seconde place,
+  \item hermitienne, i. e. \(\langle w \mid v \rangle = \overline{\langle v \mid w \rangle}\),
+  \item définie positive.
+\end{enumerate}
+
+\begin{definition}
+  Une matrice est dite \textbf{unitaire} si \(M ^{*} M = I\).
+
+  On vérifie que
+
+  \[U_n (\mathbb{C}) = \{ M \in \mathcal{M}_n(\mathbb{C}) \mid M ^{*} M = I \}\]
+
+  est un sous-groupe de \(GL_n(\mathbb{C})\) appelé \textbf{groupe unitaire} de degré \(n\).
+
+  On définit le groupe spécial unitaire par :
+
+  \[SU_n(\mathbb{C}) = \{ M \in U_n(\mathbb{C}) \mid \operatorname{det}(M) =1 \}.\]
+\end{definition}
+
+\chapter{Groupes topologiques}
+
+On va travailler sur les groupes des topologies compatibles avec la loi de groupes.
+
+\begin{definition}
+  Un groupe topologique est la donnée d'un groupe \((G, \ast)\) et d'une topologie sur l'ensemble \(G\) telle que, si l'ensemble \(G \times G\) est muni de la topologie produit, la loi interne
+
+  \[\begin{matrix}
+  \ast : & G \times G & \longrightarrow & G \\
+  \ & (g,g') & \longmapsto & g \ast g'
+  \end{matrix}\]
+
+  et le passage au symétrique
+
+  \[\begin{matrix}
+    G & \longrightarrow & G \\
+    g & \longmapsto & g ^{-1}
+  \end{matrix}\]
+
+  sont continues.
+\end{definition}
+
+\begin{remark}[Rappel : topologie produit sur \(G \times G\)]
+  \(U\) est un ouvert de \(G \times G\) si pour tout \(x \in U\), il existe \(U_1\) ouvert de \(G\) et il existe \(U_2\) ouvert de \(G\) tels que \(x \in U_1 \times U_2 \subset U\), i. e. si \(U\) est une réunion de produits d'ouverts de \(G\). C'est la topologie la moins fine qui rend les projections continues.
+\end{remark}
+
+\begin{exemple}
+  Les topologies usuelles sur \(\mathbb{R}^n, \mathbb{C}^{n}\) et \(\mathbb{R}^{*}\) font de \((\mathbb{R}^n, +), (\mathbb{C}^{n}, +) \text{ et } (\mathbb{R}^{*}, \times)\) des groupes topologiques.
+\end{exemple}
+
+Soit \(K = \mathbb{R} \text{ ou } \mathbb{C}\), l'espace vectoriel \(\mathcal{M}_n(K)\) s'identifie à \(K ^{n ^2}\). On peut définir une norme sur cet espace en posant
+
+\[\left\Vert M \right\Vert = \max \{ \left\lvert a _{ij}, 1 \leq i,j \leq n \right\rvert \} \text{ si } M = (a _{ij})_{1 \leq i,j \leq n}.\]
+
+On a donc une distance \(d\) sur \(\mathcal{M}_n(K)\) définie par :
+
+\[d(M,N) = \left\Vert M - N \right\Vert\]
+
+et cette distance induit une topologie sur cet espace. L'application déterminant \(\operatorname{det} : \mathcal{M}_n(K) \longrightarrow K\) est continue, car le déterminant d'une matrice \(M = (a _{ij})\) est un polynôme des \(a _{ij}\). On en déduit que \(GL_n(K)= \operatorname{det}^{-1}(K ^{*})\) est un ouvert de \(\mathcal{M}_n(K)\) et que \(SL_n(K) = \operatorname{det}^{-1}(\{ 1 \})\) est un fermé.
+
+\begin{thm}
+  Les groupes \(SO_n(\mathbb{R}), O_n(\mathbb{R}), SU_n(\mathbb{C})\) et \(U_n(\mathbb{C})\) sont compacts.
+\end{thm}
+
+\begin{proof}[Pierādījums]
+  L'application \(\psi : \begin{matrix}
+   \mathcal{M}_n(\mathbb{R}) & \longrightarrow & \mathcal{M}_n(\mathbb{R}) \\
+   M & \longmapsto & ^{t}M M
+  \end{matrix}\) est continue et donc \(O_n(\mathbb{R}) = \psi ^{-1}(\{ I \})\) est un fermé de \(\mathcal{M}_n(\mathbb{R})\).
+
+  Si \(M=(a _{ij}) \in O_n(\mathbb{R})\), le produit scalaire de la \(j\)-ième colonne de \(M\) avec elle-même est égal à 1 (car les colonnes de \(M\) forment une base orthonormée), ce qui implique que \(\left\lvert a _{ij} \right\rvert \leq  1\) pour \(i=1, \dots, n\) (car \(\displaystyle \sum_{i=1}^{n}a _{ij}^2 = 1\)). On en déduit que \(\left\Vert M \right\Vert \leq 1\).
+
+  Le groupe orthogonal \(O_n(\mathbb{R})\) est fermé et borné dans \(\mathcal{M}_n(\mathbb{R})\) (qui est un espace vectoriel de dimension finie \(n ^2\)), il est donc compact. La compacité de \(U_n(\mathbb{C})\) se montre de manière analogue. Comme \(SO_n(\mathbb{R}) = O_n(\mathbb{R}) \cap SL_n(\mathbb{R})\), \(SO_n(\mathbb{R})\) est un fermé dans un compact, il est donc lui-même compact.
+\end{proof}
+
+\chapter{Algèbre d'un groupe fini}
+
+Soit \(G\) un groupe fini. Soit \(\mathscr{F}(G)\) le \(\mathbb{C}\)-espace vectoriel des fonctions définies sur \(G\) à valeurs dans \(\mathbb{C}\). Il est de dimension \(\left\lvert G \right\rvert\), car une base de cet espace vectoriel est donnée par les fonctions suivantes (pour \(g \in G\)) :
+
+\[\begin{matrix}
+\varepsilon_g : & G & \longrightarrow & \mathbb{C} \\
+\ & x & \longmapsto & \varepsilon_g(x) = \begin{cases}
+  1 \text{ si } g = x \\
+  0 \text{ sinon }
+\end{cases}.
+\end{matrix}\]
+
+Tout élément \(a\) de \(\mathscr{F}(G)\) s'écrit donc de manière unique sous la forme
+
+\[a = \sum_{g \in G} a_g \varepsilon_g \text{ avec } a_g \in G (a_g = a(g)).\]
+
+Les éléments de cette bas seront maintenant notés \(g, g \in G\). On identifie les élements de \(\mathscr{F}(G)\) à des sommes formelles :
+
+\[\sum_{g \in G} a_g g, a_g \in \mathbb{C}.\]
+
+\begin{definition}
+  L'algèbre de groupe \(\mathbb{C}[G]\) du groupe fini \(G\) est le \(\mathbb{C}\)-espace vectoriel de fonctions de \(G\) dans \(\mathbb{C}\) :
+
+  \[\mathbb{C}[G] = \left\{ a =\sum_{g \in G} a_g g, a_g \in \mathbb{C}\right\}\]
+
+  muni d'une structure d'algèbre pour la multiplication suivante (appelée produit de convolution) : \(\varepsilon_g \varepsilon_t = \varepsilon _{gt}\) et prolongé par linéarité, i. e.
+
+  \[ab = \left(\sum_{g \in G} a_g g \right) \left(\sum_{t \in G} b_t t \right)\]
+
+  où \(gt\) est donné par la loi de composition interne de \(G\).
+\end{definition}
+
+On montre que le centre de \(\mathbb{C}[G]\) est de dimension égale au nombre \(s\) de classes de conjugaison de \(G\) et une base de sous-espace vectoriel donnée par :
+
+\[\left\{ z_i = \sum_{g  \in c_i}g, i=1, \dots, s \right\}\]
+
+où les \(c_i\) sont les classes de conjugaison.
+
 
 
 \end{document}

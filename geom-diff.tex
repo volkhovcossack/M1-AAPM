@@ -2247,6 +2247,16 @@ Supposons que \(g(a)\) est défini positif.
 
 avec
 
+\begin{gather*}
+  \overrightarrow{v} = \sum_{j=1}^{n} v ^{j} \frac{\partial  }{\partial x ^{j}} = \sum_{i,j}^{} g _{i,j}(a) d x^{i}(a) \otimes d x^{j}(a) \left(\sum_{i'}^{} \frac{\partial  }{\partial x ^{i'}}(a), \sum_{j'}^{} v ^{j'} \frac{\partial  }{\partial x ^{j'}}(a)\right) \\
+  = \sum_{i,j} \sum_{i',j'} g _{ij}(a) v ^{i'} v ^{j'} d x^{i}(a) \left(\frac{\partial  }{\partial x ^{i'}}(a) d x^{j}(a) \frac{\partial  }{\partial x ^{j'}}(a) \right)=\sum_{\substack{i,j \\ i' = i \\ j=j'}} g _{ij}(a) v ^{i} v ^{j} \\
+  = [v ^{1} \ \dots \ v ^{n}] [G_a] \left[\begin{matrix}
+    v ^{1} \\
+    \vdots \\
+    v ^{n}
+  \end{matrix}\right] = \tilde{\overrightarrow{v}} \cdot G_a \tilde{\overrightarrow{v}}.
+\end{gather*}
+
 %\begin{gather*}
 %  \overrightarrow{v} = \sum_{j=1}^{n} v ^{j} \frac{\partial  }{\partial x ^{j}} = \sum_{i,j} g _{i,j} (a) d x ^{i}(a) \otimes d x ^{j}(a) \left(\sum_{i'} \frac{\partial  }{\partial x ^{i'}}(a), \sum_{j'} v ^{j'} \frac{\partial  }{\partial x ^{j'}}(a)\right) \\
 %  = \sum_{i,j} \sum_{i',j'} g _{ij}(a)v ^{i'} v ^{j'} d x ^{i}(a) \left(\frac{\partial  }{\partial x ^{i'}}(a)\right)  d x ^{j}(a) \frac{\partial  }{\partial x ^{j'}}(a) \right)  = \sum_{\substack{i,j\\i' = i\\j'=j}} g _{ij}(a) v ^{i} v ^{j} \\
@@ -2259,7 +2269,7 @@ avec
 
 Donc \(\tilde{\overrightarrow{v}} G_a \tilde{\overrightarrow{v}} \geq 0\) pour tout \(\overrightarrow{v} \in \mathbb{R}^n\) et \(\tilde{\overrightarrow{v}} \cdot G_a \tilde{\overrightarrow{v}} = 0 \iff \tilde{\overrightarrow{v}} = 0\), ce qui implique que \(G_a\) est défini positif.
 
-Le sens réciproque est démontré par les mêmes calculs en faisant ...
+Le sens réciproque est démontré par les mêmes calculs.
 
 \paragraph{Commentaires}
 
@@ -2452,6 +2462,58 @@ La géométrie induite par \(g\) sur le demi-plan est la géométrie hyperboliqu
   pour la métrique standart euclidienne.
 \end{thm}
 
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.2]{figures/horizon1.png}
+  \caption{}
+  \label{horizon1}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/horizon2.png}
+  \caption{}
+  \label{horizon2}
+\end{figure}
+
+On a, pour le cas des figures \ref{horizon1} et \ref{horizon2}, le calcul suivant, pour \(\gamma(t) = (x(t), y(t))\) :
+
+\begin{gather*}
+  L_g(\gamma) = \int_{0}^{1}  \Vert \overbrace{y(t), \gamma'(t)}^{\in T _{\gamma}(t)} \Vert_g  dt = \int_{0}^{1} \frac{\left\Vert \gamma'(t) \right\Vert }{y}dt = \int_{0}^{1} \frac{\sqrt{(x')^2(t)+ (y')^2(t)}}{y(t)} dt.
+\end{gather*}
+
+On a \(\eta(t) = (x,y_0) + t((x,y_1)-(x,y_0)) = (x,y_0 + t(y_1 - y_0))\) et \(\eta'(t) = (0,y_1-y_0)\), ce qui donne \(\left\Vert \eta'(t) = \left\lvert y_1 - y_0 \right\rvert \right\Vert \). Donc
+
+\begin{gather*}
+  L_g(y) = \int_{0}^{1} \frac{\left\Vert \eta'(t) \right\Vert }{y_0 + t(y_1-y_0)}dt = \int_{0}^{1} \frac{\left\lvert y_1-y_0 \right\rvert}{y_0 + t(y_1-y_0)}dt.
+\end{gather*}
+
+Notez que si l'on choisit \(\tilde{\gamma}(t)=(x,y(t))\) en partant de \(\gamma(t) = (x(t),y(t))\), on a :
+
+\begin{gather*}
+  L_g(\tilde{\gamma}) = \int_{0}^{1} \frac{\left\Vert \tilde{\gamma}(t) \right\Vert }{y(t)}dt = \int_{0}^{1} \frac{\left\lvert y'(t) \right\rvert}{y(t)}dt \leq  \int_{0}^{1} \frac{\sqrt{(x')^2(t) + (y')^2(t)}}{y(t)}dt = L_g(\gamma).
+\end{gather*}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.2]{figures/chemin-vert-court.png}
+  \caption{Le chemin tout droit vertical est toujours le plus court}
+  \label{chemin-vert-court}
+\end{figure}
+
+En conclusion, on a \(L_g(\tilde{\gamma}) \leq L_g(\gamma)\), ce qui signifie que le chemin tout droit vertical est toujours le plus court par rapport à tous les chemis qui joignent \((x,y_0)\) à \((x,y_1)\) comme illustré dans la figure \ref{chemin-vert-court}.
+
+{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} On n'a pas dit que \(\eta\) donne la paramétrisation du chemin le plus court entre \((x,y_0)\) et \((x,y_1)\). C'est une question à discuter plus tard.
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/ligne-pas-tres-courte.png}
+  \caption{La ligne droite n'est pas en général le chemin le plus court.}
+  \label{}
+\end{figure}
+
+\
+
 Si \(\overrightarrow{w} \in T _{(x,y)} U\) pour \((x,y) \in U\) quelconque, avec \(\overrightarrow{w} = (w_1, w_2)\), on a :
 
 \[\left\Vert \overrightarrow{w} \right\Vert _{g} = (g(x,y)(\overrightarrow{w}, \overrightarrow{w})) ^{\frac{1}{2}} = \left(\frac{1}{y ^2} \left\Vert \overrightarrow{w}^2 \right\Vert \right) ^{\frac{1}{2}} = \frac{\left\Vert \overrightarrow{w} \right\Vert }{y}.\]
@@ -2484,7 +2546,7 @@ Il y a aussi le disque de Poincaré (Escher hyperbolic disc).
 
 Il faudra encore développer les techniques nécessaires pour pouvoir démontrer que les lignes droites par rapport à la métrique hyperbolique sur le demi-plan de Poincaré sont effectivement des demi-cercles centrés sur la ligne \(y=0\). Ces lignes droites sont appelées les géodésies de \((U,g)\) dans la géométrie différentielle.
 
-Voici une première définition de la géodésie (de manière rudimentaire plus géométrique que mécanique) :
+Voici une première définition de la géodésie \ref{geodesie} (de manière rudimentaire plus géométrique que mécanique) :
 
 \begin{definition}
   On dit que \(\gamma([a,b])\) est un segment géodésique dans \((U,g)\) si pour \(x = \gamma(a), y = \gamma(b), x, y \in U\),
@@ -2497,6 +2559,13 @@ Voici une première définition de la géodésie (de manière rudimentaire plus 
 
   où chaque \(\mathscr{C}_i\) est un segment géodésique tel que \(\forall n \in \mathbb{Z}, C_n \cap C _{n+1}\) est un singleton.
 \end{definition}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.2]{figures/geodesie.png}
+  \caption{Géodésie}
+  \label{geodesie}
+\end{figure}
 
 \begin{remark}[Rappel]
   Soit \(\beta : E \times E \longrightarrow \mathbb{R}\) un produit scalaire sur un espace vectoriel \(E\). Soit \(f \in E ^{*}\), avec \(\operatorname{dim}(E) = n\). Alors il existe un vecteur \(\overrightarrow{v_f}\) unique tel que
@@ -2582,10 +2651,200 @@ Si \(\nabla _{g}f(a) = \sum_{i=1}^{n}c_i \frac{\partial  }{\partial x_i}(a)\), o
 
 Pour tout \(i\), on a \(d_a f\left(\frac{\partial  }{\partial x ^{i}}(a) \right) = g(a) (\nabla _{g}f(a), \frac{\partial  }{\partial x ^{i}}(a))\). Cela implique que
 
-%\begin{gather*}
-%  \forall i \in \{1, \dots, n \}, G_a =[g _{ij}], g(a)\left(\nabla _{g}f(a), \frac{\partial  }{\partial x ^{i}}(a) \right) = \left\langle e_i \mid G_a \mid  \nabla _{g}f(a) \right\rangle = \part_{i}f(a)
-%\end{gather*}
+\begin{gather*}
+  \forall i \in \{1, \dots, n \}, G_a = [g _{ij}], g(a) \left(\nabla_g f(a), \frac{\partial  }{\partial x ^{i}}(a)  \right) = \left\langle e_i \mid G_a \mid \nabla_g f(a) \right\rangle \partial_i f(a)
+\end{gather*}
 
-si et seulement si \(G_a \mid \nabla _{g}f(a) \rangle \)
+si et seulement si \[G_a \mid \nabla _{g}f(a) \rangle  = \left[\begin{matrix}
+  \partial_1 f(a) \\
+  \vdots \\
+  \partial_n f(a)
+\end{matrix}\right] \implies \left[\begin{matrix}
+  c_1 \\
+  \vdots \\
+  c_n
+\end{matrix}\right] = \mid \nabla_g f(a) \rangle = G_a ^{-1} \left[\begin{matrix}
+  \partial_1 f(a) \\
+  \vdots \\
+  \partial_n f(a)
+\end{matrix}\right].\]
+
+Donc \(\mid \nabla _{g}f(a)\rangle = G_a ^{-1} \mid \nabla f(a)\rangle\).
+
+\(G ^{-1}(a)\) est souvent représentée par une matrice \(g ^{ij}(a)\).  On a
+
+\begin{gather*}
+  \left(\sum_{k=1}^{n} g _{ik}(a)g ^{kj}(a) = \delta _{i}^{i} \right), \sum_{k=1}^{n} g ^{ik}g _{kj} = \delta _{j}^{i}
+\end{gather*}
+
+et
+
+\begin{gather*}
+  \left[\begin{matrix}
+    c_1 \\
+    \vdots \\
+    c_n
+  \end{matrix}\right] = [g ^{ij}(a)] \begin{bmatrix}
+    \partial_1 f(a) \\
+    \vdots \\
+    \partial_n f(a)
+\end{bmatrix},
+\end{gather*}
+
+donc \(\forall i\), \(\displaystyle \sum_{j=1}^{n} g ^{ij}(a) \partial_j f(a)\).
+
+\begin{remark}
+  \(\underbrace{d_a}_{\in T_a ^{*}U} = \displaystyle \sum_{i=1}^{n} \partial_i f(a) \underbrace{d x^{i}(a)}_{(a, e ^{ij})}\) (si \(\alpha = \displaystyle \sum a_i e ^{i}, a_i = \alpha(e_i)\) et \(d_a f(e_i) = \partial_i f(a)\)).
+
+  Donc \(d_a f \in (T_a U)^{*} = \Omega ^{1}(T_a U)\), c'est un tenseur covariant d'ordre 1.
+\end{remark}
+
+Les coefficients sont indexés en base \(\partial_i f(a)\). La base indexée en haut est \(d x^{i}(a)\). On remarque que \(\nabla_gf(a) \in T_a U = \Omega_1(T_a U)\), c'est donc un tenseur contravariant d'ordre 1. Donc
+
+\[\nabla_g f(a) = \sum_{i=1}^{n} c ^{j} \frac{\partial  }{\partial x ^{i}}(a).\]
+
+On a pour tout \(i\),
+
+\[c ^{i} = \sum_{j=1}^{n} g ^{ij}(a) \partial_j f(a).\]
+
+On écrit
+
+\[\underset{\text{dans } \Omega_1(T_a U)}{\nabla_g f(a)} = g _{\sharp}(\underset{\text{dans } \Omega ^{1}(T_a U)}{T_a U}).\]
+
+Plus généralement, si \(\alpha : U \longrightarrow T_l ^{k} U\) est un champ tensoriel, i. e.
+
+\[\alpha = \sum_{\substack{i_1, \dots, i _{k}\\ j_1, \dots, j_k}} a ^{j_1 \dots j_l}_{i_1 \dots i_k} d x^{i_1} \otimes \dots \otimes d x^{i_k} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}\]
+
+et \(g\) est une métrique riemanienne pour \(k \geq 1\), on peut créer un champ tensoriel dans \(T ^{k-1}_{l+1}\) de trace \(g\) que l'on notera \(g _{\sharp}\alpha : U \longrightarrow T ^{k-1}_{l+1} U\) et il vaudra :
+
+\[g _{\sharp} \alpha= \sum_{\substack{1 \leq i_1 \dots i _{k-1} \leq n\\ 1 \leq j_1 \dots j _{l+1} \leq  n}} b _{i_1 \dots i _{k-1}}^{j_1 \dots j _{l+1}} d x^{i_1} \otimes \dots d x^{i _{k-1}} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j _{l+1}}}.\]
+
+Pour tous les choix, on a \(b _{i_1 \dots i _{k-1}}^{j_1 \dots j _{l+1}} = \displaystyle g ^{j _{l+1}i} a ^{j_1 \dots j_l}_{i_1 \dots i _{k-1}}i\).
+
+\begin{exemple}[Tenseurs de courbure de Riemann]
+  Parfois il est écrit comme \(R _{jkl}^{i}\) de type (1,3) ou comme \(R _{ijkl}\) de type (0,4).
+
+  En fait \(R _{jkl}^{i} = \displaystyle\sum_{s=1}^{n} g ^{is} R _{sjkl} ; R _{ijkl} = \displaystyle\sum_{s=1}^{n} g _{is} R ^{s}_{jkl}\).
+
+  \(d f(a) \in T_a ^{*}U\) ne dépend pas de \(g\) et \(\nabla_g f(a) \in T_a U\). Alors
+
+  \begin{gather*}
+    G_a \mid \nabla_g f(a)  \rangle = \mid \nabla f(a) \rangle \ ; \ \underbrace{\partial_i f(a)}_{\text{les coefs de } d f(a)} = \sum_{s=1}^{n} g _{is} C ^{s},
+  \end{gather*}
+
+
+
+  où \(\nabla_g f(a) = \displaystyle \begin{bmatrix}
+    c_1 \\
+    \vdots \\
+    c_n
+  \end{bmatrix}.\)
+
+\end{exemple}
+
+\subsection{Champ de vecteurs}\marginnote{19-10-2023}
+
+\begin{definition}
+  Un champ de vecteurs est une application \(X : U \longrightarrow T U\) telle que
+
+  \[\forall a \in U, \tau_1 \circ X(a) = a \ (\tau_1 \circ X = id),\]
+
+  c'est-à-dire \(X\) est un champ de tenseur 1-contravariant sur \(U\). En équivalence, \(X\) est une section de fibré tangent \(T U\).
+\end{definition}
+
+\(X\) est un champ de tenseurs de type (1,0) et
+
+\[X  = \sum_{i=1}^{n} X ^{i} \frac{\partial  }{\partial x ^{i}}.\]
+
+On a \(\forall a \in U\),
+
+\[X(a) = \sum_{i=1}^{n} X ^{i}(a) \underbrace{\frac{\partial  }{\partial x ^{i}} }_{(a,e_i)}.\]
+
+Pour tout \(i\), \(X ; U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{*}\) si et seulement si pour tout \(i\), \(X ^{i} \in C ^{*}\).
+
+\begin{exemple}
+  Soit \(I \subseteq \mathbb{R}\) un intervalle ouvert, par exemple \(I = (a,b)\). Soit \(\gamma : I \longrightarrow U\) une application continue, différentiable \(\gamma(t) = (\gamma ^{1}(t), \dots, \gamma ^{n}(t))\). On a pour tout \(t \in I\),
+
+  \[\gamma'(t) = ((\gamma ^{1})'(t), \dots, (\gamma ^{n})'(t)).\]
+
+  On introduit \(T \gamma : T I \longrightarrow T U\) et on a \(T \gamma (t,1) = (\gamma(t), \gamma'(t)) \in T _{\gamma(t)} U\).
+
+  Si \(X\) est un champ de vecteurs, \(X : U \longrightarrow T U\).
+\end{exemple}
+
+\begin{definition}
+  On dit que \(\gamma : T \longrightarrow U\) est une courbe intégrale par le champ de vecteurs \(X : U \longrightarrow T U\) si \(\forall t \in I\), \(T \gamma(t,1) = X(\gamma(t))\).
+\end{definition}
+
+\begin{remark}
+  Soit \(X : U \longrightarrow TU\) un champ de vecteurs, alors \(X(a) \in T_a U = \{ a \} \times \mathbb{R}^n\). De plus, pour tout \(a \in U\), on a \(X(a) = (a, \overrightarrow{F}(a))\) où \(\overrightarrow{F}(a) \in \mathbb{R}^n\), donc \(X(\gamma(t)) = (\gamma(t), \overrightarrow{F}(\gamma(t)))\) par \(\overrightarrow{F} : U \longrightarrow \mathbb{R}^n\).
+
+  Alors on a pour tout \(t \in I\), \((\gamma(t), \gamma'(t)) = (\gamma(t), \overrightarrow{F}(\gamma)(t))\) si et seulement si \(\forall t \in I, \gamma'(t) = \overrightarrow{F}(\gamma(t))\).
+\end{remark}
+
+\begin{remark}
+  \(T \gamma(t,1) = \displaystyle \sum_{i=1}^{n} (\gamma ^{i})'(t) \frac{\partial  }{\partial x ^{i}}(\gamma(0))\). Pour \(X : U \longrightarrow TU\) champ vectoriel, on a
+
+  \[X(\gamma(t)) = \sum_{i=1}^{n} (X ^{i})(\gamma(t)) \frac{\partial  }{\partial X^{i}} (\gamma(t)).\]
+
+  Ecrire cela est équivalent à :
+
+  \[\forall t \in I, (\gamma ^{i})'(t) = X ^{i}(\gamma(t))\]
+
+  \(\text{avec } (\overrightarrow{F} = (X ^{1}, \dots, X ^{n}) : U \longrightarrow \mathbb{R}^n)\).
+
+  On voit bien qu'il s'agit d'une équation à dérivées ordinaires autonomes (i. e. \(F\) ne dépend que de \(a \in U\) et pas de \(t\) directement) (EDO). On peut aussi appeler cela système de EDO.
+
+  \[\begin{cases}
+    (\gamma ^{1})' = X ^{1}(\gamma) \\
+    \vdots \\
+    (\gamma ^{n})' = X ^{n}(\gamma)
+  \end{cases} \text{ dans } I \iff \gamma' = \overrightarrow{F} \circ \gamma. \]
+\end{remark}
+
+\begin{remark}
+  En raison des observations précédentes, une courbe intégrale \(\gamma\) pour le champ de vecteurs \(X\) est aussi appelée une solution (pour les EDO).
+\end{remark}
+
+\begin{thm}[Fondamental de l'existence et de l'unicité des solutions pour les EDO]
+  Soient \(X : U \longrightarrow T U\) un champ de vecteurs de régularité \(\mathcal{C}^1\), \(a_0 \in U, t_0 \in \mathbb{R}\).
+
+  \begin{enumerate}
+    \item ALors il existe un intervalle ouvert \(I \subseteq \mathbb{R}, t_0 \in \mathbb{R}\) et \(\gamma : T \longrightarrow U\) tel que \(\gamma(t_0) = a_0\) et \(\gamma\) est une courbe intégrale pour \(X\).
+    \item Si \(J \subseteq \mathbb{R}\) est un intervalle ouvert, \(t_0 \in J\) et \(\lambda : J \longrightarrow U\) est une courbe intégrale pour \(X\) telle que \(\lambda(t_0) =a_0\), alors \(\gamma = \lambda\) sur \(I \cap J\).
+  \end{enumerate}
+\end{thm}
+
+\begin{remark}
+  Si \(X(a_0) = 0 \in T _{a_0} U\), alors on peut observer que \(I = \mathbb{R}\) et \(\gamma : \mathbb{R} \longrightarrow U\). Pour tout \(t, \gamma(t) = a_0\) est une solution (donc la solution unique maximale).
+
+  Si \(\gamma(t) \equiv a_0\), alors \(\gamma'(t) = 0 = F (\gamma(t)), \forall t \in \mathbb{R}\).
+\end{remark}
+
+\begin{remark}
+  Supposons que \(\gamma : I \longrightarrow U\) est une solution pour \(\gamma(t_0) = a\) et \(\lambda : J \longrightarrow U\) est une solution pour \(\lambda(t_1) = a_0\). Pour \(t_0 \in I, t_1 \in J\) et \(t_0 \neq t_1\), on définit
+
+  \begin{gather*}
+    \tilde{\lambda}(t) = \lambda(t + t_1 - t_0) \text{ et }  \\
+    \tilde{J} = \{ t \in \mathbb{R} \mid t + t_1 - t_0 \in J \}.
+  \end{gather*}
+
+  On voit bien que \(t_0 \in \tilde{J}\). De plus,
+
+  \[\tilde{\lambda} = \lambda'(\underbrace{t + t_1 - t_0}_{\tilde{t}\in J}) = \overrightarrow{F}(\lambda(t + t_1 - t_0)) = \overrightarrow{F}(\tilde{\lambda}(t)), \forall t \in \tilde{J}. \]
+
+  On a \(\tilde{\lambda}(t_0) = \lambda(t_0 + t_1 - t_0) = \lambda(t_1) = a_0\). Par unicité, on a alors \(\tilde{\lambda} = \gamma\) sur \(I \cap \tilde{J}\). En particulier, \(a_0 \in \tilde{\lambda}(I \cap \tilde{J}) = \gamma(I \cap \tilde{J})\). Donc il y a un sous-intervalle de \(J\) défini comme ceci :
+
+  \[\overline{J} = \{  t \in \mathbb{R} \mid t + t_a - t_1 \in I \cap \tilde{J} \}\]
+
+  pour lequel \(\lambda(\overline{J}) = \gamma(I \cap \tilde{J})\).
+
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} \(t_1 \in J\).
+
+  Donc quand on regarde l'ensemble de toutes les courbes intégrales, ce n'est pas possible d'observer lrs figures suivantes (si \(X \in \mathcal{C}^1\)).
+\end{remark}
+
+Pour toute courbe intégrale, on peut faire un changement de variable \(\tilde{t} = t+ t_0, \overline{\gamma}(t) = \gamma(t + t_0)\) pour lequel on obtient \(\tilde{\gamma}(0) = a_0\) (en principe on peut, sans perdre en généralité, supposer que \(t_0 = 0\) pour les systèmes autonomes d'EDO). 
+
 
 \end{document}

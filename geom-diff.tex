@@ -2760,7 +2760,7 @@ On a \(\forall a \in U\),
 
 \[X(a) = \sum_{i=1}^{n} X ^{i}(a) \underbrace{\frac{\partial  }{\partial x ^{i}} }_{(a,e_i)}.\]
 
-Pour tout \(i\), \(X ; U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{*}\) si et seulement si pour tout \(i\), \(X ^{i} \in C ^{*}\).
+Pour tout \(i\), \(X : U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{*}\) si et seulement si pour tout \(i\), \(X ^{i} \in C ^{*}\).
 
 \begin{exemple}
   Soit \(I \subseteq \mathbb{R}\) un intervalle ouvert, par exemple \(I = (a,b)\). Soit \(\gamma : I \longrightarrow U\) une application continue, différentiable \(\gamma(t) = (\gamma ^{1}(t), \dots, \gamma ^{n}(t))\). On a pour tout \(t \in I\),
@@ -2841,10 +2841,546 @@ Pour tout \(i\), \(X ; U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{*}\) s
 
   {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} \(t_1 \in J\).
 
-  Donc quand on regarde l'ensemble de toutes les courbes intégrales, ce n'est pas possible d'observer lrs figures suivantes (si \(X \in \mathcal{C}^1\)).
+  Donc quand on regarde l'ensemble de toutes les courbes intégrales, ce n'est pas possible d'observer les figures suivantes (si \(X \in \mathcal{C}^1\)).
 \end{remark}
 
-Pour toute courbe intégrale, on peut faire un changement de variable \(\tilde{t} = t+ t_0, \overline{\gamma}(t) = \gamma(t + t_0)\) pour lequel on obtient \(\tilde{\gamma}(0) = a_0\) (en principe on peut, sans perdre en généralité, supposer que \(t_0 = 0\) pour les systèmes autonomes d'EDO). 
+Pour toute courbe intégrale, on peut faire un changement de variable \(\tilde{t} = t+ t_0, \overline{\gamma}(t) = \gamma(t + t_0)\) pour lequel on obtient \(\tilde{\gamma}(0) = a_0\) (en principe on peut, sans perdre en généralité, supposer que \(t_0 = 0\) pour les systèmes autonomes d'EDO).
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%19/10%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}
+  Soit \(\Phi : \tilde{U} \longrightarrow U\) telle que \(\forall (t,x) \in \tilde{U}, t \in I_x\) et \(\Phi(t,x) = \gamma_x(t)\) (\(\gamma_x\) est solution maximale sur \(I_x\) telle que \(\gamma_x(0) = x\)).
+\end{definition}
+
+\begin{thm}
+  \(\tilde{U}\) est un ouvert de \(\mathbb{R}^n\). Si \(X\) est de classe \(\mathcal{C}^n\), alors \(\Phi\) est de classe \(\mathcal{C}^r\).
+
+  \(\Phi\) est appelée le \textbf{flux} de \(X\).
+\end{thm}
+
+\marginnote{25-10-2023}
+
+\begin{exemple}
+  On définit \(X : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\) tel que \(X(x = (x_1, x_2)) = (x, x ^{\perp}) \in T_x \mathbb{R}^2\). On a
+
+  \[\begin{bmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{bmatrix} \begin{bmatrix}
+    x_1 \\
+    x_2
+  \end{bmatrix}\]
+
+  et \(\gamma_x(t) = e^{At}x, I_x = (-\infty, \infty)\). On a \[\gamma_x(t) = (\cos(t)x_1 - \sin(t)x_2), \sin(t)x_1 + \cos(t)x_2 = \begin{bmatrix}
+    \cos(t) & -\sin(t) \\
+    \sin(t) & \cos(t)
+  \end{bmatrix} \begin{bmatrix}
+    x_1 \\
+    x_2
+  \end{bmatrix}.\]
+
+  On calcule \(\gamma_x'(t) = (-\sin(t)x_1 - \cos(t)x_2, \cos(t)x_1 - \sin(t)x_2) = (\gamma_x(t))^{\perp}\). C'est une rotation d'angle \(t\) de point \(x\) autour du point 0.
+\end{exemple}
+
+\begin{remark}
+  Si \(x = 0\), alors \(\gamma_0 = 0\).
+\end{remark}
+
+\begin{exemple}
+  \(X : \mathbb{R}^2 \longrightarrow T \mathbb{R}^2\), \(X(x) = (x,-x) \in T_x \mathbb{R}^2\).
+
+  On a \[-x = \begin{bmatrix}
+    0 & -1 \\
+    -1 & 0
+  \end{bmatrix}x,\]
+
+  \(\gamma_x(t) = e^{-t}x, I_x = (-\infty, \infty)\) et \(\gamma_x'(t) = - e^{-t}x = - \gamma_x(t)\) et \(\gamma_x(0)=x\).
+
+  On a
+
+  \begin{gather*}
+    \lim_{t \to \infty} e^{-t}x = 0 \in \mathbb{R}^2 \\
+    \lim_{-t \to -\infty} \left\Vert e^{-t}x \right\Vert = +\infty.
+  \end{gather*}
+\end{exemple}
+
+\begin{remark}[Sur la taille de \(I_x\)]
+  On définit \[K(x) = \max _{\substack{i = 1, \dots, n\\j=1, \dots, n}} \left\Vert \frac{\partial X ^{j} }{\partial x ^{i}} (x) \right\Vert \]
+
+  et
+
+  \[b= \sup \{ r \bg 0, B(x,r)\subset U \}.\]
+
+  Alors il existe \(C \bg 0\) ne dépendant que de \(U\) (mais dépendant de ces deux paramètres) tel que \[\left\lvert I_x \right\rvert \geq C \left(\frac{b}{\left\Vert X(w) \right\Vert }, K(x)\right).\]
+
+  \(\left\lvert I_x \right\rvert\) est plus large quand \(\displaystyle \frac{b}{\left\Vert X(x) \right\Vert }\) est plus large et \(K(x)\) est plus petit.
+\end{remark}
+
+%%%%figures%%%%
+
+On sait que \(b(x),\left\Vert X(x) \right\Vert \text{ et } K(x)\) sont continues en \(x\), alors on a :
+
+\[\forall \varepsilon \bg 0, \exists \delta \bg 0, \text{ si } \left\Vert y-x \right\Vert \less \delta, \text{ alors } \left\lvert I_y \right\rvert \geq \left\lvert I_x \right\rvert - \varepsilon.\]
+
+Comme \(\left\lvert I_x \right\rvert \bg 0\), on peut prendre \(\varepsilon = \displaystyle \frac{\left\lvert I_x \right\rvert}{2}\), on obtient \(\delta \bg 0\) tel que
+
+\begin{equation}\label{sol_max1}
+  \left\Vert y - x \right\Vert \less \delta \implies \left\lvert I_y \right\rvert \geq \left\lvert I_x \right\rvert - \frac{\left\lvert I_x \right\rvert}{2} = \frac{\left\lvert I_x \right\rvert}{2},
+\end{equation}
+
+ce qui implique que
+
+\[\forall (t,x) \in \tilde{U}, (t,x) \in \{ (s,y) \in \mathbb{R} \times \mathbb{R}^n \mid \left\Vert y-x \right\Vert \less \delta, s \in I_y \} \subseteq \tilde{U}.\]
+
+\emph{Indication :} l'argument sur la taille de l'intervalle d'existence devrait être transporté et basé sur \(t_0 = t\). Il faudra appliquer \ref{sol_max1} autour de \(t_0 = t\) et non à 0.
+
+\begin{definition}
+  Le flux \(\Phi : \tilde{U}\longrightarrow U\) associé à \(X\) est tel que
+
+  \[\forall (t,x) \in \tilde{U}, \phi (t,x):=\gamma_x(t).\]
+
+  On écrit aussi \(\Phi_t(x)\).
+\end{definition}
+
+\begin{remark}
+  \(X \in \mathcal{C}^r \implies \phi \in \mathcal{C}^r\) (il est évident que \(\gamma_x\) dépend régulièrement en \(t\), \((\gamma_x ^{i})'(t) = X ^{i}(\gamma_x)(t)\)), mais ici on réclame aussi la dépendance régulière de \(\gamma_x\) en \(x\).
+
+  Pour \(t\) fixé, \(\Phi_t(x)\) est défini pour \(U_t = \{ x \in U \mid t \in I_x \}\) qui est un sous-ensemble ouvert de \(U\). Donc \(\Phi_t : U_t \longrightarrow U\) est une application \(X \in \mathcal{C}^r \implies \phi_t \in \mathcal{C}^r\).
+
+  On a \(\Phi_0(x) = x\) et \(\Phi_0 = \operatorname{id}_U\).
+\end{remark}
+
+%fig
+\begin{remark}
+  Si \(\Phi_t(x)\) et \(\Phi _{s}(\Phi_t(x))\) et \(\Phi _{s+t}(x)\) sont définis, alors
+
+  \[\Phi _{t+s}(x) = \Phi_s(\Phi_t(x)).\]
+\end{remark}
+
+\begin{proof}
+  On va définir pour \(t\) fixé \(\eta(s) := \Phi_s(\Phi_t(x))\). On a \(\Gamma(s) = \Phi _{s+t}(x)\). On a
+
+  \begin{gather*}
+    \eta(0) = \Phi_0(\Phi_t(x)) = \Phi_t(x)=y,
+    \Gamma(0) = \Phi _{0+t}(x)= \Phi _{t}(x)=y.
+  \end{gather*}
+
+  De plus, si \(\eta(s) = \gamma _{\Phi_t(x)}(s)\), alors
+
+  \[\eta'(s) = \gamma _{\Phi_t(x)}(s) = \sum_{i=1}^{n} X ^{i}(\gamma _{\Phi_t(x)}(s)) \frac{\partial  }{\partial x ^{i}}(\gamma _{\Phi _{t(x)}(s)}).\]
+
+  Aussi \(\Gamma(s) = \gamma_x(s+t)\) et
+
+  \begin{gather*}
+    \Gamma'(s) = \frac{d}{ds}\gamma_x(s+t) = \gamma_x'(s+t) \underbrace{\frac{d}{ds}(s+t)}_{\equiv 1} = \gamma_x'(s+t) = \sum_{i=1}^{n} X ^{i}(\gamma_x(s+t)) \frac{\partial  }{\partial x ^{i}}(\gamma_x(s+t))\\
+    = \sum_{i=1}^{n} X ^{i}(\Gamma(s)) \frac{\partial  }{\partial x ^{i}}(\Gamma(s)).
+  \end{gather*}
+
+  Donc \(\eta\) et \(\gamma\) tous les deux sont une solution (courbe intégrale) de \(x\) avec \(\eta(0) = \Gamma(0)=y\), donc ils devraient être égaux par unicité.
+
+  Pour toit \(s\), on a \(\eta(s) = \Gamma(s)\), ce qui implique que \(\Phi _{t+s}(x) = \Phi_s(\Phi_t(x))\).
+\end{proof}
+
+\begin{remark}
+  Une observation plus fine démontre que si deux d'entre les trois acteurs \(\Phi_t(x), \Phi_s(\Phi_t(x)) \text{ et } \Phi _{t+s}(x)\) est défini, alors le troisième aussi est défini et on a \(\Phi _{t+s}(x) = \Phi_s(\Phi_t(x))\).
+
+  En particulier, si \(\Phi_t(x)\) est défini (pour \(t \in I_x\)), alors on a \(\Phi _{-t}(\Phi _{t}(x))\) est aussi défini et on a :
+
+  \[x = \Phi _{-t}(\Phi _{t}(x)).\]
+
+  Noter qu'on a pris \(s = -t\) et \(\Phi_0(x) = x\) est toujours défini.
+
+  Donc \(\Phi_t(U_t) = U _{-t}\) et \(\Phi_t : U_t \longrightarrow U _{-t}\) est un difféomorphisme de régularité \(\mathcal{C}^r\) si \(X \in \mathcal{C}^r\).
+\end{remark}
+
+\begin{prop}
+  Soit \(X\) un champ de vecteurs \(\mathcal{C}^1\) sur \(U\), \(K \subset U\) compact. On fixe \(T \in \mathbb{R}\) et on suppose que pour tout \(t \in I_x\) tel que \(t \geq  T\), on a \(\Phi_t(x) \in K\), alors \(\omega_x = +\infty\) (donc \(I_x = (\omega_x,+\infty)\)).
+
+  (De même si \(\forall t \leq  T, \Phi_t(x) \in K\), alors \(I_x = (-\infty,\omega_x)\)).
+\end{prop}
+
+\begin{proof}
+  Pour tout \(x \in U, \Phi_t(x) = \gamma_x(t)\) est défini pour un temps \(t\) qui  dépend de \(C\left(\frac{b(x)}{\left\Vert X(x) \right\Vert }, K(x)\right)\) continue en \(x\) et positive. Donc il existe \(c \bg 0\) dépendant de \(K\) tel que
+   \(\forall x \in K\, C \left(\frac{b(x)}{\left\Vert X(x) \right\Vert }, K(x)\right) \geq c \bg 0\).
+  (le minimum de \(f\) sur \(K\) est atteint pour \(f\) continue et \(K\) compact).
+
+  Pour tout \(x \in K, \Phi_t(x)\)est défini pour \(t \in \left[0, \frac{c}{2}\right] \subset I_x\). On raisonne par contradiction. Supposons que \(\forall t \geq T, \Phi_t(x) \in K\) et \(\omega_x \less +\infty\), il existe \(t_k \longrightarrow \omega_x \in \mathbb{R}, I_x = (\alpha_x, \omega_x)\) avec \((t_k)\) une suite bornée.
+
+  \(\{ \Phi _{t_k}(x)\}\subseteq K\), il existe une sous suite \(\Phi _{t _{kj}}(x)\) qui converge dans \(K\) par la compacité. Alors \(\Phi _{t _{k_j}} (x) \longrightarrow y \in K, t _{k_j}\longrightarrow \omega_x\).
+
+  On va prendre \(j\) assez grand tel que \(0 \less \omega_x - t _{k_j} \less \frac{c}{2}\).
+
+  Pour \(\Phi _{t _{k_j}}(x) \in K\), \(\Phi _{\omega_x - t _{k_j}}(\Phi _{t _{k_j}}(x))\) est défini.
+
+  \(\Phi _{t _{k_j}}(x)\) est défini. Alors
+
+  \begin{gather*}
+    \Phi _{s+t}(x) = \Phi _{\omega_x - tk_j+tk_j}(x) = \Phi _{\omega_x}(x)
+  \end{gather*}
+
+  est défini. Comme \(t _{k_j} \longrightarrow \omega_x\), alors \(\Phi _{tk_j}(x) \longrightarrow \Phi _{\omega_j}(x)\). Or comme on savait que \(\Phi _{tk_j}(x) \longrightarrow y\), on a alors \(y = \Phi _{\omega_x}(x)\).
+
+  Donc il existe \(\varepsilon \bg 0\) tel que \(\Phi _{\varepsilon}\) est défini et \(\Phi _{\varepsilon}(y) = \Phi _{\varepsilon} (\Phi _{\omega_x}(x))\) est défini. Donc \(\Phi _{\omega _{x}+\varepsilon}(x)\) est défini, donc \(\omega_x + \varepsilon \in I_x = (-\infty, \omega_x)\) ce qui est contradictoire !
+\end{proof}
+
+\subsection{L'application tangente}
+
+On suppose \(f : U \longrightarrow V\), \(U \subseteq \mathbb{R}^n\), \(V \subseteq \mathbb{R}^m\). On suppose que \(f\) est différentiable en \(a \in U\). On a \(Df(a) \in \mathscr{L}(\mathbb{R}^n, \mathbb{R}^m)\). On a \(d f(a) : T_a U \longrightarrow \mathbb{R}^m\) avec \(df(a)(a, \overrightarrow{v}) = Df(a)(\overrightarrow{v})\) avec \(\overrightarrow{v} \in \mathbb{R}^n\) et \((a,\overrightarrow{v}) \in T_a U\).
+
+\begin{definition}
+  L'application tangente \(T f: TU \longrightarrow T V\) est définie par :
+
+  \[\forall (a,\overrightarrow{v}) \in T_a U \subset TU, T f(a, \overrightarrow{v}) = (f(a), Df(a)(\overrightarrow{v})) \in T _{f(a)V \subseteq T V}.\]
+
+  \(T f _{\mid T_a U} : T_a U \longrightarrow T _{f(a)} U\) est linéaire.
+\end{definition}
+
+\begin{definition}
+  On définit \(T_a f : = Tf _{\mid T_a U}\), avec
+
+  \[T_a f(a, \overrightarrow{v}) = (f(a), D f(a)(\overrightarrow{v})).\]
+\end{definition}
+
+Lorsque \(m=1, f : U \longrightarrow \mathbb{R}\) et \(d_a f : T_a U \longrightarrow \mathbb{R}\) linéaire, donc \(d_a f \in (T_a U)^{*}\), donc \(df : U \longrightarrow T ^{*} U\). C'est un champ covariant.
+
+Maintenant on suppose que \(T f : T U \longrightarrow T \mathbb{R}\) et \(T_a f : \underbrace{T_a U}_{\{ a \} \times \mathbb{R}} \longrightarrow \{ f(a) \}\times \mathbb{R}\) linéaire. On ne peut plus dire que c'est une application de l'espace dual, mais elle admet quand même des propriétés intéressantes.
+
+\begin{exemple}
+  Soit \(i : U \longrightarrow \mathbb{R}^n\) une inclusion (injection canonique) avec \(i(x) =x\). On prend \(T i : T U \longrightarrow T \mathbb{R}^n\), on a \(T i (x,\overrightarrow{v}) = (x, \overrightarrow{v})\), car \(D i(x)(\overrightarrow{v}) = \overrightarrow{v}\). Donc \(T i\) est l'inclusion de \(TU \) dans \(T \mathbb{R}^n\).
+\end{exemple}
+
+\begin{prop}
+  Si \(f : U \longrightarrow V\) est différentiable en \(x \in U\) et \(g : V \longrightarrow W\) est différentiable en \(f(x)\) et \(W \subseteq \mathbb{R}^{p}\). Alors \(T(g \circ f) = Tg \circ T f\).
+\end{prop}
+
+\begin{proof}[Vérification]
+  \(T f: T U \longrightarrow T V, \forall (x,\overrightarrow{v}) \in T_x U \subseteq T U\), avec
+
+  \[T f(x, \overrightarrow{v}) = (f(x), D f (x) (\overrightarrow{v})).\]
+
+  On a de plus \(T g : T V \longrightarrow T W, \forall (y, \overrightarrow{w}) \in T_y V \subseteq T V\), avec
+
+  \[Tg(y,\overrightarrow{w}) = (g(y), D g (y)(\overrightarrow{w})).\]
+
+  Alors
+
+  \begin{gather*}
+    T g \circ T f(x,\overrightarrow{v}) =  Tg(f(x), Df(x)(\overrightarrow{v})) = (g(f(x)))((Df(x))(\overrightarrow{v})) \\
+    = ((g \circ f)(x), (D g (f(x)) \circ D f(x) )(\overrightarrow{v}))= T (g \circ f)(x, \overrightarrow{v}).
+  \end{gather*}
+\end{proof}
+
+\begin{exemple}[Un cas particulier]
+  \(U \stackrel{h}{\longrightarrow} V \stackrel{f}{\longrightarrow} \mathbb{R}\) et on a \(f \circ h : U \longrightarrow \mathbb{R}\). Alors \(d (f \circ h) : U \longrightarrow T ^{*} U\). On a donc \(T h : T U \longrightarrow T V\), \(d f : T U \longrightarrow \mathbb{R}\) et \(d (f \circ h) : T U \longrightarrow \mathbb{R}\).
+\end{exemple}
+
+\begin{proof}
+  En effet \(T f =(f, Df), Th = (h, Dh)\) et d'une part \(T (f \circ h) = (f \circ h, D(f \circ h))\) et d'autre part \(T f \circ T h = (f \circ h, D(f \circ h))\).
+
+  \(T h (x,\overrightarrow{v}) = (h(x), D h(x)(\overrightarrow{v}))\), \(T(f \circ h)(x, \overrightarrow{v}) = (f \circ h(x), D (f \circ h)(x)(\overrightarrow{v}))\) et
+
+  \begin{gather*}
+    T f \circ T h(x,\overrightarrow{v}) = (f \circ h(x), D f (h(x))(D h(x)(\overrightarrow{v}))).
+  \end{gather*}
+
+  En fait \(d f(h(x))(h(x), Dh(x)(\overrightarrow{v}))\) c'est \(d(f \circ h)(\overrightarrow{x})(\overrightarrow{x},\overrightarrow{v})\) évalué à \((x,\overrightarrow{v}) \in T U\).
+\end{proof}
+
+\paragraph{Rappel} Si \(T : E \longrightarrow F\) linéaire, on rappelle que l'on peut définir \(\Omega ^{k}(T), \Omega _{k}(T), \dots\)
+
+Pour les applications tangentes, on peut ausi définir pour tout \(k\) :
+
+\begin{gather*}
+  \Omega ^{k}(T_x f) : \Omega ^{k}(T _{f(x)}V) \longrightarrow \Omega ^{k}(T _{x}U), \dots
+\end{gather*}
+
+et tous les autres espaces de tenseurs covariants, contravariants,...
+
+\paragraph{Rappel}
+
+On a dit que
+
+\[\bigcup _{x \in U} (\Omega ^{k}(T_x U)) = T ^{k}U.\]
+
+\begin{definition}
+  On définit \(\Omega ^{k}f : T ^{k} V \longrightarrow T ^{k} U\) une fonction, définie seulement pour tout élément \(\alpha \in T ^{k} V\) tel que \(\tau ^{k}(\alpha) \in f (U)\) (la projection sur la \(k\)-ième coordonnée).
+
+  On a \(\Omega ^{k}(\alpha) = \Omega ^{k}(T_x f)(\alpha)\) lorsque \(\alpha \in \Omega ^{k}(T _{f(x)} V)\).
+\end{definition}
+
+Pour \(\overrightarrow{v_1}, \dots, \overrightarrow{v_k} \in T _{x}U\), on a
+
+\begin{gather*}
+  \Omega ^{k} f(\alpha)(\overbrace{\overrightarrow{v_1}, \dots, \overrightarrow{v_k}}^{\in (T_x U)^{k}, k\text{ fois}}) = \alpha(T_x f(\overrightarrow{v_1}, \dots, T_x f(\overrightarrow{v_k}))).
+\end{gather*}
+
+%%%%fig%%%%%%
+
+\begin{definition}
+  On dit que \(\Omega ^{k}f(\alpha) \in \Omega ^{k}(T_x f) \subseteq T ^{k}U\), pour \(\alpha \in \Omega ^{k}(F _{f(x)} V) \subseteq T ^{k}V\) est le ``pull-back'' (le retiré) de \(\alpha\) sous l'action de l'application tangente \(T_x f : T_x U \longrightarrow T _{f(x)}V\).
+\end{definition}
+
+Par contre, pour tout \(\alpha \in \Omega_l(T_x U)\) et \(f : U \longrightarrow V\) différentiable en \(x \in U\), on définit \(T_x f : T_x U \longrightarrow T _{f(x)} V\), et on a alors
+
+\[\Omega_l f \stackrel{\text{déf}}{=} \Omega_l (T_x f) : T_l U \longrightarrow T_l V\]
+
+et on a \(\Omega_l f (\alpha) \in \Omega_l(T _{f(x)} V)\subseteq T_l V\). \(\alpha\) étant un élément de \(\Omega_l(T_x U)\), il est une application \(l\)-linéaire sur \((T_x U)^{*}\) (contravariant). On cherche une application \(l\)-linéaire sur \((T _{f(x)} V)^{*}\).
+
+Prenons donc un \(l\)-covecteur \(h_1, \dots, h_l \in T (T _{f(x)}V)^{*} = \mathscr{L}(T _{f(x)} V, \mathbb{R})\). On doit définir
+
+\begin{gather*}
+  \Omega_l f(\alpha)(h_1, \dots, h_l) = \alpha(h_1 \circ T_x f, h_2 \circ T_x f, \dots, h_l \circ T_x f).
+\end{gather*}
+
+Notez que si \(h_i \in (T _{f(x)}V)^{*}\), \(h_i : T _{f(x)}V \longrightarrow \mathbb{R}\) et \(T_x f : T_x U \longrightarrow T _{f(x)}V\), alors on obtient que \(h_i \circ T_x f : T_x U \longrightarrow \mathbb{R}\) linéaire, donc \(h_i \circ T_x f \in (T_x U)^{*}\).
+
+%%%%fig%%%%%
+
+On peut aussi interpréter \(\Omega_l f(\alpha)\) de la manière suivante : si \(T_x f : T_x U \longrightarrow T _{f(x)} V\) est donné, on a \((T_x f)^{*} : (T _{f(x)}V)^{*} \longrightarrow (T_x U)^{*}\) et
+
+\begin{gather*}
+  \Omega_l f(\alpha)(\underbrace{h_1, \dots, h_l}_{\in (T _{f(x) V}\times \dots \times (T _{f(x)}V^{*}))}) = \alpha((T_x f)^{*}(h_1),\dots, (T_x f)^{*}(h_l)).
+\end{gather*}
+
+\begin{definition}
+  Si \(\alpha \in \Omega_l (T_x U) \subseteq T_l U\), on dit que \(\Omega_l f(a)\) est le ``push-forward''(le poussé) de \(\alpha\) sous l'action de \(T_x f\).
+\end{definition}
+
+Chaque vecteur \(\overrightarrow{v} \in T_x U\) est un objet contravariant et il agit sur \((T_x U)^{*}\) par bidualité, i. e. \(T_x U \simeq (T_x U)^{**}\).
+
+Ici, \(l=1, \overrightarrow{v} \in T_x U\). Question : qu'est-ce \(\Omega_1 f(\overrightarrow{v})\) ?
+
+\begin{proof}
+  Prenons \(h \in (T _{f(x)}V)^{*}\),
+
+  \begin{gather*}
+    \Omega_1 f(\overrightarrow{v})(h) = \overrightarrow{v}(\Omega_1 (T_x f)(h)) = \overrightarrow{v}((T_x f)^{*}(h)) = \overrightarrow{v}(h \circ T_x f) = (h \circ T_x f)(\overrightarrow{v}).
+  \end{gather*}
+
+\end{proof}
+
+
+Donc on a vu que pour tout \(h \in (T _{f(x)} V)^{*}\), \(\underbrace{\Omega_1 f(\overrightarrow{v})}_{\in T _{f(x)V}}(\underbrace{h}_{\in (T _{f(x)}V)^{*}}) = h (T_x f(\overrightarrow{v}))\).
+
+On a donc \(\forall h \in (T _{f(x)}V)^{*}, h(\Omega_1 f(\overrightarrow{v})) = h(T_x f (\overrightarrow{v}))\). Cela implique que \(\Omega_1 f(\overrightarrow{v}) = T_x f(\overrightarrow{v}), \forall \overrightarrow{v} \in T_x U\).
+
+\begin{exo}
+
+  \begin{definition}
+    Si \(\alpha \in \Lambda ^{k}(T _{f(x)}V)\), alors \[\Lambda ^{k}f(\alpha) \stackrel{\text{déf}}{=}\Omega ^{k} f(\alpha) \in \Lambda ^{k}(T_x U)\]
+
+    si (\(\alpha\) est extérieur).
+
+    Si \(\alpha \in \Lambda _{l}(T_x U)\), \[\Lambda_l f(\alpha) = \Omega_l f(\alpha) \in \Lambda_l(T _{f(x)} V).\]
+  \end{definition}
+
+\end{exo}
+
+\begin{definition}
+  Soit \(F : U \longrightarrow V\) différentiable et \(\alpha : V \longrightarrow T ^{k} V\) un champ de tenseurs de type \((0,k)\) (une section de fibré tensoriel \(k\)-covariant), i. e. \(\forall y \in V, \alpha(y) \in T_y ^{k}V = \Omega ^{k}(T_y V)\).
+
+  Le pull-back de \(\alpha\) sur \(U\), désigné par \(f ^{*}\alpha\) est un champ de tenseurs de type \((0,k)\) sur \(U\), donc \(f ^{*}\alpha : U \longrightarrow T ^{k} U\).
+
+  On a
+
+  \[\underbrace{f ^{*}\alpha(x)}_{\in \Omega ^{k}(T_x U)} = \Omega ^{k}f ( \underbrace{\alpha(f(x))}_{\in \Omega ^{k}(T _{f(x)V})}).\]
+\end{definition}
+
+\begin{definition}
+  Si \(\beta\) est un champ de tenseurs \(l\)-contravariant (de type \((0,l)\)) sur \(U\) avec \(\beta : U \longrightarrow T_l U, \forall x \in U, \beta(x) \in \Omega_l(T_x U)\).
+
+  On définit, pour \(f\) \textbf{injectif}, le ``push-forward'' de \(\beta\) désigné par \(f _{\sharp}\beta\). \(f _{\sharp}\beta\) est un champ de tenseur de type \((l,0)\) sur \(f(U)\subseteq V\) tel que \[\forall y = f(x) \in f(U), f _{\sharp}\beta(y) \in \Omega _{l}(T_y V).\]
+\end{definition}
+
+On suppose maintenant que \(U \subseteq \mathbb{R}^n, V \subseteq \mathbb{R}^n\) et \(h : U \longrightarrow V\) est un difféomorphisme \(\mathcal{C}^{\infty}\).
+
+Si \(X\) est un champ de vecteurs sur \(U\), alors \(h _{\sharp} X\) est un champ de vecteurs sur \(h(U)\) et comme \(h\) est injective, on aura \(V=h(U)\). On aura
+
+\[h _{\sharp}X(h(x)) = T_x h(X(x)).\]
+
+Si \(h \in \mathcal{C}^r\), \(X \in \mathcal{C}^s\), on aura \(h _{\sharp} X \in \mathcal{C}^{\min(r-1, s)}\).
+
+%%%%fig%%%%%%
+
+Notez que \(h _{\sharp}X (y) = T h (X(h ^{-1}(y))) = (y,D h(h ^{-1}y)(X(h ^{-1}(y))))\).
+
+On a \[h _{\sharp}X = Th \circ X \circ h ^{-1}.\]
+
+Avec les hypothèses \(h : U \longrightarrow U\) est un difféomorphisme de classe \(\mathcal{C}^\infty\), si \(X \in \mathcal{C}^1\) est un champ de vecteurs sur \(U\) avec le flux \(\Phi\), alors \(h _{\sharp}X\) est un champ de vecteurs sur \(V\) de régularité \(\mathcal{C}^1\).
+
+Dans ce cas-là, si \(\psi\) est le flux de \(h _{\sharp}Y\), on a
+
+\[\psi_t = h \circ \Phi _{t} \circ h ^{-1}.\]
+
+Si \(\Phi_t : \underbrace{U_t}_{\subseteq U} \longrightarrow \Phi_t(U_t)\) et \(\psi : \underbrace{V_t}_{\subseteq V} \longrightarrow \psi_t(V_t)\), les deux sont des difféomorphismes de régularité \(\mathcal{C}^1\). On aura :
+
+\begin{gather*}
+  h ^{-1}(V_t) = U_t \ (h(U_t) = V_t) \\
+  h (\Phi_t(U_t)) = \psi_t(V_t)
+\end{gather*}
+
+Il y a une consistance au niveau des domaines de définition.
+
+%%%fig1%%%%
+
+\begin{proof}
+  \(\Phi_t \stackrel{\text{déf}}{=} \gamma_x(t)\) la courbe intégrale de \(X\).
+
+  On a \(\eta _{h(x)}(t) := h \circ \gamma_x(t) = h(\Phi_t(x))\) (\(\eta _{h(x)} = h \circ \gamma_x\)). On calcule \(\eta _{h(x)} = h(\gamma_x(0)) = h(x)\), donc
+
+  \[T _{\eta _{h(x)}} = T h \circ T \gamma_x.\]
+
+  Alors
+  \begin{gather*}
+    T _{\eta _{h(x)}}\left(\frac{d}{dt}(t)\right) = T h \circ \overbrace{T _{\gamma_x}\left(\frac{d}{dt}(t)\right)}^{} = Th(X (\gamma_x(t))) = h _{\sharp}X(h(\gamma_x(t))) = h _{\sharp}X(\eta _{h(x)}(t)).
+  \end{gather*}
+
+  On a
+
+  \[\begin{cases}
+    \eta _{h(x)}(0) = h(x) \\
+    T _{\eta _{h(x)}}\left(\frac{d}{dt}(t)\right) = (h _{\sharp}X)(\eta _{h(x)}(t)),
+  \end{cases}\]
+
+  donc \(\eta _{h(x)}\) est une courbe intégrale pour \(h _{\sharp}X\) et en plus on a
+
+  \[\psi(t,h(x)) = \eta _{h(x)}(t),\]
+
+  donc \[\psi_t(h(x)) = h(\gamma_n(t)) = h(\Phi_t(x)).\]
+
+  On a alors
+
+  \begin{equation}
+    \psi_t \circ h = h \circ \Phi_t \implies \psi_t = h \circ \Phi_t \circ h^{-1}.
+  \end{equation}
+\end{proof}
+
+%%%%fig2%%%%%%%
+
+\begin{remark}
+  Si \(X \in \mathcal{C}^{\infty}\), alors on a  \(\Phi_t : U_t \longrightarrow \Phi_t(U_t)\) est un difféomorphisme \(\mathcal{C}^\infty\). On peut, dans un cas spécial, utiliser \(h = \Phi_t, V=\Phi_t(U_t)\). Le flux \((\Phi)_{\sharp}X\) sur \(V\) est donnée par
+
+  \begin{equation}\label{miracle}
+    h \circ \phi_t \circ h ^{-1} = \Phi_t \circ \Phi_t \circ (\Phi_t)^{-1} = \Phi_t.
+  \end{equation}
+\end{remark}
+
+%%%%fig3%%%%%
+
+\begin{exo}
+  \ref{miracle} implique que \((\Phi_t)_{\sharp}X(\Phi_t(x)) = X(\Phi_t(x))\).
+\end{exo}
+
+La forme la plus concise de push-forward est :
+
+\begin{equation*}
+  (\Phi_t)_{\sharp}(X _{\mid Ut}) = X _{\mid \Phi_t(U_t)}.
+\end{equation*}
+
+\begin{thm}[``Ironing theorem'', ``Flow-box theorem'']
+  Soient \(U \subseteq \mathbb{R}^n, X\) champ de vecteurs \(\mathcal{C}^\infty\) sur \(U\) et \(a \in U\) tel que \(X(a) \neq 0\). Alors il existe un ouvert \(V \subseteq U, a \in V\) et un difféomorphisme \(h : V \longrightarrow W \subseteq \mathbb{R}^n\) tel que \[h _{\sharp}X _{\mid V} = \displaystyle\frac{\partial  }{\partial x ^{1}}.\]
+
+  En particulier, si \(\Phi\) est le flux de \(X\) et \(\Phi(t,x)\) est défini pour \(x \in V\), on a
+
+  \[\Phi_t(x) = h ^{-1} \circ \psi_t \circ h(x),\]
+
+  où \(\psi_t\) est le flux de \(\displaystyle \frac{\partial  }{\partial x ^{1}}\) sur \(W\).
+\end{thm}
+
+%%%%%fig4%%%%%%
+
+\begin{remark}
+  Si \(\displaystyle\frac{\partial  }{\partial x ^{1}}(y) = (y,e_1), \text{ alors on a }  \psi_t(y) = y + t e_1\). Donc
+
+  \begin{gather*}
+    \Phi_t(x) = h ^{-1}(\psi_t(h(x))) = h ^{-1}(y + t e_1).
+  \end{gather*}
+\end{remark}
+
+Avec les rotations, les dilatations et les transformations, on peut supposer que \(a = 0, X(a) = \displaystyle \frac{\partial  }{\partial x ^{1}}(a)\). Si \(X(a)\) est donné, on peut trouver l'application \(h_0 : \mathbb{R}^n \longrightarrow \mathbb{R}^n\) affine \(h_0(x) = A x + \overrightarrow{b}, A \in \mathbb{R}^{n \times n}, \operatorname{det}(A) \neq 0\) telle que \(h_0(a) = 0\) et
+\(((T _{h_0})_{\mid U})(X(a)) = \displaystyle \frac{\partial  }{\partial x ^{1}}(0)\).
+
+Cela démontre l'existence de \(h_0\) qui vient du fait que \(\forall \overrightarrow{v} \in \mathbb{R}^n, \exists A \in \mathbb{R}^{n \times n}, A\) inversible telle que \(A \overrightarrow{v} = e_1\). Il faut fixer \(A\) comme défini et puis définir \(h_0(x)=Ax\).
+
+\begin{exo}
+  Calculer \((T _{h_0})_{\mid U}(X(a)) = \displaystyle \frac{\partial  }{\partial x ^{1}}(0)\).
+\end{exo}
+
+\begin{exo}
+  Si \(f : U \longrightarrow V, g : V \longrightarrow W\), \(\forall \alpha\) champ de tenseur de type \((0, k)\) sur \(W\), alors
+
+  \[(g \circ f)^{*} = f ^{*}(g ^{*}\alpha).\]
+
+  Pour tout \(\beta\) champ de tenseurs de type \((l,0)\) sur \(U\),
+
+  \[(g \circ f)_{\sharp}\beta = g _{\sharp}(f _{\sharp}\beta),\]
+
+  avec \(f\) et \(g\) injectives.
+\end{exo}
+
+\
+
+Donc \(0 \in U, X(0) = \frac{\partial  }{\partial x ^{1}}(0)\).
+
+%%%%fig5%%%%%
+
+On a
+
+\begin{gather*}
+  h ^{-1}(y_1+t, y_2, \dots, y_n) = y _{h ^{-1}(y)}(t) = \Phi(t,h ^{-1}(y)) = \gamma_x(t) = \Phi(t,x).
+\end{gather*}
+
+Si \(x= (0, x_2, \dots, x_n), t=x_1\), on va imposer que \(h(0, x_2, \dots, x_n) = (0, x_2, \dots, x_n)\). Alors il faut chercher \(h ^{-1}\) tel que
+
+\[h ^{-1}(x_1, x_2, \dots, x_n) = h ^{-1}(0+\overbrace{x_1}^{t}, x_2, \dots, x_n) = \Phi(x_1, h ^{-1}(0,x_2, \dots, x_n)) = \phi(\overbrace{x_1}^{t}, x_2, \dots, x_n).\]
+
+\begin{proof}
+  On va alors définir (le candidat \(k\) pour \(h ^{-1}\)) \[k(x_1, \dots, x_n) = \Phi _{x_1}(0, x_2, \dots,x_n).\]
+
+  On a bien sûr \(k(0) = \Phi_0(0) = 0\). \(k\) est défini pour \(x = (x_1, \dots, x_n)\) dans un voisinage de \(0 \in \mathbb{R}^n\).
+
+  Donc on appelle le voisinage \(\tilde{W}\) avec \(0 \in \tilde{W}, k : \tilde{W} \longrightarrow U\). Si \(X \in \mathcal{C}^\infty\), alors \(\Phi \in \mathcal{C}^\infty\) et donc \(k \in \mathcal{C}^\infty\).
+
+  %%%fig7%%%%
+
+  On veut utiliser le théorème de l'application inverse. Il faut vérifier que \(D k(0)\) est inversible. On a
+
+  \begin{gather*}
+    Dk(0) = \left[ \frac{\partial k }{\partial x ^{1}} \ \dots \ \frac{\partial k }{\partial x ^{n}}  \right]_{\mid x=0} = \begin{bmatrix}
+      1 & 0 & \dots & 0 \\
+      0 & 0 & \dots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \dots & 0
+  \end{bmatrix}.
+  \end{gather*}
+
+  Pour \(j = 2, \dots,n\)
+
+  On a \(k(x_1, \dots, x_n) = \Phi _{x_1}(0, x_2, \dots, x_n)\). On a fixé \(x_1 = 0\), donc
+
+  \[k(0, x_2, \dots, x_n) = \Phi_0(0, x_2, \dots, x_n) = (0, x_2, \dots, x_n), \]
+
+  donc
+
+  \[\frac{\partial k }{\partial x ^{j}}_{\mid x=0} = (0,0, \dots, \underbrace{1}_{j}, \dots, 0) =e_j. \]
+
+  Donc \(D k(0) = \operatorname{Id}_{n \times n}\) inversible. Donc par le théorème de l'application inverse, il existe \(V\) ouvert avec \(0 \in V\), \(W \subseteq \tilde{W}, 0 \in \tilde{W}\) tels que
+
+  \[\Phi _{x_1}(0, x_2, \dots, x_n) = h ^{-1}(x_1, \dots, x_n).\]
+
+  Alors \(k(0, x_2, \dots, x_n) = (0, x_2, \dots, x_n)\), donc \(h(0, x_2, \dots, x_n)\), donc
+
+  \begin{gather*}
+    h ^{-1}(y_1+t, y_2, \dots, y_n) = \Phi _{t+y_1}(0, y_2, \dots, y_n) = \Phi_t(\Phi _{y_1}(0, y_2, \dots, y_n)) = \Phi (h ^{-1}\underbrace{(y_1, \dots, y_n)}_{x}).
+  \end{gather*}
+\end{proof}
+
+
+
 
 
 \end{document}

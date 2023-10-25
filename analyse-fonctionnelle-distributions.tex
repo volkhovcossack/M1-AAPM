@@ -1271,7 +1271,7 @@ Les espaces fonctionnels sont rangés en deux catégories :
   \item Les espaces de Lebesgue ;
   \item Les espaces de fonctions différentiables.
 \end{itemize}
-
+{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax}
 \section{Espaces de Lebesgue}
 
 \subsection{Mesure de Lebesgue}
@@ -1404,6 +1404,214 @@ Au lieu d'intégrer \(f\) sur tout \(\mathbb{R}\), on peut l'intégrer seulement
   \[\mu(A) = \int_{A}^{}\mathds{1}_{A}(x)dx \leq \lim_{n \to \infty} n \int_{}^{}f(x)dx = 0.\]
 \end{proof}
 
+\marginnote{25-10-2023}
+
+\begin{thm}[{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} De convergence dominée]
+  Soit \((f_n) \in \mathscr{L}^{1}(\Omega)\) une suite de fonctions (avec \(\Omega \subset \mathbb{R}^d\) un ouvert). Pour tout \(n \in \mathbb{N}, f_n\) est définie presque partout sauf sur \(E = \left(\bigcup _{n \in \mathbb{N}} E_n\right)\) de mesure nulle. S'il existe \(h \in \mathscr{L}^{1}(\Omega)\)
+  telle que \(\left\lvert f_n \right\rvert \leq h\) et si \(f_n \longrightarrow f \) presque partout sur \(\Omega\), alors
+
+  \[\lim_{n \to \infty}  \int f_n(x)dx = \int f(x)dx,\]
+
+  ce qui équivaut à dire que \(\left\Vert f_n - f \right\Vert _{\mathscr{L}^{1}}\longrightarrow 0\).
+\end{thm}
+
+\begin{remark}
+  Si \(f_n\) est continue sur \(K \subset \Omega\) et \(f_n \longrightarrow f\) quand \(n \longrightarrow \infty\), alors
+
+  \[\lim_{n \to \infty} \int f_n = \int \lim_{n \to \infty} f_n.\]
+\end{remark}
+
+\section{Espaces \(L ^{p} \ (1 \leq  p \leq +\infty)\) comme espaces de Banach}
+
+On définit l'espace \(\mathscr{L}^{1} \longrightarrow L ^{1}\). On dit que \(f \sim g\) si et seulement si \(f = g\) presque partout (i. e. \(\mu (\{ x : f(x)\neq g(x) \}) = 0\)). C'est une relation d'équivalence. On définit l'espace quotient \(L ^{1} = \mathscr{L}^{1} / \sim\). On montre que \(L ^{1}\) est complet.
+
+On note \(\dot{f} \in L ^{1}\), \(\dot{f}\) est un représentant de la classe de \(f\). Ainsi on peut définir la transformée de Fourier d'une fonction de \(L ^{1}\) par :
+
+\[\widehat{f}(\xi) = \int_{}^{} e^{-ix \xi}f(x)dx,\]
+
+mais la même écriture n'a pas de sens dans \(L ^{2}\).
+
+\subsection{Les espaces \(L ^{p}, 1 \leq p \less \infty\)}
+
+\begin{thm}
+  L'espace \(L ^{1}\) est complet, muni de la norme
+
+  \[\left\Vert f \right\Vert _{1} = \int_{}^{} \left\lvert f(x) \right\rvert dx.\]
+
+  Cela veut dire que c'est un espace de Banach.
+\end{thm}
+
+\begin{proof}
+  Soit \(f_n\) une suite de Cauchy dans \(L ^{1}\). On peut lui associer une série
+
+  \[f_n = \sum_{i=0}^{n-1} f_i (f _{i+1} -f_i).\]
+
+  Montrons que \(f_n\) converge. Il suffit de montrer qu'il existe une sous-suite \(f _{n_k}\) qui converge. On peut toujours écrire :
+
+  \[f_n - f = \underset{\less \varepsilon}{f_n - f _{n_k}} + \underset{\less \varepsilon}{f_n - f _{n_k}}.\]
+
+  Donc \[\forall \varepsilon \bg 0, \exists N \in \mathbb{N}, p \geq  N, q \geq 0, \left\Vert f _{p+q} - f _{p} \right\Vert _{L ^{1}} \less \varepsilon.\]
+
+  A extraction près d'une sous-suite, on peut supposer que
+
+  \[\left\Vert f _{n+1}-f_n \right\Vert _{L ^{1}} \less \varepsilon.\]
+
+  On pose \(g _{m}(x) = \displaystyle \sum_{n=1}^{m-1} \left\lvert f _{n+1}(x) - f_n(x) \right\rvert \). Pour tout \(x\), la suite \((g_m(x))_{m}\) est croissante (car on rajoute un terme positif) et elle est définie presque partout. Par Beppo-Levi, on a
+
+  \begin{gather*}
+    \int g(x) dx = \int \lim_{m \to \infty} g_m = \lim_{m \to \infty} \int g_m(x)dx.
+  \end{gather*}
+
+  Or on a
+
+  \begin{gather*}
+    \int g_m(x)dx = \sum_{n=1}^{m-1} \int \left\lvert f _{n+1}(x)-f_n(x) \right\rvert dx.
+  \end{gather*}
+
+  C'est une série absolument convergente, car \(\left\Vert f _{n+1}-f_n \right\Vert \less 2 ^{-n}\). On a alors
+
+  \[\int g(x)dx \less +\infty\]
+
+  et en particulier \(g(x) \less +\infty\) presque partout.
+
+  Donc \(f_m(x) = f_1(x) + \displaystyle \sum_{n=1}^{m-1} f _{n+1}(x) - f_n(x)\) définit une série numérique absolument convergente, donc \(f_m(x) \underset{\text{p.p.}}{\longrightarrow} f(x)\). Il reste à montrer que \(f \in L ^{1}\). On a :
+
+  \begin{gather*}
+    \left\lvert f_m(x) \right\rvert \leq \left\lvert f_1(x) \right\rvert + g_m(x) \leq \left\lvert f_1(x) \right\rvert + g(x) = h(x) \in L ^{1}.
+  \end{gather*}
+
+  Par Lebesgue, on a \(\lim \int f_m = \int f\), avec \(f \in L ^{1}\). On a donc \(\left\Vert f_m - f \right\Vert _{L ^{1}} \longrightarrow 0\).
+\end{proof}
+
+\begin{thm}
+  \(L ^{p}\) est aussi un Banach et ce pour tout \(p \in [1, \infty)\).
+\end{thm}
+
+\begin{proof}
+  On utilise l'inégalité de Minkowski :
+
+  \begin{equation}
+    \left\Vert f+g \right\Vert _{L ^{p}} \leq \left\Vert f \right\Vert _{L ^{p}} + \left\Vert g \right\Vert _{L ^{p}}.
+  \end{equation}
+
+  La démonstration est la même que pour \(L ^{1}\).
+\end{proof}
+
+\begin{corollary}
+  SI \(f_n \longrightarrow f\) dans \(L ^{p}\), alors il existe une sous-suite \(f _{n_k}\) qui converge presque partout vers \(f\).
+\end{corollary}
+
+\begin{proof}
+  Comme avant, on peut supposer que \(\left\Vert f _{n+1} - f_n \right\Vert \less 2^{-n}\). On pose
+
+  \[f_m(x) = f_1(x) + \sum_{n=1}^{m-1} f _{n+1}(x)-f_n(x).\]
+
+  C'est une série normalement convergente dans \(L ^{p}\). Par le raisonnement précédent, on détermine que \(f_m(x) \underset{\text{p.p.}}{\longrightarrow} f\).
+\end{proof}
+
+\begin{thm}
+  Soit \(\mathcal{K}(\Omega)\), l'espace de fonctions continues à support compact dans \(\Omega\). Alors \(\mathcal{K}(\Omega)\) est dense dans \(L ^{p}(\Omega)\) pour tout \(p \in [1, \infty)\).
+\end{thm}
+
+\begin{proof}
+  Brézis, théorème 4.12.
+\end{proof}
+
+\subsection{Espace \(L ^{\infty}\)}
+
+\begin{thm}
+  \(L ^{\infty}(\Omega)\) est un espace de Banach.
+\end{thm}
+
+\begin{definition}
+  On définit la norme dans l'espace \(L ^{\infty}\) de la façon suivante :
+
+  \[\left\Vert f \right\Vert _{\infty} = \operatorname{supess} \left\lvert f \right\rvert.\]
+
+  Pour tout \(C \bg \operatorname{supess}(f)\), on a \(\mu(\{ x : f(x) \bg C \})=0\). Si \(f\) est continue, on a \(\operatorname{supess} f = \sup f\).
+\end{definition}
+
+\begin{proof}
+  Soit \(f_n\) une suite de Cauchy dans \(L ^{\infty}(\Omega)\). On prend \(\varepsilon = \displaystyle \frac{1}{k}\). Pour tout \(k\), il existe \(N(k)\) tel que \(\forall n, m \geq N(k)\), on a \(\left\Vert f_n - f_m \right\Vert _{\infty} \less \displaystyle \frac{1}{k}\).
+
+  Montrons que \(f_n\) converge vers \(f \in L ^{\infty}\). Donc il existe \(E_k\) négligeable tel que \(\left\lvert f_n(x) - f_m(x) \right\rvert \less \displaystyle\frac{1}{k}\) pour tout \(x \notin E_k\). On a que \(E = \displaystyle \bigcup _{k \in \mathbb{N}} E_k\) est de mesure nulle. Pour tout \(x \in E\), la suite numérique \(f_n(x)\) est de Cauchy, donc elle converge vers \(f(x)\) (partout). On a donc
+
+  \[\left\lvert f_n(x) - f_m(x) \right\rvert \less \frac{1}{k},\]
+
+  donc \[\left\lvert f_n(x) - f(x) \right\rvert \less \frac{1}{k},\]
+
+  donc \(\left\Vert f_n - f \right\Vert _{\infty} \less \frac{1}{k}\) avec \(f \in L ^{\infty}\).
+\end{proof}
+
+\subsection{Espace \(L ^2\)}
+
+\begin{thm}
+  \(\mathcal{H} = L ^2\) est un espace de Hilbert muni du produit scalaire suivant :
+
+  \[(u \mid v) = \int_{\Omega} f(x) \overline{g(x)}dx.\]
+\end{thm}
+
+L'espace \(L ^2\) est engendrée par une base orthonormée (\emph{base hilbertienne}), i.e. il existe une suite \((e_j)_j\) telle que, pour tout \(f \in L ^2\), on a
+
+\[f = \sum_{j} f_j e_j, f_j \in \mathbb{C}.\]
+
+\begin{prop}[Egalité de Parseval]
+  On a pour tout \(f \in L ^2\) :
+
+  \[\left\Vert f \right\Vert _{2}^2 = \sum_{j}^{} \left\lvert f_j \right\rvert ^2.\]
+\end{prop}
+
+\section{Espaces \(L ^{p}\) comme ELC}
+
+\subsection{\(L ^{1}(\Omega)\), avec \(\Omega\) ouvert de \(\mathbb{R}^d\)}
+
+C'est un espace de Banach muni de la norme \(\left\Vert f \right\Vert _{L ^{1}}\). C'est aussi un espace localement convexe muni de la famille de semi-normes \((\rho _{a,r}) _{a \in \Omega, r \bg 0}\) définies par
+
+\[\rho _{a,r}(f) = \int_{B(a,r)}^{}\left\lvert f(x) \right\rvert dx.\]
+
+\begin{prop}
+  \((E, (\rho _{a,r}))\) est séparé.
+\end{prop}
+
+\begin{proof}
+  Si \(f \neq g\) presque partout, alors
+
+  \begin{gather*}
+    \rho _{a,r}(f-g) = \int_{B(a,r)} \left\lvert f(x) -g(x)\right\rvert dx \neq 0.
+  \end{gather*}
+
+  Donc il existe \(E\) de mesure strictement positive tel que \(\forall x \in E, g(x) \neq f(x)\). Or \(E\) est partout dense dans \(\Omega\) pour la mesure de Lebesgue. On a alors
+
+  \[\int_{B(a,r)} \left\lvert f-g \right\rvert = \int_{E \cap B(a,r)} \left\lvert f-g \right\rvert \bg 0.\]
+\end{proof}
+
+\subsection{\(E = L ^{\infty}\)}
+
+On le munit de la famille de semi-normes
+
+\[\rho _{a,r}(f) = \operatorname{supess}_{B(a,r)}(\left\lvert f \right\rvert).\]
+
+\begin{prop}
+  \(E = L ^{\infty}(\Omega)\) est séparé, mais non séparable.
+\end{prop}
+
+\subsection{Espaces duaux de \(L ^{p}\)}
+
+\begin{thm}[De Riesz]
+  On a \((L ^2)' = L ^2\) (l'espace dual de \(L ^2\) est lui-même), i. e. toute forme linéaire \(l \in (L ^2)'\) s'écrit comme \(\langle l,u \rangle  = (v \mid u)\) où \(v \in L ^2\).
+\end{thm}
+
+\begin{thm}[Riesz-Fischer]
+  Le dual de \(L ^{1}\) est \(L ^{\infty}\).
+\end{thm}
+
+\begin{proof}
+  Brézis, p. 63.
+\end{proof}
+
+\begin{remark}
+  On n'a pas \((L ^{\infty})' \neq L ^{1}\).
+\end{remark}
 
 
 

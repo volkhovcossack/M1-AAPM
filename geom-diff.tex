@@ -3379,6 +3379,308 @@ Si \(x= (0, x_2, \dots, x_n), t=x_1\), on va imposer que \(h(0, x_2, \dots, x_n)
   \end{gather*}
 \end{proof}
 
+\marginnote{26-10-2023}
+
+\subsubsection{Le cas de la métrique riemanienne (pull-back et push-forward)}
+
+Soit \(g\) la métrique riemanienne sur \(U\), \(g : U \longrightarrow \Omega ^2 U\) symétrique définie positive telle que \(\forall x \in U\), \(g(x)\) est un tenseur (0,2) (2-covariant) symétrique défini positif sur \(T_x U\). \(g(x) \in \Omega ^2(T_x U)\).
+
+Un tenseur covariant est le retiré (pull-back) sous une application. On considère \(V \subseteq \mathbb{R}^n\), \(u : V \longrightarrow U\) difféomorphisme \(\mathcal{C}^{\infty}\). Donc le retiré \(u ^{*}g\) est défini sur \(V\) comme un élément de \(\Omega ^2 V\).
+
+\[u ^{*} g(x) \in \Omega ^2(T_x U), \forall x \in U.\]
+
+\begin{prop}
+  Soit \(h := u ^{*} g\), alors \(h\) est une métrique riemanienne sur \(V\).
+\end{prop}
+
+\begin{proof}
+  On sait déjà que \(h ^{(x)} \in \Omega ^2(T_x V), \forall x \in V\). Il faut démontrer que \(h(x)\) est un produit scalaire sur \(T_x U\).
+
+  \begin{enumerate}
+    \item \(\forall \overrightarrow{v}, \overrightarrow{w} \in T_x V\),
+
+    \begin{gather*}
+      h(x)(\overrightarrow{v}, \overrightarrow{w}) = u ^{*}g ^{(x)}(\overrightarrow{v}, \overrightarrow{w}) = g(u(x))(T(u (\overrightarrow{v}), T(\overrightarrow{w})) \\
+      = g(u(x))(T u(\overrightarrow{w}),u(\overrightarrow{v})) = u ^{*}g(x)(\overrightarrow{w}, \overrightarrow{v})=h(x)(\overrightarrow{w}, \overrightarrow{v}).
+    \end{gather*}
+
+    \item Pour tout \(\overrightarrow{v} \in T_x V\), on a
+
+    \begin{gather*}
+      h(x)(\overrightarrow{v}, \overrightarrow{w}) = u ^{*}g(x)(\overrightarrow{v}, \overrightarrow{v}) = g(u(x))(T u(\overrightarrow{v}), u(\overrightarrow{v})) \geq 0.
+    \end{gather*}
+
+    De plus, on a
+
+    \begin{gather*}
+      h(x)(\overrightarrow{v}, \overrightarrow{v})=0 \iff g(u(x))(T u (\overrightarrow{v}), T u (\overrightarrow{v})) = 0 \iff T u(\overrightarrow{v}) \iff \overrightarrow{v} = 0.
+    \end{gather*}
+
+    \begin{remark}
+      Si \(u : U \longrightarrow V\) difféomorphisme, on a pour tout \(x \in V\), \(T_x u : T_x V \longrightarrow T_x U\) est une application linéaire inversible. En effet,
+
+      \begin{gather*}
+        T u \circ T u ^{-1} = T (u \circ u ^{-1}) = T (\operatorname{id}_U) = \operatorname{id}_{T_U} \\
+        T u ^{-1} \circ T u = T (u ^{-1} \circ u) = T(\operatorname{id}_V) = \operatorname{id}_V.
+      \end{gather*}
+    \end{remark}
+  \end{enumerate}
+\end{proof}
+
+\begin{thm}
+  Soit \(U, V \subseteq \mathbb{R}^n\), avec \(g\) métrique riemanienne sur \(U\) et \(h\) métrique riemanienne sur \(V\). On suppose que \(u : V \longrightarrow U\) est un difféomorphisme \(\mathcal{C}^{\infty}\). Les trois conditions suivantes sont équivalentes :
+
+  \begin{enumerate}
+    \item \label{rieman-1} Pour tous \(x,y \in V\), \(d_h(x,y) = d_g(u(x),u(y))\).
+    \item \label{rieman-2} Pour toute courbe \(\gamma : [0,1] \longrightarrow V\), \(L_h(\gamma) = L_g(u \circ \gamma)\).
+    \item  \label{rieman-3}\(h = u ^{*}g\).
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+  Pour le moment, on va suspendre la démonstration de \ref{rieman-1}. On va démontrer \ref{rieman-2} implique \ref{rieman-3}. On a
+
+  \begin{gather*}
+    L_h(\gamma) := \int_{0}^{T} h(\gamma(t))(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right))dt \\
+    = \int_{0}^{T} \sum_{i,j}^{} H _{ij}(\gamma(t))(\gamma ^{j})'(t) (\gamma ^{i})(t)dt = \int_{0}^{T} \langle \gamma'(t) \mid H (\gamma(t)) \mid \gamma'(t) \rangle dt.
+  \end{gather*}
+
+  %%%%suite de démo rieman%%%%%
+
+  Si \(h = u ^{*}g\), on a
+
+  \begin{gather*}
+    L_h(\gamma) = \int_{0}^{T} h(\gamma(t)) \left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) dt \\
+    = \int_{0}^{T} u ^{*}g(\gamma(t))\left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) \\
+    = \int_{0}^{T} g(u(\gamma(t))) (T u (T \gamma \left(\frac{d}{dt}(t)\right)), T u \left(T \gamma \left(\frac{d}{dt}(t)\right)\right))  dt\\
+    = \int_{0}^{T} g (u \circ \gamma(t)) \left(T u \circ T \gamma \left(\frac{d}{dt}(t)\right), T u \circ T \gamma \left(\frac{d}{dt}(t)\right)\right)  \\
+    = \int_{0}^{T} g(u \circ \gamma(t)) \left(T (u \circ \gamma) \left(\frac{d}{dt}(t)\right), T(u \circ \gamma)\left(\frac{d}{dt}(t)\right)\right)  = L_g(u \circ \gamma),
+  \end{gather*}
+
+  car \(T \gamma : T I \longrightarrow T V, T u : T V \longrightarrow T U\).
+
+  Par le calcul qu'on vient de faire, \(\forall \gamma \in \mathcal{C}^1, \gamma : [0,T] \longrightarrow V\), \(L_g (u \circ \gamma) = L_h(\gamma)\) implique que
+
+  \begin{gather*}
+    \int_{0}^{T} u ^{*}g(\gamma(t))\left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) dt \\
+    = \int_{0}^{T} h (\gamma(t)) \left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) dt.
+  \end{gather*}
+
+  Soit \(x \in V, \overrightarrow{v} \in T_x V\), avec \(\overrightarrow{v}=(x, \underbrace{\mid \overrightarrow{v} \rangle}_{\in \mathbb{R}^n})\). On pose \(\gamma(t) = x + t \mid \overrightarrow{v} \rangle\), \(\gamma : [-\varepsilon, \varepsilon] \longrightarrow V\), il existe \(\varepsilon \bg 0\) tel que \(\gamma([-\varepsilon, \varepsilon]) \subseteq V\).
+  On pose \(a = -\varepsilon,b=s \in (-\varepsilon,\varepsilon)\). Cela implique que
+
+  \begin{gather*}
+    \int_{a}^{s} u ^{*}g(\gamma(t)) \left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) dt = \int_{a}^{s} h(\gamma(t)) \left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right) dt.
+  \end{gather*}
+
+  On a pour tout \(s \in (-\varepsilon, \varepsilon)\) :
+
+  \begin{gather*}
+    \frac{d}{ds} \int_{a}^{s}  \dots = \frac{d}{ds} \int_{0}^{s} \dots,
+  \end{gather*}
+
+  ce qui donne pour tout \(t \in (-\varepsilon, \varepsilon)\) :
+
+  \begin{gather*}
+    u ^{*}g(\gamma(t)) = \left(T \gamma \left(\frac{d}{dt}(t)\right), T \gamma \left(\frac{d}{dt}(t)\right)\right).
+  \end{gather*}
+
+  On évalue en \(t = 0\). On a \(\gamma(0) = x + 0 \cdot \mid \overrightarrow{v} \rangle = x\) et on obtient alors :
+
+  \begin{gather*}
+    T \gamma \left(\frac{d}{dt}(t)\right) = (\gamma(t), \gamma'(t)) = (x, t \mid \overrightarrow{v} \rangle, \mid \overrightarrow{v} \rangle)_{t=0} = (x, \mid \overrightarrow{v} \rangle),
+  \end{gather*}
+
+  ce qui implique que
+
+  \begin{gather*}
+    u ^{*}g(x)((x,\mid \overrightarrow{v} \rangle), (x, \mid \overrightarrow{v} \rangle)) = h(x)((x,\mid \overrightarrow{v} \rangle), (x,\mid \overrightarrow{v} \rangle)),
+  \end{gather*}
+
+  ce qui donne
+
+  \begin{gather*}
+    u ^{*}g(x)(\overrightarrow{v},\overrightarrow{v}) = h(x)(\overrightarrow{v}, \overrightarrow{v})
+  \end{gather*}
+\end{proof}
+
+Calcul pour les matrices \(G\) et \(H\). On a
+
+\begin{gather*}
+  h= \sum_{i,j=1}^{n} h _{ij}d x^{i}\otimes d x^{j},  g = \sum_{i,j=1}^{n} g _{ij}d y ^{i} \otimes d y ^{j}, (y_1, \dots, y_n) \in U.
+\end{gather*}
+
+On a \(h = u ^{*} g\). Quelle est la relation entre les matrices \(G\) et \(H\) ?
+
+On a \(\forall x \in V, \forall \overrightarrow{v}, \overrightarrow{w} \in T_x V\), avec \(\overrightarrow{v} = (x,\mid \overrightarrow{v} \rangle), \overrightarrow{w} = (x, \mid \overrightarrow{w} \rangle)\), avec
+
+\[\overrightarrow{v}  = \sum_{j}^{} v ^{j} \frac{\partial  }{\partial x ^{j}}(x)\]
+
+et
+
+\[\mid \overrightarrow{v} \rangle = \begin{bmatrix}
+  v ^{1} \\
+  \vdots \\
+  v ^{n}
+\end{bmatrix}.\]
+
+On a \[h = u ^{*}g \iff \forall x, \forall \overrightarrow{v}, \overrightarrow{w} \in T_x V, h(x)(\overrightarrow{v}, \overrightarrow{w}) = g(u(x))(T u \overrightarrow{v}, T u \overrightarrow{w}) = \langle D u(x)\overrightarrow{v} \mid G(u(x)) \mid D u(x)\overrightarrow{w}\rangle\].
+
+On prend maintenant \(\mid \overrightarrow{v} \rangle = e_i \in \mathbb{R}^n, \mid \overrightarrow{w} \rangle = e_j \in \mathbb{R}^n\). Alors on a :
+
+\begin{gather}\label{machin}
+  \langle e_i \mid \underbrace{H(x)}_{e_i \cdot H e_j} \mid e_j \rangle = h _{ij}(x).
+\end{gather}
+
+Or \(D u(x)e_i\), c'est la \(i\)-ième colonne de \(D u(x) = \frac{\partial u }{\partial x ^{i}}(x)\), ce qui donne
+
+\begin{gather*}
+  \ref{machin} \implies j _{ij}(x) = \left\langle \frac{\partial u }{\partial x ^{i}}(x) \mid G(u(x)) \mid \frac{\partial u }{\partial x ^{j}}(x)   \right\rangle.
+\end{gather*}
+
+On a alors
+
+\[H(x) = ^{t}Du(x) G(u(x))Du(x).\]
+
+\begin{prop}
+  Si \(u\) difféomorphisme \(\mathcal{C}^{\infty}\), \(h,g\) sur \(V, U\) tel que \(h = u ^{*}g\) et \(h = \displaystyle \sum_{i,j} h _{ij}d x^{i} \otimes d x^{j} \text{ sur } V, g = \displaystyle \sum_{i,j}^{} g _{ij} d y ^{i}\otimes d y ^{j} \text{ sur } U\), alors on a \[h = u ^{*}g \iff \forall x \in V, H(x) =  ^{t}Du(x) G(u(x))Du(x).\]
+\end{prop}
+
+\begin{exemple}
+  On prend \(u : \mathbb{R}^2 \longrightarrow \mathbb{R}^2\) et
+
+  \[u(x,y) = \begin{bmatrix}
+    x+y \\
+    y
+  \end{bmatrix}.\]
+
+  On a \(Du(x,y) = \begin{bmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{bmatrix}\). \(u\) est un difféomorphisme \(\mathcal{C}^{\infty}\). On pose \(G = \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{bmatrix}\) (avec \(g\) la métrique euclidienne sur \(\mathbb{R}^n\)).
+
+  Alors on a
+
+  \begin{gather*}
+    H = ^{t}\begin{bmatrix}
+      1 & 1 \\
+      0 & 1
+  \end{bmatrix} \begin{bmatrix}
+    1 & 0 \\
+    0 & 1
+\end{bmatrix}\begin{bmatrix}
+  1 & 1 \\
+  0 & 1
+\end{bmatrix} = \begin{bmatrix}
+  1 & 0 \\
+  1 & 1
+\end{bmatrix} \begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}\begin{bmatrix}
+1 & 1 \\
+0 & 1
+\end{bmatrix} = \begin{bmatrix}
+  1 & 1 \\
+  1 & 2
+\end{bmatrix}.
+  \end{gather*}
+
+  Ainsi \(\forall \left\lvert \overrightarrow{v} \right\rvert, \mid \overrightarrow{w} \rangle \in \mathbb{R}^2\), on a
+
+  \begin{gather*}
+    \langle \overrightarrow{v} \mid \overrightarrow{w} \rangle_{H} = v ^{1} w ^{1} + v ^1 w ^2 + w ^2 v ^{1} + 2 v ^2 w ^2
+  \end{gather*}
+
+  et
+
+  \[\left\Vert \overrightarrow{v} \right\Vert _{H}^2 = (v ^{1})^2 + 2 v ^{1}v ^2 + 2(v ^2)^2 = (v ^{1} + v ^2)^2+(v ^2)^2.\]
+
+  On obtient \(h = dx \otimes dx + dx \otimes dy + dy \otimes dx + 2 dy \otimes dy\).
+\end{exemple}
+
+\begin{exo}
+  Montrer que si \(u : V \longrightarrow U\) difféomorphisme \(\mathcal{C}^{\infty}\) et \(g\) métrique sur \(U\), alors
+
+  \begin{enumerate}
+    \item \(h = u ^{*}g\) implique que \(\forall \overrightarrow{v}, \overrightarrow{w} \in T_x U\) :
+
+    \begin{gather}
+      \left\Vert \overrightarrow{v} \right\Vert _{h} = \left\Vert T u(\overrightarrow{v}) \right\Vert _{g} \\
+      \sphericalangle (\overrightarrow{v}, \overrightarrow{w})_h = \sphericalangle(T u(\overrightarrow{v}), T u (\overrightarrow{w}))_g.
+    \end{gather}
+
+    \item \(\forall \overrightarrow{v} \in T_x U, \left\Vert \overrightarrow{v} \right\Vert _{h} = \left\Vert T u(\overrightarrow{v}) \right\Vert_g  \implies h = u ^{*}g\).
+  \end{enumerate}
+\end{exo}
+
+\begin{prop}
+  Soit \(g_e\) la métrique euclidienne standart sur \(U \subseteq \mathbb{R}^n\) (donc \(G_e = I _{n \times n}, g_e = \sum_{i=1}^{n}d x^{i} \otimes d x^{i}\)) et \(u : V \longrightarrow U\) est difféomorphisme \(\mathcal{C}^{\infty}\).
+
+  Alors si \(j = u ^{*} g, h = \sum_{i,j=1}^{n} h _{ij}d x^{i}\otimes d x^{j}, H = [h _{ij}] \in \mathbb{R}^{n \times n}\), on a
+
+  \[H = ^{t}D u D u.\]
+\end{prop}
+
+\begin{remark}
+  \(\forall A \in \mathbb{R}^{n \times n}, \forall \mid \overrightarrow{v} \rangle, \mid \overrightarrow{w} \rangle \in \mathbb{R}^n\), si \(H = ^{t}A A\), on a
+
+  \begin{gather*}
+    \langle \overrightarrow{v} \mid H \mid \overrightarrow{w} \rangle = \langle \overrightarrow{v}\mid ^{t} A A \mid \overrightarrow{w} \rangle = \langle A \overrightarrow{v} \mid A \overrightarrow{w} \rangle = \overrightarrow{v} \cdot ( ^{t}A A \overrightarrow{w}) = A \overrightarrow{v} \cdot A \overrightarrow{w}.
+  \end{gather*}
+
+  De plus, on a
+
+  \[\langle \overrightarrow{v} \mid H \mid \overrightarrow{v} \rangle = \langle A \overrightarrow{v} \mid A \overrightarrow{v} \rangle   = \left\Vert A \overrightarrow{v} \right\Vert ^2.\]
+
+  C'est la norme euclidienne.
+\end{remark}
+
+\begin{exemple}
+  Soit \(u(x,y) = (x + y ^2, y)\) et \(V = \{ (x,y) \in \mathbb{R}^2 \mid y \bg 0 \}\).
+
+  On pose \(D_u = \begin{bmatrix}
+    1 & 2 y \\
+    0 & 1
+  \end{bmatrix}\). On calcule
+
+  \begin{gather*}
+    H = ^{t} Du Du = \begin{bmatrix}
+      1 & 2y \\
+      2 y & 1 + 4y ^2
+  \end{bmatrix}.
+\end{gather*}
+
+  Alors \(h = dx \otimes dx + 2 y dx \otimes dy + 2 y dy \otimes dx + (1+ 4y ^2)dy \otimes dy\).
+
+  %%%%fig10%%%%%%
+
+  Si \(u(x,y) = (x', y')\), alors on a \(x+ y ^2 = x', y=y'\), donc \(x = x' - y ^2 = x' - (y')^2\). On obtient donc
+
+  \[u ^{-1}(x',y') = (x' - (y')^2,y').\]
+
+  Si la ligne droite \(x' \equiv \text{constante}\) et \(y\) arbitraire (paramètre \(t\)), la courbe dans \(V\) devient de la forme \((c -t ^2, t), t \bg 0\).
+
+  %%%fig11%%%%
+
+  Sinon, \(y' = ax'+b, t=x', y'=at+b\), donc la courbe géodésique correspondant pour \((V,h)\) est
+
+  \[(t -(at+b)^2, \overbrace{at+b}^{y} ).\]
+
+  \begin{itemize}
+    \item [$\star$] Si \(a \neq 0\), on  a \(y = at+b\), \(t = \displaystyle\frac{y-b}{a}, x = \displaystyle\frac{y-b}{a} - y ^2 = -y ^2+ \displaystyle\frac{y}{a} - \displaystyle\frac{b}{a}\).
+    \item [$\star$] Si \(a= 0\), \(y'= \text{constante} \bg 0, x' = t\) (paramètre), la courbe dans \((V,h)\) est \((t-c,c)\).
+  \end{itemize}
+\end{exemple}
+
+\begin{exo}
+  Soit \(\{ (U,g) \mid U \subseteq \mathbb{R}^n \text{ ouvert }, g \text{ métrique riemanienne sur } U\}\). Pour tout \((U,g), (V,h) \in U\), on définit la relation suivante :
+
+  \[(U,g) \sim (V,h) \iff \exists u : V \longrightarrow U \text{ difféomorphisme } \mathcal{C}^{\infty} \text{ tel que } h = u ^{*}g.\]
+\end{exo}
 
 
 

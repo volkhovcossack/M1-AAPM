@@ -63,6 +63,7 @@
 
 \title{\bsc{Géométrie différentielle}}
 \date{2023-2024}
+\author{Mohammad Reza \bsc{Pakzad}}
 
 \begin{document}
 
@@ -572,7 +573,7 @@ En particulier, il existe $W$ tel que $Df(x)$ est inversible pour tout $x \in W$
 
 
 \begin{thm}[Du rang]
-  $f : U \to \mathbb{R}^m$, $U \subset \mathbb{R}^n$ de classe $\mathcal{C}^r, r \geq 1$.  Supposons que $\forall x \in U$,
+  Soit $f : U \to \mathbb{R}^m$ (avec $U \subset \mathbb{R}^n$ de classe $\mathcal{C}^r, r \geq 1$).  Supposons que $\forall x \in U$,
 
   \[
   \operatorname{rang}(Df(x)) \equiv k,
@@ -582,12 +583,12 @@ En particulier, il existe $W$ tel que $Df(x)$ est inversible pour tout $x \in W$
 
   $(Df(x) : \mathbb{R}^n \to \mathbb{R}^m, \text{ donc } 0 \leq \operatorname{rang}(Df(x)) \leq m)$.
 
-  Soit $x_0 \in U$. Alors il y a des ouverts $W \subseteq \mathbb{R}^n, V \subseteq \mathbb{R}^m, x_0 \in W, f(x) \in V$, 2 applications de classe $\mathcal{C}^r$ inversibles
+  Soit $x_0 \in U$. Alors il y a des ouverts $W \subseteq \mathbb{R}^n, V \subseteq \mathbb{R}^m \text{ tels que }  x_0 \in W, f(x_0) \in V$ et 2 applications de classe $\mathcal{C}^r$ inversibles
 
 \[
 \begin{matrix}
-  \varphi : W \to W', \varphi(x_0) =0, W' \subseteq \mathbb{R}^n \\
-  \psi : V \to V', \psi(f(x_0)) = 0, V' \subseteq \mathbb{R}^m
+  \varphi : W \to W' \text{ avec } W' \subseteq \mathbb{R}^n \text{ telle que } \varphi(x_0) =0 \\
+  \psi : V \to V' \text{ avec } V' \subseteq \mathbb{R}^m \text{ telle que }  \psi(f(x_0)) = 0
 \end{matrix}
 \]
  telles que $\forall z \in W', z=(z_1, \dots, z_n)$,
@@ -641,15 +642,19 @@ $\varphi ^{-1} $ étant continue, $D \varphi$ étant continue, l'inverse d'une m
   Supposons que pour $x_0 \in U$, $Df(x_0)$ est injective. $Df(x_0) \in \mathscr{L}(\mathbb{R}^n, \mathbb{R}^m) $. Alors il existe un voisinage $W$ de $x_0$ tel que $f$ est injective sur $W$.
 \end{corollary}
 
-Pour $x \in U,$
+\begin{proof}
+  Pour $x \in U,$
 
-\[
-Df(x) = \left[\begin{matrix}
-  \frac{\partial f }{\partial x_1} & \dots & \frac{\partial f }{\partial x_n }
-\end{matrix}\right] _{m \times n}.
-\]
+  \[
+  Df(x) = \left[\begin{matrix}
+    \frac{\partial f }{\partial x_1} & \dots & \frac{\partial f }{\partial x_n }
+  \end{matrix}\right] _{m \times n}.
+  \]
 
-Si $Df(x_0)$ est injective, $\operatorname{rang}(Df(x_0)) = n \ (m \geq  n)$. On obtient une sous-matrice de $Df(x)$ de taille $n \times n$ inversible.
+  Si $Df(x_0)$ est injective, $\operatorname{rang}(Df(x_0)) = n \ (m \geq  n)$. On obtient une sous-matrice de $Df(x)$ de taille $n \times n$ inversible.
+\end{proof}
+
+
 
 \begin{lemma}[D'algèbre linéaire]
   $A \in \mathbb{R} ^{m \times n}$. Alors $\operatorname{rang} A = n$ si et seulement si il existe une sous-matrice $B \in \mathbb{R} ^{n \times n}$ de $A$ telle que $\operatorname{det} B \neq 0$.
@@ -1027,10 +1032,17 @@ Remarquons que $\Omega ^{1}(E) = \{ \alpha : E \to \mathbb{R} \mid \alpha \text{
 \end{prop}
 
 \begin{proof}
-  Si $\alpha, \beta \in \Omega ^{k}(E), a \in \mathbb{R}$. Il faut démontrer que $a \alpha+ \beta$ est aussi une application $k$-linéaire sur $E ^k = \overbrace{E \times \dots \times E}^{k \text{ fois}}$.
+  Si $\alpha, \beta \in \Omega ^{k}(E), a \in \mathbb{R}$. Pour montrer que \(\Omega ^{k}(E)\) est un espace vectoriel de dimension \(n ^{k}\), on doit montrer deux choses :
+
+  \begin{enumerate}
+    \item \(\Omega ^{k}(E)\) est stable par les opérations + et \(\cdot\) (produit par un scalaire).
+    \item Il existe une base de cet espace contenant \(n ^{k}\) éléments.
+  \end{enumerate}
+
+   Il faut démontrer que $a \alpha+ \beta$ est aussi une application $k$-linéaire sur $E ^k = \overbrace{E \times \dots \times E}^{k \text{ fois}}$.
 
   \begin{gather*}
-    a \alpha + \beta (b \overrightarrow{ v_1 }+ \overrightarrow{ w }, \dots) = a[\alpha(b \overrightarrow{ v_1 }+ \overrightarrow{ w }, \dots)]+ \beta(b \overrightarrow{ v_1 }+\overrightarrow{ w })\\
+    (a \alpha + \beta)(b \overrightarrow{ v_1 }+ \overrightarrow{ w }, \dots) = a[\alpha(b \overrightarrow{ v_1 }+ \overrightarrow{ w }, \dots)]+ \beta(b \overrightarrow{ v_1 }+\overrightarrow{ w })\\
     = a[b \alpha(\overrightarrow{ v_1 }, \dots)+ \alpha(\overrightarrow{ w }, \dots)] + b \beta(v_1, \dots) + \beta(\overrightarrow{ w }, \dots) \\
     = b[a \alpha+ \beta](\overrightarrow{ v_1 }, \dots )+ [a \alpha+ \beta](\overrightarrow{ w }, \dots)
   \end{gather*}
@@ -1102,7 +1114,7 @@ $\Omega ^{k}(E) := \{ \alpha : \underbrace{E \times E \times \dots \times E}_{k 
 \end{prop}
 
 \begin{proof}
-  $dim E = n$, $(e_1, \dots, e_n)$ est une base de $E$ et $(e ^{1}, \dots, e ^{n})$ est une base de $E ^{*} = \Omega ^{1}(E)$.
+  On rappelle que $\operatorname{dim}(E) = n$, que $(e_1, \dots, e_n)$ est une base de $E$ et que $(e ^{1}, \dots, e ^{n})$ est une base de $E ^{*} = \Omega ^{1}(E)$.
 
   Par exemple si on prend
 
@@ -1110,16 +1122,16 @@ $\Omega ^{k}(E) := \{ \alpha : \underbrace{E \times E \times \dots \times E}_{k 
   \underbrace{e^{1} \otimes e ^{1} \otimes \dots \otimes e ^{1}}_{k \text{ fois} } : E \times \dots \times E \to \mathbb{R},
   \]
 
-  et
+  on aura alors
 
   \begin{gather*}
     e^{1} \otimes e ^{1} \otimes \dots \otimes e ^{1}(\overrightarrow{ v_1 }, \dots, \overrightarrow{ v_n }  ), \overrightarrow{ v_i } \in E, \\
     = e ^{1}(\overrightarrow{ v_1 } ) e ^{1}(\overrightarrow{ v_2 } ) \dots e ^{1}(\overrightarrow{ v_n }).
   \end{gather*}
 
-  $\mathscr{A} = \{ e ^{i_1} \otimes e ^{i_2} \otimes \dots \otimes e ^{i_k} \mid \text{pour } 1 \leq j \leq k, 1 \leq i_k \leq n  \} $.
+  Posons $\mathscr{A} = \{ e ^{i_1} \otimes e ^{i_2} \otimes \dots \otimes e ^{i_k} \mid \text{pour } 1 \leq j \leq k, 1 \leq i_k \leq n  \} $.
 
-  Il y a $n$ choix pour chaque $e ^{i_j}$, alors, au total, on a $n ^k$ choix pour les éléments de $\mathscr{A} $, ce qui démontre la proposition \ref{dim-tens}. On montre maintenant que
+  Il y a $n$ choix pour chaque $e ^{i_j}$ (parmi les \(n\) vecteurs de la base de \(E\)), alors, au total, on a $n^k$ choix pour les éléments de $\mathscr{A}$ (puisqu'il y a \(k\) choix pour chaque \(i_k\)), ce qui démontre la proposition \ref{dim-tens}. Il nous reste maintenant à montrer que :
 
   \begin{enumerate}
     \item $\mathscr{A} $ engendre $\Omega ^{k}(E)$ ;

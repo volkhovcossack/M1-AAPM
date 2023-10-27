@@ -61,6 +61,7 @@
 \newcommand{\bg}{\biggg}
 
 \title{\bsc{Probabilités et applications}}
+\author{Sandro \bsc{Vaienti}}
 \date{2023-2024}
 
 \begin{document}
@@ -2576,6 +2577,141 @@ On prend \((\Omega, \mathscr{A}, \mathbb{P}) = (\mathbb{R}^d, \mathscr{B}(\mathb
   \end{gather*}
 \end{proof}
 
+\chapter{Variables gaussiennes}\marginnote{27-10-2023}
+
+\section{Généralités}
+
+Soit \(X ^{T} = (X_1, \dots, X_n)\) (transposée) un vecteur aléatoire, avec \(X_1, \dots, X_n\) définies sur le même espace \((\Omega, \mathscr{A}, \mathbb{P})\).
+
+\begin{definition}
+  On dira que le vecteur \(X = (X_1, \dots, X_n)\) est gaussien (vecteur aléatoire gaussien, VAG) si toute combinaison linéaire des \(X_i, i \in \{1, \dots, n \}\) est une variable gaussienne.
+
+  Donc en particulier, chaque \(X_i\) est une variable gaussienne.
+\end{definition}
+
+\begin{definition}[Rappel : variable gaussienne]
+  Une variable \(Y\) est dite gaussienne si c'est une variable à densité, et la densité a la forme suivante :
+
+  \[f(x) = \frac{1}{\sqrt{2 \pi \sigma}} e^{-\frac{1}{2}\left(\frac{x-m}{\sigma}\right)^2},\]
+
+  où \(m = \mathbb{E}[Y]\) et \(\sigma ^2 = \mathbb{V}(Y)\).
+\end{definition}
+
+On utilisera souvent la gaussienne standart de loi \(\mathscr{N}(0,1)\), dans ce cas on aura
+
+\[f(y) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{y ^2}{2}}.\]
+
+\emph{L'objectif est de trouver la loi du vecteur, \(P _{X_1, \dots, X_n}(x_1, \dots,x_n)\) et de savoir si elle est à densité. On veut aussi savoir s'il existe un critère d'indépendance des \(\{ X_i \}_{i=1}^{n}\). Enfin, on cherchera à calculer la fonction caractéristique de \(X\).}
+
+\section{Fonctions caractéristiques}
+
+Pour la gaussienne standart, la fonction caractéristique est
+
+\[\varphi_Y(t) = e^{-\frac{1}{2} t ^2}.\]
+
+Dans le cas général, la fonction caractéristique se calcule comme suit :
+
+\[\varphi_Y(t) = e^{itm}e^{- \frac{1}{2}\sigma ^2 t ^2}.\]
+
+\begin{prop}
+  La fonction caractéristique du vecteur gaussien \(X\) se calcule de la façon suivante :
+
+  \begin{gather*}
+    \varphi _{X_1, \dots,X_n}(t_1, \dots, t_n) = \int e^{i[t_1 X_1 + \dots + t_n X_n]}d \mathbb{P} = \int e^{i (t,X)}d \mathbb{P}\\
+    \stackrel{\text{transfert}}{=}\int e^{i(t,X)}d P_X(x_1, \dots, x_n) = \int e^{it Y} d \mathbb{P} = \varphi_Y(1) = e^{im}e^{-\frac{1}{2}\sigma ^2},
+  \end{gather*}
+
+  où \(Y = \displaystyle\sum_{i=1}^{n} t_i X_i\). C'est une variable gaussienne. Lorsqu'on introduit \(Y\), on fait les calculs comme si c'était une variable gaussienne. On rappelle que \(m= \mathbb{E}[Y], \sigma ^2 =\mathbb{V}(Y)\).
+\end{prop}
+
+\begin{remark}
+  \((t_1, \dots, t_n)\) est le vecteur ligne tandis que \(\begin{pmatrix}
+    X_1 \\
+    \vdots \\
+    X_n
+  \end{pmatrix}\) est le vecteur colonne. \((t,X)\) est le produit scalaire euclidien.
+\end{remark}
+
+\begin{remark}
+  L'espérance de \(Y\) est facile à calculer. En effet,
+
+  \begin{gather*}
+    m = \mathbb{E}[Y] = \mathbb{E}\left[\sum_{j=1}^{n} t_j X_j \right] = \sum_{j=1}^{n}t_i \mathbb{E}[X_j] = (t,M_X),
+  \end{gather*}
+
+  avec \(M_X = \begin{pmatrix}
+  \mathbb{E}[X_1] \\
+  \vdots \\
+  \mathbb{E}[X_n]
+  \end{pmatrix}\).
+
+  On a de plus
+
+  \begin{gather*}
+    \sigma_Y ^2 \mathbb{V}(Y) = \mathbb{E}[(Y - \mathbb{E}[Y])^2] = \mathbb{E}\left[\sum_{j=1}^{n} \{ t_j X_j - t_j m _{X_j} \}^2\right] = t  \Sigma_{X} t ^{T},
+  \end{gather*}
+
+  où \(\Sigma_{X}\) est la matrice de dispersion. On la calcule ainsi
+
+  \[\Sigma_X = \begin{pmatrix}
+  \sigma _{X_1 X_1} & \dots & \sigma _{X_1 X_n} \\
+  \vdots & \ddots & \vdots \\
+  \sigma _{X_n X_1} & \dots & \sigma _{X_n X_n},
+  \end{pmatrix}\]
+
+  où \(\sigma _{X_i X_j} = \operatorname{Cov}(X_i X_j) = \mathbb{E}[X_i X_j] - \mathbb{E}[X_i]\mathbb{E}[X_j]\). Les éléments diagonaux de la matrice \(\Sigma_X\) sont en fait les variances de \(X_1, \dots, X_n\). C'est une matrice \textbf{symétrique}.
+
+  On peut écrire de manière plus concise \(m_Y = t \cdot M_X\) et \(\sigma_Y ^2 = t \Sigma_X t ^{T}\).
+\end{remark}
+
+Le calcul de la fonction caractéristique devient donc
+
+\begin{gather*}
+  \varphi _{X_1, \dots, X_n}(t_1, \dots, t_n) = \varphi_Y(1) = e^{im_Y}e^{-\frac{1}{2}\sigma_Y ^2} = e^{it m_X} e^{-\frac{1}{2}t \Sigma_X t ^2}.
+\end{gather*}
+
+\
+
+On suppose que \(\Sigma_X\) est \textbf{inversible} (critère de non-dégénérescence). On sait que \(\Sigma_X\) est symétrie et positive, elle est donc diagonalisable, c'est-à-dire il existe une matrice \(A\) inversible telle que
+
+\[A ^{-1} \Sigma_X A = \operatorname{Id} = \begin{pmatrix}
+  1 & \dots & 0 \\
+  \vdots & \ddots & \vdots \\
+  0 & \dots & 1
+\end{pmatrix} (?????)\]
+
+On fait un changement de variable \(Z = A ^{-1}(X - m_X)^{T} = (z_1, \dots, z_n)^{T}\). La matrice de dispersion de \(Z\) est donnée par
+
+\[\Sigma_Z = A ^{-1} \Sigma_X A = \operatorname{Id}.\]
+
+La fonction caractéristique de \(Z\) est donc
+
+\[\varphi_Z(t) = e^{-\frac{1}{2}t \Sigma_Z}t ^{T} = e^{-\frac{1}{2}t t ^{T}} = \prod_{i=1}^{n} e^{-\frac{1}{2}t_j ^2} = \prod_{i=1}^{n} \varphi _{Z_i}(t).\]
+
+\begin{prop}
+  \(Z_1, \dots, Z_n\) sont indépendantes si et seulement si les fonctions caractéristiques se factorisent, autrement dit
+
+  \[\varphi _{Z_1 \dots Z_n}(t_1, \dots, t_n) = \varphi _{Z_1}(t_1) \dots \varphi _{Z_n}(t_n).\]
+\end{prop}
+
+Observons que l'on a les densités de \(Z_1, \dots, Z_n\), à savoir \(f_Z(z_i) = \displaystyle \frac{1}{\sqrt{2 \pi}} e^{-\frac{z_i ^2}{2}}\).
+
+Donc
+
+\begin{gather*}
+  f _{Z_1 \dots Z_n}(z_1, \dots, z_n) = \prod_{j=1}^{n} \frac{1}{\sqrt{2 \pi}} e^{-\frac{z_i ^2}{2}} = \frac{1}{(2 \pi) ^{\frac{n}{2}}} e^{-\frac{1}{2}z z ^{T}},
+\end{gather*}
+
+avec \(Z = (z_1, \dots, z_n)\). On remplace \(Z\) avec \(X\). La densité de \(X\) est égale à
+
+\begin{gather*}
+  f _{X_1 \dots X_n}(x_1, \dots, x_n) = \frac{1}{(2 \pi)^{\frac{n}{2}} \operatorname{det}(\Sigma_X)^{\frac{1}{2}}} e^{- \frac{1}{2}[(x- m_X)\Sigma_X ^{-1} (x-m_X)^{T}]}.
+\end{gather*}
+
+\begin{prop}
+  Un vecteur gaussien est indépendant si et seulement si il est non-corrélé.
+\end{prop}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2742,7 +2878,7 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
     \item
 
     \begin{figure}[h!]
-      \centering
+      \center\addcontentsline{toc}{chapter}{Travaux dirigés}ing
       \includegraphics[scale=0.3]{figures/exo_livres.png}
       \caption{Solution pour (1)}
       \label{}
@@ -2881,12 +3017,12 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
     \item On pose \(Z  = \max(X,Y)\). Déterminer \(F_Z(n) = \mathbb{P}(Z \leq n)\).
     \item Calculer \(\mathbb{P}(Z =n)\).
 
-    \emph{Idée.} Exprimer \(\mathbb{P}(Z = n)\) en terme de \(F_Z(n)\) et \(F_Z(n-1)\).
+    \emph{Idée : exprimer \(\mathbb{P}(Z = n)\) en terme de \(F_Z(n)\) et \(F_Z(n-1)\).}
 
     \item Calculer la loi de \(W = \min(X,Y)\).
     \item Calculer \(\mathbb{P}(X \geq Y)\).
 
-    \emph{Idée.} L'événement \(X \geq  Y\) est donnée par la réunion des événements \(x \geq y\) pris sur les valeurs \(y\) de \(Y\).
+    \emph{Idée : l'événement \(X \geq  Y\) est donnée par la réunion des événements \(x \geq y\) pris sur les valeurs \(y\) de \(Y\).}
   \end{enumerate}
 \end{exo}
 
@@ -2901,7 +3037,65 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
   \end{enumerate}
 \end{exo}
 
+\begin{exo}
+  Soit \(X\) une variable aléatoire de Gauss et soit \(U\) une variable aléatoire de Bernoulli avec \(\mathbb{P}(U = 1) = \mathbb{P}(U = -1) = \displaystyle\frac{1}{2}\), avec \(U\) et \(X\) indépendantes.
 
+  \begin{enumerate}
+    \item Montrer que \(Y = UX\) a la même loi que \(X\).
+    \item \(X\) et \(Y\) ne sont pas corrélées.
+    \item \(X\) et \(Y\) ne sont pas indépendantes.
+    \item Trouver cette combinaison linéaire.
+  \end{enumerate}
+\end{exo}
+
+\section*{Examen de l'année dernière}
+\addcontentsline{toc}{section}{Examen de l'année dernière}
+
+\begin{exo}
+  Soit \(\{ X_n \}_{n \geq 1}\) une suite de variables aléatoires indépendantes et de même loi exponentielle \(\lambda e^{-\lambda x} \mathds{1}_{[0,\infty)}, \lambda \bg 0\). On pose
+
+  \[Y_n = \frac{1}{n}\sum_{i=1}^{n} \frac{1 + X_i}{2}.\]
+
+  \begin{enumerate}
+    \item Calculer \(\mathbb{E}[Y_n]\) et \(\mathbb{V}(Y_n)\).
+    \item \label{exob} Montrer que \(Y_n\) converge en probabilité vers \(\mathbb{E}[Y_n]\).
+    \item Calculer la fonction caractéristique de \(Y_n\) et montrer qu'elle donne un résultat cohérent avec le point \ref{exob}, c'est-à-dire calculer la limite de la fonction caractéristique pour \(n \longrightarrow \infty\).
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Soit \(\{ U_n \}_{n=1}^{\infty}\) une suite de variables aléatoires uniformes sur \([0, 1]\) et indépendantes. Soit ensuite \(\{ X_n \}_{n=1}^{\infty}\) une autre suite de variables aléatoires indepéndantes des \(U_n\) de loi \(B(n, \frac{1}{2})\). Considérons maintenant la suite \(Z_n = \displaystyle\min _{0 \leq i \leq X_n} U_i\).
+
+  \
+
+  \emph{Vers quelle variable aléatoire en loi la suite des \(Z_n\) converge ?}
+
+  \
+
+  Pour arriver à cela, on doit répondre aux questions suivantes :
+
+  \begin{enumerate}
+    \item Calculer \(\mathbb{P}(\displaystyle\min _{0 \leq  i \leq k} U_i \leq t)\).
+    \item Etudier \(\mathbb{P}(Z_n \leq t)\) en conditionnant par rapport à \(X_n\).
+    \item Trouver la limite en loi des \(Z_n\).
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Considérons la suite \(\{ X_n \}_{n=1}^{\infty}\) chacune de densité
+
+  \[f _{X_n}(x) = \begin{cases}
+    \frac{n}{x ^{n+1}}, x \geq  1 \\
+    0 \text{ sinon. }
+  \end{cases}\]
+
+  Posons \(Y_n = (n-1)X_n -n\).
+
+  \begin{enumerate}
+    \item Etudier la convergence en loi de \(Y_n\) (utiliser les fonctions de répartition).
+    \item Etudier la convergence avec la fonction caractéristique.
+  \end{enumerate}
+\end{exo}
 
 
 \end{document}

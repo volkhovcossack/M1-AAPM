@@ -61,7 +61,9 @@
 \newcommand{\bg}{\biggg}
 
 \title{\bsc{Analyse fonctionnelle et distributions}}
+\author{Michel \bsc{Rouleux}}
 \date{2023-2024}
+
 
 \begin{document}
 
@@ -1601,7 +1603,7 @@ On le munit de la famille de semi-normes
   On a \((L ^2)' = L ^2\) (l'espace dual de \(L ^2\) est lui-même), i. e. toute forme linéaire \(l \in (L ^2)'\) s'écrit comme \(\langle l,u \rangle  = (v \mid u)\) où \(v \in L ^2\).
 \end{thm}
 
-\begin{thm}[Riesz-Fischer]
+\begin{thm}[Riesz-Fischer]\label{Riesz-Fischer}
   Le dual de \(L ^{1}\) est \(L ^{\infty}\).
 \end{thm}
 
@@ -1610,8 +1612,94 @@ On le munit de la famille de semi-normes
 \end{proof}
 
 \begin{remark}
-  On n'a pas \((L ^{\infty})' \neq L ^{1}\).
+  Par contre on n'a pas \((L ^{\infty})' \neq L ^{1}\).
 \end{remark}
+
+\marginnote{27-10-2023}
+
+\begin{corollary}\label{int_nulle}
+  Soit \(f \in L ^{p}\). Si pout tout \(\varphi \in K(\Omega), \int_{}^{}f(x) \varphi(x)dx = 0\), alors \(f = 0\) presque partout.
+\end{corollary}
+
+\begin{thm}
+  L'espace \(L^{1}\) est séparable. Plus généralement, \(L ^{p}\) est séparable pour tout \(1 \leq p \less +\infty\).
+\end{thm}
+
+\begin{proof}
+  On prend un représentant \(\dot{f}\) de \(f \in L ^{1}\). Si \(f\) est positive, on a
+
+  \begin{gather*}
+    \int_{A}^{} f(x)dx = \sup_{t_0 \leq t_1 \leq \dots \leq t_n} (t _{i+1} - t_i) \mu(A \cap \{ x : f(x) \leq t_i \}),
+  \end{gather*}
+
+  où \(\mu\) est la mesure de Lebesgue. On a alors
+
+  \begin{gather*}
+    f = \lim \sum_{i}^{} c_i \mathds{1}_{\{ f \leq t_i \}} = \lim \sum_{t}^{} (t _{i+1}-t_i) \mathds{1}_{B_i}(t).
+  \end{gather*}
+
+  On peut prendre \(t_i \in \mathbb{Q}\). Alors la famille
+
+  \begin{gather*}
+    \sum_{i}^{} (t _{i+1} - t_i) \mathds{1}_{B_i}(t)
+  \end{gather*}
+
+  est partout dense dans \(L ^{1}\), avec \(B_i\) des boréliens de \(\Omega\). Ceci achève la démonstration.
+\end{proof}
+
+\begin{thm}
+  L'espace \(L ^{1}(\Omega)\) n'est pas réfléxif.
+\end{thm}
+
+\begin{proof}
+  On raisonne par l'absurde. On pose \(E = L ^{1}\) et on suppose qu'il est réfléxif. On a alors, par le théorème \ref{Riesz-Fischer}, \(E' = L ^{\infty}\).
+
+  Soit \(B_E\) la boule unité de \(E\) (pour la topologie de Banach, mais aussi valable pour \(\sigma(E, E')\)). Comme \(L ^{1}\) est séparable, la boule unité \(B_E\) pour la topologie faible est compacte. Donc de toute suite de \(B_e\) on peut extraire une suite convergente (pour la topologie faible). On prend
+
+  \[f_n(x) = \frac{1}{\left\lvert B(a, \frac{1}{n}) \right\rvert} \mathds{1}_{B(a, \frac{1}{n})}.\]
+
+  On a \(\int f_n = 1\) pour \(f_n \in B_E\). On entrait \(f _{n_k}\) convergeant vers \(f \in B_E\). Alors pour tout \(\phi \in L ^{\infty} = E'\), on a \(\int f _{n_k} \phi \longrightarrow \int f \phi\). On choisit \(\phi \in K(\Omega \setminus \{ a \})\). Donc
+
+  \[\int f _{n_k}(x) \phi(x) dx =0.\]
+
+  Par le corollaire \ref{int_nulle}, \(f = 0\) p. p. dans \(\Omega \setminus \{ a \}\). Donc \(f = 0\) p. p. dans \(\Omega\), car \(\mu(\{ a \}) = 0\). Cela aboutit a une contradiction, car pour \(\phi = \mathds{1}_{\Omega} \in L ^{\infty}\), on a
+
+  \[0 = \int f \phi = \int_{}^{} \frac{1}{\left\lvert B(a, \frac{1}{n}) \right\rvert} \mathds{1}_{B(a, \frac{1}{n})} = 1.\]
+\end{proof}
+
+\begin{remark}
+  \(E\) est réfléxif et séparable si et seulement si \(E'\) est réfléxif et séparable. Comme \(E = L ^{1}\) n'est pas réfléxif, \(E' = L ^{\infty}\) n'est pas réfléxif. En fait il n'est ni réfléxif ni séparable.
+\end{remark}
+
+\begin{prop}
+  \(L ^{\infty}\) n'est pas séparable.
+\end{prop}
+
+\begin{lemma}
+  Soit \(E\) un espace de Banach. S'il existe \((\mathcal{O}_i)_{i \in I}\), \(I\) non dénombrable, \(\mathcal{O}_i\) ouverts deux-à-deux disjoints, alors \(E\) n'est pas séparable.
+\end{lemma}
+
+\begin{proof}
+  Une fois de plus on raisonne par l'absurde. Soit \((u_n)\) une suite partout dense dans \(E\) telle que \(\forall i \in I, (u_n) _{n \in \mathbb{N}} \cap \mathcal{O}_i \neq \emptyset\) (on utilise l'axiome du choix \(u_n \in \mathcal{O}_i\)). Comme les \(\mathcal{O}_i\) sont disjoints, \(i \longmapsto n(i)\) est injective, donc \(I\) est dénombrable, ce qui aboutit à une contradiction.
+\end{proof}
+
+\begin{thm}
+  Soit \(\Omega\) un ouvert de \(\mathbb{R}^d\). Alors
+
+  \begin{enumerate}
+    \item \(L ^{\infty}(\Omega)\) n'est pas séparable ;
+    \item \(L ^{\infty}(\Omega)\) n'est pas réfléxif ;
+    \item La boule unité de \(L ^{\infty}(\Omega)\) est métrisable est compacte pour \(\ast(L ^{\infty}, L ^{1})\).
+  \end{enumerate}
+\end{thm}
+
+\section{Exemple fondamental : convergence d'une suite de \(L ^{1}\) vers la mesure de Dirac}
+
+\begin{thm}
+  Il existe \(f_n \in L ^{1}\) telle que \(\forall \phi \in K(\Omega)\),
+
+  \[\int f_n(x) \phi(x)dx \longrightarrow \phi(x_0).\]
+\end{thm}
 
 
 

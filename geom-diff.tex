@@ -61,6 +61,9 @@
 \newcommand{\biggg}{>}
 \newcommand{\bg}{\biggg}
 
+\renewcommand\qedsymbol{$\clubsuit$}
+
+
 \title{\bsc{Géométrie différentielle}}
 \date{2023-2024}
 \author{Mohammad Reza \bsc{Pakzad}}
@@ -1142,9 +1145,11 @@ $\Omega ^{k}(E) := \{ \alpha : \underbrace{E \times E \times \dots \times E}_{k 
 
   On va démontrer que
 
-  \[
-  \alpha \stackrel{?}{=} \sum_{1 \leq i_1, \dots, i_k \leq n}^{} \alpha(e _{i_1}, e _{i_2}, \dots, e _{i_k}) e ^{i_1} \otimes e ^{i_2} \otimes \dots \otimes e ^{i_k}.
-  \]
+  \begin{equation}\label{prod-tens-alpha}
+    \alpha = \sum_{1 \leq i_1, \dots, i_k \leq n}^{} \alpha(e _{i_1}, e _{i_2}, \dots, e _{i_k}) e ^{i_1} \otimes e ^{i_2} \otimes \dots \otimes e ^{i_k}.
+  \end{equation}
+
+
 
   Prenons $(\overrightarrow{ v_1 }, \overrightarrow{ v_2 }, \dots, \overrightarrow{ v_n }) \in E ^{k}$. On a
 
@@ -1184,7 +1189,7 @@ $\Omega ^{k}(E) := \{ \alpha : \underbrace{E \times E \times \dots \times E}_{k 
     \beta (\overrightarrow{ v_1 }, \dots, \overrightarrow{ v_k }  ) = \sum_{i_1}^{} \sum_{i_2}^{} \dots \sum_{i_k}^{} c _{i_1 1} c _{i_2 2} \dots c _{i_k k} \alpha(e _{i_1}, \dots, e _{ik}) = \alpha(\overrightarrow{ v_1 }, \dots, \overrightarrow{ v_k }  )   .
   \end{gather*}
 
-  Donc ? est démontré, et on a $\alpha \in span(\mathscr{A} ) = \langle \mathscr{A} \rangle $, où $\mathscr{A} = \{ e ^{i_1} \otimes \dots \otimes e ^{i_k}\} $.
+  Donc \ref{prod-tens-alpha} est démontré, et on a $\alpha \in span(\mathscr{A} ) = \langle \mathscr{A} \rangle $, où $\mathscr{A} = \{ e ^{i_1} \otimes \dots \otimes e ^{i_k}\} $.
 
   \
 
@@ -1533,7 +1538,7 @@ On va définir pour chaque choix d'indices \(1 \leq i_1 \less i_2 \less \dots \l
 \[\varepsilon ^{i_1 \dots i_k}(v_1, \dots, v_k) = \sum_{\sigma \in S_k}^{} \operatorname{sgn}(\sigma)e ^{i_1} \otimes \dots \otimes e ^{i_k}(v _{\sigma_1}, \dots, v _{\sigma_k}). \]
 
 \begin{exemple}
-  \[e ^{12} (v_1, v_2) = e ^{1} \otimes e ^{2}(v_1, v_2) - e ^{1} \otimes e ^{2}(v_2, v_1) = e ^{1}(v_1) e ^{2}(v_2)- e ^{1}(v_2) e ^2(v_1).\]
+  \[\varepsilon^{12} (v_1, v_2) = e ^{1} \otimes e ^{2}(v_1, v_2) - e ^{1} \otimes e ^{2}(v_2, v_1) = e ^{1}(v_1) e ^{2}(v_2)- e ^{1}(v_2) e ^2(v_1).\]
 \end{exemple}
 
 \begin{prop}
@@ -1551,7 +1556,8 @@ On va définir pour chaque choix d'indices \(1 \leq i_1 \less i_2 \less \dots \l
   Donc
 
   \begin{gather*}
-    \varepsilon ^{i_1 \dots i_k}(v _{\tau_1}, \dots, v _{\tau_k}) = \operatorname{sgn}(\tau) \sum_{\sigma' \in S_k}^{} \operatorname{sgn}(\sigma') e ^{i_1} \otimes \dots \otimes e ^{i_k}(v _{\sigma'_1}, \dots, v _{\sigma_k'}) = \operatorname{sgn}(\sigma) \varepsilon ^{i_1 \dots i_k}(v_1, \dots, v_k).
+    \varepsilon ^{i_1 \dots i_k}(v _{\tau_1}, \dots, v _{\tau_k}) = \operatorname{sgn}(\tau) \sum_{\sigma' \in S_k}^{} \operatorname{sgn}(\sigma') e ^{i_1} \otimes \dots \otimes e ^{i_k}(v _{\sigma'_1}, \dots, v _{\sigma_k'}) \\
+    = \operatorname{sgn}(\tau) \varepsilon ^{i_1 \dots i_k}(v_1, \dots, v_k).
   \end{gather*}
 
   %En particulier, étant donné \(1 \leq j_1 \less j_2 \less \dots \less j_k \leq n\),
@@ -1834,9 +1840,15 @@ Ce produit est tel que \(\alpha \times \beta\) est antisymétrique, mais défini
   \(\Lambda ^{k}(E)\times \Lambda ^{l}(E) \stackrel{\wedge}{\longrightarrow} \Lambda ^{k+l}(E)\), avec \(\alpha \in \Lambda ^{k}(E), \beta \in \Lambda ^{l}(E)\), le produit extérieur \(\alpha \wedge \beta\) est défini comme l'élément de \(\Omega ^{k+l}(E)\) par
 
   \begin{gather*}
-    \alpha \wedge \beta (v_1, \dots, v_k, v _{k+1}, \dots, v _{k+l}) = \frac{1}{k!l!} \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma) \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) \beta(v _{\sigma _{k+1}}, \dots, v _{k+l}).
+    \alpha \wedge \beta (v_1, \dots, v_k, v _{k+1}, \dots, v _{k+l}) = \frac{1}{k!l!} \sum_{\sigma \in S _{k+l}}^{} \operatorname{sgn}(\sigma) \alpha(v _{\sigma_1}, \dots, v _{\sigma_k}) \beta(v _{\sigma _{k+1}}, \dots, v _{\sigma _{k+l}}).
   \end{gather*}
 \end{definition}
+
+\begin{remark}[Personnelle]
+  \(\displaystyle \frac{1}{k! l!}\) correspond au nombres de ``cases'' des deux applications \(\alpha\) et \(\beta\). Si par exemple \(\alpha\) est 1-linéaire et \(\beta\) est 2-linéaire, on aurait alors
+
+  \[\frac{1}{k!l!} = \frac{1}{1!2!}.\]
+\end{remark}
 
 \begin{lemma}
   \(\alpha \in \Lambda ^{k}, \beta \in \Lambda ^{l}(E) \implies \alpha \wedge \beta \in \Lambda ^{k+l}(E) \).
@@ -1868,7 +1880,7 @@ Donc on peut généraliser le produit sur \(m\) tenseurs extérieurs \(\alpha _{
 
 \begin{exemple}
   \begin{gather*}
-    \varepsilon ^{i_1\dots i_k}(v_1, \dots, v_k) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) (e ^{i_1} \otimes e ^{i_n}) (v _{\sigma_1}, \dots, v _{\sigma_n}) \\
+    \varepsilon ^{i_1\dots i_k}(v_1, \dots, v_k) = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) (e ^{i_1} \otimes \dots \otimes e ^{i_n}) (v _{\sigma_1}, \dots, v _{\sigma_n}) \\
     = \sum_{\sigma \in S_k}^{} \operatorname{sgn}(\sigma) e ^{i_1} (v _{\sigma_1}) \dots e ^{i_k}(v _{\sigma_k}) \\
     = \frac{1}{1! \dots 1!} \sum_{ \sigma \in S_k}^{} \operatorname{sgn}(\sigma) e ^{i_1}(v _{\sigma_1}) \dots e ^{i_k}(v _{\sigma_n}).
   \end{gather*}
@@ -1891,7 +1903,7 @@ Donc pour \(n=m\), on obtient \(\varepsilon ^{1 2 \dots n} = e ^{1}\wedge \dots 
   Si \(\alpha_i \in \Lambda ^{1}(E), v_i \in E\),
 
   \begin{gather*}
-    \alpha_1 \wedge \dots \wedge \alpha_m (v_1, \dots, v_m) = \sum_{\sigma \in S_m}^{} \operatorname{sgn}(\sigma) \alpha_1(v _{\sigma_1} \dots \alpha_m(v _{\sigma_m})) = \operatorname{det}[\alpha_i(v_j)].
+    \alpha_1 \wedge \dots \wedge \alpha_m (v_1, \dots, v_m) = \sum_{\sigma \in S_m}^{} \operatorname{sgn}(\sigma) \alpha_1(v _{\sigma_1}) \dots \alpha_m(v _{\sigma_m}) = \operatorname{det}[\alpha_i(v_j)].
   \end{gather*}
 \end{exemple}
 
@@ -2857,6 +2869,85 @@ Pour tout \(i\), \(X : U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{*}\) s
 \end{remark}
 
 Pour toute courbe intégrale, on peut faire un changement de variable \(\tilde{t} = t+ t_0, \overline{\gamma}(t) = \gamma(t + t_0)\) pour lequel on obtient \(\tilde{\gamma}(0) = a_0\) (en principe on peut, sans perdre en généralité, supposer que \(t_0 = 0\) pour les systèmes autonomes d'EDO).
+
+On définit
+
+\[\mathscr{C}_a = \{ (I,\gamma) \mid \gamma(0) = a, \gamma : I \longrightarrow U \text{ est une solution } 0 \in I \text{ intervalle ouvert}\}.\]
+
+On pose aussi \(I_a := \displaystyle\bigcup_{(I,\gamma) \in \mathscr{C}_a} I\). \(I_a\) est un intervalle ouvert. On a \(0 \in I\) pour tout \((I, \gamma) \in \mathscr{C}_a\), donc \(0 \in I_a\). On va définir \(\underset{t \in I_a}{\gamma_a} : I_a \longrightarrow U\) par \(\gamma_a(t) = \gamma(t)\) si \(t \in I\) pour un choix de \((I,\gamma) \in \mathscr{C}_a\).
+On observe que pour tout \(t \in I_a\), il y a au moins une paire \((I, \gamma) \in \mathscr{C}_a\) telle que \(t \in I\). Donc \(\gamma_a(t)\) peut être défini.
+
+Maintenant, si \(t \in J\) pour \((J, \lambda) \in \mathscr{C}_a\), on a par unicité
+
+\[\lambda \bigm| _{I \cap J} = \gamma \bigm| _{I \cap J},\]
+
+mais \(t \in I \cap J\), donc \(\lambda(t) = \gamma(t)\), donc il n'y a pas d'ambiguité pour \(\gamma_a(t)\).
+
+On observe que \(\forall (I, \gamma) \in \mathscr{C}_a\) par l'unicité que l'on vient d'utiliser, on a
+
+\[\gamma_a \bigm|_I \gamma,\]
+
+donc \(\gamma_a\) est une extension de toutes les possibilités \((I,\gamma) \in \mathscr{C}_a\). Ainsi, pour tout \(t \in I_a\), il existe \((I,\gamma) \in \mathscr{C}_a\) tel que \(t \in I\) et \(\gamma_a'(t) = \gamma'(t) = \overrightarrow{F}(\gamma(t)) = \overrightarrow{F}(\gamma_a(t))\).
+
+Donc \(\gamma_a : I_a \longrightarrow U\) est elle-même une courbe intégrale \((I_a, \gamma_a) \in \mathscr{C}_a\) et pour tout \((I, \gamma) \in \mathscr{C}_a\), on a \(I \subset I_a\) et \(\gamma = \gamma_a\).
+
+\begin{definition}
+  On appelle \(\gamma_a : I_a \longrightarrow U\) la solution maximale pour \(\gamma_a(0) = a\), et \(I_a\) est l'intervalle maximal de solution.
+\end{definition}
+
+\begin{exemple}
+  Soit \(A \in \mathbb{R}^{n \times m}\) et \(\overrightarrow{F}(x) = Ax\) pour tout \(x \in \mathbb{R}^n \ (V = \mathbb{R}^n)\).
+
+  Alors \(\gamma_a(t) = e^{tA}a, I_a = \mathbb{R} \ (a \in \mathbb{R})\) est la solution maximale pour \(\gamma_a(0) = a\).
+
+  On rappelle que pour une matrice \(B \in \mathbb{R}^{n \times m}\),
+
+  \[e^{B} \stackrel{\text{déf}}{:=} \sum_{k=0}^{\infty} \frac{B ^{k}}{k!} \in \mathbb{R}^{n \times m}.\]
+
+  On a alors
+
+  \[e^{tA} = \sum_{k=0}^{\infty} \frac{t ^{k} A ^{k}}{k!}.\]
+
+  On a \(U = \mathbb{R}, F(x)  =x ^2, \forall x \in \mathbb{R}\). Pour tout \(a \in \mathbb{R}, X(a) = (a, a ^2) \in T_a \mathbb{R}\). On cherche une solution \(\gamma : I \longrightarrow \mathbb{R}, \gamma(0) = a\) et \(\gamma'(t) = F(\gamma(t)) = (\gamma(t))^2\).
+\end{exemple}
+
+\begin{exemple}
+  On pose \(\gamma' = \gamma ^2, \gamma(0) = a\). On a l'égalité \(\displaystyle \frac{\gamma'}{\gamma ^2}(t) = 1\), donc
+
+  \[\int_{0}^{t} \frac{\gamma'}{\gamma ^2}(s)ds = \int_{0}^{t} 1 ds. \]
+
+  On a \( U = \gamma(s)\), donc \(d U = \gamma'(s)ds\). On obtient alors
+
+  \[\int_{\gamma(0)}^{\gamma(t)} \frac{d U}{U ^2} = t.\]
+
+  Ainsi
+
+  \[\frac{1}{\gamma(t)} = -t + \frac{1}{\gamma(0)} = \frac{-t \gamma(0)+ 1}{\gamma(0)},\]
+
+  donc
+
+  \[\gamma(t) = \frac{\gamma(0)}{- t \gamma(0)+ 1} = \frac{a}{-t +1} = \frac{a}{1 - t a}.\]
+
+  Donc
+
+  \[\left[- \frac{1}{u}\right]_{\gamma(a)}^{\gamma(t)} = t \implies - \frac{1}{\gamma(t)} + \frac{1}{\gamma(0)} = t.\]
+
+  Donc pour
+
+  \[\begin{cases}
+    a = 0, I_0 = \mathbb{R}, \gamma_0(t) \equiv 0 \\
+    a \bg 0, I_a = (-\infty, \frac{1}{a}), \gamma_a(t) = \frac{a}{1 - t a}\\
+    a \less 0, I_a = (\frac{1}{a}, + \infty), \gamma_a(t) = \frac{a}{1 - t a}.
+  \end{cases}\]
+\end{exemple}
+
+Supposons que \(X \in \mathcal{C}^1\). Le champ de vecteur est tel que pour tout \(a \in V\), \(I_a\) est l'intervalle maximal de solution
+
+\[\tilde{U} = \bigcup _{a \in U} I_a \times \{ a \} \subseteq \mathbb{R} \times U.\]
+
+Si \(I_a = (\alpha_a, \omega_a), \alpha_a, \omega_a \in \mathbb{R} \cup \{ \pm a \}\). 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%

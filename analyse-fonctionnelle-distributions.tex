@@ -60,6 +60,8 @@
 \newcommand{\biggg}{>}
 \newcommand{\bg}{\biggg}
 
+\renewcommand\qedsymbol{$\clubsuit$}
+
 \title{\bsc{Analyse fonctionnelle et distributions}}
 \author{Michel \bsc{Rouleux}}
 \date{2023-2024}
@@ -1075,6 +1077,22 @@ On affaiblit \((E,\left\Vert \cdot \right\Vert )\). Alors \(\sigma(E,E')\) est l
   Si \(E\) est réfléxif (c'est-à-dire que l'injection naturelle dans son bidual est surjective), alors \(B_E = \{ \left\Vert x \right\Vert \leq 1 \} \) est un espace métrique compact pour \(\mathcal{O}(E, E')\).
 \end{remark}
 
+\begin{exemple}[Wikipédia]
+  On considère la convergence forte et la convergence faible dans l'espace \(L ^2\) (qui est un espace de Hilbert d'après \ref{l2-hilbert}). La convergence forte de \(\psi_n\) vers un élément \(\psi \in L ^2(\mathbb{R}^n)\) signifie :
+
+  \[\int_{\mathbb{R}^n} \left\lvert \psi_n - \psi \right\rvert ^2 d \mu \underset{n \to \infty}{\longrightarrow}  0.\]
+
+  La notion de convergence forte dans \(L ^2\) correspond à celle de la norme dans \(L ^2\). En revanche, pour que la suite \(\psi_n\) converge faiblement, il suffit que
+
+  \[\int_{\mathbb{R}^n} \overline{\psi_n}f d \mu \longrightarrow \int_{\mathbb{R}^n} \overline{\psi} f d \mu\]
+
+  pour toute fonction \(f \in L ^2\). Par exemple, dans \(L ^2((0, 2 \pi))\), la suite de fonctions
+
+  \[\psi_n(x) = \sqrt{\frac{2}{\pi}}\sin(nx)\]
+
+  forme une base orthonormée. La limite forte de \(\psi_n\) n'existe pas. Mais par le lemme de Riemann-Lebesgue, la limite faible existe et vaut 0.
+\end{exemple}
+
 \subsection{Théorème de Banach-Steinhaus, suites faiblement et fortement convergentes}
 
 \begin{thm}
@@ -1263,9 +1281,11 @@ Ainsi une mesure de Radon \(\mu\) sur un espace localement compact \(\Omega\) (p
 
 %Soit \(a _{\varphi} \in \mathcal{C}^{\infty}_{0}(\Omega)\), un espace de fonctions \(\mathcal{C}^{\infty}\) à support compact.
 
+L'exemple le plus couramment utilisé d'une distribution d'ordre 0 est la mesure de Dirac \(\delta _{x_0}\).
+
 Sur \(\Omega = \mathbb{R}^{d}\), il suffit de prendre l'espace de Schwarz \(\mathcal{S}(\mathbb{R}^{d})\) qui est un espace de Fréchet. Par contre si \(\Omega\) est un ouvert borné, il y a des problèmes sur les bords de \(\Omega\).
 
-On cherche aussi les fonctions test dans \(\mathcal{K}(\Omega)\) ou \(\mathcal{C}^{1}_{0}\) qui ne sont ni des espaces de Banach, ni des espaces de Fréchet. On choisit généralement \(\mathcal{C}^{0}_{0}(\Omega)\).
+Les distributions d'ordre 1 agissent quant à elles par \(\langle \delta _{x_0}',f \rangle = -f'(x_0)\) dans \(\mathcal{C}^{1}_{0}\) qui ne sont ni des espaces de Banach, ni des espaces de Fréchet. On choisit généralement \(\mathcal{C}^{0}_{0}(\Omega)\).
 
 Les espaces fonctionnels sont rangés en deux catégories :
 
@@ -1363,7 +1383,7 @@ Soit \((X, \mathcal{T}, \mu)\) un espace normé mesuré.
 
     \[\int_{}^{} \mathds{1}_{A}(x)dx = \mu(A).\]
 
-    \item \emph{Théorème de Beppo-Levi :} si \((f_n)\) est une suite croissante de fonctions mesurables, alors
+    \item \emph{Théorème de Beppo-Levi (ou de convergence monotone) :} si \((f_n)\) est une suite croissante de fonctions mesurables, alors
 
     \begin{equation}\label{Beppo-Levi}
       \underbrace{\int_{}^{} \lim_{n \to \infty} f_n(x)dx}_{\int_{}^{}f(x)dx} = \lim_{n \to \infty} \int_{}^{} f_n(x)dx \leq + \infty.
@@ -1408,7 +1428,7 @@ Au lieu d'intégrer \(f\) sur tout \(\mathbb{R}\), on peut l'intégrer seulement
 
 \marginnote{25-10-2023}
 
-\begin{thm}[{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} De convergence dominée]
+\begin{thm}[{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} De convergence dominée ou de Lebesgue]
   Soit \((f_n) \in \mathscr{L}^{1}(\Omega)\) une suite de fonctions (avec \(\Omega \subset \mathbb{R}^d\) un ouvert). Pour tout \(n \in \mathbb{N}, f_n\) est définie presque partout sauf sur \(E = \left(\bigcup _{n \in \mathbb{N}} E_n\right)\) de mesure nulle. S'il existe \(h \in \mathscr{L}^{1}(\Omega)\)
   telle que \(\left\lvert f_n \right\rvert \leq h\) et si \(f_n \longrightarrow f \) presque partout sur \(\Omega\), alors
 
@@ -1450,7 +1470,7 @@ mais la même écriture n'a pas de sens dans \(L ^{2}\).
 
   Montrons que \(f_n\) converge. Il suffit de montrer qu'il existe une sous-suite \(f _{n_k}\) qui converge. On peut toujours écrire :
 
-  \[f_n - f = \underset{\less \varepsilon}{f_n - f _{n_k}} + \underset{\less \varepsilon}{f_n - f _{n_k}}.\]
+  \[f_n - f = \underbrace{f_n - f _{n_k}}_{\less \varepsilon}+ \underbrace{f_n - f _{n_k}}_{\less \varepsilon}.\]
 
   Donc \[\forall \varepsilon \bg 0, \exists N \in \mathbb{N}, p \geq  N, q \geq 0, \left\Vert f _{p+q} - f _{p} \right\Vert _{L ^{1}} \less \varepsilon.\]
 
@@ -1500,7 +1520,7 @@ mais la même écriture n'a pas de sens dans \(L ^{2}\).
 \end{proof}
 
 \begin{corollary}
-  SI \(f_n \longrightarrow f\) dans \(L ^{p}\), alors il existe une sous-suite \(f _{n_k}\) qui converge presque partout vers \(f\).
+  Si \(f_n \longrightarrow f\) dans \(L ^{p}\), alors il existe une sous-suite \(f _{n_k}\) qui converge presque partout vers \(f\).
 \end{corollary}
 
 \begin{proof}
@@ -1547,13 +1567,13 @@ mais la même écriture n'a pas de sens dans \(L ^{2}\).
 
 \subsection{Espace \(L ^2\)}
 
-\begin{thm}
+\begin{thm}\label{l2-hilbert}
   \(\mathcal{H} = L ^2\) est un espace de Hilbert muni du produit scalaire suivant :
 
   \[(u \mid v) = \int_{\Omega} f(x) \overline{g(x)}dx.\]
 \end{thm}
 
-L'espace \(L ^2\) est engendrée par une base orthonormée (\emph{base hilbertienne}), i.e. il existe une suite \((e_j)_j\) telle que, pour tout \(f \in L ^2\), on a
+L'espace \(L ^2\) est engendré par une base orthonormée (\emph{base hilbertienne}), i.e. il existe une suite \((e_j)_j\) telle que, pour tout \(f \in L ^2\), on a
 
 \[f = \sum_{j} f_j e_j, f_j \in \mathbb{C}.\]
 

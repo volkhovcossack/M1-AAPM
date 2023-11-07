@@ -1721,6 +1721,75 @@ On le munit de la famille de semi-normes
   \[\int f_n(x) \phi(x)dx \longrightarrow \phi(x_0).\]
 \end{thm}
 
+\chapter{Fonctions troncature et partition de l'unité : cas continu}\marginnote{07-11-2023}
+
+En théorie de distributions, on déduit souvent une ``propriété globale'' à partir d'une ``propriété locale''. Ceci se fait par une sorte de ``copié-collé'' par des partitions de l'unité.
+
+\section{Les fonctions troncature}
+
+\begin{prop}\label{11}
+  Soit \((X,d)\) un espace métrique. Soient \(F\) et \(G\) deux fermés disjoints de \(X\). Alors il existe une fonction continue \(\chi \in \mathcal{C}^0(X), 0 \leq \chi \leq 1\) et \(\chi \equiv 0\) près de \(F\) et \(\chi \equiv 1\) près de \(G\).
+\end{prop}
+
+\begin{proof}
+  En deux étapes.
+
+  \begin{enumerate}
+    \item On construit \(\chi_1 \equiv 0\) sur \(F\) et \(\chi_1 \equiv 1\) sur \(G\). On définit \(\chi : X \longrightarrow [0,1]\), avec \(\chi_1(x) = \displaystyle \frac{d(x,F)}{d(x,F)+ d(x,G)}\). La continuité de \(\chi\) résulte du fait que \(x \longmapsto d(x,F)\) est continue. On a de plus \(\chi_1 \bigm|_F = 0\) et \(\chi_1 \bigm|_G = 1\).
+
+    Considérons \(F_1 = \chi ^{-1}\left(\left[0,\frac{1}{3}\right]\right) \supset F\) et \(G_1 = \chi_1 ^{-1}\left(\left[\frac{2}{3}, 1\right]\right) \supset G\). On a \(F_1 \cap G_1 = \emptyset\). On applique la construction précédente à \(F_1\) et \(G_1\) qui sont des voisinages \textbf{fermés} de \(F\) et de \(G\).
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{12}
+  Soit \((X,d)\) un espace métrique et \(K \subset X\) un compact. Soit \((U_j)_{1 \leq j \leq N}\) un recouvrement ouvert de \(K\). Alors il existe \(K_j \subset U_j \subset X\) compact, \(1 \leq j \leq N\) tel que \(K \subset \displaystyle \bigcup _{j=1}^{N} K_j\).
+\end{lemma}
+
+\begin{proof}
+  On remarque que \(K \subset \displaystyle\bigcup _{x \in K} B_x\) où \(B_x\) est une boule ouverte de centre \(x\). Cela entraîne que \(K \subset \displaystyle \bigcup _{k=1}^{p} B _{x_k}\).
+
+  On considère \(A_j = \{ l \in \{ 1, \dots, p \}, \widetilde{B _{x_l}} \subset U_j\}\) où \(\widetilde{B _{x_l}}\) est une boule fermée de même centre et de même rayon que \(B _{x_l}\).
+
+  \begin{remark}
+    \(\overline{B_{x_l}} \subset \widetilde{B_{x_l}}\), mais l'inclusion est stricte en général.
+  \end{remark}
+
+  Si \((X,d) = (\mathbb{R}^n, \left\Vert \cdot \right\Vert )\), on a \(\overline{B _{x_l}} = \widetilde{B _{x_l}}\). On pose \(K_j = K \cap \left(\displaystyle\bigcup_{l \in A_j}\widetilde{B _{x_l}}\right)\), alors \(K_j\) est compact (tout fermé dans un espace séparé est compact).
+\end{proof}
+
+\begin{thm}
+  Soit \(K \subset \bigcup U_j\) compact. Alors il existe \(\varphi_j \in \mathcal{K}(X)\) tels que \(\operatorname{supp}\varphi_j \subset U_j\) et \(\displaystyle \sum_{j=1}^{n} \varphi_j = 1\) \textbf{près} de \(K\), avec \(0 \leq \varphi_j \leq 1\). On dit que les \(\varphi_j\) forment une partition de l'unité subordonnée au recouvrement de \(K\) par un nombre fini d'ouverts \(U_j\).
+\end{thm}
+
+\begin{proof}
+  Soient \(K_j\) des compacts comme dans le lemme \ref{12}. Pour chaque \(j \in \{1, \dots, N \}\), on peut trouver une fonction continue \(\psi_j : X \longrightarrow [0,1]\) égale à 1 près de \(K_j\) et égale à 0 sur \(U_j ^{C}\). On pose
+
+  \[V = \left\{ x \in X, \sum_{j=1}^{N} \psi_j(x) \bg 0 \right\}\]
+
+  ouvert de \(X\), donc \(V ^{C}\) est fermé. On applique la proposition \ref{11} à \(K\) et \(V^{C}\). Il existe donc \(\psi_0\) continue avec \(\psi_0 \equiv 0\) près de \(K\) et \(\psi_0 \equiv 1\) près de \(U ^{C}\), car \(K \subset U\).
+
+  On pose
+
+  \[\varphi_j(x) = \frac{\psi_j(x)}{\sum_{k=0}^{N} \psi_k(x)}.\]
+
+  La fonction \(\psi_j\) est dans \(\mathcal{K}(X)\) et \(\displaystyle\sum_{j=1}^{N}\varphi_j = \displaystyle \frac{\sum_{j=1}^{N} \psi_j }{ \psi_0 + \sum_{j=1}^{N}\psi_j } \equiv 1\) près de \(K\), car \(\psi_0 \equiv 0\) près de \(K\).
+\end{proof}
+
+\paragraph{Application : recollement d'une famille de \(L ^{1}_{\operatorname{loc}}(\mathbb{R}^d)\)}
+
+Ce sont l'ensemble de fonctions intégrables seulement sur un compact. On a \(L ^{p}(X) \subset L ^{1}_{\operatorname{loc}}(X)\). On a
+
+\[\int_{K}^{} \left\lvert f \right\rvert  = \int \mathds{1}_{K}(x) \left\lvert f(x) \right\rvert dx = \left\Vert \mathds{1}_{K} \right\Vert _{q} \left\Vert f \right\Vert _{p} = \left\lvert K \right\rvert ^{\frac{1}{q}} \left\Vert f \right\Vert _{p}.\]
+
+\begin{prop}
+  Soient \(U_j \subset \mathbb{R}^d\) des ouverts, \(\Omega _{j \in I} U_j, f_j \in L ^{1}_{\operatorname{loc}}(U_j)\) avec \(f_i = f_j\) sur \(U_i = U_j\). Alors il existe \(f \in L ^{1}_{\operatorname{loc}}(\Omega)\) telle que \(f = f_j\) sur \(U_j\).
+\end{prop}
+
+\begin{proof}
+  On va montrer qu'il existe \(f \in L ^{1}_{\operatorname{loc}}(\Omega)\) telle que \(\forall g \in L ^{\infty}_{\operatorname{comp}}(\Omega)\),
+
+  \[\langle f,g \rangle = \int_{}^{} f(x)g(x)dx.\]
+\end{proof}
 
 
 \end{document}

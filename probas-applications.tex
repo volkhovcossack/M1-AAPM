@@ -2675,13 +2675,15 @@ Le calcul de la fonction caractéristique devient donc
 
 \
 
-On suppose que \(\Sigma_X\) est \textbf{inversible} (critère de non-dégénérescence). On sait que \(\Sigma_X\) est symétrie et positive, elle est donc diagonalisable, c'est-à-dire il existe une matrice \(A\) inversible telle que
+On suppose que \(\Sigma_X\) est \textbf{inversible} (critère de non-dégénérescence) et \textbf{symétrique}. On sait que \(\Sigma_X\) est symétrie et positive, elle est donc diagonalisable, c'est-à-dire il existe une matrice \(A\) inversible telle que
 
-\[A ^{-1} \Sigma_X A = \operatorname{Id} = \begin{pmatrix}
-  1 & \dots & 0 \\
-  \vdots & \ddots & \vdots \\
-  0 & \dots & 1
-\end{pmatrix} (?????)\]
+\[\Sigma_X = A A ^{T}.\]
+
+\begin{remark}
+  Il y a une erreur dans les notes du cours : on n'a pas
+
+  \[A ^{-1} \Sigma_X (A ^{-1})^{T} = A ^{T} A A ^{T}(A ^{T})^{-1}= \operatorname{Id}.\]
+\end{remark}
 
 On fait un changement de variable \(Z = A ^{-1}(X - m_X)^{T} = (z_1, \dots, z_n)^{T}\). La matrice de dispersion de \(Z\) est donnée par
 
@@ -2690,6 +2692,7 @@ On fait un changement de variable \(Z = A ^{-1}(X - m_X)^{T} = (z_1, \dots, z_n)
 La fonction caractéristique de \(Z\) est donc
 
 \[\varphi_Z(t) = e^{-\frac{1}{2}t \Sigma_Z}t ^{T} = e^{-\frac{1}{2}t t ^{T}} = \prod_{i=1}^{n} e^{-\frac{1}{2}t_j ^2} = \prod_{i=1}^{n} \varphi _{Z_i}(t).\]
+
 
 \begin{prop}
   \(Z_1, \dots, Z_n\) sont indépendantes si et seulement si les fonctions caractéristiques se factorisent, autrement dit
@@ -3067,7 +3070,7 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
 \end{exo}
 
 \begin{exo}
-  Soit \(\{ U_n \}_{n=1}^{\infty}\) une suite de variables aléatoires uniformes sur \([0, 1]\) et indépendantes. Soit ensuite \(\{ X_n \}_{n=1}^{\infty}\) une autre suite de variables aléatoires indepéndantes des \(U_n\) de loi \(B(n, \frac{1}{2})\). Considérons maintenant la suite \(Z_n = \displaystyle\min _{0 \leq i \leq X_n} U_i\).
+  Soit \(\{ U_n \}_{n=1}^{\infty}\) une suite de variables aléatoires uniformes sur \([0, 1]\) et indépendantes. Soit ensuite \(\{ X_n \}_{n=1}^{\infty}\) une autre suite de variables aléatoires indepéndantes des \(U_n\) de loi \(B\left(n, \frac{1}{2}\right)\). Considérons maintenant la suite \(Z_n = \displaystyle\min _{0 \leq i \leq X_n} U_i\).
 
   \
 
@@ -3078,7 +3081,7 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
   Pour arriver à cela, on doit répondre aux questions suivantes :
 
   \begin{enumerate}
-    \item Calculer \(\mathbb{P}(\displaystyle\min _{0 \leq  i \leq k} U_i \leq t)\).
+    \item Calculer \(\mathbb{P}\left(\displaystyle\min _{0 \leq  i \leq k} U_i \leq t\right)\).
     \item Etudier \(\mathbb{P}(Z_n \leq t)\) en conditionnant par rapport à \(X_n\).
     \item Trouver la limite en loi des \(Z_n\).
   \end{enumerate}
@@ -3097,6 +3100,48 @@ Dans ce document, vous ne trouverez que les énoncés des exercices, les correct
   \begin{enumerate}
     \item Etudier la convergence en loi de \(Y_n\) (utiliser les fonctions de répartition).
     \item Etudier la convergence avec la fonction caractéristique.
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Considérons une variable aléatoire de Cauchy \(\mathscr{C}\) de densité
+
+  \[f(x) = \frac{1}{\pi(1+x ^2)}, x \in \mathbb{R}.\]
+
+  On sait aussi que \(\varphi _{\mathscr{C}}(t) = e^{-\left\lvert t \right\rvert}\).
+
+  Soit ensuite \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires i.i.d. (avec la loi de Cauchy). On note \(S_n = \displaystyle \sum_{k=1}^{n} X_k\).
+
+  Etudier la convergence en probabilité et en loi des suites : \(\displaystyle \frac{1}{\sqrt{n}}, \displaystyle \frac{1}{n} S_n, \displaystyle \frac{1}{n ^2}S_n\).
+\end{exo}
+
+\begin{exo}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires telles que \(X_n\) est uniformément distribuée sur \([0,n]\). Montrer que la suite \(\{ X_n \}\) ne converge pas en loi.
+\end{exo}
+
+\begin{exo}
+  Soit \(\{ X_n \}_{n=1}^{\infty}\) une suite de variables aléatoires telles que \[\mathbb{P}\left(X_n = \displaystyle\frac{1}{n}\right) = \mathbb{P}\left(X_n = - \displaystyle\frac{1}{n}\right) = \displaystyle\frac{1}{2}.\] Montrer que \(X_n\) converge en loi vers 0.
+
+  \emph{\textbf{Astuces}}:
+  \begin{enumerate}
+    \item Fonction caractéristique ;
+    \item Convergence en probabilités.
+  \end{enumerate}
+\end{exo}
+
+\begin{exo}
+  Soit \(X = (X_1, X_2, X_3)\) un vecteur gaussien de matrice de covariance :
+
+  \[\Sigma_X = \begin{pmatrix}
+  2 & 2 & -2 \\
+  2 & 5 & 1 \\
+  -2 & 1 & 5
+  \end{pmatrix}.\]
+
+  \begin{enumerate}
+    \item Est-ce que \(X\) admet une densité ? Il faut que \(\operatorname{det}(\Sigma_X) \neq 0\). Dans notre cas, ce déterminant vaut 0.
+
+    \item Trouver la valeur de la constante \(a\) telle que \(X_1\) et \(Y = X_2 - a X_1\) soient indépendantes. Quelle est la loi de \((X_1, Y)\) ?
   \end{enumerate}
 \end{exo}
 

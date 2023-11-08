@@ -2746,7 +2746,7 @@ où les \(c_i\) sont les classes de conjugaison.
   \begin{gather*}
     \langle v, d w_1 + w_2 \rangle = d \langle v,w_1 \rangle + \langle v,w_2 \rangle \\
     \langle v,w \rangle = \overline{\langle w,v \rangle }  \\
-    \langle v,v \rangle \leq 0 \text{ et } \langle v,v \rangle = 0 \iff v = 0.
+    \langle v,v \rangle \geq 0 \text{ et } \langle v,v \rangle = 0 \iff v = 0.
   \end{gather*}
 
   Exemple standart dans \(\mathbb{C}^n\) :
@@ -2760,9 +2760,9 @@ où les \(c_i\) sont les classes de conjugaison.
 \begin{exemple}
   L'équation qui décrit l'émission de l'hydrogène pour \(\psi \in L ^2(\mathbb{R}^3, \mathbb{C})\) :
 
-  \begin{equation}\label{hydrogene}
-    \sum_{j=1}^{n} \frac{\partial ^2 \psi(x) }{\partial x_j ^2 }  - \frac{1}{\left\lvert x \right\rvert}\psi(x) = E \psi(x).
-  \end{equation}
+  \begin{equation*}\label{hydrogene}
+    -\sum_{j=1}^{3} \frac{\partial ^2 \psi(x) }{\partial x_j ^2 }  - \frac{1}{\left\lvert x \right\rvert}\psi(x) = E \psi(x).\tag{$\star$}
+  \end{equation*}
 \end{exemple}
 
 On considère

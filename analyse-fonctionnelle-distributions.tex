@@ -1791,5 +1791,216 @@ Ce sont l'ensemble de fonctions intégrables seulement sur un compact. On a \(L 
   \[\langle f,g \rangle = \int_{}^{} f(x)g(x)dx.\]
 \end{proof}
 
+\chapter{Fonctions différentiables} \marginnote{10-11-2023}
+
+\section{Rappels de calcul différentiel}
+
+\begin{definition}
+  Soit \(\Omega \in \mathbb{R}\) ouvert. On dit que \(f : \Omega \longrightarrow \mathbb{R}/ \mathbb{C}\) est de classe \(\mathcal{C}^1\) si et seulement si \(f\) admet des dérivées partielles continues.
+
+  Si \(x_0 \in \Omega\), \(f'(x_0)\) est la différentielle de \(f\) en \(x_0\) telle que
+
+  \[\langle f'(x_0), y \rangle = \sum_{i=1}^{d} \frac{\partial f }{\partial x_i}(x_0) y_j.\]
+
+  \(f\) est de classe \(\mathcal{C}^2\) si et seulement si \(x \longmapsto \displaystyle \frac{\partial f }{\partial x_j}(x)\) est de classe \(\mathcal{C}^1\) pour tout \(j\). La matrice hessienne de \(f\) en \(x_0\) est
+
+  \[\operatorname{Hess}(f) = \left(\frac{\partial ^2 f(x_0)}{\partial x_i \partial x_j} \right)_{1 \leq i,j \leq d}.\]
+
+  Par le théorème de Schwarz, elle est symétrique.
+
+  Par récurrence, on définit les fontions \(\mathcal{C}^{\infty}(\Omega)\) et
+
+  \[\mathcal{C}^{\infty}(\Omega) = \bigcap _{n \in \mathbb{N}}\mathcal{C}^{\infty}(\Omega).\]
+
+  \(\forall n \in \mathbb{N}\), \(\mathcal{C}^{\infty}(\Omega)\) est une algèbre.
+\end{definition}
+
+\begin{prop}[Composition]
+  Soient \(\Omega_1 \in \mathbb{R}^{d_1}, \Omega_2 \in \mathbb{R}^{d_2}\) des ouverts de \(\mathbb{R}^d\) et soit \(\Phi : \Omega_1 \longrightarrow \Omega_2\) de classe \(\mathcal{C}^{\infty}\). Alors \(\forall f \in \mathcal{C}^{\infty}(\Omega_2), f \circ \Phi \in \mathcal{C}^{\infty}(\Omega_1)\) et on a
+
+  \[(f \circ \Phi)'(x_0) = \underbrace{f'(\Phi(x_0))}_{\in \mathcal{M}_{1 \times d_2}} \cdot \underbrace{\Phi'(x_0)}_{\in \mathcal{M}_{d_2 \times d_1}}.\]
+\end{prop}
+
+\begin{exo}
+  Calculer \(((f \circ \Phi)')'(x)\).
+\end{exo}
+
+\paragraph{Formule de Taylor avec reste intégral}
+
+  Pour \(d=1\), on a
+
+  \[f(x) = f(0) + \int_{0}^{x}f'(y)dy = f(0)+ \left(\int_{0}^{1}f'(tx)dt \right)x. \]
+
+
+\begin{remark}
+  Si \(f \in C_0 ^{1}(\mathbb{R})\), la fonction \(g = \int_{0}^{1}f'(tx)dx\) n'est plus dans \(C_0 ^{1}(\mathbb{R})\).
+\end{remark}
+
+\begin{prop}
+  Soit \(\Omega \subset \mathbb{R}^d, a \in \Omega\) et \(f \in \mathcal{C}^{\infty}(\Omega)\). Alors on peut écrire :
+
+  \[f(x) = \sum_{\left\lvert \alpha \right\rvert \less m} \frac{1}{\alpha!}\partial ^{\alpha}f(a)(x-a)^{\alpha}+ m \sum_{\left\lvert \alpha \right\rvert = m} \frac{(x- \alpha)^2}{\alpha!} \int_{0}^{1}(1-t)^{m-1}\partial ^{\alpha}f(a+t(x-a))dt.\]
+
+  On a \(\alpha \in \mathbb{N} ^{d}, \left\lvert \alpha \right\rvert = \alpha_1 + \dots + \alpha_d\) et \(\alpha! = \alpha_1 ! \dots \alpha_d !\) et \(\partial ^{\alpha} = \displaystyle \frac{\partial ^{\alpha_1} }{\partial x_1 ^{\alpha_1} } \dots \displaystyle \frac{\partial ^{\alpha_d} }{\partial x_d^{\alpha_d} }\).
+\end{prop}
+
+\begin{remark}[Formule d'Hadamard]
+  Pour \(m=1\) et \(\alpha = (0, \dots, 0, \underbrace{1}_{j}, 0, \dots, 0)\), on a
+
+  \[f(x) = \sum_{j=0}^{d}(x_j - a_j) \int_{0}^{1} \frac{\partial f }{\partial x_j}(a+t(x-a))dt.\]
+\end{remark}
+
+\section{Classification des \(\mathcal{C}^{m}(\Omega)\), régularité, support}
+
+Soit \(K \subset \Omega \subset \mathbb{R}^d\) compact. On définit
+
+\[C ^{m}_{K}(\Omega) = \{ f \in \mathcal{C}^{m}(\Omega), \ \operatorname{supp}(f) \subset K\}.\]
+
+On rappelle que \(\operatorname{supp}(f) = \operatorname{adh} \{ x \mid f(x)=0 \}\) (l'ensemble des valeurs où la fonction ne s'annulle pas).
+
+Les espaces localement convexes sont munis d'une famille de semi-normes qui leur confère une structure des espaces de Fréchet.
+
+\begin{exemple}
+
+  \
+
+  \begin{itemize}
+    \item [$\star$] Pour \(\mathcal{C}^m(\Omega)\), on a
+
+    \[\rho _{n,\alpha:\left\lvert \alpha \right\rvert \leq m} = \sup_{K_n} \left\lvert \partial ^{\alpha}f(x) \right\rvert\]
+
+    où \(K_n\) est une suite exhaustive de compacts avec \(K_n \subset K _{n+1}, \displaystyle \bigcup _{n \in \mathbb{N}}K_n = \Omega\).
+
+    \item [$\star$] Pour \(C ^{m}_{h}(\Omega), f ^{(1)}, \dots, f ^{(m)}\) bornées, on a
+
+    \[\left\Vert f \right\Vert = \sum_{\left\lvert \alpha \right\rvert \less m} \sup_{\Omega} \left\lvert \partial ^{\alpha}f(x) \right\rvert.\]
+
+    C'est une norme sur un espace de Banach.
+
+    \item[$\star$] On considère \(C _{0}^{\infty}(\Omega) = \bigcup _{K} C _{K}^{\infty}(\Omega)\) espace localement convexe.
+
+    \begin{remark}
+      \[\sup_{\nu \in \mathbb{N}}\left(\sup_{\left\lvert x \right\rvert \bg \nu, \left\lvert \alpha \right\rvert \leq m _{\nu}}\frac{\left\lvert \partial ^{\alpha}\varphi(x) \right\rvert}{\varepsilon_\nu}\right).\]
+
+      \(\varepsilon_\nu\) est une suite de réels et elle tend vers 0.
+    \end{remark}
+
+    ...
+  \end{itemize}
+\end{exemple}
+
+On prend \(\mathscr{D}(\Omega) \neq \{ 0 \}\).
+
+\begin{lemma}\label{lemme21}
+  Soit \(B(a,r)\subset \Omega, a \in \Omega, r \bg 0\). Soit \(\Phi_a : \mathbb{R}^d \longrightarrow \mathbb{R} _{+}\) telle que
+
+  \[\Phi_a (x) = \begin{cases}
+    0 \text{ si } x \notin B(a,r) \\
+    \exp \left(- \frac{1}{r^2- \left\lvert x-a \right\rvert ^2}\right) \text{ si } x \in B(a,r).
+  \end{cases}\]
+
+  Alors \(\Phi_a \in C ^{\infty}_{\overline{B(a,r)}}(\Omega)\). Elle est dans \(\mathscr{D}(\mathbb{R}^{d})\).
+\end{lemma}
+
+\begin{proof}
+  Soit \(\psi : \mathbb{R} \longrightarrow [0,\infty)\) telle que
+
+  \[\psi(t) = \begin{cases}
+    0 \text{ si } t \leq 0 \\
+    e^{-\frac{1}{t}} \text{ sinon}.
+  \end{cases}\]
+
+  Il est connu que \(\psi \in \mathcal{C}^{\infty}(\mathbb{R})\).
+
+  On construit
+
+  \[\Phi(x) = \psi(r ^2 - \left\lvert x-a \right\rvert ^2).\]
+
+  Alors \(\Phi_a \in \mathcal{C}^{\infty}(\Omega)\) et \(\operatorname{supp} \Phi_a \subset B(a,r)\) par construction.
+\end{proof}
+
+\begin{lemma}
+  Il existe une fonction \(\Psi \in \mathcal{C}^{\infty}(\mathbb{R})\) croissante telle que
+
+  \[\Psi(t) = \begin{cases}
+    0 \text{ si } t \leq 0 \\
+    1 \text{ si } t \geq 1.
+  \end{cases}\]
+\end{lemma}
+
+\begin{proof}
+  On pose \(g(t) = \psi(t)\psi(1-t)\in C ^{\infty}_{[0,1]}(\mathbb{R})\) et on pose
+
+  \[\Psi(t) = \frac{\int_{-\infty}^{t}g(t) dt}{\int_{0}^{1}g(s) ds}.\]
+\end{proof}
+
+\section{Partitions de l'unité différentiables}
+
+\begin{lemma}
+  Soit \(\Omega \subset \mathbb{R}^d\) ouvert et \(K \subset \Omega\) compact. Alors il existe une fonction \(f : \Omega \longrightarrow [0,1], f \in \mathscr{D}(\mathbb{R})\) telle que \(f \equiv 1\) au voisinage de \(K\).
+\end{lemma}
+
+\begin{proof}
+
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{figures/part_unit_diff21.png}
+    \caption{Recouvrement de \(K\)}
+    \label{}
+  \end{figure}
+
+  On applique le lemme \ref{lemme21}. On pose
+
+  \[\Phi_x(y) = \exp \left(\frac{1}{r ^2- \left\lvert y-x \right\rvert ^2}\right) \times 2 \exp \left(\frac{1}{r ^2}\right).\]
+
+  On a \(\Phi_x(x) = 2\).
+
+  \(x \in V_x = \{ y : \Phi_x(y) \bg 1 \}\) un ouvert. Les \(V_x\) recouvrent \(K\). On peut extraire un sous-recouvrement fini \(V _{x_1}, \dots, V _{x_N}\). On pose
+
+  \[h = \sum_{j=1}^{N} \Phi _{x_j}, h \in C_0 ^{\infty}(\Omega), h \geq 1 \text{ près de } K.\]
+
+  Alors \(f = \psi \circ h\) répond à la question.
+\end{proof}
+
+\begin{proof}[Démonstration par régularisation des convolutions]
+  \begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{figures/reg_conv.png}
+    \caption{On prend \(K\) et \(U\) définis ainsi.}
+    \label{}
+  \end{figure}
+
+  Soit \(g = \mathds{1}_{U}\) et \(\varepsilon \less \frac{\delta}{2}\). Posons \(\Phi_1 \in C _{0}^{\infty}(\mathbb{R}^d)\). Alors \(\operatorname{supp}\Phi_1 \subset B(0,1)\).
+
+  Posons \(\Phi _{\varepsilon}(x) = \frac{1}{\varepsilon ^{d}}\Phi_1 \left(\frac{x}{\varepsilon}\right)\). On a \(\operatorname{supp}(\Phi _{\varepsilon}) \subset B(0,\varepsilon)\).
+
+  On a \[f(x) = f _{\varepsilon}(x) = \int \mathds{1}_{U}(y)\Phi _{\varepsilon}(x-y)dy = \mathds{1}_{U} \star \Phi _{\varepsilon}.\]
+
+  On remarque que \(f _{\varepsilon} \in \mathcal{C}^{\infty}(\mathbb{R}^{d})\). La convolution \(f \star g\) hérite de la meilleure régularité. On  a \(\operatorname{supp}(f \star g) \subset \operatorname{supp}(f) + \operatorname{supp}(g)\).
+
+  Donc \(\operatorname{supp}(f _{\varepsilon}) \subset U + B(0,\varepsilon) \subset K + B(0,\delta)+ B(0,\varepsilon)\subset K+ B \left(0, \frac{3 d}{2}\right)\).
+
+  Montrons que \(\operatorname{supp}f _{\varepsilon}\subset K + B \left(0, \frac{\delta}{2}\right)\). Alors
+
+  \begin{gather*}
+    f _{\varepsilon}(x) = \int \mathds{1}_{U}(y) \Phi _{\varepsilon}(x-y)dy = 0 \text{ pour } d(x,U) \bg \varepsilon.
+  \end{gather*}
+
+  Montrons que \(f _{\varepsilon}(x)=1\) pour \(d(x,U) \less \frac{\varepsilon}{2}\). Cela implique que
+
+  \begin{gather*}
+    \int \mathds{1}_{U}(y)\Phi _{\varepsilon}(x,y)dy = \int \Phi _{\varepsilon}(x-y)dy = \int \Phi _{\varepsilon}(z)dz = 1.
+  \end{gather*}
+
+  Montrons que \(f _{\varepsilon}(x) \leq 1\). C'est vrai car \(\mathds{1}_{U}(y)\in [0,1]\) et on a
+
+  \[\int \mathds{1}_{U}(y)\Phi _{\varepsilon}(x-y)dy \leq \int \Phi _{\varepsilon}(x-y)dy=1.\]
+\end{proof}
+
+Ce lemme aboutit au théorème suivant.
+
+\begin{thm}
+  Soit \(K \in \mathbb{R}^d\) un compact recouvert par une union fini d'ouverts \((U_j)_{1 \leq j \leq n}\). Alors il existe \(\varphi_j \in \mathscr{D}(\mathbb{R}^d), j = 1, \dots, n, \operatorname{supp}\varphi_j \subset U_j\) et \(\displaystyle \sum_{j=1}^{n} \varphi_j = 1 \) près de \(K\).
+\end{thm}
 
 \end{document}

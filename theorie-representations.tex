@@ -2921,5 +2921,328 @@ Dans ce cours, on ne s'intéresse ici qu'au cas des sous-groupes \textbf{fermés
   \end{enumerate}
 \end{prop}
 
+\begin{prop} \marginnote{13-11-2023}
+  Les groupes suivants sont les groupes de Lie matriciels :
+
+  \begin{enumerate}
+    \item \(GL(n;\mathbb{C})\) ;
+    \item \(GL(n;\mathbb{R})\) ;
+    \item \(SL(n;\mathbb{C}) = \{ A \in GL(n,\mathbb{C}) \mid \operatorname{det}(A) = 1 \} = \operatorname{det}^{-1}(\{ 1 \})\) (qui est un fermé de \(GL(n;\mathbb{C})\)) ;
+    \item \(SL(n;\mathbb{R}) = \{ A \in GL(n;\mathbb{R}), \operatorname{det}(A) = 1 \}\) ;
+    \item \(U(n)  =\{ A \in GL(n,\mathbb{C}), A ^{*}A = \operatorname{id} \}\) ;
+    \item \(SU(n) = \{ A \in U(n), \operatorname{det}(A) = 1 \}\) ;
+    \item \(O(n) = \{ A \in \mathbb{M}(n;\mathbb{R}), A ^{t}A = \operatorname{id} \}\) ;
+    \item \(SO(n) = \{ A \in O(n), \operatorname{det}(A) = 1 \}\) ;
+    \item Groupe de Heisenberg
+
+    \[H = \left\{ A \in \mathbb{M}(3;\mathbb{R}), A = \begin{pmatrix}
+      1 & x & y \\
+      0 & 1 & z \\
+      0 & 0 & 1
+    \end{pmatrix} \text{ pour } x,y,z \in \mathbb{R}  \right\}.\]
+    \item Soient \(p,q \in \{ 0, \dots, n \} \text{ tels que } p+q = n\).
+    Le groupe unitaire généralisé
+
+    \[U(p,q) = \left\{ A \in \mathbb{M}(n,\mathbb{C}), A ^{*} \begin{pmatrix}
+      1 & 0 & \dots & 0 & 0 \\
+      0 & 1 & \dots & 0 & 0 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & -1 & 0\\
+      0 & 0 & \dots & 0 & -1
+    \end{pmatrix}A  = \begin{pmatrix}
+      1 & 0 & \dots & 0 & 0 \\
+      0 & 1 & \dots & 0 & 0 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & -1 & 0\\
+      0 & 0 & \dots & 0 & -1
+    \end{pmatrix} \right\},\]
+
+    \(\text{ où } 1 \text{ apparait } p \text{ fois } et -1 \ q \text{ fois }\). On a aussi
+
+    \[SU(p,q) = \{ 1 \in U(p,q), \operatorname{det}(A) = 1\}.\]
+
+    \item Le groupe orthogonal généralisé :
+
+    \[O(p,q) = \left\{ A \in \mathbb{M}(n;\mathbb{R}) = A ^{t}\begin{pmatrix}
+      1 & 0 & \dots & 0 & 0 \\
+      0 & 1 & \dots & 0 & 0 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & -1 & 0\\
+      0 & 0 & \dots & 0 & -1
+    \end{pmatrix} A = \begin{pmatrix}
+      1 & 0 & \dots & 0 & 0 \\
+      0 & 1 & \dots & 0 & 0 \\
+      \vdots & \vdots & \ddots & \vdots & \vdots \\
+      0 & 0 & \dots & -1 & 0\\
+      0 & 0 & \dots & 0 & -1
+    \end{pmatrix} \right\},\]
+
+    \(\text{ où } 1 \text{ apparait } p \text{ fois } et -1 \ q \text{ fois }\).
+
+     Dans le cas de \(O(3,1)\), on parle de \textbf{groupe de Lorentz}.
+    \item Le groupe symplectique
+
+    \[Sp(2n;\mathbb{R}) = \left\{ A \in \mathbb{M}(2n,\mathbb{R}), A ^{t} \begin{pmatrix}
+      0 & \operatorname{id}_n \\
+      -\operatorname{id}_n & 0
+    \end{pmatrix}A = \begin{pmatrix}
+    0 & \operatorname{id}_n \\
+    - \operatorname{id}_n & 0
+    \end{pmatrix} \right\}\]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item
+    \item C'est un sous-groupe (évident). Vérifions que c'est un fermé dans \(GL(n;\mathbb{C})\). En effet, si \((A ^{(m)})_{m \in \mathbb{N}}\) est une suite de \(GL(n;\mathbb{R})\), alors
+
+    \[\lim_{m \to \infty} A ^{(m)} = A \in GL(n;\mathbb{R})\]
+
+    ou bien, si \(A\) n'est pas inversible, alors \(A \notin GL(n;\mathbb{R})\).
+
+    \item On a \(\operatorname{det}(A) \operatorname{det}(B) = \operatorname{det}(AB)\). Donc si \(\operatorname{det}(A)\operatorname{det}(A ^{-1})=1\), alors \(\operatorname{det}(A ^{-1})=1\). Ainsi
+
+    \[SL(n;\mathbb{C}) = \operatorname{det}^{-1}(\{ 1 \}).\]
+    \item Pareil que dans \(\mathbb{C}\).
+    \item Vérifions que c'est un sous groupe. On a
+
+    \begin{gather*}
+      (A B)^{*}A B = B ^{*} \underbrace{A ^{*} A}_{= \operatorname{id}} B = \operatorname{id} \\
+      \text{ et } (A ^{-1})^{*}A ^{-1} = (A ^{*})^{-1}A ^{-1} = (A A ^{*})^{-1} = \operatorname{id}.
+    \end{gather*}
+
+    Vérifions que c'est un fermé. Soit \(f(A) = A ^{*} A - \operatorname{id}\). \(f\) est continue, car produit de fonctions continues. On a \(U(n) = f ^{-1}(\{ 0 \})\), or \(\{ 0 \}\) est un fermé dans \(\mathbb{M}(n;\mathbb{C})\), donc \(U(n)\) est un fermé de \(\mathbb{M}(n;\mathbb{C})\), donc de \(GL(n;\mathbb{C})\).
+    \item
+    \item
+    \item
+    \item On a
+
+    \begin{gather*}
+      AB = \begin{pmatrix}
+        1 & x & y \\
+        0 & 1 & z \\
+        0 & 0 & 1
+      \end{pmatrix} = \begin{pmatrix}
+        1 & a & b \\
+        0 & 1 & c \\
+        0 & 0 & 1
+      \end{pmatrix} = \begin{pmatrix}
+        1 & x+a & b+xc+y \\
+        0 & 1 & c+z \\
+        0 & 0 & 1
+      \end{pmatrix}
+    \end{gather*}
+
+    et
+
+    \begin{gather*}
+      \begin{pmatrix}
+        1 & x & y \\
+        0 & 1 & z \\
+        0 & 0 & 1
+      \end{pmatrix} ^{-1} = \begin{pmatrix}
+        1 & -x & xz-y \\
+        0 & 1 & -z \\
+        0 & 0 & 1
+      \end{pmatrix}.
+    \end{gather*}
+
+    Donc c'est un sous-groupe. On a
+
+    \[H = \mathbb{M}(3;\mathbb{R}) \cap p _{11}^{-1}(\{ 1 \}) \cap p _{22}^{-1}(\{ 1 \}) \cap p _{33}^{-1}(\{ 1 \}) \cap p _{31}^{-1}(\{ 0 \}) \cap p _{21}^{-1}(\{ 0 \}) \cap p _{32}^{-1}(\{ 0 \}).\]
+
+    Donc c'est un fermé.
+    \item En TD.
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}
+  Les groupes suivants sont isomorphes à des groupes de Lie matriciels :
+
+  \begin{enumerate}
+    \item \textbf{Le groupe euclidien :}
+
+    \[E(n) := \{ f : \mathbb{R}^n \longrightarrow \mathbb{R}^n, f(x) = Ax+b \text{ avec } b \in \mathbb{R}^2, A \in O(n) \}.\]
+
+    \item \textbf{Le groupe de Poincaré :}
+
+    \[P(n,1) := \{ f \in \mathbb{R}^{n+1} \longrightarrow \mathbb{R}^{n+1}, f(x) = Ax+b , b \in \mathbb{R}^{n+1}, A \in O(n,1)\}.\]
+
+    \item \((\mathbb{R}^{*}, \times) \simeq GL(1,\mathbb{R})\) ;
+    \item \((\mathbb{C},\times) \simeq GL(1,\mathbb{C})\) ;
+    \item \(S ^{1} = \{ z \in \mathbb{C}, \left\lvert z \right\rvert = 1 \} \simeq \varphi(1)\).
+    \item \((\mathbb{R}, +) \simeq GL(1, \mathbb{R})^{+} = \{ A \in \mathbb{M}(1;\mathbb{R}), \operatorname{det}(A) \bg 0 \}\).
+  \end{enumerate}
+\end{prop}
+
+\section{Propriétés topologiques des groupes de Lie matriciels}
+
+Nous nous intéressons aux propriétés suivantes : compacité, connexité, supplémentaire connexe.
+
+\begin{definition}
+  Un groupe de Lie matriciel est \textbf{compact} s'il est un sous-ensemble compact de \(\mathbb{M}(n;\mathbb{C})\).
+\end{definition}
+
+\begin{prop}[Propriétés]
+
+  \
+
+  \begin{enumerate}
+    \item La topologie de \(\mathbb{M}(n;\mathbb{C})\) est celle d'un espace vectoriel normé, donc \(G\) est compact si et seulement si \(G\) est fermé et borné.
+    \item \(G\) compact si et seulement si \(\forall (A^{(m)})_{m \in \mathbb{N}}\subset G\). Si \(\lim A ^{(m)}=A\), alors \(A \in G\) et \[ \exists c \bg 0, \forall A \in G, \forall j, k \in \{1, \dots, n \}, \left\lvert A _{j,k} \less c \right\rvert.\]
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(O(n), SO(n), U(n), SU(n)\) sont compacts.
+    \item \(SL(n,\mathbb{C})\) si \(n \geq  2\), \(Sp(2n,\mathbb{R}),GL(n,\mathbb{K})\) et \(O(p,q)\) si \(p \neq q \neq 0\) ne sont pas compacts.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item On a vu que ce sont des fermés de \(\mathbb{M}(n;\mathbb{C})\) et les colonnes sont de longueur 1, donc bornés.
+    \item On a \(A \in \begin{pmatrix}
+      x & 0 & \dots & 0 \\
+      0 & \frac{1}{x} & \dots & 0 \\
+      0 & 0 & 1 & \dots \\
+      \vdots & \vdots & \ddots & \vdots
+    \end{pmatrix} \in SL(n,\mathbb{C})\) pour \(x \neq 0\). Donc si \(SL(n,\mathbb{C})\) n'est pas borné, alors \(GL(n,\mathbb{K})\) non borné. Les autres groupes sont donnés en exercice.
+
+    Remarque importante : \(Sp(2,\mathbb{R}) = SL(2,\mathbb{R})\).
+  \end{enumerate}
+\end{proof}
+
+\begin{definition}
+
+  \
+
+  \begin{enumerate}
+    \item Un groupe de Lie matriciel \(G\) est \textbf{connexe} (par arcs) si
+
+    \[\forall A, B \in G, \exists c \in \mathcal{C}^{0}([0,1],G), c(0)=A, c(1) = B.\]
+
+    \item La composante connexe de l'identité est
+
+    \[G_0 := \{ A \in G, \exists c \in \mathcal{C}^{0}([0,1], G), c(0) = \operatorname{id}, c(1) = A \}.\]
+
+    Les groupes de Lie matriciels connexes par arcs sont connexes (ce sont deux notions équivalentes pour les groupes de Lie).
+  \end{enumerate}
+
+\end{definition}
+
+\begin{prop}
+  \(G_0\) est un sous-groupe distingué.
+\end{prop}
+
+\begin{proof}
+  La multiplication de groupe et l'inverse étant continues, on a, pour \(A,B \in G_0\), \(c_A,c_B\) des arcs connectant à l'identité :
+
+  \[t \longmapsto (c_A(t)) ^{-1} \in \mathcal{C}^0, c_A(t) ^{-1} \bigm|_{t=0} = \operatorname{id}, (c_A(1))^{-1} = A ^{-1}.\]
+
+  De plus, on a
+
+  \[t \longmapsto c_A(t)c_B(t)\in \mathcal{C}^0, c_A(t)c_B(t) \bigm|_{t=0} = \operatorname{id}, c_A(1)c_B(1) = AB,\]
+
+  donc \(G_0\) est un groupe. Pour \(B \in GL(n,\mathbb{K})\), on a
+
+  \begin{gather*}
+    t \longmapsto B c_A(t)B ^{-1} \in \mathcal{C}^0, B c_A(0)B ^{-1} = \operatorname{id}, B c_A(1) B ^{-1} = B A B ^{-1},
+  \end{gather*}
+
+  donc \(B A B ^{-1} \in G_0\).
+\end{proof}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item L'image d'un connexe par une fonction continue est connexe (TVI généralisé), donc \(A G_0\) est connexe pour \(A \in G\). C'est la composante connexe de \(A\).
+    \item \(G/G_0\) est un groupe (groupe des composantes connexes).
+    \item \(\mathbb{C}^{*} = GL(1,\mathbb{C})\) est connexe.
+    \item De même, \(U(1)\subset GL(1;\mathbb{C})\) est connexe.
+    \item \(GL(1;\mathbb{R})\subset GL(1;\mathbb{C})\) n'est pas connexe (2 composantes) ;
+    \item \(O(2)\) a deux composantes connexes (TD).
+    \item \(O(1,1)\) a deux composantes connexes (TD).
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  \(GL(n,\mathbb{C})\) est connexe \(\forall n \in \mathbb{N}\).
+\end{prop}
+
+\begin{proof}
+  Soit \(A \in GL(n;\mathbb{C})\) et \(C \in GL(n;\mathbb{C})\) tels que \(C ^{-1} A C\) soit une matrice triangulaire. Les \(\lambda_j\) sont les valeurs propres, \(\lambda_j \in \mathbb{C}^{*}\) qui est connexe. Soit \(\lambda_j(\cdot) \in \mathcal{C}^0([0,1],\mathbb{C}^{*}), \lambda_j(0)=1, \lambda_j(1) = \lambda_j\).
+
+  Soit
+
+  \[A(t) = C \begin{pmatrix}
+  \lambda_1(t) & \dots & 0 \\
+  \vdots & \ddots & \vdots \\
+  0 & \dots & \lambda_n(t)
+  \end{pmatrix}C ^{-1}+t C N C ^{-1},\]
+
+  alors \(A(\cdot) \in \mathcal{C}^0([0,1], GL(n,\mathbb{C})), A(0) = \operatorname{id},A(1) = A\). Donc \(GL(n,\mathbb{C})\) est connexe.
+\end{proof}
+
+\begin{prop}
+  Pour \(A \in \mathbb{M}(n;\mathbb{C})\), il existe \(C \in GL(n;\mathbb{C})\) tel que \(C ^{-1} A C \) est triangulaire supérieure.
+\end{prop}
+
+\begin{corollary}
+
+  \
+
+  \begin{enumerate}
+    \item Les éléments diagonaux sont les valeurs propres.
+    \item \(C\) peut être choisie unitaire.
+  \end{enumerate}
+\end{corollary}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(SL(n,\mathbb{C})\) est connexe.
+    \item \(U(n), SU(n)\) sont connexes.
+    \item \(SO(n)\) est connexe.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Dans la preuve pour \(GL(n,\mathbb{R})\), choisir les mêmes \(\lambda_n(1), \dots, \lambda _{n-1}(t)\) et \(\lambda_n(t):=\displaystyle \frac{1}{\lambda_1(1)\dots \lambda _{n-1}(t)}\).
+
+    Alors \(\lambda_n(\cdot) \in \mathcal{C}^0, \lambda_1(0)= 1, \lambda_n(1)=\lambda_n\), car \(\lambda_1 \dots \lambda_n = \operatorname{det}(A) = 1\) et \(\operatorname{det}(A(t)) = 1,\forall t\).
+
+    \item \(A \in U(n)\) est unitairement diagonalisable et ses valeurs propres sont de \(U(1)\).
+
+    On pose \[A = C \begin{pmatrix}
+    e^{i \theta_1} & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & e^{i \theta_n}
+    \end{pmatrix}.\]
+
+    \(t \longmapsto A(t)\) est continue, \(A(t) \in U(n)\), \(A(0) = \operatorname{id}, A(1) = 1\), donc \(U(n)\) est connexe.
+
+    Pour \(A \in SU(n)\), on remplace \(e^{i \theta_n t}\) par \(e^{-it(\theta_1 + \dots + \theta _{n-1})}\).
+  \end{enumerate}
+\end{proof}
 
 \end{document}

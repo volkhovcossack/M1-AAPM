@@ -4287,7 +4287,7 @@ On \'etudie les pr\'e-images sous $u$ des g\'eod\'esies de $g_{eu}$, qui sont le
   \[(t -(at+b)^2, \overbrace{at+b}^{y} ).\]
 
   \begin{itemize}
-    \item [$\star$] Si \(a \neq 0\), on  a \(y = at+b\), \(t = \displaystyle\frac{y-b}{a}, x = \displaystyle\frac{y-b}{a} - y ^2 = -y ^2+ \displaystyle\frac{y}{a} - \displaystyle\frac{b}{a}\); donc la courbe pr\'e-image est la partie sup\'erieure \((y>0)\) d'un parabole.
+    \item [$\star$] Si \(a \neq 0\), on  a \(y = at+b\), \(t = \displaystyle\frac{y-b}{a}, x = \displaystyle\frac{y-b}{a} - y ^2 = -y ^2+ \displaystyle\frac{y}{a} - \displaystyle\frac{b}{a}\); donc la courbe pr\'e-image est la partie sup\'erieure \((y>0)\) d'une parabole.
     \item [$\star$] Si \(a= 0\), \(y'=  b \bg 0, x' = t\) (paramètre), la courbe dans \((V,h)\) est \((t-b^2,b)\), qui est aussi une ligne horisontale.
   \end{itemize}
 \end{exemple}
@@ -4310,6 +4310,177 @@ On \'etudie les pr\'e-images sous $u$ des g\'eod\'esies de $g_{eu}$, qui sont le
   \label{}
 \end{figure}
 
+\marginnote{14-11-2023}
+
+Etant donné \(X\), on veut utiliser le difféomorphisme \(\Phi_t\) pour pousser ou retirer des champs de tenseurs sur \(U\). On a déjà vu que
+
+\begin{equation}\label{cond_ch_tens}
+  (\Phi_t)_{\sharp}(X \bigm|_{U_t}) = X \bigm|_{\Phi_t(U_t)}.
+\end{equation}
+
+C'est équivalent à \(T \Phi_t(X(x)), x \in U_t = X(\Phi_t(x)).\)
+
+%fig12
+
+
+
+\begin{definition}
+
+  Soit \(U \subset \mathbb{R}^n\) un ouvert.
+  Etant donné un champ de vecteurs \(X : U \longrightarrow T U\) de régularité \(\mathcal{C}^1\) et \(f : U \longrightarrow \mathbb{R}\) de régularité \(\mathcal{C}^1\). On définit
+
+  \[X \cdot f(x) \stackrel{\text{déf}}{=} d_x f(X(x)) = D _{X(x)}f(x),\]
+
+  avec en coordonnées \(X=\displaystyle \sum_{i=1}^{n} X ^{i}\displaystyle \frac{\partial  }{\partial x ^{i}} ,f\).
+
+
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} Le point n'est pas l'opération multiplication ici.
+
+  On a
+
+  \begin{gather*}
+    X \cdot f(x) = d_x f \left(\sum_{i=1}^{n} X ^{i}(x) \frac{\partial  }{\partial x ^{i}}(x) \right) = \sum_{i=1}^{n}X ^{i}(x)d_x(f)\left(\frac{\partial  }{\partial x ^{i}}(x) \right) = \sum_{i=1}^{n} X ^{i}(x) \frac{\partial f }{\partial x ^{i}}.
+  \end{gather*}
+
+  On revient en fait à la dérivée directionnelle de \(f\).
+\end{definition}
+
+Si \(X = \displaystyle \frac{\partial  }{\partial x ^{i}}\) (rappel : \(\displaystyle \frac{\partial  }{\partial x ^{i}}(x) = (x,e_i) \in T_x U\)).
+
+On obtient
+
+\[\frac{\partial  }{\partial x ^{i}} \cdot f = \frac{\partial f }{\partial x ^{i}}.\]
+
+\begin{prop}
+  Supposons que \(X\) est un champ de vecteurs \(\mathcal{C}^{\infty}\) sur \(U\) et \(f\) est une fonction \(\mathcal{C}^{\infty}\) sur \(U\). Si \(\Phi_t\) est le flot de \(X\), on a
+
+  \[\forall x \in U, X \cdot f(x)  = \lim_{t \to 0} \frac{f(\Phi_t(x)) - f(x)}{t}.\]
+\end{prop}
+
+\begin{remark}[Commentaire]
+
+  \
+
+  \begin{enumerate}
+    \item   Pour tout \(x \in U\, \Phi_t\) est défini pour \(t \in I_x\) l'intervalle maximal qui est de taille positive. Donc il existe \(\delta_x \bg 0\) tel que \(\Phi_t(x)\) est défini pour \(\left\lvert t \right\rvert \less \delta_x\). Donc
+
+      \[ \frac{f(\Phi_t(x)) - f(x)}{t}\]
+
+      est défini pour \(0 \less \left\lvert t \right\rvert \less \delta_x\).
+
+    \item %fig13
+
+    La proposition est équivalente à
+
+    \[X \cdot f(x) = \lim_{t\to 0} \frac{\Phi_t ^{*}f(x)-f(x)}{t} = \frac{d}{dt}(\Phi_t)^{*}f(x) \bigm|_{t=0}. \]
+  \end{enumerate}
+\end{remark}
+
+\begin{proof}
+  Si \(Y\) est un autre champ de vecteur tel que \(X(x) = Y(x)\) pour \(x\) fixé, on obtient \(X \cdot f(x) = Y \cdot f(x)\).
+
+  On a
+
+  \begin{gather*}
+    \frac{f(\Phi_t(x)-f(x)}{t} = \frac{f(\gamma_x(t)) -f(x)}{t} = \frac{f \circ \gamma_x(t)-f \circ \gamma_x(0)}{t}.
+  \end{gather*}
+
+  Donc
+
+  \begin{gather*}
+    \lim_{t \to 0} \frac{f(\Phi_t(x)) - f(x)}{t} = \lim_{t \to 0} \frac{f \circ \gamma_x(t) -  f \circ \gamma_x(0)}{t} = (f \circ \gamma_x)'(0) = Df(\gamma_x(0)) \gamma_x'(0) = Df(x) \mid X(x) \rangle = D _{\mid X(x) \rangle} f = X \cdot f(x),
+  \end{gather*}
+
+  car \(\gamma_x(0) = \mid X(\gamma_x(0))\rangle = \mid X(x) \rangle \).
+
+  On a fait ce calcul pour \(\gamma\) qui est la solution \(\gamma_x(t)\).
+\end{proof}
+
+\subsubsection{Cas plus compliqué (temps négatifs)}
+
+\emph{Qu'est-ce qui se passe si l'on pousse un champ de vecteurs \(Y\) utilisant le flot \(\Phi_t\) d'un autre champ de vecteurs ?}
+
+%fig14
+
+Fixons \(x \in U\). On a \(Y(x) \in T_x U\).
+
+%fig15
+
+On remarque que \(\Phi _{-t} \cdot \Phi_t(U_t) \longrightarrow U\) est un \textbf{difféomorphisme}, et donc, comme \(x \in U_t\) pour \(\left\lvert t \right\rvert \less \delta_x, \Phi_t(x) \in \Phi_t(U_t)\), et donc \((\Phi _{-t})_{\sharp}Y(x)\) est défini.
+
+On rappelle que \((\Phi _{-t})_{\sharp}Y(x) = T \Phi _{-t}(Y \Phi_t(x))\). On a alors
+
+\[T _{\Phi _{-t}}\bigm|_{T _{\Phi _{t}(x)}} : T _{\Phi_t(x)} U \longrightarrow T_x U.\]
+
+Donc on peut définir, pour \(0 \less \left\lvert \delta_x \right\rvert\),
+
+\[\frac{(\Phi _{-t})_{\sharp}Y(x) - Y(x)}{t}.\]
+
+\emph{Question : Est-ce que cette limite existe et quelle est sa valeur ?}
+
+Si la limite existe pour tout \(x \in U\), on observe que
+
+\[\lim_{t \to 0} \frac{(\Phi _{-t})_{\sharp}Y(x)-Y(x)}{t} \in T_x U.\]
+
+Donc on obtient un champ de vecteurs \(x\) allant à cette limite. Maintenant on veut \textbf{identifier ce champ de vecteurs}.
+
+\begin{definition}
+  Soient \(X,Y\) deux champs de vecteurs sur \(U\) de régularité \(\mathcal{C}^{\infty}\). Il existe un champ de vecteurs unique nommé \textbf{le crochet de Lie de \(X\) et \(Y\)} et dénoté par \([X,Y]\) tel que
+
+  \[\forall f \in \mathcal{C}^{\infty}(U), [X,Y] \cdot f = X \cdot (Y \cdot f) - Y \cdot (X \cdot f).\]
+\end{definition}
+
+\begin{thm}
+  Soient \(X,Y\) des champs de vecteurs \(\mathcal{C}^{\infty}\) et \(\Phi_t\) flot de \(X\). Alors pour tout \(x \in U\),
+
+  \[[X,Y](x) = \lim_{t \to 0} \frac{(\Phi _{-t})_{\sharp}Y(x) - Y(x)}{t}.\]
+\end{thm}
+
+\begin{corollary}
+  Si \(\Psi_t\) est le flot de \(Y\), alors
+
+  \[[Y,X](x) = \lim_{t \to 0} \frac{(\Psi _{-t})_{\sharp}X(x)-X(x)}{t},\]
+
+  mais \([X,Y] = - [Y,X]\). Donc
+
+  \[[X,Y] = -  \lim_{t \to 0} \frac{(\Psi _{-t})_{\sharp}X(x)-X(x)}{t}.\]
+\end{corollary}
+
+\begin{prop}\label{crochet-zero}
+  Pour \(t,s\) assez petit on a \(\Phi_t \circ \Psi_s = \Psi_s \circ \Phi_t\) si et seulement si \([X,Y] \equiv 0\).
+\end{prop}
+
+%fig16
+
+Si \([X,Y] \neq 0\), alors il existe \(x \in U\) tel que les deux points ne se rejoignent pas (cf figure).
+
+%fig17
+
+On a \(\Phi_t \circ \Psi_t = \Psi_t \circ \Phi_t\) si et seulement si \(\operatorname{id} = \Psi _{-t} \circ \Phi _{-t} \circ \Psi_t \circ \Phi_t\). Ainsi pour tout \(x \in U, \exists \delta_x'\) tel que \(\forall \left\lvert t \right\rvert \less \delta_x'\),
+\(x = \Psi _{-t} \circ \Phi _{-t} \circ \Psi_t \circ \Phi_t(x)\).
+
+\begin{proof}[Démonstration de la proposition \ref{crochet-zero}]
+  Rappel : si \(h : U \longrightarrow V\) est un difféomorphisme et \(Y = h _{\sharp}X\), avec \(X : U \longrightarrow T U\) et \(Y : V \longrightarrow T V\), alors \(\Psi_t = h \circ \Phi_t \circ h ^{-1}\).
+
+  Si on applique l'exercice 2 de la feuille 2 à \(h = \Phi_t\), alors \(\Phi_t \circ \Psi_t = \Psi_t \circ \Phi_t\) implique que \(\Psi_t = \Phi_t \circ \Psi_t \circ (\Phi_t)^{-1}\), donc \(\Phi _{-t} = \Phi _{-t} \circ \Psi _{-t} \circ (\Phi _{-t})^{-1}, \forall \left\lvert t \right\rvert \less \delta_x\).
+
+  Donc \(Y = (\Phi_t)_{\sharp}X, \forall t \) tel que \(\left\lvert t \right\rvert \less \delta_x'\). Donc, comme \(\left\lvert t \right\rvert_x \less \delta_x' \iff \left\lvert -t \right\rvert \less \delta_x\), on obtient ainsi que \(\forall t, \left\lvert t \right\rvert \less \delta_x'\), on a
+  \(Y = (\Phi _{-t})_{\sharp}X\) et donc
+
+  \begin{gather*}
+    [X,Y] = \lim_{t \to 0} \frac{(\Phi _{-t})_{\sharp}X(x)-X(x)}{t} = \lim_{t \to 0} \frac{X(x)-X(x)}{t} =0.
+  \end{gather*}
+
+  Réciproquement, on suppose que \([X,Y] \equiv 0\). Cela implique que \(\forall x \in U\),
+
+  \[\lim_{t \to 0} \frac{(\Phi_t)_{\sharp}X(x)-X(x)}{t}. \]
+
+  Pour tous \(t,s\) assez petits, \(\Psi_s =\Phi_t \circ \Psi_s \circ (\Phi_t)^{-1}\). On fixe \(t\), on met \(h = \Phi_t\). Alors pour tout \(s\), \(\Psi_s = h \circ \Psi_s \circ h ^{-1}\), donc, par l'exercice, \(h _{\sharp}Y _{(x)} = Y _{(h(x))}\) implique que \(\forall t, (\Phi_t)_{\sharp}Y(x) = Y(\Phi_t(x))\).
+
+  On veut démontrer que \((\Phi _{-t})_{\sharp}Y(x) = Y(x), \forall x \in U\) et \(t\) assez petit, ce qui démontrerait que..........................
+\end{proof}
+
+%hello darkness my old friend
 
 
 

@@ -848,11 +848,10 @@ Soit $E$ espace vectoriel sur $\mathbb{R}$ de dimension finie $n$, c'est-à-dire
 En particulier, $\beta $ engendre $E$ ($E = \operatorname{span}(\beta) = \langle \beta \rangle $) si $\beta$ est libre.
 
 \subsection{L'espace dual $E ^{*}$}
-
+L'espace dual d'un espace vectoriel $E$ est d\'efini par
 \[
 E ^{*} = \{ T : E \to \mathbb{R} \text{ linéaire}  \} = \mathscr{L}(E, \mathbb{R}) .
-\]
-
+\] Les \'el\'ements de $E^*$ sont parfois appel\'es les co-vecteurs.
 
 \begin{thm}
   On a $\operatorname{dim}(E ^{*}) = \operatorname{dim}(E)$.
@@ -2014,17 +2013,18 @@ Donc pour \(n=m\), on obtient \(\epsilon ^{1 2 \dots n} = e ^{1}\wedge \dots \we
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.3]{figures/n-forme.png}
-  \caption{Interprétation géométrique du produit extérieur de \(n\) 1-formes \(\varepsilon\), \(\eta\), \(\omega\) pour \(n = 1, 2, 3\). Les flèches circulaires correspondent à l'orientation (Wikipédia).}
+  \caption{Interprétation géométrique du produit extérieur de \(n\) co-vecteurs \(\varepsilon\), \(\eta\), \(\omega\) pour \(n = 1, 2, 3\). Les flèches circulaires correspondent à l'orientation (Wikipédia). }
   \label{n-forme}
 \end{figure}
 
 \begin{exemple}
-  Si \(\alpha_i \in \Lambda ^{1}(E), v_i \in E\),
+  Si \(\alpha_i \in \Lambda ^{1}(E)\), (c.\`a.d. un co-vecteur \footnotemark, \(v_i \in E\),
 
   \begin{gather*}
     \alpha_1 \wedge \dots \wedge \alpha_m (v_1, \dots, v_m) = \sum_{\sigma \in S_m}^{} \operatorname{sgn}(\sigma) \alpha_1(v _{\sigma_1}) \dots \alpha_m(v _{\sigma_m}) = \operatorname{det}[\alpha_i(v_j)].
   \end{gather*}
 \end{exemple}
+\footnotetext{en \'equivalence: un \'el\'ement de $E^*$,  un tenseur covariant de type (0,1)}
 
 \begin{exemple}
   \(\alpha_i : \mathbb{R}^3 \to \mathbb{R}\),
@@ -2171,7 +2171,7 @@ On veut faire  de l'analyse (calcul différentiel) sur les surfaces, courbes, va
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.3]{figures/motiv1.png}
-  \caption{Dans ce cas, \(\mathbb{R}^2\) est tangent partout.}
+  \caption{Dans ce cas, \(\mathbb{R}^2\) est tangent partout, mais on l'indexe par le point de base. }
   \label{}
 \end{figure}
 
@@ -2533,7 +2533,7 @@ $$
 
 \subsubsection{Longeur des courbes}
 \begin{exemple}
-  Supposons \(\gamma : [a,b] \longrightarrow U\)  de r\'egularit\'e \(\mathscr{C}^1\), avec \([a,b] \subset \mathbb{R}\).
+  Supposons \(\gamma : [a,b] \longrightarrow U\)  de r\'egularit\'e \(\mathcal{C}^1\), avec \([a,b] \subset \mathbb{R}\).
 
   On a, pour \(\gamma(t) = (x ^{1}(t), \dots, x ^{n}(t) )\), \((\gamma)'(t) = (x ^{1})'(t), \dots, (x ^{n})'(t)\),
 
@@ -2586,7 +2586,7 @@ Avec la notation qu'on a eue sur la norme \( \left\Vert  \cdot \right\Vert _{g} 
 
 
 \begin{exo}
-  Si \(x, y \in U, x \neq y\),  et \(\gamma : [a,b] \longrightarrow U\) est continu et de re\'gularit\'e \(\mathscr{C}^1\) sur \(]a,b[\), tel que \(\gamma(a)=x, \gamma(b)=y\)      alors \(L_g(\gamma) \bg 0\). \\
+  Si \(x, y \in U, x \neq y\),  et \(\gamma : [a,b] \longrightarrow U\) est continu et de re\'gularit\'e \(\mathcal{C}^1\) sur \(]a,b[\), tel que \(\gamma(a)=x, \gamma(b)=y\)      alors \(L_g(\gamma) \bg 0\). \\
 
   {\it Indication:} Si \(\gamma'(t) = 0\), alors \( \gamma(t) \equiv \text{constant} \implies x=y \text{ impossible}\). Il existe \(t_0 \in ]a,b[\) tel que \(\gamma'(t_0) \neq 0 \implies \langle \gamma'(t_0) \mid G _{\gamma(t_0)} \mid \gamma'(t_0) \rangle  \bg 0\). Utiliser la continuité des acteurs pour conclure.
 \end{exo}
@@ -2650,7 +2650,7 @@ donc \(d_g(x,y)\) ne peut être \(+\infty\), \(d_g(x,y) \in \mathbb{R} _{+}\). D
 
 
 \begin{definition}
-On dit que la courbe continue $\gamma :[a,b] \to U$ de r\'egularit\'e \(\mathscr{C}^1\)  sur $]a,b[$ est {\it r\'eguli\`ere} quand  $\forall t\in ]a,b[$,
+On dit que la courbe continue $\gamma :[a,b] \to U$ de r\'egularit\'e \(\mathcal{C}^1\)  sur $]a,b[$ est {\it r\'eguli\`ere} quand  $\forall t\in ]a,b[$,
 $\gamma'(t) \neq 0$. On dit que $\gamma$ est {\it simple} quand elle est injective sur $]a,b[$.
 \end{definition}
 
@@ -2661,7 +2661,7 @@ $\gamma'(t) \neq 0$. On dit que $\gamma$ est {\it simple} quand elle est injecti
 \begin{enumerate}
 
 
-\item[(a)] Soit $ t:[c,d] \to [a,b]$ une application continue de r\'egularit\'e \(\mathscr{C}^1\)\, sur \(]c,d[\) telle que
+\item[(a)] Soit $ t:[c,d] \to [a,b]$ une application continue de r\'egularit\'e \(\mathcal{C}^1\)\, sur \(]c,d[\) telle que
 \[
 t(c) =a, \,\, t(d) =b \quad \forall s\in ]c,d[ \quad t'(s) \neq 0
 \]  On consid\`ere \(\eta : [c,d] \to U\)   d\'efini par \(\eta:= \gamma \circ t\). D\'emontrer que \(L_g(\eta) = L_g(\gamma)\).
@@ -2670,7 +2670,7 @@ t(c) =a, \,\, t(d) =b \quad \forall s\in ]c,d[ \quad t'(s) \neq 0
 \item[(b)] Soit $L:= L_g(\gamma)$. On d\'efinit pour $t\in [a,b]$
 \[
 s(t):= L_g(\gamma_{\mid [a,t]})
-\]  D\'emontrer que \(s:[a,b] \to [0,L]\) est inversible avec l'application inverse \(t: [0,L] \to [a,b]\) continue de r\'egularit\'e \(\mathscr{C}^1\)\, sur \(]0,L[\) telle que
+\]  D\'emontrer que \(s:[a,b] \to [0,L]\) est inversible avec l'application inverse \(t: [0,L] \to [a,b]\) continue de r\'egularit\'e \(\mathcal{C}^1\)\, sur \(]0,L[\) telle que
 \[
 t(0) =a, \,\, t(L) =b \quad \forall s\in ]0,L[ \quad t'(s) \neq 0.
 \] On met $\eta :=  \gamma \circ t$.
@@ -2872,7 +2872,7 @@ Voici une première définition de la géodésie \ref{geodesie} (de manière rud
 
 
 \begin{remark}
-On apprendra qu'il y a en parall\`ele une autre d\'efinition {\it m\'ecanique} plus fine de la notion de g\'eod\'esie. La fa\c con de param\'etriser la courbe  devient importante dans la formulation dite m\'ecanique.   N\'eanmoins, si la m\'etrique $g$ est assez  r\'egulier (p.ex. \( g\in \mathscr{C}^2\)), les images de courbes correspondantes \`a ces deux notions se co\"incident.
+On apprendra qu'il y a en parall\`ele une autre d\'efinition {\it m\'ecanique} plus fine de la notion de g\'eod\'esie. La fa\c con de param\'etriser la courbe  devient importante dans la formulation dite m\'ecanique.   N\'eanmoins, si la m\'etrique $g$ est assez  r\'egulier (p.ex. \( g\in \mathcal{C}^2\)), les images de courbes correspondantes \`a ces deux notions se co\"incident.
  \end{remark}
 
 
@@ -3050,7 +3050,7 @@ on a pour tout \(i\),
 
 On écrit
 
-\[\underset{\text{dans } \Omega_1(T_a U)}{\nabla_g f(a)} = g _{\sharp}(\underset{\text{dans } \Omega ^{1}(T_a U)}{d_a f}),\]
+\[\underset{\text{dans } \Omega_1(T_a U)}{\nabla_g f(a)} = {\sharp}_g(\underset{\text{dans } \Omega ^{1}(T_a U)}{d_a f}),\]
 o\`u $\sharp_g$ est l'op\'eration de hausse des indices.
 \end{exemple}
 
@@ -3061,9 +3061,9 @@ Plus généralement, si \(\alpha : U \longrightarrow T_l ^{k} U\) est un champ t
 \alpha = \sum_{\substack{i_1, \dots, i _{k}\\ j_1, \dots, j_k}} a ^{j_1 \dots j_l}_{i_1 \dots i_k} \, d x^{i_1} \otimes \dots \otimes d x^{i_k} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}
 \end{equation}
 
-et \(g\) est une métrique riemannienne sur $U$. Pour \(k \geq 1\), utilisant  \(g\)  on peut créer un champ tensoriel dans \(T ^{k-1}_{l+1}\)   que l'on notera \(g _{\sharp}\alpha : U \longrightarrow T ^{k-1}_{l+1} U\) et il vaudra :
+et \(g\) est une métrique riemannienne sur $U$. Pour \(k \geq 1\), utilisant  \(g\)  on peut créer un champ tensoriel dans \(T ^{k-1}_{l+1}\)   que l'on notera \({\sharp}_g\alpha : U \longrightarrow T ^{k-1}_{l+1} U\) et il vaudra :
 
-\[g _{\sharp} \alpha= \sum_{\substack{1 \leq i_1 \dots i _{k-1} \leq n\\ 1 \leq j_0, j_1 \dots j _{l} \leq  n}} b _{i_1 \dots i _{k-1}}^{j_0 j_1 \dots j _{l}} \, d x^{i_1} \otimes \dots d x^{i _{k-1}} \otimes  \frac{\partial  } {\partial x ^{j _0}} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j _{l}}},\]
+\[{\sharp}_g \alpha= \sum_{\substack{1 \leq i_1 \dots i _{k-1} \leq n\\ 1 \leq j_0, j_1 \dots j _{l} \leq  n}} b _{i_1 \dots i _{k-1}}^{j_0 j_1 \dots j _{l}} \, d x^{i_1} \otimes \dots d x^{i _{k-1}} \otimes  \frac{\partial  } {\partial x ^{j _0}} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j _{l}}},\]
 
 défini par
 
@@ -3250,7 +3250,7 @@ Pour tout \(i\), \(X : U \longrightarrow \mathbb{R}\) et on a \(X \in C ^{r}\) s
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.3]{figures/solution_max.png}
-  \caption{Cas où les intersections sont possibles ou non.}
+  \caption{Aucun des deux  intersections  tangentes (\`a gauche) et transversales (\`a droite) est possible.}
   \label{solution_max}
 \end{figure}
 
@@ -3267,11 +3267,11 @@ Pour toute courbe intégrale, on peut faire un changement de variable \(\tilde{t
 
 \'Etant donn\'e un champ de vecteur $X: U \to TU$, on consid\`ere  pour tout $x\in U$ l'ensemble de toutes les courbes int\'egrales passant par $x$ :
 \[
-\mathscr{C}_x := \{(I, \gamma);\quad I\subset \R \,\, \text{intervalle ouvert},\,\, 0\in I,\,\, \gamma:I \to U \,\, \text{une courbe int\'egrale de}\,\, X \,\, \text{avec}\,\, \gamma(0)=x \}.
+ \mathcal{S}_x := \{(I, \gamma);\quad I\subset \R \,\, \text{intervalle ouvert},\,\, 0\in I,\,\, \gamma:I \to U \,\, \text{une courbe int\'egrale de}\,\, X \,\, \text{avec}\,\, \gamma(0)=x \}.
 \]  En vue de l'unicit\'e des solutions on peut d\'efinir pour $X\in \mathcal{C}^1$ :
 \begin{gather*}
-I_x:= \bigcup_{(I, \gamma) \in \mathscr{C}_x} I \\  \gamma_x : I_x \to \R \quad \gamma_x(t) := \gamma(t) \quad \text{si}\,\,  (I, \gamma) \in \mathscr{C}_x\,\, \text{et} \,\, t\in I.
-\end{gather*} Notons qu'il n'y a pas d'ambiguit\'e dans la d\'efinition de $\gamma_x$, et  la valeur de $\gamma_x(t)$ est unique pour tout choix de $(I, \gamma) \in \mathscr{C}_x$ pour lequel $t\in I$: en effet si $(I,\gamma), (J, \lambda) \in \mathscr{C}_x$, avec $t\in I, J$, on a
+I_x:= \bigcup_{(I, \gamma) \in  \mathcal{S}_x} I \\  \gamma_x : I_x \to \R \quad \gamma_x(t) := \gamma(t) \quad \text{si}\,\,  (I, \gamma) \in  \mathcal{S}_x\,\, \text{et} \,\, t\in I.
+\end{gather*} Notons qu'il n'y a pas d'ambiguit\'e dans la d\'efinition de $\gamma_x$, et  la valeur de $\gamma_x(t)$ est unique pour tout choix de $(I, \gamma) \in  \mathcal{S}_x$ pour lequel $t\in I$: en effet si $(I,\gamma), (J, \lambda) \in  \mathcal{S}_x$, avec $t\in I, J$, on a
 $0\in I, J$, $\gamma(0) = \lambda(0) = x$, et les deux applications $\gamma, \lambda$ \'etant les courbes int\'egrales on a par l'unicit\'e
 \[
 t\in I\cap J \implies \gamma(t) = \lambda(t).
@@ -3280,7 +3280,7 @@ t\in I\cap J \implies \gamma(t) = \lambda(t).
 \begin{remark}
 On observe que
 \[
-\forall (I, \gamma) \in \mathscr{C}_x \quad \gamma = \gamma_{x\mid_I}.
+\forall (I, \gamma) \in  \mathcal{S}_x \quad \gamma = \gamma_{x\mid_I}.
 \]
 \end{remark}
 
@@ -3673,7 +3673,7 @@ Donc pour chaque $y\in W=f(U)$, $f _{\sharp}\beta(y)$ est le push-forward de $\b
   \begin{exo}
 
   Si \(f : U \longrightarrow V, g : V \longrightarrow W\),    pour tout \(\alpha\) champ tensoriel de type \((0, k)\) sur \(W\),  on a
-  \[(g \circ f)^{*} = f ^{*}(g ^{*}\alpha).\]
+  \[(g \circ f)^{*} \alpha = f ^{*}(g ^{*}\alpha).\]
 
 
 Si \(f\) et \(g\) sont injectives, pour tout \(\beta\) champ tensoriel de type \((l,0)\) sur \(U\),
@@ -4001,17 +4001,17 @@ Rappeler les d\'efinition d'applications tangente  $Tu: TV\to TU$ et d $u^*g$. O
 
 
 \begin{exo}
-  Montrer que si \(u : V \longrightarrow U\) difféomorphisme \(\mathcal{C}^{\infty}\) et \(g\) métrique sur \(U\), alors
+  Montrer que si \(u : V \longrightarrow U\) difféomorphisme \(\mathcal{C}^{\infty}\) et \(g\) métrique riemannienne  sur \(U\), alors
 
   \begin{enumerate}
-    \item \(h = u ^{*}g\) implique que \(\forall \vec{v}, \vec{w} \in T_x U\) :
+    \item \(h = u ^{*}g\) implique que \(\forall x\in U, \,\,  \forall \vec{v}, \vec{w} \in T_x U\) :
 
     \begin{gather}
       \left\Vert \vec{v} \right\Vert _{h} = \left\Vert T u(\vec{v}) \right\Vert _{g} \\
       \sphericalangle (\vec{v}, \vec{w})_h = \sphericalangle(T u(\vec{v}), T u (\vec{w}))_g.
     \end{gather}
 
-    \item \(\forall \vec{v} \in T_x U, \left\Vert \vec{v} \right\Vert _{h} = \left\Vert T u(\vec{v}) \right\Vert_g  \implies h = u ^{*}g\).
+    \item Pour toute m\'etrique riemannienne $h$ sur $V$ \[\forall x\in U, \,\, \forall \vec{v} \in T_x U, \left\Vert \vec{v} \right\Vert _{h} = \left\Vert T u(\vec{v}) \right\Vert_g  \implies h = u ^{*}g.\]
   \end{enumerate}
 \end{exo}
 
@@ -4120,7 +4120,7 @@ Alors on a \'etabli que
 
 
 \begin{definition}
-  Soit \(U, V \subseteq \mathbb{R}^n\), avec \(g, h\) deux  métrique riemanienne  continues sur respectivement \(U\) et \(V\), et   \(u : V \longrightarrow U\) diff\'eomorphisme $\mathscr{C}^1$.  Quand $h= u^*g$, on dit que $u$ est une {\it isom\'etrie}  (ou bien une {\it \'equivalence isom\'etrique}) entre les deux vari\'et\'es riemanniennes \((U,g)\) et \((V,h)\). Si un tel $u$ existe, on dit que  \((U,g)\) et \((V,h)\) sont isom\'etriques.
+  Soit \(U, V \subseteq \mathbb{R}^n\), avec \(g, h\) deux  métrique riemanienne  continues sur respectivement \(U\) et \(V\), et   \(u : V \longrightarrow U\) diff\'eomorphisme $\mathcal{C}^1$.  Quand $h= u^*g$, on dit que $u$ est une {\it isom\'etrie}  (ou bien une {\it \'equivalence isom\'etrique}) entre les deux vari\'et\'es riemanniennes \((U,g)\) et \((V,h)\). Si un tel $u$ existe, on dit que  \((U,g)\) et \((V,h)\) sont isom\'etriques.
 \end{definition}
 
 

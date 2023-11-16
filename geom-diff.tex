@@ -4480,8 +4480,296 @@ On a \(\Phi_t \circ \Psi_t = \Psi_t \circ \Phi_t\) si et seulement si \(\operato
   On veut démontrer que \((\Phi _{-t})_{\sharp}Y(x) = Y(x), \forall x \in U\) et \(t\) assez petit, ce qui démontrerait que..........................
 \end{proof}
 
-%hello darkness my old friend
+\marginnote{15-11-2023}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%15/11/2023%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\marginnote{16-11-2023}
+
+Mais
+
+\begin{gather*}
+  \frac{d}{dt}\left(\frac{\partial \Phi_t^{k} }{\partial x ^{i}}(x) \right) = \frac{\partial  }{\partial x ^{i}}\left(\frac{d}{dt}\Phi ^{k}_t(x)\right) = \frac{\partial  }{\partial x ^{i}} \left(\frac{d}{dt} \gamma_x ^{k}(t)\right) \\
+  = \frac{\partial  }{\partial x ^{i}} \left(X ^{k}(\gamma_x(t))\right).
+\end{gather*}
+
+Donc
+
+\begin{equation}\label{eq234}
+  \frac{d}{dt}\left(\frac{\partial \Phi ^{k}_t(x) }{\partial } \right)\bigm|_{t=0} = \frac{\partial  }{\partial x ^{i}}\left(X ^{k}(\gamma_x(g))\right)\bigm|_{t=0} = \frac{\partial  }{\partial x ^{i}}(X ^{k}(x)).
+\end{equation}
+
+On a
+
+\[D(X \circ \Phi_t(x))\bigm|_{t=0} = DX(\Phi_t(x))D \Phi_t(x) \stackrel{\ref{eq234}}{=} DX(x) \cdot \operatorname{Id}_{n \times n} = D X(x).\]
+
+Donc, en résumé, si \(g = \displaystyle \sum_{i,j} g _{ij} d x^{i}\otimes d x^{j}, X = \displaystyle \sum_{i} X ^{i} \frac{\partial  }{\partial x ^{i}}\), on a
+
+\begin{gather}
+  \alpha_{X}g = \sum_{i,j}\left(\sum_{k} \frac{\partial  }{\partial x ^{i}} X ^{k} g _{kj} + \sum_{l} g _{il} \frac{\partial  }{\partial x ^{j}}X ^{l} + \sum_{s}  \frac{\partial  }{\partial x ^{s}}(g _{ij})X ^{s}(x)  \right)d x^{i}\otimes d x^{j}.
+\end{gather}
+
+On peut aussi écrire
+
+\[\alpha_X g = \sum_{i,j} a _{ij}d x^{i}\otimes d x^{j},\]
+
+avec
+
+\[a _{ij} = \sum_{s} \frac{\partial  }{\partial x ^{s}}(g _{ij})X ^{s} + \underbrace{ \sum_{s} \frac{\partial  X ^{s}}{\partial x ^{i}} g _{si}}_{X \text{ est covariant} }+ \sum_{s} \frac{\partial  X^{s} }{\partial x ^{i}} g _{is}.\]
+
+On a \(Y = \displaystyle \sum_{i} Y ^{i} \frac{\partial  }{\partial x ^{i}}\) et \(\alpha_X Y = \displaystyle \sum_{i} Z ^{i} \frac{\partial  }{\partial x ^{i}}  \).
+
+Alors
+
+\[Z ^{i} = \sum_{s} \left(\frac{\partial  }{\partial x ^{s}} Y ^{i} \right) X ^{s} \underset{Y \text{ contravariant}}{-} \sum_{s} \left(\frac{\partial  X ^{i}}{\partial x ^{s}} Y ^{s} \right).\]
+
+\subsection{Formes différentielles}
+
+\begin{definition}
+  Une forme différentielle sur \(U \subseteq \mathbb{R}^n\) est un champ de tenseurs \(\alpha : U \longrightarrow T ^{k} U\) tel que
+
+  \[\forall x \in U, \alpha(x) \in \Lambda _{x}^{k} U = \Lambda (T_x U).\]
+
+  (\(\alpha(x)\) est extérieur).
+\end{definition}
+
+Une forme différentielle est une section du fibré \(\Lambda ^{k} U\) sur \(U\), \(\alpha : U \longrightarrow \Lambda ^{k} U\) tel que \(\tau ^{k} \circ \alpha = \operatorname{id}_U\).
+
+%%%%fig_form_diff%%%%
+
+\begin{remark}[Rappel]
+  Soit \(E\) espace vectoriel \(k \less 0, k \bg n, \Lambda ^{k}(E) = \{ 0 \}\). Donc seulement \(0 \leq k \leq n\) sont importants.
+
+  \begin{itemize}
+    \item[$\star$] \(k=0\), \(\Omega ^{0}(E) = \Lambda ^{0}E = \mathbb{R}\) ;
+    \item[$\star$] \(k=1, \Omega ^{1}(E) = \Lambda ^{1}E = E ^{*}\) ;
+    \item[$\star$] \(\Lambda ^{n}(E) \simeq \mathbb{R}\).
+  \end{itemize}
+\end{remark}
+
+On a, \(\forall k \in \mathbb{Z}\),
+
+\[\mathscr{A}^{k}(U) = \{ \alpha, \alpha \text{ est une forme différentielle } \mathcal{C}^{\infty} \text{ de l'ordre } k\}.\]
+
+Si \(k = 0, \mathscr{A}^{0}(U) = \mathcal{C}^{\infty}(U)\). Si \(k=1\), \(\mathscr{A}^{1}(U) = \{ \text{champ tensoriel 1-covariant sur } U \}\).
+
+\begin{remark}[Commentaires sur la notation]
+
+  \
+
+  \begin{enumerate}
+    \item   Parfois, le terme \(\Omega ^{k}(U)\) est utilisé au lieu de \(\mathscr{A}^{k}(U)\), mais on a déjà utilisé \(\Omega ^{k}(E)\) pour les espaces d'applications \(k\)-linéaires, donc on utilise par \(\Omega ^{k}\) pour les formes différentielles pour éviter la confusion.
+
+    \item Parfois dans les textes, l'indice qui apparaît dans \(\Omega ^{k}(U)\) ou bien \(\mathscr{A}^{k}(U)\) indique la régularité de la forme différentielle et par son ordre
+
+    \[(\Omega(U) = \bigcup _{s}\alpha \text{ est une forme différentielle } s \text{-covariante, } \Omega ^{k}(U) \text{ quand } \alpha \in \mathcal{C}^k).\]
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  Si \(\alpha\) est une forme différentielle de l'ordre \(k\), on dit que \(\alpha\) est une \(k\)-forme.
+\end{definition}
+
+En coordonnées,
+
+\[\alpha = \sum_{i_1 \less \dots \less i_k} a_{i_1 \dots i_k} d x^{i_1} \wedge \dots \wedge d x^{i_k}.\]
+
+On rappelle que \(\{ \varepsilon ^{i_1 \dots i_k} = e ^{i_1} \wedge \dots \wedge e ^{i_k}\}\) forme une base pour \(\Lambda ^{k}(\mathbb{R}^n)\). De manière analogue, \(d x^{i_1}(x) \wedge \dots \wedge d x^{i_k}(x)\) forme une base pour \(\Lambda ^{k}(T_x U)\), avec \(d x^{i}(x) = (x_i e ^{i}) \in (T_x U)^{*}\).
+
+Si \(\alpha, \beta \in \mathscr{A}^{k}(U), c \in \mathbb{R}\), alors \(c \alpha + \beta \in \mathscr{A}^{k}(U)\). En particulier, \(\alpha + \beta \in \mathscr{A}^{k}(U)\), i. e. \((\alpha + \beta)(x)  = \alpha(x) + \beta(x), \forall x \in U\).
+
+\begin{remark}[Rappel]
+  Si \(\alpha \in \Lambda ^{k}(T_x U), \beta \in \Lambda ^{l}(T_x U)\), alors \(\alpha \wedge \beta \in \Lambda ^{k+l}(T_x U)\) est défini.
+\end{remark}
+
+Donc pour \(\alpha \in \mathscr{A}^{k}(U), \beta \in \mathscr{A}^{l}(U)\), alors
+
+\[\forall x \in U, \alpha \wedge \beta(x) := \alpha(x)\wedge \beta(x),\]
+
+et \(\alpha \wedge \beta \in \mathscr{A}^{k+l}(U)\).
+
+\
+
+\(\forall \alpha \in \mathscr{A}^{k}(U), \beta \in \mathscr{A}^{l}(U), \omega \in \mathscr{A}^{p}(U)\),
+
+\begin{enumerate}
+  \item \(\alpha \wedge (\beta \wedge \omega) = (\alpha \wedge \beta)\wedge \omega\) ;
+  \item \(\alpha \wedge \beta = (-1)^{k+l}\beta \wedge \alpha\);
+  \item \(\forall c \in \mathbb{R}, \) si \(k=l\), \((c \alpha + \beta)\wedge = c \alpha \wedge \omega + \beta \wedge \omega\).
+\end{enumerate}
+
+\begin{exo}
+  Soient \(X_1, \dots, X_k, k\) champ de vecteurs sur \(U\). On définit
+
+  \[[\alpha(X_1, \dots, X_k)](x) := \alpha(x)(X_1(x), \dots, X_k(x)) \implies \alpha(X_1, \dots, X_k) : U \longrightarrow \mathbb{R}.\]
+
+  \begin{enumerate}
+    \item \(\alpha \in \mathcal{C}^{\infty} \iff \forall X_1, \dots, X_k \mathcal{C}^{\infty}\), on a \(\alpha(X_1, \dots, X_k)\in \mathcal{C}^{\infty}(U)\).
+    \item Calculer pour montrer que pour \(\alpha_1, \dots, \alpha_k \in \mathscr{A}^{1}(U)\), \(X_1, \dots, X_k\) champ de vecteurs, on a
+
+    \[\alpha_1 \wedge \dots \wedge \alpha_k(X_1, \dots, X_k) = \operatorname{det}[\alpha_i(X_i)].\]
+
+  \end{enumerate}
+\end{exo}
+
+\begin{remark}[Rappel]
+  Si \(X \in E\) et \(\alpha \in \Omega ^{k}(E)\), on avait défini \(i_X \alpha\) comme un élément de \(\Omega ^{k-1}(E)\),
+
+  \[i_X(\alpha)(\overrightarrow{v_1}, \dots, \overrightarrow{v _{k-1}}) := \alpha(X, \overrightarrow{v_1}, \dots, \overrightarrow{v _{k-1}}).\]
+\end{remark}
+
+Si \(X\) est un champ de vecteurs \(\mathcal{C}^{\infty}, \alpha \in \mathscr{A}^{k}(U)\), alors \(i_X \alpha \in \mathscr{A}^{k-1}(U)\). On a
+
+\[i_X \alpha(x) \stackrel{\text{déf}}{=} i _{X(\alpha)}(\alpha(x)) \in \Lambda ^{k-1}(T_x U).\]
+
+%%%%fig_elt_vol_r3%%%%
+
+\(\forall x \in S, i _{\overrightarrow{N}}\omega\) devient une 2-forme sur \(S\) (idée vague).
+
+\begin{prop}[Quelques propriétés de \(i_X\)]
+
+  \
+
+  \begin{enumerate}
+    \item \(i_X(\alpha+ \beta) = i_X \alpha + i_X \beta\) ;
+    \item \(\forall f \in \mathcal{C}^{\infty}(U), i _{f_X}\alpha = f i_X \alpha\) ;
+    \item \(i _{X+Y}\alpha = i_X \alpha + i _{Y}\alpha\) ;
+    \item \(i_X (\alpha \wedge \beta) = i_X \alpha \wedge \beta + (-1)^{k}\alpha \wedge i_X \beta\), où \(\alpha\) est une \(k\)-forme.
+    \item On a \((i_X \circ i_X)\alpha = 0\) pour toute \(\alpha\) \(k\)-forme.
+    \item \(\forall \alpha \in \mathscr{A}^{0}(U), i_X \alpha  =0\) par convention.
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  Soit \(u : V \longrightarrow U\) une application, \(V \subseteq \mathbb{R}^m, U \subseteq \mathbb{R}^n\), \(\alpha\) est une \(k\)-forme sur \(U\), \(u\) est de régularité \(\mathcal{C}^1\), alors \(u ^{*}\alpha\) est bien défini et est une \(k\)-forme sur \(V\).
+\end{prop}
+
+\begin{proof}
+  \(\forall x \in V\),
+
+  \begin{gather*}
+    u ^{*} \alpha(x)(\overrightarrow{v_1}, \dots, \overrightarrow{v_k}) = \alpha(x)(T u (\overrightarrow{v_1}), \dots, T u (\overrightarrow{v_k})).
+  \end{gather*}
+
+  Si \(\overrightarrow{v_i} \in T_x U\), alors \(T u \overrightarrow{v_i} \in T _{u(x)} U\). Si \(i \neq j\), \(\overrightarrow{v_i} = \overrightarrow{v_j}\), alors
+
+  \[Tu(\overrightarrow{v_i}) = T u (\overrightarrow{v_j}) \implies \alpha(u(x))(T u(\overrightarrow{v_1}), \dots, T u(\overrightarrow{v_k})) \implies u ^{*}\alpha(x)(\overrightarrow{v_1}, \dots, \overrightarrow{v_k}) = 0.\]
+\end{proof}
+
+En fait \(\forall x \in V, u ^{*}\alpha(x) = \Lambda ^{k}(T_x U)(\alpha(u(x)))\).
+
+\begin{prop}[Quelques propriétés]
+
+  \
+
+  \begin{enumerate}
+    \item \(u \in \mathcal{C}^{\infty} \implies u ^{*}(\mathscr{A}^{k}(U))\subseteq \mathscr{A}^{k}(U)\) ;
+    \item \(\forall f \in \mathcal{C}^{\infty}, u ^{*}(f \alpha) = (f \circ u) u ^{*}\alpha\) ;
+    \item \((u \circ v)^{*} = v ^{*} \circ u ^{*}\) ;
+    \item \(u ^{*}(\alpha \wedge \beta) = u ^{*} \alpha \wedge u ^{*} \beta\) ;
+    \item Si \(u : V \longrightarrow U\) est un difféomorphisme, \(X\) est un champ de vecteurs sur \(V\),
+
+    \[i_X(u ^{*} \alpha) = u ^{*}(i _{U _{\sharp}X}).\]
+  \end{enumerate}
+\end{prop}
+
+\begin{exo}
+  Démontrer la proposition.
+\end{exo}
+
+On a dit que \(\mathscr{A}^{0}(U) = \mathcal{C}^{\infty}(U)\) (car \(\lambda ^{0}(E) \simeq \mathbb{R}\)). Si \(f \in \mathscr{A}^{0}(U), u : V \longrightarrow U\). On a \(u ^{*} f = f \circ u\) (définie par convention), avec
+
+\[u ^{*}f(x) = f(u(x)).\]
+
+\subsubsection{La différentielle (ou en équivalence la dérivée extérieure) d'une forme différentielle}
+
+Pour \(k = 0, 1, 2\), on définit un opérateur
+
+\[d ^{(k)}: \mathscr{A}^{k}(U) \longrightarrow \mathscr{A}^{k+1}(U).\]
+
+\begin{definition}
+  \(d ^{(k)}\) est identifié uniquement par ces deux propriétés :
+
+  \begin{enumerate}
+    \item \(\forall \alpha, \beta \in \mathscr{A}^{k}(U)\),
+
+    \[d ^{(k)}(\alpha + \beta) = d ^{(k)}(\alpha) + d ^{(k)}(\beta).\]
+
+    \item Si \(i_1 \less \dots \less i_k\) et \(\alpha : a d x^{i_1} \wedge \dots \wedge d x^{i_k}\),
+
+    \[d ^{(k)}\alpha = d a \wedge d x^{i_1} \wedge \dots d x^{i_k} \in \mathscr{A}^{k+1}(U).\]
+  \end{enumerate}
+\end{definition}
+
+Si \(\alpha \in \mathcal{C}^{\infty}(U), da : U \longrightarrow T ^{*}U.\) Pour tout \(x \in U, d a (x) = d_x a \in (T_x U)^{*}\).
+
+\begin{remark}
+  Cela justifie aussi la notation \(x ^{i}\), avec \(x ^{i} : U \longrightarrow \mathbb{R}\), \(x ^{i}(y ^{1}, \dots, y ^{n}) = y ^{i}, \forall y \in U\).
+
+  On a
+
+  \[d x^{i}(x, \overrightarrow{v}) = Dx ^{i}(x)(\overrightarrow{v}) = v, \]
+
+  mais c'est \(e ^{i}(\overrightarrow{v}) = v ^{i}\) pour tout \(\overrightarrow{v}\), donc \(d x^{i} = (x,e ^{i})\).
+\end{remark}
+
+\begin{prop}[Propriétés de \(d ^{(k)}\)]
+
+  \
+
+  \begin{enumerate}
+    \item \(\forall f \in \mathcal{C}^{\infty}(U) = \mathscr{A}^{0}(U), d ^{(0)}f =df\) ;
+    \item \(d ^{(k)}(c \alpha + \beta) = c d ^{(k)}+ d ^{(k)}\beta\) ;
+    \item \(\forall k, d ^{(k+1)} \circ d ^{(k)} =0\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \(\forall \alpha \in \mathscr{A}^{k}(U)\),
+
+  \[\alpha = \sum_{i_1 \less \dots \less i_k} a _{i_1 \dots i_k}d x^{i_1} \wedge \dots \wedge d x^{i_k},\]
+
+  donc
+
+  \[d ^{(k)}(\alpha) = \sum_{i_1 \less \dots \less i_k} d a _{i_1 \dots i_k} \wedge d x^{i_1} \wedge \dots \wedge d x^{i_k}.\]
+
+  Pour \(\alpha = a d x^{i_1} \wedge \dots \wedge d x^{i_k}\), on calcule
+
+  \begin{gather*}
+    d ^{(k)}\alpha = da \wedge d x^{i_1}\wedge \dots \wedge d x^{i_k} = \sum_{i=1}^{n} \frac{\partial a }{\partial x ^{i}} d x^{i} \wedge d x^{i_1} \wedge \dots \wedge d x^{i_k},
+  \end{gather*}
+
+  avec \(da = \sum_{i=1}^{n} b_i d x^{i}\), \(b_i = da \left(\frac{\partial  }{\partial x ^{i}} \right) = \frac{\partial  }{\partial x ^{i}} \cdot a = \frac{\partial a }{\partial x ^{i}}\), donc
+
+  %%%%machin somme%%%%
+
+  \emph{Rappel de l'analyse :} Si \(a \in \mathcal{C}^2(U)\), alors la matrice hessienne de \(a\) est symétrique.
+
+  \emph{Rappel :} Si \(\alpha, \beta \in \mathscr{A}^{1}(U), \alpha \wedge \beta = - \beta \wedge \alpha\). En fait, c'est vrai pour tout ordre impair.
+
+  \
+
+  Pour \(\alpha \in \mathscr{A}^{k}(U), \beta \in \mathscr{A}^{l}(U)\),
+
+  \begin{gather*}
+    d ^{k+l}(\alpha \wedge \beta) = d ^{k}\alpha \wedge \beta + (-1)^{l}\alpha \wedge d ^{(l)}\beta.
+  \end{gather*}
+
+  Avec \(\alpha = a d x^{i_1} \wedge \dots \wedge d x^{i_k}, \beta = b d x^{j_1}\wedge \dots \wedge d x^{j_l}\), on a
+
+  \[\alpha \wedge \beta = ab d x^{i_1}\wedge \dots \wedge d x^{i_k}\wedge d x^{j_1}\wedge \dots \wedge d x^{j_l}.\]
+
+  %%%%%fin du calcul
+
+  Comme c'est clair que \(d ^{(k)}\) agit sur \(\mathscr{A}^{k}(U)\), on va utiliser \(d \alpha\) au lieu de \(d ^{(k)}\alpha\) :
+
+  \[d \bigm|_{\mathscr{A}^{k}U} = d ^{(k)}.\]
+\end{proof}
+
+\begin{exo}
+  Il y a seulement un opératuer \(d : \mathscr{A}^{k}(U) \longrightarrow \mathscr{A}^{k+1}\) qui satisfait les propriétés.
+\end{exo}
 
 \end{document}

@@ -19,7 +19,7 @@
 \usepackage[all]{xy}
 \usepackage{textgreek}
 
-
+\theoremstyle{definition}
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
    {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
@@ -35,7 +35,7 @@
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
 
-\theoremstyle{definition}
+
 \newtheorem{protodefinition}{Définition}[section]
 \newenvironment{definition}
     {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
@@ -46,8 +46,14 @@
     {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
     {\end{protoproposition}\end{shaded}}
 
-\theoremstyle{remark}
-\newtheorem*{remark}{Remarque}
+\newtheorem*{protoremark}{Remarque}
+\newenvironment{remark}
+    {\colorlet{shadecolor}{yellow!5}\begin{shaded}\begin{protoremark}}
+    {\end{protoremark}\end{shaded}}
+
+
+%\theoremstyle{remark}
+%\newtheorem*{remark}{Remarque}
 \newtheorem{exo}{Exercice}
 \newtheorem*{protoexemple}{Exemple}
 \newenvironment{exemple}
@@ -3090,7 +3096,7 @@ Nous nous intéressons aux propriétés suivantes : compacité, connexité, supp
 \begin{prop}[Propriétés]
 
   \
-
+fonction
   \begin{enumerate}
     \item La topologie de \(\mathbb{M}(n;\mathbb{C})\) est celle d'un espace vectoriel normé, donc \(G\) est compact si et seulement si \(G\) est fermé et borné.
     \item \(G\) compact si et seulement si \(\forall (A^{(m)})_{m \in \mathbb{N}}\subset G\). Si \(\lim A ^{(m)}=A\), alors \(A \in G\) et \[ \exists c \bg 0, \forall A \in G, \forall j, k \in \{1, \dots, n \}, \left\lvert A _{j,k} \less c \right\rvert.\]
@@ -3244,5 +3250,578 @@ Nous nous intéressons aux propriétés suivantes : compacité, connexité, supp
     Pour \(A \in SU(n)\), on remplace \(e^{i \theta_n t}\) par \(e^{-it(\theta_1 + \dots + \theta _{n-1})}\).
   \end{enumerate}
 \end{proof}
+
+\begin{definition}\marginnote{15-11-2023}
+  Soit \(G\) un espace topologique connexe par arcs. On dit que \(G\) est simplement connexe si pour tout lacet \(C \in \mathcal{C}^0([0,1], G), c(0)=c(1)\), il existe \(H_C \in \mathcal{C}^0([0,1]\times[0,1], G)\) tel que
+
+  \begin{enumerate}
+    \item \(H_C(S, 0) = H_C(S,1)\) pour tout \(S\) (famille de lacets),
+    \item  \(H_C(0,t) = C(t)\) pour tout \(t\) (départ \(C\)),
+    \item \(H_S(1,t) = H_C(1,0)\) pour tout \(t\) (arrivée en un point).
+  \end{enumerate}
+
+  On dit alors que \(H_C\) est une homotopie qui pour chaque lacet \(S\) déforme le lacet \(C\) en un point, ou encore que \(C\) est une homotopie en un point.
+\end{definition}
+
+\begin{exemple}
+  On pose \(G = \mathbb{C} \setminus \{ 0 \}\), \(c(t) = 2 + \cos(2 \pi t) + i \sin(t)\) et \(H_c(s,t) = (2 + (1-s)\cos(2 \pi t))+i(1-s)\sin(2 \pi)\). C'est un lacet pour chaque \(s\).
+
+  \begin{enumerate}
+    \item \(H_c(0,t) = c(t)\) ;
+    \item \(H_c(1,t) = 2\) (lacet constant).
+  \end{enumerate}
+\end{exemple}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(\mathbb{R}^n\) est simplement connexe.
+    \item \label{c_priv_0_simpl_connx} \(\mathbb{C} \setminus \{ 0 \}\) n'est pas simplement connexe.
+    \item \(U(1)\) n'est pas simplement connexe.
+    \item \(SO(2)\) n'est pas simplement connexe.
+    \item \(U(n), GL(n;\mathbb{C})\) ne sont pas simplement connexes.
+    \item \(SU(2)\) est simplement connexe.
+    \item \(SO(3)\) n'est pas simplement connexe.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Soit \(c\) un lacet, alors pour \(p \in \mathbb{R}^n\),
+
+    \[H_c(s,t) = (1-s)c(t)+sp\]
+
+    est une homotopie qui déforme le lacet \(c\) dans le lacet constant \(t \longmapsto p\).
+    \item Soit le lacet \(c(t) = e^{i 2 \pi 3}\). On ne peut pas le déformer en un lacet constant, car toute déformation doit tourner une fois autour de 0.
+    \item \(t \longmapsto e^{i 2 \pi t}\) ne peut être contracté.
+    \item Il est homéomorphe à \(cl(1)\).
+    \item \(\begin{pmatrix}
+    e^{i2 \pi t} & 0 & \dots & \\
+    0 & 1 & \dots & 0 \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0 & 0 & \dots & 1
+    \end{pmatrix}\) ne peut être contracté.
+    \item \(S U(2)\) est homéomorphe à \(S ^{3}\) (exercice) qui est simplement connexe (exercice).
+    \item \(\begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & \cos(\theta) & - \sin(\theta) \\
+    0 & \sin(\theta) & \cos(\theta)
+    \end{pmatrix}\) ne peut être contracté en \(SO(3)\).
+  \end{enumerate}
+\end{proof}
+
+On va détailler la preuve du \ref{c_priv_0_simpl_connx}.
+
+\begin{lemma}
+  Il existe une fonction \(\theta : \mathcal{C}^0(S ^{1}\setminus \{ -1 \}, (- \pi, \pi))\) telle que \(x = \cos(\theta(x)), \sin(\theta(x)))\).
+\end{lemma}
+
+\begin{proof}
+  Pour \((x_1,x_2)\in S ^{1}\cap H_1\), \(\theta(x) = \arcsin(x_2)\) qui est continue, car réciproque d'une fonction strictement croissante. On a
+
+  \[0 \less \cos(\theta(x)) = \sqrt{1- \sin ^2(\theta(x))} = \sqrt{1 - x_2 ^2} = x_1.\]
+
+  Pour \((x_1, x_2) \in S ^{1}\cap H_2\), \(\theta(x)= \arccos(x_1)\) est continue.
+
+  \[0 \bg \sin(\theta(x)) = - \sqrt{1 - \cos ^2(\theta(x))} = -\sqrt{1-x_1 ^2} = x_2.\]
+
+  On a \((x_1, x_2) \in (S ^{1}\cap H_2) \cap (S ^{1}\cap H_1)\) et \(\arccos(x_1) =\arcsin(x_2)\). De même pour \(H_S\), donc \(\theta\) est continue.
+\end{proof}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(z \longmapsto e^{z}= \displaystyle \sum_{n=0}^{\infty} \displaystyle \frac{z ^{n}}{n} \in \mathcal{C}^0(\mathbb{C}, \mathbb{C} \setminus \{ 0 \})\).
+    \item Il existe \(e \in \mathcal{C}^0(\mathbb{C} \setminus (-\infty, 0], \mathbb{C})\) tel que
+
+    \[\forall z \in \mathbb{C} \setminus (-\infty, 0], e \circ p \circ e(z)=z.\]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  On a \(e(z) = \log(z)+i \theta \left(\displaystyle\frac{z}{\left\lvert z \right\rvert}\right)\), avec \(\log(r) = \displaystyle\int_{1}^{r} \displaystyle \frac{1}{x}dx \).
+\end{proof}
+
+\begin{prop}
+  Soit \(c \in \mathcal{C}^0([0,1], \mathbb{C}), c(0)=c(1)\) un lacet et \(p \in \mathbb{C} \setminus \{ 0 \}\). S'il existe une homotopie qui déforme \(c\) en le point \(p\), alors
+
+  \[c(t) = p e^{i 2 \pi \theta(t)},\]
+
+  avec \(g \in \mathcal{C}^0([0,1], \mathbb{C}), g(1) = g(0)\).
+\end{prop}
+
+\begin{corollary}
+  \(c(t) = e^{i 2 \pi t}\) ne peut pas être déformé en \(p\).
+\end{corollary}
+
+\section{Homomorphismes}
+
+\begin{definition}
+  Soient \(G,H\) deux groupes de Lie.
+
+  \begin{enumerate}
+    \item \(f : G \longrightarrow H\) est appelé homomorphisme de groupes de Lie si
+
+    \[\forall A,B \text{ et } f \in \mathcal{C}^0(G,H), f(AB) = f(A)f(B).\]
+
+    \item Si un homomorphisme \(f\) est bijectif et \(f ^{-1} \in \mathcal{C}^0\), (donc \(f\) est un homéomorphisme), alors \(f\) est appelé \textbf{isomorphisme de groupes de Lie}.
+  \end{enumerate}
+\end{definition}
+
+\begin{prop}[Propriété]
+  On va démontrer ultérieurement que \(G,H\) sont des sous-[...] et que \(f \in \mathcal{C}^{\infty}\).
+\end{prop}
+
+\begin{exemple}
+
+  \
+
+  \begin{enumerate}
+    \item \(\operatorname{det} : GL(U,\mathbb{C}) \longrightarrow \mathbb{C}^{*}\) est continu et \(\operatorname{det}(AB)=\operatorname{det}(A)\operatorname{det}(B)\).
+    \item \(f: \mathbb{R} \longrightarrow U(1)\), \(f(x) = e^{2 \pi i x}\) homéomorphisme et \(f(x+y) = f(x)+f(y)\), donc c'est un homéomorphisme de groupes de Lie.
+    \item \(f : U(1) \longrightarrow SO(2), f(z) = \begin{pmatrix}
+    \Re(z) & - \Im(z) \\
+    \Im(z) & \Re(z)
+    \end{pmatrix}\).
+  \end{enumerate}
+\end{exemple}
+
+\section{Isomorphismes}
+
+Un exemple important est l'homomorphisme \(SU(2) \longrightarrow SO(z)\) qui n'est pas un isomorphisme.
+
+\begin{prop}
+ Soit
+
+    \[V= \{ X \in \mathbb{M}(z,\mathbb{C}), X = X ^{*}, \operatorname{Tr}(X) = 0 \}\]
+
+    et \(\langle X,Y \rangle = \operatorname{Tr}(X ^{*} Y)\) le produit scalaire.
+
+    Soit, pour \(U \in SU(2)\), \(f(U) : V \longrightarrow V\), \(f(U)(X) = U ^{*} X U\) (on aura \(\operatorname{Tr}(f(U)(X)) = \operatorname{Tr}(U ^{*} X U) = \operatorname{Tr}(U U ^{*} X) = \operatorname{Tr}(X)\)). Alors
+
+    \[\forall X,Y \in V, \langle f(U)(X),f(U)(Y) \rangle = \langle X,Y \rangle.\]
+
+    \(f : SU(2) \longrightarrow O(V)\) est un homomorphisme surjectif sur \(SO(V)\) tel que \(\operatorname{Ker}(f) = \{ \operatorname{id}, -\operatorname{id} \}\).
+
+    \(V\) est un espace vectoriel réel de dimension 3. Soit pour une base orthonormée \(\{ b_1, b_2, b_3 \}\),
+
+    \[i : V \longrightarrow \mathbb{R}^3, i \left(\sum_{j=1}^{3}x_j b_j \right) = (X_1, X_2, X_3).\]
+
+    \(SU(2) \in A \longrightarrow i \circ f(A) \circ i ^{-1} \longrightarrow SO(3)\) est un homomorphisme surjectif de \(\operatorname{Ker}\{ \operatorname{id},-\operatorname{id} \}\).
+\end{prop}
+
+\begin{proof}
+  On a
+
+  \begin{gather*}
+    f(U)(\lambda X +Y) = \lambda f(U)X + f(U)Y, \\
+    (f(U)(X))^{*} = U ^{*} X U = f(U)(X), \\
+    \langle f(U)X, f(U)Y \rangle  = \operatorname{Tr}(U ^{*} X U U ^{*} Y U) = \operatorname{Tr}(X ^{*} Y) = \langle X,Y \rangle, \\
+    f(U)f(V) = f(UV), f(U ^{*}) = (f(U))^{-1}.
+  \end{gather*}
+
+  \(f \in \mathcal{C}^0\), car \(A \in \mathbb{M}(2,\mathbb{C}) \longrightarrow A ^{*} X A\) est une composée de fonctions continues. Pour tout \(X \in \mathbb{M}(2,\mathbb{C}), SU(2)\) est connexe, donc \(f(SU(2))\) est connexe et \(\operatorname{id} = f(\operatorname{id}(SU(2)))\), donc \(f(SU(2))\subset SO(V)\), car c'est le plus petit ensemble connexe qui contient \(\operatorname{id}\). On démontrera la surjectivité en TD.
+
+  De plus, on a
+
+  \begin{gather*}
+    f(U) = \operatorname{id} \iff U ^{*} X U \iff U U ^{*} X U = U X, \forall X \in V.
+  \end{gather*}
+\end{proof}
+
+Plus généralement :
+
+\begin{definition}
+  Un groupe de Lie est une variété différentielle qui est un groupe tel que le produit \(G \times G \longrightarrow G\) et l'inverse \((\cdot)^{-1} : G \longrightarrow G\) sont des fonctions différentiables.
+\end{definition}
+
+\begin{prop}[Propriétés]
+
+  \
+
+  \begin{enumerate}
+    \item Les groupes de Lie matriciels sont des groupes de Lie.
+    \item Il existe des groupes de Lie tels qu'il n'existe aucun homomorphisme injectif et continu à valeurs dans \(GL(U,\mathbb{C})\).
+  \end{enumerate}
+\end{prop}
+
+\begin{exemple}
+ \(G = \mathbb{R} \times \mathbb{R} \times S ^{1}\),
+
+ \((a,b,c) \cdot(x,y,z) = a+x,b+y,e^{iay}\subset z\) (calcul à faire).
+\end{exemple}
+
+\chapter{Algèbre de Lie}
+
+\section{Exponentielle et logarithme des matrices}
+
+\begin{prop}
+  Pour \(A \in \mathbb{M}(n,\mathbb{C})\),
+
+  \[\exp(A) = e^{A} := \sum_{m=0}^{\infty} \frac{A ^{m}}{m!} \]
+
+  est bien définie et \(\exp \in \mathcal{C}^0(\mathbb{M}(n,\mathbb{C}), \mathbb{M}(n,\mathbb{C}))\).
+\end{prop}
+
+\begin{proof}
+  On peut choisir la norme \(\left\Vert A \right\Vert_F \) pour laquelle on a \(\left\Vert A ^{m}\right\Vert_F \leq \left\Vert A \right\Vert ^{m}_F  \), donc \(\sum_{0}^{\infty}\frac{\left\Vert A \right\Vert ^{m}}{m!}\) est convergente, donc \(\sum_{0}^{\infty}\frac{A ^{m}}{m!}\), car \(\mathbb{M}(n,\mathbb{C})\) est complet.
+
+  Pour chaque \(N, f_N(A):= \sum_{m=0}^{N}\frac{A ^{m}}{m!} \in \mathcal{C}^0\), car polynôme des projections et
+
+  \[\sup_{\left\Vert A \right\Vert_F \less R}\left\Vert f_N(A)-f_M(A) \right\Vert  \leq \sum_{N}^{M} \frac{R ^{m}}{m!} \underset{N,M \to \infty}{\longrightarrow} 0.\]
+
+  \(\mathcal{C}^0(\mathbb{M}(n,\mathbb{C}), \mathbb{M}(n,\mathbb{C}))\) est complet, donc \(\exp \in \mathcal{C}^0\).
+\end{proof}
+
+\begin{prop}\marginnote{20-11-2023}
+  Pour \(A, B \in \mathbb{M}(n,\mathbb{C})\),
+
+  \begin{enumerate}
+    \item \([A,B]=0 \implies e^{A}e^{B}= e^{A+B}\).
+    \item Pour \(C \in GL(n,\mathbb{C}), C e^{A}C ^{-1} = e^{C A C ^{-1}}\).
+    \item \(e^{0} = \operatorname{id} = A\).
+    \item \(e^{A ^{*}}=(e^{A})^{*}\).
+    \item \(\exp : \mathbb{M}(n,\mathbb{C}) \longrightarrow GL(n,\mathbb{C})\) et
+
+    \[(e^{A})^{-1} = e^{-A}.\]
+
+    \item \(e^{(\lambda+\mu)A} = e^{\lambda A}e^{\mu A}, \forall \lambda, \mu \in \mathbb{C}\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Si \([A,B]= AB-BA = 0\), alors
+
+    \[(A+B)^{m} = \sum_{0}^{m} \frac{m!}{j!(m-j)!}A ^{j}B ^{m-j}.\]
+
+    \item Argument principal : continuité de la multiplication.
+    \item
+    \item L'opération \(A \longmapsto A ^{*}\) est continue.
+    \item \([-A,A]=0\), doc \(e^{-A+A}=e^{0} = 1 = e^{-A}e^{A}\).
+    \item \([\lambda A, \mu A] = 0\).
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  Pour \(A = \begin{pmatrix}
+  0 & 1 \\
+  0 & 0
+  \end{pmatrix}, B = \begin{pmatrix}
+  0 & 0 \\
+  1 & 0
+  \end{pmatrix}\), on a \(A ^2 = B ^2 = 0\) (matrices nilpotentes).
+
+  Alors
+
+  \begin{gather*}
+    e^{tA} = \begin{pmatrix}
+    1 & t \\
+    0 & 1
+  \end{pmatrix}, e^{tB} = \begin{pmatrix}
+  1 & 0 \\
+  t & 1
+\end{pmatrix}, e^{tA} e^{tB} = \begin{pmatrix}
+1 + t ^2 & t \\
+t & 1
+\end{pmatrix} \neq e^{t(A+B)} \text{ (preuve en TD). }
+  \end{gather*}
+
+\end{remark}
+
+\begin{prop}
+  Pour \(A \in \mathbb{M}(n,\mathbb{C}), c(t):=e^{tA}, t \in \mathbb{R}\), on a \(c \in \mathcal{C}^1(\mathbb{R}, \mathbb{M}(n,\mathbb{C}))\) et \(\frac{d}{dt}c(t) = A c(t), c(0) = \operatorname{id}\).
+\end{prop}
+
+\begin{proof}
+  Pour tous \(j,k\), \((e^{tA})_{jk}\) est une série entière avec
+
+  \[\frac{d}{dt} \sum = \sum \frac{d}{dt}.\]
+\end{proof}
+
+\begin{remark}
+  En général on n'a pas
+
+  \[\frac{d}{dt}e^{X+tY} \neq e^{X+tY}Y \neq Y e^{X+tY}.\]
+
+  Exemple avec les matrices définies dans la remarque précédente.
+\end{remark}
+
+\begin{remark}[Calcul de \(\exp(A)\) en pratique]
+
+  \
+
+  \begin{enumerate}
+    \item Si \(A\) est diagonalisable, alors
+
+    \begin{gather*}
+      A = C ^{-1} \begin{pmatrix}
+      \lambda_1 & \dots & 0 \\
+      \vdots & \ddots & \vdots \\
+      0 & \dots & \lambda_n
+      \end{pmatrix}C
+    \end{gather*}
+
+    et
+
+    \begin{gather*}
+    e^{A} =   C ^{-1} \begin{pmatrix}
+      e^{\lambda_1} & \dots & 0 \\
+      \vdots & \ddots & \vdots \\
+      0 & \dots & e^{\lambda_n}
+      \end{pmatrix} C.
+    \end{gather*}
+
+    \item Si \(A\) est nilpotente avec \(A ^{j} = 0\), alors
+
+    \[e^{A} = 1 + A + \frac{1}{2!} A ^2 + \dots + \frac{1}{(j-1)!}A ^{j-1}.\]
+    \item Pour \(A \in \mathbb{M}(n,\mathbb{C})\), il existe \(S\) diagonalisable et \(N\) nilpotente telles que \([S,N] = 0\) et \(A = S+N\), alors \(e^{A} =e^{S}e^{N}\).
+  \end{enumerate}
+\end{remark}
+
+\begin{exemple}
+  \[\exp \begin{pmatrix}
+  0 & a & b \\
+  0 & 0 & c \\
+  0 & 0 & 0
+  \end{pmatrix} = \begin{pmatrix}
+  1 & a & b + \frac{ac}{2}\\
+  0 & 1 & c \\
+  0 & 0 & 1
+  \end{pmatrix}\]
+\end{exemple}
+
+\section{Logarithme matriciel}
+
+\begin{remark}
+  \(z \in \mathbb{C} \longmapsto \exp z \in \mathbb{C} \setminus \{ 0 \}\) est surjective, elle n'est pas injective, c'est un logarithme continu qui ne peut être défini que sur \(\mathbb{C} \setminus (-\infty, 0]\).
+\end{remark}
+
+\begin{lemma}
+
+  \
+
+  \begin{enumerate}
+    \item \(\log(z) := \displaystyle \sum_{1}^{\infty}- \frac{1}{m}(1-z)^{m}\), avec \(z \in B(1,1)\), est analytique et \(e^{\log(z)}  = z\).
+    \item \(\exp(B(0,\log(z))) \subset B(1,1)\) et \(\log(e^{z}) = z\) (\(z \in B(0, \log(z))\)).
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Pour \(x \in \mathbb{R}, \left\lvert x \right\rvert \less 1\),
+
+    \[\log(x) = \int_{1}^{x} \frac{1}{1-(1-y)}dy = \int_{1}^{x} \sum_{n=0}^{\infty} (1-y)^{n}dy = -\sum_{n=0}^{\infty}  \frac{(1-x)^{n}}{n}\]
+
+    par analycité pour \(z \in \mathbb{C}\).
+    \item On a
+
+    \[\left\lvert e^{z}-1 \right\rvert \leq \sum_{n=1}^{\infty} \frac{\left\lvert z \right\rvert ^{n}}{n!} \leq e^{\left\lvert z \right\rvert}-1 \less z-1\]
+
+    si \(\left\lvert z \right\rvert \leq \log (z)\). On a \(\log(e^{z})=z\) pour \(z \in B(0, \log(z)) \cap \mathbb{R}\) et \(e^{\log(z)}=z\) pour \(B(1,1)\cap \mathbb{R}\), donc par analycité c'est vrai partout.
+  \end{enumerate}
+\end{proof}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item Soit \(B(\operatorname{id},1) = \{ A \in \mathbb{M}(n,\mathbb{C}), \left\Vert A - \operatorname{id} \right\Vert \less 1 \}\).
+
+    \begin{gather*}
+      \log A = \sum_{n=1}^{\infty} - \frac{1}{n}(\operatorname{id}-A)^{n},
+    \end{gather*}
+
+    alors \(\log \in \mathcal{C}^0(B(\operatorname{id},1), \mathbb{M}(n,\mathbb{C}))\) et \(e^{\log A} = A, \forall A \in B(\operatorname{id},1)\).
+    \item Soit \(B(0, \log z ) :=\{ A \in \mathbb{M}(n,\mathbb{C}), \left\Vert A \right\Vert _{F} \less \log z  \}\), alors \(\exp(B(0,\log z))\subset B(\operatorname{id},1)\) et \(\log e^{A} = A, \forall A \in B(0, \log z)\).
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}[Propriété]
+  Pour \(A  = 2 \pi i \operatorname{id}, e^{A} = \operatorname{id} \in B(\operatorname{id},1)\), mais \(\log e^{A} = 0 \neq A\).
+\end{prop}
+
+%\subsection{Appendice}
+
+%\begin{prop}
+%  Pour \(A \in \mathbb{M}(n,\mathbb{C})\), il existe \(C \in GL(n,\mathbb{C})\) tel que \(C ^{-1} A C\) est triangulaire supérieure.
+%\end{prop}
+
+%\begin{corollary}
+
+%  \
+
+%  \begin{enumerate}
+%    \item Les éléments diagonaux sont les valeurs propres
+%  \end{enumerate}
+%\end{corollary}
+
+\begin{thm}[Formule de produit de Lie]\label{prod-lie}
+  Pour \(A,B \in \mathbb{M}(n,\mathbb{C})\),
+
+  \[e^{A+B}=\lim_{m \to \infty} (e^{A/m}e^{B/m})^{m}.\]
+\end{thm}
+
+\begin{lemma}
+  Il existe \(c \bg 0\) tel que \(\forall B \in B(0,\frac{1}{2}) \subset \mathbb{M}(n,
+  \mathbb{C})\), \(\left\Vert \log(\operatorname{id}+B) - B \right\Vert \leq c \left\Vert B \right\Vert ^2\).
+\end{lemma}
+
+\begin{proof}
+  \(\operatorname{id}+B \in B(\operatorname{id},1)\) et
+
+  \[\log(\operatorname{id}+B) - B = \sum_{m=2}^{\infty} \frac{(-1)^{m+1}}{m} B ^{m} = B ^2 = \sum_{2}^{\infty}\frac{(-1)^{m+1}}{m}B ^{m-2}.\]
+
+  De plus, on a
+
+  \[\sum_{2}^{\infty} \left\Vert \frac{B ^{m-2}}{m} \right\Vert  \less \sum \frac{1}{2 ^{m-2}} =  c \less \infty.\]
+\end{proof}
+
+\begin{proof}[Démonstration du théorème \ref{prod-lie}]
+  On a
+
+  \[e^{X/m}e^{Y/m} = \operatorname{id} + \frac{X}{m} + \frac{Y}{m}+ O \left(\frac{1}{m ^2}\right),\]
+
+  donc \(e^{X/m}e^{Y/M} \in B(\operatorname{id},1)\) pour un \(m\) suffisamment grand. Donc \(\log e^{X/m}e^{Y/m} = \frac{X}{m}+ \frac{Y}{m}+ O \left(\frac{1}{m ^2}\right)\). Alors
+
+  \[\exp(\log e^{X/m}e^{Y/m}) = e^{X/m}e^{Y/m} = \exp \left(\frac{X}{m}+ \frac{Y}{m} + O \left(\frac{1}{m ^2}\right)\right),\]
+
+  donc \[(e^{X/m}e^{Y/m})^{m} = \exp\left(m \left(\frac{X}{m}+ \frac{Y}{m} + O \left(\frac{1}{m ^2}\right)\right)\right) = \exp\left(X + Y + O \left(\frac{1}{m}\right)\right).\]
+
+  Par continuité
+
+  \[\exp(X+Y) = \lim_{m \to \infty}(e^{X/m}e^{Y/m})^{m}.\]
+\end{proof}
+
+\begin{prop}
+  Pour \(X \in \mathbb{M}(n,\mathbb{C})\), \(\operatorname{det}(e^{X}) = e^{\operatorname{Tr}(X)}\).
+\end{prop}
+
+\begin{proof}
+  On rappelle que \(C e^{X}C ^{-1} = e^{C X C ^{-1}}\), donc si \(X\) est diagonalisable avec les valeurs propres \(z_j\), alors \(e^{X}\) est diagonalisable avec les valeurs propres \(e^{z_j}\). Donc
+
+  \[\operatorname{Tr}(X) = \sum_{j=1}^{m}z_j, e^{\operatorname{Tr}(A)} = \prod e^{z_j} = \operatorname{det}(e^{X}).\]
+
+  Soit \(X \in \mathbb{M}(n,\mathbb{C})\) et \(A \displaystyle \lim_{m \to \infty} X_m \), avec \(X_m\) diagonalisable, alors \[\operatorname{det}(e^{X}) = \operatorname{det}(e^{\lim X_m}) = \lim \operatorname{det}(e^{X_m}) = \lim e^{\operatorname{Tr}(X_m)} = e^{\operatorname{Tr}(X)}.\]
+\end{proof}
+
+\begin{definition}
+  \(A(\cdot)\in \mathcal{C}^0(\mathbb{R}, GL(n,\mathbb{C}))\) est appelé sous-groupe à un paramètre de \(GL(n,\mathbb{C})\). Si \(A(0) = \operatorname{id}\) et \(A(t+s) = A(t)A(s), \forall s,t \in \mathbb{R}\).
+\end{definition}
+
+\begin{thm}\label{unique-parametre}
+  Soit \(A(\cdot)\) un sous-groupe à un paramètre de \(GL(n,\mathbb{C})\), alors il existe un unique \(X \in \mathbb{M}(n,\mathbb{C})\) tel que
+
+  \[A(t)=e^{tX}.\]
+
+  Donc \(A \in \mathcal{C}^1(\mathbb{R}, GL(n,\mathbb{C}))\) et \(X = \frac{d}{dt}A(t)\bigm|_{t=0}\).
+\end{thm}
+
+Pour la preuve on utilise
+
+\begin{lemma}
+  Soit \(\varepsilon \less \frac{1}{2}\log(z)\) et \(B \in V = \exp(B(0,\varepsilon)) = \{ e^{D}, D \in \mathbb{M}(n,\mathbb{C}), \left\Vert D \right\Vert \less \varepsilon \}\), alors \[\sqrt{B}:= e^{\frac{1}{2}\log(B)} \in V\]
+   est l'unique racine carrée dans \(V\) telle que \(\sqrt{B}\sqrt{B} = B\).
+\end{lemma}
+
+\begin{proof}
+  On avait démontré qu'il y avait une correspondance entre \(B(0,\log(z))\) et \(\exp(B(0,\log(z)))\subset B(\operatorname{id},1)\) grâce aux fonctions \(\log\) et \(\exp\). C'est un homéomorphisme.
+
+  De plus, \(\log(B)\) et \(\frac{1}{2}\log(B)\in B(0,\varepsilon)\) et \(\sqrt{B}\sqrt{B} = e^{\log(B)}  =B\).
+
+  Soit \(C \in V\) tel que \(C ^2 = B\), alors \(e^{\log(C)} = C\) et \(e^{2 \log( C)} = C ^2 = B = e^{\log(B)}\). Comme \(\left\Vert 2 \log(C) \right\Vert \less \log(2)\), on a \(2 \log(C) = \log(B)\) et \(C = \sqrt{B}\).
+\end{proof}
+
+\begin{proof}[Démonstration du théorème \ref{unique-parametre}]
+  Si \(X\) existe, alors il est unique, car \(X = \frac{d}{dt}A(t)\bigm|_{t=0}\). Le \(V\) du lemme est ouvert, donc \(A(t)\in V\) pour \(\left\lvert t \right\rvert \leq t_0\) pour \(t_0 \bg 0\).
+
+  Soit \(X := \frac{1}{t_0} \log(A(t_0))\). Alors \(X \in B(0,\varepsilon)\) et \(A(t_0)=e^{t_0 X}\). Par ailleurs, \(A(\frac{t_0}{2})\in V\) et \((A(t_0/2))^2\), Par unicité de la racine,
+
+  \[A(t_0/2) = e^{t_0/2 X}.\]
+
+  Par récurrence,
+
+  \[A \left(\frac{t_0}{2 ^{k}}\right) = e^{\frac{t_0}{2 ^{k}}X}, k \in \mathbb{N}.\]
+
+  C'est vrai aussi pour \(m \in \mathbb{Z}\). \(\left\{ \frac{m t_0}{2} \right\}_{m \in \mathbb{Z}, k \in \mathbb{N}}\) est dense dans \(\mathbb{R}\), donc par continuité \(A(t)=e^{tA}, \forall t \in \mathbb{R}\).
+\end{proof}
+
+\begin{prop}
+  \(\exp \in \mathcal{C}^{\infty}(\mathbb{M}(n,\mathbb{C}), \mathbb{M}(n,\mathbb{C}))\).
+\end{prop}
+
+\begin{proof}
+  \((X ^{m})_{jk}\) est polynomiale. \(\exp X\) est une série absolument convergente de rayon \(\infty\), donc toutes les dérivées partielles existent et sont continues.
+\end{proof}
+
+\section{Algèbre de Lie, exemples}
+
+\begin{definition}
+  Une \textbf{algèbre de Lie} (de dimension finie) sur \(\mathbb{K}\) est un espace vectoriel \(\mathfrak{g}\) (sur \(\mathbb{K}\) de dimension finie) muni d'un \textbf{crochet de Lie} \([\cdot,\cdot] : \mathfrak{g} \times \mathfrak{g} \longrightarrow \mathfrak{g}\) tel que
+
+  \begin{enumerate}
+    \item \([\cdot,\cdot]\) est bilinéaire ;
+    \item \([\cdot,\cdot]\) est antisymétrique ;
+    \item \textbf{L'identité de Jacobi} est satisfaite : on a, pour tout \(X,Y, Z \in \mathfrak{g}, \lambda \in \mathbb{K}\),
+
+    \begin{enumerate}
+      \item \([X,\lambda Y + Z] = \lambda [X,Y]+ [X,Z]\) ;
+      \item \([X,Y] = - [Y,X]\) ;
+      \item \([X,[Y,Z]] + [Z,[X,Y]]+ [Y,[Z,X]] = 0\).
+    \end{enumerate}
+  \end{enumerate}
+
+  Si \([X,Y] = 0\), on dit que \(X\) et \(Y\) commutent. Si tous les éléments commutent, on dit que \(\mathfrak{g}\) est abélienne.
+\end{definition}
+
+\begin{exemple}
+
+  \
+
+  \begin{enumerate}
+    \item Soit \(\mathbb{V}\) un espace vectoriel, \(\operatorname{dim}(\mathbb{V}) \less \infty\) et \(B(\mathbb{V})\) l'ensemble des applications linéaires, alors \(B(\mathbb{V})\) est une algèbre de Lie, avec
+
+    \[[X,Y] = XY - YX.\]
+
+    \item \(\mathfrak{g} \subset B(\mathbb{V})\) un sous-espace tel que \([\mathfrak{g}, \mathfrak{g}]\subset \mathfrak{g}\).
+
+    \item \(\mathfrak{g}(\mathbb{V}):=\{ X \in B(\mathbb{V}), \operatorname{Tr}(X)=0 \}\). En effet,
+
+    \[\operatorname{Tr}(XY-YX) = \operatorname{Tr}(XY)-\operatorname{Tr}(YX) = 0.\]
+
+    \item \(\mathfrak{g}:= \mathbb{R}^3, [X,Y]=x \wedge y\). En effet,
+
+    \begin{enumerate}
+      \item bilinéaire ;
+      \item antisymétrique par construction \(x \wedge y = - y \wedge x\) ;
+      \item \(x \wedge (y\wedge z)+ z\wedge (x \wedge y)+y\wedge(z \wedge x)\), car pour la base canonique, on a
+
+      \begin{enumerate}
+        \item pour \(i,j,k\) différents,
+
+        \[e_i \wedge (e_j \wedge e_k) + e_k \wedge (e_i \wedge e_j)+ e_j \wedge (e_k \wedge e_i) = 0.\]
+        \item \(i \neq j = k\) : \(e_i \wedge (e_j \wedge e_k) + e_k \wedge (e_i \wedge e_j)+ e_j \wedge (e_k \wedge e_i) = 0.\)
+        \item Si tous les indices sont les mêmes, les trois termes s'annullent.
+      \end{enumerate}
+
+
+    \end{enumerate}
+  \end{enumerate}
+\end{exemple}
+
 
 \end{document}

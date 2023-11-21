@@ -2368,7 +2368,7 @@ Donc
 
 \[\alpha = \sum_{1 \leq  i_1, \dots, i_k, j_1, \dots, j_l \leq  n} a _{i_1 \dots i_k}^{j_1 \dots j_l} d x ^{i_1} \otimes \dots \otimes d x ^{i_k} \otimes \frac{\partial  }{\partial x ^{j_1}} \otimes \dots \otimes \frac{\partial  }{\partial x ^{j_l}}\]
 
-où \(a _{i_1 \dots i_k} ^{j_1 \dots j_l} : U \longrightarrow \mathbb{R}\) est une application.
+où \(a _{i_1 \dots i_k} ^{j_1 \dots j_l} : U \longrightarrow \mathbb{R}\) est une application (elle associe à chaque \(a \in U\) un coefficient réel).
 
 \begin{definition}
   On dit que le champ vectoriel \(\alpha\) est de classe \(\mathcal{C}^r\) si \(\forall i_1, \dots, i_k, j_1, \dots, j_l\), le coefficient \[a _{i_1 \dots i_k}^{j_1 \dots j_l} \in \mathcal{C}^r(U).\]
@@ -2379,7 +2379,7 @@ Donc on peut parler de régularité de \(\alpha : U \longrightarrow \mathbb{R} ^
 \subsection{Exemple très important : la métrique riemanienne}
 
 \begin{definition}
-  Soit \(U \subseteq \mathbb{R}^n\) ouvert. Une métrique riemanienne sur \(U\) est un champ tensoriel 2-covariant (de type (0,2)) symétrique, positif-défini sur \(U\).
+  Soit \(U \subseteq \mathbb{R}^n\) ouvert. Une métrique riemanienne sur \(U\) est un champ tensoriel 2-covariant (de type (0,2), autrement dit \(\alpha : U \longrightarrow T_0 ^2 U\)) symétrique, positif-défini sur \(U\).
 \end{definition}
 
 Si \(g\) est une métrique riemanienne sur \(U\), \(g : U \longrightarrow T ^2 U\).
@@ -4672,7 +4672,83 @@ Si l'on interprète une fonction scalaire comme un champ de l'ordre 0 (\(\forall
 
 Si \(Y\) est un champ de vecteur sur \(U\), on obtient, comme \(Y : U \longrightarrow T_l U\) un champ de tenseurs contravariants de l'ordre 1, \([X,Y] = \mathcal{L}_X Y\). Notez que \[\mathcal{L}_X \beta = - \lim_{t \to 0} \frac{(\Phi_t)_{\sharp} \beta - \beta}{t}.\]
 
+\begin{exemple}
+  On a, pour \(X,Y\) champs de vecteur avec \(\mathcal{L}_X Y =0\), \([X,Y] = 0\) si et seulement si \(\Phi_t \circ \Psi_s = \Psi_s \circ \Phi_t\). On pose \(X(x,y) = \left(\frac{x}{\gamma}, \frac{y}{\gamma}\right), Y(x,y) = (-y,x), U = \mathbb{R}^2 \setminus \{ 0 \}\).
 
+  Donc pour cet exemple, on a
+
+  \begin{gather*}
+    X = \frac{x}{r}\frac{\partial  }{\partial x} + \frac{y}{r}\frac{\partial  }{\partial y}\\
+    X = -y \frac{\partial  }{\partial y}+ x \frac{\partial  }{\partial y}.
+  \end{gather*}
+
+  Alors on a \(\mathcal{L}_X Y = [X,Y]=0\) et \(\mathcal{L}_Y X \equiv [Y,Y] \equiv -[X,Y]\equiv 0\).
+
+  Mais si \(X\) est constant le long du flot de \(Y\), si \(Y\) est constant le long du flot de \(X\), on a la situation décrites dans la figure \ref{flotXY}.
+
+  Voir illustrations \ref{exemple_gamma_psi_phi} et \ref{flotXY}.
+\end{exemple}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/exemple_gamma_psi_phi.png}
+  \caption{Illustration de l'exemple. Dans ce cas, on a bien \(\Psi _{-t} \circ \Phi _{-t}\circ \Psi_s \circ \Phi_t = \operatorname{id}\).}
+  \label{exemple_gamma_psi_phi}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/flotXY.png}
+  \caption{Le flot de \(X\) et de \(Y\) tels qu'ils étaient définis dans l'exemple.}
+  \label{flotXY}
+\end{figure}
+
+\begin{thm}
+  Si \(\alpha\) est un champ de tenseurs soit covariant d'ordre \(k\) soit contravariant d'ordre \(l\), si \(X\) est un champ de vecteurs sur \(U\) de régularité \(\mathcal{C}^{\infty}\), alors
+
+  \[\mathcal{L}_X \alpha = 0 \iff \begin{cases}
+    \alpha \text{ contravariant, } \alpha = (\Phi_t)_X ^{*} \forall t \text{ quand } \Phi_t \text{ est défini}, \\
+    \alpha \text{ contravariant, } \alpha (\Phi_t)_{\sharp}\alpha, \forall t \text{ quand } \Phi _{-t} \text{ est défini. }
+  \end{cases}\]
+\end{thm}
+
+\begin{proof}
+  On fait la preuve dans le cas où \(\alpha\) est covariant. Pour le cas où \(\alpha\) est contravariant, la démonstration est similaire.
+
+  Si \(t\) est assez petit, on a \((\Phi_t)^{*}\alpha = \alpha\), alors
+
+  \[\mathcal{L}_X \alpha = \lim_{t \to 0}\frac{(\Phi_t)^{*} \alpha - \alpha}{t} = \lim_{t \to 0} \frac{0}{t}=0.\]
+
+  Maintenant supposons que \(\mathcal{L}_X \alpha = 0\). On a alors, pour tout \(x \in U\),
+
+  \[\lim_{t \to 0}\frac{(\Phi_t)^{*} \alpha(x)- \alpha(x)}{t}=0.\]
+
+  On fixe \(h\) et on calcule \(\Phi _{t+h} = \Phi_t \circ \Phi_h\).
+
+  \begin{gather*}
+    I = \lim_{t \to 0}\frac{(\Phi _{t+h})^{*}\alpha(x)-\Phi_h ^{*}\alpha(x)}{x} = \lim_{t \to 0} \frac{(\Phi_t \circ \Phi_h)^{*} \alpha(x)- \Phi_h ^{*}\alpha(x)}{t} \\
+    = \lim_{t \to 0} \frac{(\Phi_h ^{*}(\Phi_t ^{*} \alpha))(x) - (\Phi_h ^{*} \alpha)(x)}{t}   = \lim_{t \to 0}\left[(\Phi_h)^{*} \left(\frac{(\Phi_t ^{*} \alpha) - \alpha}{t}\right)\right](x)\\
+    = \left[\Phi_h ^{*} \left(\lim_{t \to 0}\frac{(\Phi_t ^{*} \alpha)-\alpha}{t} \right)\right](x).
+  \end{gather*}
+
+  Si \(h\) est fixé, on note \(y = \Phi_t(x)\) et on obtient
+
+  \[\lim_{t \to 0}\frac{\Phi_t ^{*}\alpha(y) - \alpha(y)}{t}=0,\]
+
+  donc
+
+  \[\lim_{t \to 0} \frac{\Phi_t ^{*} \alpha - \alpha}{t}(\Phi_x (x))=0.\]
+
+  Donc \(\Phi_h ^{*}\left(\displaystyle \frac{\Phi_t ^{*}\alpha- \alpha}{t} \right)(x)=0\), ce qui implique \(I=0\).
+\end{proof}
+
+Mais d'un autre point de vue,
+
+\[I = \frac{d}{dt}[(\Phi_t ^{*}\alpha)(x)]\bigm|_{t=h},\]
+
+où \(\Phi_t \alpha(x) \in T_x ^{k} U\) pour tout \(t\) assez petit. On définit \(t \stackrel{\Gamma}{\longmapsto}T_x ^{k}U, \Gamma(t):=\Phi_t ^{*} \alpha(x)\) et on a remarqué que \(I = \Gamma'(h)\). On a vu que \(I=0\), et \(h\) étant quelconque, on a par conséquent pour tout \(h, \Gamma'(h)=0\), donc \(\Gamma \equiv \text{constante}.\)
+
+Donc \((\Phi_t)^{*}\alpha(x) = (\Phi_0)^{\forall}\alpha(x) = \alpha(x)\) pour tout \(t\) pour lequel \(h\) est défini.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4961,7 +5037,279 @@ Si \(\alpha \in \mathcal{C}^{\infty}(U), da : U \longrightarrow T ^{*}U.\) Pour 
 \end{proof}
 
 \begin{exo}
-  Il y a seulement un opératuer \(d : \mathscr{A}^{k}(U) \longrightarrow \mathscr{A}^{k+1}\) qui satisfait les propriétés.
+  Il y a seulement un opérateur \(d : \mathscr{A}^{k}(U) \longrightarrow \mathscr{A}^{k+1}\) qui satisfait les propriétés.
 \end{exo}
+
+\marginnote{21-11-2023}
+
+On rappelle que \(\mathscr{A}(U) = \{ 0 \}\) si \(k \less 0\) ou si \(k \bg n\). On a la relation suivante :
+
+\[\dots \longrightarrow \underset{= \{ 0 \}}{\mathscr{A}^{-1}(U)} \stackrel{d}{\longrightarrow} \underset{\simeq \mathcal{C}^{\infty}(U)}{\mathscr{A}^{0}(U)} \stackrel{d}{\longrightarrow}\underset{\substack{\text{champ de tenseurs}\\ \alpha : U \longrightarrow T ^{*} U, \alpha \in \mathcal{C}^{\infty} }}{\mathscr{A}^{1}(U)} \stackrel{d}{\longrightarrow} \dots \mathscr{A}^2(U) \stackrel{d}{\longrightarrow} \dots \stackrel{d}{\longrightarrow} \mathscr{A}^{n-1}(U) \stackrel{d}{\longrightarrow} \mathscr{A}^{n}(U) \stackrel{d}{\longrightarrow} \mathscr{A}^{n+1}(U) \longrightarrow \dots \]
+
+\begin{exemple}
+  On pose \(n=3\).
+
+  \begin{enumerate}
+    \item Si \(k=0\), c'est une fonction, car \(\binom{3}{0} = 1\).
+    \item Si \(k=1\), \(\alpha = a_1 d x^{1}+ a_2 d x^{2}+a_3 d x^{3}\).
+    \item Si \(k=2\),
+
+    \[\alpha = a_1 d x^{2}\wedge d x^{3}+ a_2 d x^{3} \wedge d x^{1} + a_3 d x^{1} \wedge d x^{2}.\]
+
+    \item Pour \(k=3\), on a
+
+    \[\alpha = a d x^{1} \wedge d x^{2} \wedge d x^{3}.\]
+  \end{enumerate}
+\end{exemple}
+
+\begin{remark}[Note]
+  Pour tout \(\alpha \in \mathscr{A}^{n}(U), d \alpha =0\).
+\end{remark}
+
+\
+
+Que se passe-t-il pour un difféomorphisme \(h : U \longrightarrow V\) ?
+
+Pour \(\alpha \in \mathscr{A}^{k}(U)\), on définit le pull-back \(h ^{*} \alpha \in \mathscr{A}^{k}(U)\). Pour tout \(\overrightarrow{v_1}, \dots, \overrightarrow{v_k} \in T_x U\), par définition on a
+
+\[h ^{*}\alpha(x)(\overrightarrow{v_1},\dots, \overrightarrow{v_k}) = \alpha(h(x))(Th(\overrightarrow{v_1}), \dots, Th(\overrightarrow{v_k})).\]
+
+Si \(\alpha = \displaystyle \sum_{i_1 \less \dots i_k} a _{i_1 \dots i_k}d x^{1} \wedge \dots \wedge d x^{k}\),
+
+%fig18
+
+\begin{gather*}
+  \alpha = \sum_{1 \leq i_1 \less \dots \less i_k \leq n}h ^{*}(a _{i_1 \dots i_k}d x^{i_1} \wedge \dots \wedge d x^{i_k}).
+\end{gather*}
+
+\begin{lemma}
+  Pour \(\alpha, \beta\) formes différentielles, on a
+
+  \[h ^{*}(\alpha\wedge \beta) = h ^{*}\alpha \wedge h ^{*}\beta.\]
+\end{lemma}
+
+\begin{exo}
+  Démontrer ce lemme.
+\end{exo}
+
+Par le lemme, on obtient
+
+\begin{gather*}
+  h ^{*} \alpha  =\sum_{1 \leq i_1 \less \dots \less i_k \leq n} h ^{*}\stackrel{0 \text{-forme sur }\mathcal{C}^{\infty}(V) }{(a _{i_1 \dots i_k})}h ^{*}(d x^{i_1})\wedge \dots \wedge h ^{*}(d x^{i_k}).
+\end{gather*}
+
+Pour chaque \(j\),
+
+\begin{gather*}
+  h ^{*}(d x^{j})(\overrightarrow{v}) = h ^{*}(d x^{j})(x)(\overrightarrow{v}) = d x^{j}(h(x))(Th(\overrightarrow{v})) \label{dxj}\\
+  = \left(v ^{1} \frac{\partial h ^{j} }{\partial x ^{1}}+ \dots + v ^{n}\frac{\partial h ^{j} }{\partial x ^{n}}\right)(x).
+\end{gather*}
+
+On peut utiliser la formule que l'on avait démontré \(d(f \circ h) = df \circ Th\).
+
+\begin{gather*}
+  \ref{dxj} = d x^{j}(Th(\overrightarrow{v})) = d x^{j} \circ Th(\overrightarrow{v}) = d(x ^{j} \circ h)(\overrightarrow{v}).
+\end{gather*}
+
+Donc pour tout \(j\), \(h ^{*}(d x^{j})(\overrightarrow{v}) = d(x ^{j}\circ h)(\overrightarrow{v}), \forall \overrightarrow{v} \in TU\), donc
+
+\[h ^{*}(d x^{j}) = d(x ^{j}\circ h).\]
+
+Alors
+
+\begin{gather*}
+  h ^{*}\alpha = \sum_{1 \leq i_1 \less \dots \less i_k \leq n}d(x ^{i_1}\circ h)\wedge \dots \wedge d(x ^{i_k}\circ h).
+\end{gather*}
+
+%fig19
+
+On va ``nommer'' ce point (le jaune) \(h(y ^{1}, \dots, y ^{n}) = (h ^{1}(y), \dots, h ^{n}(y))\).
+
+Alors
+
+\begin{gather*}
+  h ^{*} \alpha = \sum \underbrace{(\alpha _{i_1 \dots i_k \circ h})}_{b _{i_1 \dots i_k}} d^{i_1}\wedge \dots \wedge d^{i_k}.
+\end{gather*}
+
+\begin{remark}
+  De la même manière, on peut démontrer que pour toute fonction \(f \in \mathcal{C}^{\infty}(V)\),
+
+  \[h ^{*}(\alpha f) = d (f \circ h).\]
+\end{remark}
+
+\begin{prop}
+  Pour toute forme différentielle \(\alpha \in \mathscr{A}^{k}(V)\), \(h : U \longrightarrow V \mathcal{C}^{\infty}\) difféomorphisme, on a
+
+  \[d(h ^{*} \alpha) = h ^{*}(d \alpha).\]
+\end{prop}
+
+%diag comm
+
+\begin{proof}
+  On peut définir \(\widetilde{d} = h ^{*} \circ d \circ(h ^{-1})^{*} :\mathscr{A}^{k}(U) \longrightarrow \mathscr{A}^{k+1}(U)\). Alors
+
+  \begin{enumerate}
+    \item \(\widetilde{d}\) est linéaire.
+    \item \(\widetilde{d}(a d x^{i_1}\wedge \dots \wedge d x^{i_k}) \stackrel{?}{=}\widetilde{d}a \wedge d x^{i_1}\wedge \dots \wedge d x^{i_k}\).
+  \end{enumerate}
+
+  On va démontrer le deuxième point. On a
+
+  \begin{gather*}
+    \widetilde{d}(a d x^{i_1}\wedge \dots \wedge d x^{i_k}) = h ^{*}d(h ^{-1})^{*}(a d x^{i_1}\wedge \dots \wedge d x^{i_k}) = h ^{*}d[(a \circ h ^{-1})d(x ^{i_1}\circ h ^{-1})\wedge \dots \wedge d(x ^{i_k}\circ h ^{-1})] \\
+    = h ^{*}[d(a \circ h ^{-1})\wedge d(x ^{i_1}\circ h ^{-1}) \wedge \dots \wedge d(x ^{i_k}\circ h ^{-1})] = h ^{*}(d(a \circ h ^{-1}) \wedge h ^{*}(d(x ^{i_1}\circ h ^{-1})) \wedge \dots \wedge h ^{*}(d(x ^{i_k}\circ h ^{-1}))) \\
+    = da \wedge d x^{i_1}\wedge \dots \wedge d x^{i_k} = d(a d x^{i_1}\wedge \dots \wedge d x^{i_k}).
+  \end{gather*}
+
+  Donc \(\widetilde{d} = d\) et on obtient \(h ^{*} \circ d \circ(h ^{-1})^{*} = d\), mais ça implique que \(h ^{*} \circ d = d \circ h ^{*}\).
+
+  (On utilise \(\beta = h ^{*}\alpha \iff \alpha = (h ^{-1})^{*}\beta\)).
+\end{proof}
+
+\begin{remark}
+  Pour toutes fonctions \(f, g ^{1}, \dots, g ^{k}\), on a
+
+  \[d(f dg ^{1}\wedge \dots \wedge d g ^{k}) = df \wedge dg ^{1}\wedge \dots \wedge d g ^{k}.\]
+\end{remark}
+
+\begin{proof}
+  On utilise \(d(\alpha \wedge \beta) = d \alpha \wedge \beta + (-1)^{k}\alpha \wedge d \beta\). Ici \(\alpha  = f \in \mathcal{C}^{\infty}(U) = \mathscr{A}^{0}(U)\) et \(\beta = d g ^{1}\wedge \dots \wedge d g ^{k}\).
+
+  %%%fin démo remarque
+\end{proof}
+
+\subsubsection{Opérateurs curl (rot), div}
+
+Revenons au cas où \(n=3\).
+
+\begin{enumerate}
+  \item Si \(\alpha \in \mathscr{A}^{0}(U)\), alors \(\alpha \in \mathcal{C}^{\infty}(U)\).
+  \item Si \(\beta \in \mathscr{A}^{1}(U), \beta = f dx + g dy + h dz\).
+  \item Si \(\theta \in \mathscr{A}^2(U), \theta = P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy\).
+  \item Si \(\omega \in \mathscr{A}^3(U), \omega = \rho d x \wedge dy \wedge dz\).
+\end{enumerate}
+
+Pour \(\alpha \in \mathcal{C}^{\infty}(U)\),
+
+\begin{gather*}
+  \beta = d \alpha = \displaystyle \sum_{j=1}^{n}\displaystyle \frac{\partial \alpha }{\partial x ^{j}}d x^{j}.
+\end{gather*}
+
+Donc
+
+\begin{gather*}
+  [f \ g \ h] = \left[ \frac{\partial  \alpha}{\partial x}, \frac{\partial \alpha }{\partial y}, \frac{\partial \alpha }{\partial z}  \right].
+\end{gather*}
+
+\(\nabla_g \alpha = \sharp_g(d \alpha)\), donc il y a une correspondance entre \(\beta = d \alpha\) et \(\nabla \alpha\).
+
+Si \(\beta = f dx + g dy + h dz\),
+
+\begin{gather*}
+  d \beta = df \wedge dx  + dg \wedge dy + dh \wedge dz \\
+  = \left(\frac{\partial f }{\partial x}dx + \frac{\partial f }{\partial y} dy + \frac{\partial f }{\partial z} dz   \right)\wedge dx + \left(\frac{\partial g }{\partial x}dx + \frac{\partial g }{\partial y} dy + \frac{\partial g }{\partial z} dz   \right)\wedge dy + \left(\frac{\partial h }{\partial x}dx + \frac{\partial h }{\partial y} dy + \frac{\partial h }{\partial z} dz   \right)\wedge dx\\
+   = \frac{\partial f }{\partial x }d x \wedge dx + \frac{\partial f }{\partial y }d y \wedge dx + \frac{\partial f }{\partial z }d z \wedge dx  + \frac{\partial g }{\partial x }d x \wedge dy\\
+    + \frac{\partial g }{\partial y }d y \wedge d y + \frac{\partial g }{\partial z }d z \wedge dy + \frac{\partial h }{\partial x }d x \wedge d z + \frac{\partial h }{\partial y}d y \wedge dz  + \frac{\partial h }{\partial z }d z \wedge dz \\
+   = \left(\frac{\partial h }{\partial y}- \frac{\partial g }{\partial z}  \right) dy \wedge dz + \left(\frac{\partial f}{\partial z}- \frac{\partial h }{\partial x}  \right) dz \wedge dx + \left(\frac{\partial g}{\partial x}- \frac{\partial f }{\partial y}  \right) dx \wedge dy.
+\end{gather*}
+
+Si \(\theta = P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy\) et \(\theta = d \beta, \beta = f dx + g dy+ d hz\), alors
+
+\[\begin{cases}
+  P = \frac{\partial h }{\partial y} - \frac{\partial g }{\partial z}\\
+  Q = \frac{\partial f }{\partial z} - \frac{\partial h }{\partial x}\\
+  R = \frac{\partial g }{\partial x} - \frac{\partial f }{\partial y}.
+\end{cases}\]
+
+On définit \(\langle f,g,h \rangle \longrightarrow \langle P,Q,R \rangle  \) tel que
+
+\begin{gather*}
+  (P,Q,R) = \left\langle \frac{\partial  }{\partial x}, \frac{\partial  }{\partial y}, \frac{\partial  }{\partial z}     \right\rangle \times \langle f,g,h \rangle = \operatorname{curl}(f,g,h) = \operatorname{rot}(f,g,h).
+\end{gather*}
+
+\begin{definition}
+  Si \(\overrightarrow{F} = (f,g,h) : U \longrightarrow \mathbb{R}^3\) est une application vectorielle, on définit
+
+  \[\operatorname{rot}(\overrightarrow{F}) := \left(\frac{\partial h }{\partial y} - \frac{\partial g }{\partial z},\frac{\partial f }{\partial z} - \frac{\partial h }{\partial x},\frac{\partial g }{\partial x} - \frac{\partial f }{\partial y} \right) : U \longrightarrow \mathbb{R}^3.\]
+\end{definition}
+
+
+
+Si \(\theta = P dy \wedge dz + Q dz \wedge dx + R dx \wedge dy, \omega = \rho dx \wedge dy \wedge dz\).
+
+Si \(\omega = d \theta\), on a
+
+\begin{gather*}
+  d \theta = d(P dy \wedge dz) + d(Q dz \wedge dx) + d(R dx \wedge dy)  = dP \wedge dy \wedge dz + dQ \wedge dz \wedge dx + dR \wedge dx \wedge dy.
+\end{gather*}
+
+On a \(dP = \frac{\partial P }{\partial x}dx + \frac{\partial P }{\partial y}dy + \frac{\partial P }{\partial z}dz\),
+
+\begin{gather*}
+  dP \wedge dy \wedge dz =  \frac{\partial P }{\partial x}dx \wedge dy \wedge dz + \frac{\partial P }{\partial y}dy \wedge dy \wedge dz + \frac{\partial P }{\partial z}dz\wedge dy \wedge dz =  \frac{\partial P }{\partial x}dx \wedge dy \wedge dz.
+\end{gather*}
+
+De plus, on a
+
+\begin{gather*}
+  d Q \wedge dz \wedge dx = \left(\frac{\partial Q}{\partial x}dx+ \frac{\partial Q }{\partial y}dy + \frac{\partial Q }{\partial x}dz   \right)\wedge dz \wedge dx \\
+  = \frac{\partial Q}{\partial y}dy \wedge dz \wedge dx = (-1) \frac{\partial Q }{\partial y}dy \wedge dx \wedge dz = (-1)^2 \frac{\partial Q}{\partial y} dx \wedge dy \wedge dz = \frac{\partial Q }{\partial y}dx \wedge dy \wedge dz.
+\end{gather*}
+
+Si \(\omega = d \theta\), alors \(\rho = \frac{\partial P }{\partial x}+ \frac{\partial Q}{\partial y} + \frac{\partial R }{\partial z}\). On définit
+
+\[\langle P,Q,R \rangle  \stackrel{\operatorname{div}}{\longrightarrow} \frac{\partial P }{\partial x}+ \frac{\partial Q }{\partial y}+ \frac{\partial R }{\partial z}.\]
+
+\begin{definition}
+  Si \(\overrightarrow{G} = (P,Q,R) : U \longrightarrow \mathbb{R}^3\) est une application vectorielle, alors
+
+  \[\operatorname{div}(\overrightarrow{G}) = \frac{\partial P }{\partial x} + \frac{\partial Q }{\partial y}+ \frac{\partial R }{\partial z} : U \longrightarrow \mathbb{R}.\]
+\end{definition}
+
+\begin{remark}[Notations]
+
+  \
+
+  \begin{enumerate}
+    \item On note \(\nabla f\) ou \(\operatorname{grad}f\) le gradient de \(f\).
+    \item On note \(\nabla \times \overrightarrow{F} = \operatorname{rot} \overrightarrow{F} = \operatorname{curl}\overrightarrow{F} \in \mathcal{C}^{\infty}(U,\mathbb{R}^3)\).
+    \item On note \(\nabla \cdot \overrightarrow{G} = \operatorname{div}\overrightarrow{G} \in \mathcal{C}^{\infty}(U)\).
+  \end{enumerate}
+\end{remark}
+
+\begin{remark}
+  \[\operatorname{div}(\nabla f) = \frac{\partial  }{\partial x}\left(\frac{\partial f }{\partial x} \right)+ \frac{\partial  }{\partial y}\left(\frac{\partial f }{\partial y} \right)+ \frac{\partial  }{\partial z}\left(\frac{\partial f }{\partial z} \right) = \frac{\partial ^2 f }{\partial x ^2} + \frac{\partial ^2 f }{\partial y ^2}+ \frac{\partial^2 f}{\partial z ^2}\]
+
+  n'est pas nul en général. On définit le laplacien de la manière suivante :
+
+  \[\Delta f \stackrel{\text{déf}}{=} \text{ cet objet.}\]
+\end{remark}
+
+\emph{Question classique : } Si \(\overrightarrow{F} : U \longrightarrow \mathbb{R}^3, \mathcal{C}^{\infty}\) donnée tel que \(\operatorname{rot}\overrightarrow{F} = 0\), existe-t-il \(f \in \mathcal{C}^{\infty}\) tel que \(\overrightarrow{F} = \nabla f\) ?
+
+\emph{Réponse :} En général non, mais cela marche si \(U\) est difféomorphe avec la boule unité dans \(\mathbb{R}^3\).
+
+De même, étant donné \(\overrightarrow{G} : U \longrightarrow \mathbb{R}^3, \overrightarrow{G} \in \mathcal{C}^{\infty}\) tel que \(\operatorname{div}\overrightarrow{G} \equiv 0\), existe-t-il \(\overrightarrow{F} : U \longrightarrow \mathbb{R}^3\) tel que \(\overrightarrow{G} = \operatorname{rot}\overrightarrow{F}\) ?
+
+En général non, sauf si \(U\) est difféomorphe avec la boule unité de \(\mathbb{R}^3\).
+
+\begin{exemple}
+  Prenons une fonction \(f(r, \theta) = \theta\) qui n'est même pas continue. On a \(U = \mathbb{R}^2 \setminus \{ 0 \}, \theta(x,y) =  \tan ^{-1}\left(\frac{y}{x}\right)\) qui n'est pas bien définie en général sur \(\mathbb{R}^2 \setminus \{ 0 \}\). On a
+
+  \[\nabla \theta = \left(\frac{- y/x ^2}{1 + y ^2/x ^2}, \frac{1/x}{1 + y ^2 /x ^2}\right) = \left(\frac{-y}{x ^2 + y ^2}, \frac{x}{x ^2 + y ^2}\right).\]
+
+  Donc définition :
+
+  \[\overrightarrow{F}(x,y) =\left(\frac{-y}{x ^2 + y ^2}, \frac{x}{x ^2 + y ^2}\right), \]
+
+  ou bien pour \(U = \mathbb{R}^2 \setminus \{ 0 \} \times \mathbb{R}\),
+
+  \[\overrightarrow{F}(x,y,z) = \left(\frac{-y}{x ^2 + y ^2}, \frac{x}{x ^2 + y ^2},0\right).\]
+
+  Alors \[\operatorname{rot}\overrightarrow{F} = \left(0,0, \frac{\partial  }{\partial x} \left(\frac{x}{x ^2 + y ^2} - \frac{\partial  }{\partial y}\left(\frac{-y}{x ^2 + y ^2}\right) \right)  \right) = (0,0,0).\]
+
+  Mais globalement il n'existe pas \(f : U \longrightarrow \mathbb{R}\) telle que \(\overrightarrow{F} = \nabla f\).
+\end{exemple}
+
 
 \end{document}

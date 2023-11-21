@@ -19,6 +19,7 @@
 \usepackage{svg}
 \usepackage[Glenn]{fncychap}
 
+\theoremstyle{definition}
 \newtheorem{prototheorem}{Théorème}[section]
 \newenvironment{thm}
    {\colorlet{shadecolor}{orange!10}\begin{shaded}\begin{prototheorem}}
@@ -34,7 +35,7 @@
     {\colorlet{shadecolor}{pink!15}\begin{shaded}\begin{protolemma}}
     {\end{protolemma}\end{shaded}}
 
-\theoremstyle{definition}
+
 \newtheorem{protodefinition}{Définition}[section]
 \newenvironment{definition}
     {\colorlet{shadecolor}{green!5}\begin{shaded}\begin{protodefinition}}
@@ -45,8 +46,11 @@
     {\colorlet{shadecolor}{blue!5}\begin{shaded}\begin{protoproposition}}
     {\end{protoproposition}\end{shaded}}
 
-\theoremstyle{remark}
-\newtheorem*{remark}{Remarque}
+\newtheorem*{protoremark}{Remarque}
+\newenvironment{remark}
+    {\colorlet{shadecolor}{yellow!5}\begin{shaded}\begin{protoremark}}
+    {\end{protoremark}\end{shaded}}
+
 \newtheorem{exo}{Exercice}
 \newtheorem*{protoexemple}{Exemple}
 \newenvironment{exemple}

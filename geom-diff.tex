@@ -4482,6 +4482,199 @@ On a \(\Phi_t \circ \Psi_t = \Psi_t \circ \Phi_t\) si et seulement si \(\operato
 
 \marginnote{15-11-2023}
 
+\begin{lemma}
+  Etant donné \(f \in \mathcal{C}^{\infty}(U) \text{ et } X : U \longrightarrow TU\) champ de vecteurs avec le flot \(\Phi\), on a pour tout \(x \in U\), il existe \(\rho : ]-\delta_x, \delta_x[ \longrightarrow \mathbb{R}\) avec \(f(0) = X \cdot f(x)\) et \(f(\Phi_t(x)) = f(x)+t \rho(t)\) (\(f\) est continue).
+\end{lemma}
+
+\begin{proof}
+  On a \(u(t) = f(\Phi_t(x))\) et
+
+  \[U'(t)\bigm|_{t=0} = \lim_{t \to 0} \frac{f(\Phi_t(x))-\stackrel{f(\Phi_0(x))}{f(x)}}{t} = X \cdot f(x). \]
+
+  Par conséquent
+
+  \[\lim_{t \to 0} \frac{u(t)-u(0)}{t} = X \cdot f(x).\]
+
+  Par définition, on a
+
+  \[\rho(t) = \begin{cases}
+    \frac{u(t)-u(0)}{t} \text{ si } t \neq 0, t \text{ assez petit} \\
+    X \cdot f(X) \text{ si } t=0.
+  \end{cases}\]
+
+  Alors
+
+  \[\rho(t) = \frac{u(t)-u(0)}{t} \implies u(t)=u(0)-t \rho(t) = f(x)+ t \rho(t),\]
+
+  et \(\rho(0)= X \cdot f(x)\)
+\end{proof}
+
+\begin{proof}[Démonstration du théorème]
+  Pour montrer le théorème, il faut montrer que \(\forall f \in \mathcal{C}^{\infty}(U), \forall x \in U\),
+
+  \[d_x f \left(\lim_{t \to 0} \frac{(\Phi _{-t})_{\sharp} Y(x)- Y(x)}{t} \right) \stackrel{?}{=} X \cdot(Y \cdot f)- Y \cdot(X \cdot f).\]
+
+  On a
+
+  \begin{gather}
+    d_x f \left(\lim_{t \to 0} \frac{(\Phi _{-t})_{\sharp} Y(x) - Y(x)}{t} \right)\\
+     = \lim_{t \to 0} d_x f \left(\frac{(\Phi _{-t})_{\sharp}Y(x)-Y(x)}{t}\right) = \lim_{t \to 0} \frac{d_x f((\Phi _{-t})_{\sharp} Y(x))- d_xf Y(x)}{t} \\
+    = \lim_{t \to 0} \frac{d_x f((\Phi _{-t})_{\sharp} Y(x)) - Y \cdot f(x)}{t} = \lim_{t \to 0} \frac{d_x f(T(\Phi _{-t})_{\sharp} Y(\Phi_t(x))- Y \cdot f(x))}{t}. \label{expression-compliquee}
+  \end{gather}
+
+  \begin{remark}[Rappel]
+    Pour \(g : U \longrightarrow V, f : V \longrightarrow \mathbb{R}, d (f \circ g) = df \circ Tg\).
+  \end{remark}
+
+  Alors
+
+  \begin{gather*}
+    \ref{expression-compliquee} = \lim_{t \to 0} \frac{d _{\Phi_t(x)} (f - t \rho(-t)) Y(\Phi_t(x))- Y \cdot f(x))}{t} =  \lim_{t \to 0} \frac{d _{\Phi_t(x)} f(Y (\Phi_t(x))) - Y \cdot f(x)) - t(d \rho(-t))(Y (\Phi _{-t}(x)))}{t} \\
+    = \lim_{t \to 0} \frac{Y \cdot f(\Phi_t(x))- Y \cdot f(x)}{t}- \lim_{t \to 0} Y \cdot(\rho(-t))(\Phi_t(x)) = X \cdot(Y \cdot f)(x) - Y \cdot(X \cdot f)(x).
+  \end{gather*}
+\end{proof}
+
+{\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} Pour tout \(t\), on a une fonction \(\rho(t)\) qui dépend de \(x\) avec \(\rho(0) = X \cdot f\).
+
+\
+
+Quand on parle de \(Y \cdot \rho(-t)\), \(t\) est seulement un paramètre et l'action de \(Y\) sur \(\rho(-t)\) n'engage pas les dérivées en \(t\). Donc en fait \(Y \cdot(\rho(-t)) \longrightarrow Y \cdot \rho(0) = Y \cdot (X \cdot f)\).
+
+\paragraph{Calcul de \([X,Y]\) dans les coordonnées \(X = \displaystyle\sum X ^{i}\displaystyle\frac{\partial  }{\partial x ^{i}}, Y =  \displaystyle\sum Y ^{i}\displaystyle\frac{\partial  }{\partial x ^{j}}\)}
+
+
+On a \(X \cdot f = \displaystyle \sum_{i}^{} X ^{i} \displaystyle \frac{\partial f }{\partial x ^{i}}, Y \cdot f = \displaystyle \sum_{j}^{} Y ^{j} \displaystyle \frac{\partial f }{\partial x ^{j}}\).
+
+Alors
+
+\begin{gather*}
+  X \cdot (Y \cdot f) = \sum_{i} X ^{i} \left(\frac{\partial Y \cdot f }{\partial x ^{i}} \right), Y \cdot(X \cdot f) = \sum_{j} Y ^{j} \left(\frac{\partial X \cdot f }{\partial x ^{j}} \right),
+\end{gather*}
+
+ce qui donne
+
+\begin{gather*}
+  [X \cdot Y] \cdot f = X \cdot (Y \cdot f) - Y \cdot (X \cdot f) \\
+  = \sum_{i}^{} X ^{i}\left(\frac{\partial  }{\partial x ^{i}} \left(\sum_{j} Y ^{j}\frac{\partial f }{\partial x ^{j}}  \right)\right) - \sum_{j} Y^{j}\left(\frac{\partial  }{\partial x ^{j}} \left(\sum_{i} X^{i}\frac{\partial f }{\partial x^{i}}  \right)\right) \\
+  = \sum_{i}\sum_{j} X ^{i} \frac{\partial Y ^{j} }{\partial x ^{i}} \frac{\partial f }{\partial x ^{j}} + \sum_{i}\sum_{j} X ^{i} Y ^{j} \frac{\partial ^2 f }{\partial x ^{i} x ^{j}} - \sum_{j}\sum_{i} Y^{j} \frac{\partial X^{i} }{\partial x ^{j}} \frac{\partial f }{\partial x^{i}} - \sum\sum Y^{j} X^{i} \frac{\partial ^2 f }{\partial x^{j} x^{i}} \\
+  = \sum_{i,j} X ^{i} \frac{\partial Y ^{j} }{\partial x ^{i}} \frac{\partial f }{\partial x ^{j}} - Y ^{j} \frac{\partial X ^{i} }{\partial x ^{j}} \frac{\partial f }{\partial x ^{i}}  = \sum_{i} \sum_{j} \left(X ^{j}\frac{\partial Y ^{i} }{\partial x ^{j}} - Y ^{j} \frac{\partial X ^{i} }{\partial x ^{j}} \right)  \frac{\partial f }{\partial x^{i}}.
+\end{gather*}
+
+Si \([X,Y] = \displaystyle \sum_{i} [X,Y]^{i}\displaystyle\frac{\partial  }{\partial x ^{i}}\), alors \([X,Y]\cdot f = \displaystyle \sum_{i}[X,Y]^{i}\displaystyle\frac{\partial f }{\partial x ^{i}}\). Donc
+
+\[[X,Y]^{i} = \sum_{j} \left(X ^{j} \frac{\partial Y ^{i} }{\partial x ^{j}} - Y ^{j}\frac{\partial X ^{i} }{\partial x ^{j}}\right).\]
+
+\begin{exemple}
+  Si \(X = \displaystyle \frac{\partial  }{\partial x ^{i}}, Y = \displaystyle \frac{\partial  }{\partial x ^{j}}\), on a \(\left[\frac{\partial  }{\partial x ^{i}}, \frac{\partial  }{\partial x ^{j}}  \right] = 0\).
+
+  Posons, sur \(\mathbb{R} \setminus \{ 0 \} = U\),
+
+  \begin{gather*}
+    X(x,y) = \frac{x}{\sqrt{x ^2 + y ^2}}\frac{\partial  }{\partial x} + \frac{y}{\sqrt{x ^2 + y ^2}} \frac{\partial  }{\partial y} \\
+    Y(x,y) = - \frac{y}{\sqrt{x ^2 + y ^2}}\frac{\partial  }{\partial x} + \frac{x}{\sqrt{x ^2 + y ^2}} \frac{\partial  }{\partial y}.
+  \end{gather*}
+
+  Le point d'arrivée après l'application de \(\Psi _{-s} \circ \Phi _{-t} \circ \Psi _{s} \circ \Phi _{t}\) est de coordonnées polaires \(\left(r, \theta + \displaystyle \frac{s}{r+t}- \displaystyle \frac{s}{r}\right) \neq (r,\theta)\).
+
+  Or d'après la proposition \([X,Y] = 0 \iff \Psi_s \circ \Phi_t = \Phi_t \circ \Psi_s\). On ne peut donc pas avoir \([X,Y]=0\). On a par ailleurs :
+
+  \begin{gather*}
+    \overrightarrow{F} = \begin{bmatrix}
+      \frac{x}{\sqrt{x ^2 + y ^2}} \\
+      \frac{y}{\sqrt{x ^2 + y ^2}}
+  \end{bmatrix}, \overrightarrow{G} = \begin{bmatrix}
+    - \frac{y}{\sqrt{x ^2 + y ^2}}\\
+    \frac{x}{\sqrt{x ^2 + y ^2}}
+\end{bmatrix}.
+  \end{gather*}
+\end{exemple}
+
+\begin{prop}
+  Si on définit \(\Gamma(t) = \Psi _{-t} \circ \Phi _{-t}\circ \Psi_t \circ \Phi_t(x), \Gamma(0) = x\). On a \(\Gamma(0) = 0\), \(\Gamma ^{k}(0) = k [X,Y](x)\).
+
+  %%diagramme
+
+  \((r,\theta)\longmapsto \left(r,\theta+ \frac{s}{r+t}-\frac{t}{r}\right)\).
+
+  Alors on écrit \(\Gamma(t)(r,\theta) = \left(r,\theta+ \frac{s}{r+t}-\frac{t}{r}\right)\) en coordonnées polaires. En coordonnées polaires, on a
+
+  \begin{gather*}
+    \Gamma(t) = \left(r \cos \left(\theta+\frac{t}{r + \theta} - \frac{t}{r}\right), r \sin \left(\theta+ \frac{t}{r+\theta}- \frac{t}{r}\right)\right) = (r \cos(\theta(t)), r \sin(\theta(t))).
+  \end{gather*}
+\end{prop}
+
+\begin{prop}[Quelques propriétés du Crochet de Lie]
+
+  \
+
+  \begin{enumerate}
+    \item Pour tous \(X,Y\) champs de vecteurs, \([X,Y] = -[Y,X]\).
+    \item Pour tout \(X\) champ de vecteurs, \([X,X] = 0\).
+    \item Pour tout \(c \in \mathbb{R}, [cX,Y] = c[X,Y]\) et \([X,cY] = c[X,Y]\) et
+
+    \begin{gather*}
+      \forall X, \widetilde{X}, Y, \widetilde{Y}, [X+ \widetilde{X}, Y] = [X,Y]+ [\widetilde{X}, Y], [X,Y + \widetilde{Y}] = [X,Y] + [X,\widetilde{Y}].
+    \end{gather*}
+
+    \item Pour tous \(X,Y,Z \mathcal{C}^{\infty}\),
+
+    \[[[X,Y], Z] + [[Y,Z],X]+ [[Z,X],Y] \equiv 0.\]
+
+    {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} \([X,Y]\) n'est pas linéaire par multiplication par une fonction scalaire non constante.
+
+    \item \label{crochet-lie-fct} Pour \(f \in \mathcal{C}^{\infty}(U), f X(x) = \stackrel{\text{déf}}{=}f(x)X(x)\), on a
+
+    \[\begin{cases}
+      [fX,Y] = f [X,Y]-(Y \cdot f)X \\
+      [X,f Y] = f[X,Y] + (X \cdot f)Y.
+    \end{cases}\]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  On démontre le point \ref{crochet-lie-fct}. On a
+
+  \begin{gather*}
+    [fX,Y]\cdot g = (fX) \cdot (Y \cdot g)  - Y \cdot(f X \cdot g) = (f X) \cdot (Y \cdot g) - Y \cdot (f (X \cdot g)) \\
+    = f(X \cdot (Y \cdot g)) -  Y \cdot(f \cdot(X \cdot g)) = f(X \cdot(Y \cdot g)) - d(f(X \cdot g))(Y) \\
+    = f(X \cdot(Y \cdot g)) - (X \cdot g)d f(Y) - f d (X \cdot g)(Y) = f(X \cdot(Y \cdot g)) - (X \cdot g)(Y \cdot f) - f Y \cdot (X \cdot g) \\
+    = f((X \cdot (Y \cdot g)) - Y \cdot (X \cdot g))- (Y \cdot f)(X \cdot g) = (f [X,Y] - (Y \cdot f)X)g.
+  \end{gather*}
+\end{proof}
+
+Soit \(X\) un champ de tenseur \(\mathcal{C}^{\infty}\) avec le flot \(\Phi\). Soit \(\alpha : U \longrightarrow T ^{k} U\) un champ de tenseur covariant.
+
+\begin{definition}
+  On définit la dérivée de Lie de \(X\) le long de \(X\) par
+
+  \[\forall x \in U \mathcal{L}_X \alpha(x) \stackrel{\text{déf}}{:=} \lim_{t \to 0} \frac{(\Phi_t)^{*} \alpha(x)-\alpha(x)}{t} \in T_x ^{k} U = \Omega ^{k}(T_x U).\]
+\end{definition}
+
+\begin{remark}[Rappel]
+  On a
+
+  \[(\Phi_t)^{*}\alpha(x)(\overrightarrow{v_1}, \dots, \overrightarrow{v_k}) = \alpha \circ(\Phi_t(x))(T \Phi_t(\overrightarrow{v_1}), \dots, T \Phi_t(\overrightarrow{v_k})).\]
+\end{remark}
+
+Donc \(\mathcal{L}_X \alpha : U \longrightarrow T ^{k} U\) est aussi un champ de tenseurs. Si \(X \in \mathcal{C}^{\infty}, \alpha\) est \(\mathcal{C}^{\infty}\), alors \(\mathcal{L}_X \alpha\) est aussi \(\mathcal{C}^{\infty}\).
+
+\begin{definition}
+  Si \(\beta : U \longrightarrow T_l U\) est un champ de tenseurs contravariant, on définit la dérivée de Lie de \(\beta\) le long de \(X\) par
+
+  \[\mathcal{L}_X \beta \stackrel{\text{déf}}{:=} \lim_{t \to 0}\frac{(\Phi _{-t})_{\sharp} \beta - \beta}{t}.\]
+\end{definition}
+
+\(\mathcal{L}_X \beta : U \longrightarrow T_l U\) est aussi un champ de tenseur contravariant de même ordre avec la même régularité de \(\beta\).
+
+Si l'on interprète une fonction scalaire comme un champ de l'ordre 0 (\(\forall x \in U, F(x) \in \Lambda ^{0}(T_x U) \simeq \mathbb{R}\)). On peut alors écrire
+
+\[X \cdot f = \mathcal{L}_X f = df(X).\]
+
+Si \(Y\) est un champ de vecteur sur \(U\), on obtient, comme \(Y : U \longrightarrow T_l U\) un champ de tenseurs contravariants de l'ordre 1, \([X,Y] = \mathcal{L}_X Y\). Notez que \[\mathcal{L}_X \beta = - \lim_{t \to 0} \frac{(\Phi_t)_{\sharp} \beta - \beta}{t}.\]
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%15/11/2023%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4491,8 +4684,7 @@ On a \(\Phi_t \circ \Psi_t = \Psi_t \circ \Phi_t\) si et seulement si \(\operato
 Mais
 
 \begin{gather*}
-  \frac{d}{dt}\left(\frac{\partial \Phi_t^{k} }{\partial x ^{i}}(x) \right) = \frac{\partial  }{\partial x ^{i}}\left(\frac{d}{dt}\Phi ^{k}_t(x)\right) = \frac{\partial  }{\partial x ^{i}} \left(\frac{d}{dt} \gamma_x ^{k}(t)\right) \\
-  = \frac{\partial  }{\partial x ^{i}} \left(X ^{k}(\gamma_x(t))\right).
+  \frac{d}{dt}\left(\frac{\partial \Phi_t^{k} }{\partial x ^{i}}(x) \right) = \frac{\partial  }{\partial x ^{i}}\left(\frac{d}{dt}\Phi ^{k}_t(x)\right) = \frac{\partial  }{\partial x ^{i}} \left(\frac{d}{dt} \gamma_x ^{k}(t)\right)   = \frac{\partial  }{\partial x ^{i}} \left(X ^{k}(\gamma_x(t))\right).
 \end{gather*}
 
 Donc

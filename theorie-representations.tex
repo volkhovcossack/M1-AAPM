@@ -3824,4 +3824,173 @@ Pour la preuve on utilise
 \end{exemple}
 
 
+
+\begin{definition}\marginnote{22-11-2023}
+  Soit \((\mathfrak{g}, [\cdot,\cdot])\) une algèbre de Lie et \(\mathfrak{h}\subset \mathfrak{g}\) un sous-espace tel que \([\mathfrak{h}, \mathfrak{h}]\subset\mathfrak{h}\) est
+
+  \begin{enumerate}
+    \item appelé sous-algèbre de Lie de \(\mathfrak{g}\) et
+    \item idéal si \([X,Y] \in \mathfrak{h}\)
+    \item Le centre de \(\mathfrak{g}\) est l'idéal \(\{ X \in \mathfrak{g}, [Y,X] = 0, \forall Y \in \mathfrak{g}\}\).
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Soient \(\mathfrak{g}, \mathfrak{h}\) des algèbres de Lie de dimension finie. \(\varphi\) est appelé \textbf{homomorphisme d'algèbres de Lie} si \(\varphi([X,Y]) = [\varphi(X), \varphi(Y)], \forall X,Y \in \mathfrak{g}\).
+  Si \(\varphi\) est une bijection, on l'appelle \textbf{isomorphisme d'algèbre de Lie} et \textbf{automorphisme d'algèbre de Lie} si \(\mathfrak{g} = \mathfrak{h}\).
+\end{definition}
+
+\begin{prop}
+  \(\operatorname{Ker}(\varphi)\) est un idéal.
+\end{prop}
+
+\begin{exemple}
+  \(\mathfrak{g} = \mathbb{R}^3\) avec le produit vectoriel et \(\mathfrak{h} = \{ X \in \mathbb{M}(3,\mathbb{R}) \}\) avec le commutateur. On pose \(\varphi : \mathfrak{g} \longrightarrow \mathfrak{h}\),
+
+  \[\varphi(x_1,x_2,x_3) = \begin{pmatrix}
+  0 & -x_3 & x_2 \\
+  x_3 & 0 & -x_1 \\
+  -x_2 & x_1 & 0
+  \end{pmatrix}\]
+
+  est un isomorphisme d'algèbres de Lie.
+\end{exemple}
+
+\begin{exemple}
+  \(\mathbb{K} = \{ X \in \mathbb{M}(2,\mathbb{C}), \operatorname{Tr}(X) = 0 \}\) avec commutateur. \(\psi : \mathfrak{h} \longrightarrow \mathbb{K}\) défini comme suit :
+
+  \[\begin{pmatrix}
+  0 & -c & b\\
+  c & 0 & -a \\
+  b & a & 0
+  \end{pmatrix} \longmapsto \frac{1}{2 i}\begin{pmatrix}
+  c & a - ib \\
+  a + ib & -c
+  \end{pmatrix}\]
+
+  est un isomorphisme d'algèbres de Lie.
+\end{exemple}
+
+
+\begin{definition}
+  Pour \(x \in \mathfrak{g}\) une algèbre de Lie, soit \(\operatorname{ad}_X : \mathfrak{g} \longrightarrow \mathfrak{g}, \operatorname{ad}_X := [X,Y]\).
+  \(\operatorname{ad} : \mathfrak{g} \longrightarrow \mathbb{B}(\mathfrak{g}), X \mapsto \operatorname{ad}_X\) est appelé l'application adjointe (ou représentation adjointe).
+\end{definition}
+
+\begin{prop}
+  \(\operatorname{ad} : \mathfrak{g} \longrightarrow \mathbb{B}(\mathfrak{g})\) est un homomorphisme d'algèbres de Lie, i. e.
+
+  \[\operatorname{ad}_{[X,Z]} = [\operatorname{ad}_X,\operatorname{ad}_Z].\]
+\end{prop}
+
+\begin{thm}
+  Toute algèbre de Lie (de dimension finie) est isomorphe à une sous-algèbre de Lie de \(\mathbb{M}((n,\mathbb{K}))\).
+\end{thm}
+
+\begin{proof}
+  Cas où \(\mathfrak{g}\) n'admet pas d'idéal non trivial, alors \(\operatorname{Ker}(\operatorname{ad}) = \text{ centre de } \mathfrak{g}\) est trivial, \(\mathfrak{g}\) est isomorphe à \(\operatorname{Im}(\operatorname{ad}) = \mathbb{B}(\mathfrak{g})\).
+
+  Dans le cas général, c'est admis.
+\end{proof}
+
+\begin{definition}
+  La somme directe de deux algèbres de Lie \(\mathfrak{g}_1,\mathfrak{g}_2\) est l'algèbre de Lie
+  \begin{gather*}
+    \mathfrak{g}_1 \oplus \mathfrak{g}_2 = \{ (x_1,x_2)\in \mathfrak{g}_1 \times \mathfrak{g}_2, x_j \in \mathfrak{g}_j \} \\
+    [(x_1,x_2),(y_1,y_2)]:= ([x_1,y_1],[x_2,y_2]).
+  \end{gather*}
+\end{definition}
+
+\begin{definition}
+  Une algèbre de Lie \(\mathfrak{g}\) est appelée :
+
+  \begin{enumerate}
+    \item \textbf{irréductible} si elle n'admet pas d'idéal différent de \(\{ 0 \}\) et \(\mathfrak{g}\) ;
+    \item \textbf{simple} si elle est irréductible et \(\operatorname{dim}(\mathfrak{g}) \bg 1\) (si et seulement si elle est irréductible et non abélienne) ;
+    \item \textbf{semi-simple} si
+
+    \[g = \bigoplus _{i=1}^{n} \mathfrak{g}_i,\]
+
+    avec \(\mathfrak{g}_i \subset \mathfrak{g}\) des sous-algèbres de Lie.
+  \end{enumerate}
+
+\end{definition}
+
+\begin{exemple}
+  \(\mathfrak{S}\mathfrak{l}(2,\mathbb{C}) = \{ X \in \mathbb{M}(2,\mathbb{C}), \operatorname{Tr}(X)=0\}\) est simple.
+\end{exemple}
+
+\begin{proof}
+  \(X \in \mathfrak{S}\mathfrak{l} \iff X = \displaystyle \begin{pmatrix}
+  b & a \\
+  c & -b
+  \end{pmatrix},a,b,c \in \mathbb{C}\).
+
+  Donc \(\mathfrak{S}\mathfrak{l}\) est un espace vectoriel sur \(\mathbb{C}\) engendré par \(H,X,Y\) avec
+
+  \[H = \begin{pmatrix}
+  1 & 0 \\
+  0 & -1
+\end{pmatrix},X = \begin{pmatrix}
+  0 & 1 \\
+  0 & 0
+  \end{pmatrix}, Y = \begin{pmatrix}
+  0 & 0 \\
+  1 & 0
+  \end{pmatrix}.\]
+
+  On a \([X,Y] = H, [H,X] = 2 X, [H,Y] = - 2 Y\).
+
+  Soit \(\mathfrak{h}\) un idéal non nul, \(Z = a X + b H + c Y \in \mathfrak{h}\). On a, si \(c \neq 0\),
+
+  \[[X,[X,Z]] = [X,- 2 b X + c H] = - 2 c X.\]
+  On a \([X,Y] = H, [H,Y] = - 2 Y\), donc \(X \in \mathfrak{h}, H \in \mathfrak{h}, Y \in \mathfrak{h}\)
+\end{proof}
+
+\subsection{Algèbre de Lie et groupe de Lie matriciel}
+
+\begin{definition}
+  Soit \(G\) un groupe de Lie matriciel. Son algèbre de Lie est
+
+  \[\mathfrak{g} = \{ X \in \mathbb{M}(n,\mathbb{C}), e^{tX}\in G , \forall t \in \mathbb{R} \}.\]
+
+  On a \(\mid\exp(ity)\mid = 1, \forall t \).
+\end{definition}
+
+\begin{prop}
+  De manière générale, on verra que \(G\) est une sous-variété différentielle de \(GL(n,\mathbb{C})\) et \(\mathfrak{g}\) est un sous-espace tangent à l'identité.
+\end{prop}
+
+\begin{prop}
+  \(X \in \mathfrak{g}\) si et seulement si \(e^{X} \in G_0\), la composante connexe de l'identité.
+\end{prop}
+
+\begin{proof}
+  \(c(t) = e^{tX}, t \in [0,1]\) est continue et \(c(0) = \operatorname{id}\).
+\end{proof}
+
+\begin{prop}
+  Soit \(G\) un groupe de Lie matriciel et \(\mathfrak{g}\) son algèbre de Lie. Alors pour \(X,Y \in \mathfrak{g}\),
+
+  \begin{enumerate}
+    \item \(A X A ^{-1} \in \mathfrak{g}, \forall A \in G\).
+    \item \(X + sY \in \mathfrak{g}, \forall s \in \mathbb{R}\).
+    \item \(XY - Y X \in \mathfrak{g}\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item On a \(A e^{tX}A ^{-1} = e^{tA x A ^{-1}}\) (série).
+    \item \(e^{tX}\in G, \forall t\), alors \(e^{st X}, \forall s \in \mathbb{R},t \in \mathbb{R}\). Par la formule du produit de Lie,
+
+    \[e^{t(X+Y)} = \lim_{m \to \infty}(e^{X/m}e^{Y/m})^{m} \in G,\]
+
+    car dans \(GL(n,\mathbb{C})\) et \(G\) est fermé.
+  \end{enumerate}
+\end{proof}
+
 \end{document}

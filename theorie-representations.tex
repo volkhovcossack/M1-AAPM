@@ -3990,7 +3990,162 @@ Pour la preuve on utilise
     \[e^{t(X+Y)} = \lim_{m \to \infty}(e^{X/m}e^{Y/m})^{m} \in G,\]
 
     car dans \(GL(n,\mathbb{C})\) et \(G\) est fermé.
+    \item\marginnote{23-11-2023}
+
+    \[\frac{d}{dt}\left(e^{tX}Ye^{-tX}\right) = \frac{d}{dt}\left(e^{tX}\right)Y e^{-tX}+ e^{tX}Y \frac{d}{dt}e^{-tX},\]
+
+    donc, en prenant \(t=0\),
+
+    \[[X,Y] = \lim_{t \to 0}\frac{e^{tX}Y e^{-tX}(-Y)}{t},\]
+
+    \(\mathfrak{g}\) est fermé donc \([X,Y]\in \mathfrak{g}\).
   \end{enumerate}
 \end{proof}
+
+\begin{corollary}
+  L'algèbre de Lie d'un groupe de Lie matriciel est donc une sous-algèbre réelle de \(\mathbb{M}(n,\mathbb{C})\) avec \([X,Y] = XY-YX\).
+\end{corollary}
+
+\begin{corollary}
+  Si un groupe de Lie matriciel de \(G\) est abélien, alors son algèbre de Lie est abélienne.
+\end{corollary}
+
+\paragraph{Tableau récapitulant les principaux groupes de matrices et leurs algèbres associées}
+
+\
+
+
+\begin{tabular}{|c|c|}
+  \hline
+  Groupe de Lie & Algèbre de Lie\\
+  \hline
+  \(GL(n,\mathbb{K})\) & \(\mathfrak{gL}(n,\mathbb{K}) = \mathbb{M}(n,\mathbb{K})\) \\
+  \hline
+  \(SL(n,\mathbb{K})\) & \(\mathfrak{sL}(n,\mathbb{K}) = \{ X \in \mathbb{M}(n,\mathbb{K}), \operatorname{Tr}(X) = 0 \}\)\\
+  \hline
+  \(U(n)\) & \(\mathfrak{U}(n) = \{ X ; X ^{*} = - X \}\) \\
+  \hline
+  \(SU(n)\) & \(\mathfrak{SU}(n) = \{ X ; X ^{*} = - X \text{ et } \operatorname{Tr}(X) = 0\}\) \\
+  \hline
+  \(O(n)\) & \(\mathfrak{O}(n) = \{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \}\) \\
+  \hline
+  \(SO(n)\) & \(\{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \text{ et } \operatorname{Tr}(X) = 0  \}\) \\
+  \hline
+  \(O(p,q)\) & \(\mathfrak{O}(p,q) = \left\{ X \in \mathbb{M}(n,\mathbb{R}), g X ^{t}g = X, g =\begin{pmatrix}
+  \operatorname{id}_p & 0\\
+  0 & -\operatorname{id}_q
+  \end{pmatrix} \right\}\) \\
+  \hline
+  \(Sp(2n)\) & \(\mathfrak{Sp}(2n) = \left\{ X \in \mathbb{M}(n,\mathbb{R}), gX ^{t}g =  \begin{pmatrix}
+  0 & -\operatorname{id}_n \\
+  \operatorname{id}_n & 0
+  \end{pmatrix}\right\}\)\\
+  \hline
+\end{tabular}
+
+\section{Homomorphismes d'algèbres de Lie}
+
+\begin{prop}
+  Soient \(G,H\) des groupes de Lie matriciels et \(\mathfrak{g},\mathfrak{h}\) les algèbres de Lie associées. Soit \(\varphi  : G \longrightarrow H\) un homomorphisme. Alors il existe un unique \(\widehat{\varphi} \in \mathbb{B}(\mathfrak{g},\mathfrak{h})\) tel que
+
+  \[\varphi(e^{X}) = e^{\widehat{\varphi(X)}}, \forall X \in \mathfrak{g}.\]
+
+  \(\widehat{\varphi}\) est un homomorphisme d'algèbres de Lie
+
+  \[\forall X,Y \in \mathfrak{g}, \widehat{\varphi}([X,Y]) = [\widehat{\varphi}(X), \widehat{\varphi}(Y)]\]
+
+  et on a
+
+  \begin{enumerate}
+    \item \(\widehat{\varphi}(A X A ^{-1}) = \varphi(A)\widehat{\varphi}(X)\varphi(A ^{-1}), \forall X \in \mathfrak{g}, A \in G\) ;
+    \item \(\widehat{\varphi}(X) = \displaystyle \frac{d}{dt}\varphi(e^{tX})\bigm|_{t=0}\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  \(t \in \mathbb{R} \longmapsto \varphi(e^{iX})\) est un groupe à un paramètre, car \(\varphi\) est continu. On avait démontré que \(\varphi(e^{tX}) = e^{tZ}\) pour une matrice \(Z\) unique.
+
+  Soit \(\widehat{\varphi}(X):= Z\). On a alors \(\varphi(e^{X}) = e^{\widehat{\varphi}(X)}\) et \(\widehat{\varphi}(sX) = s \widehat{\varphi}(X)\). On a
+
+  \begin{gather*}
+    e^{t \widehat{\varphi}(X+Y)} = \varphi(e^{t(X+Y)}) = \varphi \left(\lim_{m \to \infty} (e^{tX/m}e^{tY/m})^{m} \right) = \lim_{m \to \infty}\varphi(e^{tX/m})\varphi(e^{tY/m}) )\\
+     = \lim_{m\to \infty} e^{t/m \widehat{\varphi}(X)}e^{t/m \widehat{\varphi}(Y)} = e^{t(\widehat{\varphi}(X) \widehat{\varphi}(Y))},
+  \end{gather*}
+
+  donc
+
+  \begin{gather*}
+    \frac{d}{dt}e^{t \widehat{\varphi}(X+Y)}\bigm|_{t=0} = \widehat{\varphi}(X+Y) = \frac{d}{dt} e^{t \widehat{\varphi}(X) + \widehat{\varphi}(Y)} = \widehat{\varphi}(X)+ \widehat{\varphi}(Y),
+  \end{gather*}
+
+  donc \(\widehat{\varphi}\) est linéaire.
+\end{proof}
+
+\begin{prop}
+  Soit \(\varphi : G \longrightarrow H\) homomorphisme de groupes de Lie matriciels et \(\widehat{\varphi} : \mathfrak{g} \longrightarrow \mathfrak{h}\) l'homomorphisme d'algèbres de Lie associé, alors
+
+  \begin{enumerate}
+    \item \(\operatorname{Ker}(\varphi)\) est un sous-groupe distingué fermé.
+    \item Son algèbre de Lie est \(\operatorname{Ker}(\varphi)\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  On a
+
+  \[\varphi(U X U ^{-1}) = \varphi(U)\varphi(X)\varphi(U ^{-1}) = \operatorname{id},\]
+
+  \(\operatorname{Ker}(\varphi) = \varphi ^{-1}(\{ \operatorname{id} \})\) est fermé car \(\varphi\) continue. Alors
+
+  \[\widehat{\varphi}(X) = 0 \implies e^{t \widehat{\varphi}(X)} = \operatorname{id} \implies e^{tX} \in \operatorname{Ker}(\varphi) \implies X \in \operatorname{Lie}(\operatorname{Ker}(\varphi))\]
+
+  et
+
+  \[e^{tX} \in \operatorname{Ker}(\varphi) \forall t \implies 1 = \varphi(e^{tX}) = e^{t \widehat{\varphi}(X)} \forall t \implies \widehat{\varphi}(X)=0.\]
+\end{proof}
+
+\begin{definition}
+  Soit \(G\) un groupe de Lie matriciel et \(\mathfrak{g}\) son algèbre de Lie. Pour \(A \in G\), l'application
+
+  \[\operatorname{Ad}_{A} : \mathfrak{g} \longrightarrow \mathfrak{g}, \operatorname{Ad}_A(X) = A X A ^{-1}\]
+
+  est appelée l'application adjointe (alias représentation adjointe).
+\end{definition}
+
+\begin{remark}
+  \(A e^{tX}A ^{-1} = e^{tA X A ^{-1}}\), donc \(\operatorname{Ad}\) est bien définie.
+\end{remark}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(\operatorname{Ad} : G \longrightarrow GL(\mathfrak{g})\) est un homomorphisme.
+    \item \(\operatorname{Im}(\operatorname{Ad}_A)\) est une sous-algèbre de Lie de \(GL(\mathfrak{g})\) :
+
+    \[\forall X,Y \in \mathfrak{g}, \operatorname{Ad}_{A}([X,Y]) = [\operatorname{Ad}_A(X), \operatorname{Ad}_A(Y)].\]
+    \item Son application associée est \(\operatorname{ad} = \widehat{\operatorname{Ad}}\), avec
+
+    \[\operatorname{ad} : \mathfrak{g} \longrightarrow \mathfrak{gl}(\mathfrak{g}), \operatorname{ad}_X(Y) = [X,Y].\]
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+  On a \(\operatorname{Ad}_A \operatorname{Ad}_B = \operatorname{Ad}_{AB}, (\operatorname{Ad}_A)^{-1} = \operatorname{Ad}_{A ^{-1}}\). De plus, \(\operatorname{Ad} \in \mathcal{C}^0(G,GL(\mathfrak{g}))\), car les opérations linéaires de groupes sont continues.
+
+  \[\operatorname{Ad}_A([X,Y]) = A X A ^{-1} A Y A ^{-1} - A Y A ^{-1} A X A ^{-1} = [\operatorname{Ad}_A(X), \operatorname{Ad}_A(Y)].\]
+
+  On avait démontré que \(\widehat{\operatorname{Ad}}(X) = \displaystyle \frac{d}{dt}\operatorname{Ad} _{e^{tX}}\bigm|_{t=0}\),
+
+  \[\frac{d}{dt}\operatorname{Ad} _{e^{tX}}(Y)\bigm|_{t=0} = \frac{d}{dt}e^{tX}Y e^{-tX}\bigm|_{0} = [X,Y] = \operatorname{ad}_X(Y).\]
+\end{proof}
+
+\begin{corollary}
+  Pour tout \(X,Y \in \mathbb{M}(n,\mathbb{C})\), on a
+
+  \[e^{X}Ye^{-X} = e^{\operatorname{ad}(X)}(Y)= \sum_{0}^{\infty} \frac{1}{m!}\operatorname{ad}_X ^{m}(Y). \]
+\end{corollary}
+
 
 \end{document}

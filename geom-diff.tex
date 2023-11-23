@@ -5519,9 +5519,183 @@ Si \(\omega = \rho d x^{1}\wedge \dots \wedge d x^{n}, V \subseteq U\), on peut 
 
 (Si \(U\) est connexe et \(\omega(x)\neq 0, \forall x \in U\), comme \(\omega \in \mathcal{C}^0\), on doit avoir soit \(\rho \bg 0\), soit \(\rho \less 0\) dans U).
 
-\(? = \mathcal{L}_X \omega \in \mathscr{A}^{n}(U)\). DOnc si \(\forall x \in U, \omega(x)\neq 0\), il existe \(f \in \mathcal{C}^{\infty}(U)\) telle que \(\mathcal{L}_X \omega = f \omega\).
+\(? = \mathcal{L}_X \omega \in \mathscr{A}^{n}(U)\). Donc si \(\forall x \in U, \omega(x)\neq 0\), il existe \(f \in \mathcal{C}^{\infty}(U)\) telle que \(\mathcal{L}_X \omega = f \omega\).
 
 %%%fig23
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%22/11%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%
+
+\
+
+\marginnote{23-11-2023}
+
+On a défini les notions de
+
+\begin{enumerate}
+  \item variété topologique \(M\) de dimension \(n\) ;
+  \item atlas pour \(M\) ;
+  \item la régularité de l'atlas ;
+  \item le changement de cartes
+
+  \[\xi _{\beta}\circ \xi _{\alpha}^{-1} :\xi _{\alpha}(U _{\alpha}) \longrightarrow \xi _{\beta},\]
+  \item variété différentiable de classe \(\mathcal{C}^r\) ;
+  \item atlas maximal \(\mathcal{C}^r\) pour une variété \(\mathcal{C}^r\) ;
+  \item \(T_x M\) classe d'équivalence :
+
+  \[E = \{ [(\alpha,x,\overrightarrow{v})] \mid \alpha \in I, \overrightarrow{v} \in \mathbb{R}^n \} = \sqcup _{\alpha} E_\alpha/ \sim\]
+
+  où \((\alpha, x, \overrightarrow{v}) \sim (\beta,x,\overrightarrow{w})\) si et seulement si \(\overrightarrow{w} = D(\xi _{\beta} \circ \xi _{\alpha}^{-1})(\xi _{\alpha}(x))\overrightarrow{v}\).
+\end{enumerate}
+
+\begin{definition}
+  Si \(f : M \longrightarrow \mathbb{R}^m, M\) de clase \(\mathcal{C}^r\), on dit que \(f\) est de classe \(\mathcal{C}^s\), \(s \leq r\) quand
+
+  \[\forall \alpha \in I, f \circ \xi _{\alpha}^{-1} : \xi _{\alpha}(U)\longrightarrow \mathbb{R}\]
+
+  est de classe \(\mathcal{C}^s\).
+
+  \[L _{\alpha}((\alpha, x, \overrightarrow{v})) = D(f \circ \xi _{\alpha}^{-1})(\xi _{\alpha}(x))\overrightarrow{v},\]
+
+  \[L _{\beta}((\alpha, x,\overrightarrow{w})) = D(f \circ \xi _{\beta}^{-1})(\xi _{\beta}(x))\overrightarrow{w}.\]
+\end{definition}
+
+%%%%fig24
+
+Docn \(L([\alpha, x, \overrightarrow{v}]_{\sim}) = L _{\alpha}(\alpha,x, \overrightarrow{v})\) est bien défini.
+
+\(L : T_x M \longrightarrow \mathbb{R}^m\) est bien défini comme une application linéaire
+
+\[T_x f : T_x M \longrightarrow T _{f(x)}\mathbb{R}^m,\]
+
+\[T_x f([\alpha, x, \overrightarrow{v}]_{\sim}) = (f(x),L _{\alpha}(\alpha,x,\overrightarrow{v})) \in \mathbb{R}^m\]
+
+est bien défini.
+
+On peut écrire \(TM = \displaystyle \bigcup _{x \in M} T_x M\) le fibré tangent avec projection \(\tau ^{1} = \pi :  TM \longrightarrow M\),
+
+\[\tau_1[(\alpha,x,\overrightarrow{v})]_{\sim}=x.\]
+
+\(TM\) devient une variété de classe \(\mathcal{C}^{r-1}\).
+
+Pour chaque carte \((U _{\alpha}, \xi _{\alpha})\) de \(M\), on considère
+
+\[\widetilde{U_{\alpha}}:= \bigcup _{x \in U _{\alpha}}T_x M \simeq U _{\alpha}\times \mathbb{R}^n,\]
+
+\(\widetilde{U _{\alpha}} \stackrel{\pi_2}{\longrightarrow} U_\alpha \times \mathbb{R}^n\), avec \(\pi_2 [(\alpha, x, \overrightarrow{v})]_{\sim} = (x,\overrightarrow{v}) \in U _{\alpha}\times \mathbb{R}^n\).
+
+On pose \(\widetilde{\xi _{\alpha}} : \widetilde{U _{\alpha}} \longrightarrow \xi _{\alpha}(U _{\alpha}) \times \mathbb{R}^n\) avec
+
+\[\widetilde{\xi _{\alpha}}((\alpha, x, \overrightarrow{v})) = (\xi _{\alpha}(x), L _{\alpha}(\alpha,x,\overrightarrow{v})) = T_x \xi _{\alpha}((\alpha, x,\overrightarrow{v})) = (\xi _{\alpha}(x),\overrightarrow{v}).\]
+
+On a \(\{ \widetilde{U _{\alpha}}, \widetilde{\xi _{\alpha}} \}\), \(\widetilde{\xi _{\alpha}} : \widetilde{U _{\alpha}} \longrightarrow \xi _{\alpha}(U _{\alpha})\times \mathbb{R}^n\), \(\xi _{\alpha}((\alpha,x,\overrightarrow{v})) = (x,\overrightarrow{v})\)
+est un atlas sur \(TM\) de régularité \(\mathcal{C}^{r-1}\).
+
+\begin{exo}
+  Trouver les changements de cartes et démontrer qu'ils sont de régularité \(\mathcal{C}^{r-1}\).
+\end{exo}
+
+On observe que \(TM\) est de dimension \(2n\). Pour tout \(x \in M\), il existe \(U \subseteq M\) ouvert tel que
+
+\[T U = \bigcup _{x \in M}T_x M\]
+
+est un ouvert de \(TM\) et en plus \(TU \simeq U \times \mathbb{R}^n\).
+
+On sait déjà que \(U \subseteq \mathbb{R}^n\), \(TU : U \times \mathbb{R}^n\). Mais en général, il peut arriver que \(TM\) ne soit pas équivalent à \(M \times \mathbb{R}^n\).
+
+\begin{exemple}
+  On pose
+
+  \[U_1 \cap U_2  = \left\{ (r,\theta) \mid - \frac{r}{2} \less \theta \less 0, \frac{\pi}{2}\less \theta \less \pi, \frac{3 \pi}{2} \less \theta \less 2 \pi \right\}.\]
+
+  Alors
+
+  \[\xi_2 \circ \xi_1 ^{-1} : \left]\frac{3 \pi}{2}, 2 \pi\right[\cup \left]\frac{\pi}{2},\pi\right[\longrightarrow \mathbb{R},\]
+
+  avec
+
+  \[\xi_2 \circ \xi_1 ^{-1}(\theta) = \begin{cases}
+    \theta - 2 \pi, \theta \in ]3 \pi/2,2 \pi[ \\
+    \theta, \theta \in ]\pi/2,\theta[.
+  \end{cases}\]
+
+  On a alors
+
+  \begin{gather*}
+    D(\xi_2 \circ \xi_1 ^{-1})(\xi_1 (r,\theta)) = (\xi_2 \circ \xi_1)'(\xi_1 (r,\theta)) \equiv 1.
+  \end{gather*}
+
+  Et
+
+  \begin{gather*}
+    \widetilde{\xi_1}(1,x,v) = (x,v)\\
+    \widetilde{\xi_2}(2,x,w) = (x,w)
+  \end{gather*}
+
+  on obtient donc \(D(\widetilde{\xi_2} \circ \widetilde{\xi_1}^{-1})(\widetilde{\xi_1}(x))v=w\).
+
+  Pour les deux cartes \((\widetilde{U_1}, \widetilde{\xi_1}), (\widetilde{U_2}, \widetilde{\xi_2})\) de \(TS ^{1}\), \((1,x,v)\) est identifié avec \((2,x,v)\) et donc \(TS ^{1} \simeq S ^{1}\times \mathbb{R}\).
+
+  {\fontencoding{U}\fontfamily{futs}\selectfont\char 66\relax} La même identification naturelle ne marchera pas pour \(S ^2 = \{ x \in \mathbb{R}^3, \left\Vert x \right\Vert = 1 \}\) avec la structure héritée de \(\mathbb{R}^3\).
+
+  En fait, si \(TS ^2 \simeq S ^2 \times \mathbb{R}^2\), on aurait un champ de vecteur (tangent) sur \(\mathbb{R}^3\) tel que \(X(x)\neq 0\) IMPOSSIBLE (théorème de la boule chevelue.)
+\end{exemple}
+
+En principe, tout ce que l'on a fait pour un ouvert \(U\) de \(\mathbb{R}^n\) peut être refait pour \(M\) variété \(\mathcal{C}^r\) de dimension \(n\) modulo la vérification que les définitions sont consistantes avec les changements de cartes.
+
+\begin{exemple}
+  Soit \(X : M \longrightarrow TM\) un champ de vecteur sur la variété \(\mathcal{C}^{\infty}\) \(M\) quand \(\forall x \in M, X(x)\in T_x M\) (\(\Leftrightarrow \tau_1 \circ X = \operatorname{id}_M\)).
+
+  Si \(X \in \mathcal{C}^1\), comme \(TM\) est muni d'une structure différentielle (c'est à dire un atlas \((\widetilde{U _{\alpha}}, \widetilde{\xi _{\alpha}})\)), on peut décider de la dérivabilité de \(X\) pour les cartes.
+
+  Si \(X \in \mathcal{C}^1\), alors \(\forall \alpha, X(x) \in T_x M\), autrement dit \(x \in U _{\alpha}\), \(X(x)\in \widetilde{U _{\alpha}} \simeq U _{\alpha}\times \mathbb{R}^n\).
+
+  \(\widetilde{\xi_\alpha} \circ X \circ \widetilde{\xi _{\alpha}}^{-1} : \xi _{\alpha}(U _{\alpha}) \longrightarrow \xi _{\alpha}(U _{\alpha}) \times \mathbb{R}^n\), \(\widetilde{X} : \xi _{\alpha}(U _{\alpha}) \longrightarrow \xi _{\alpha}(U _{\alpha}) \times \mathbb{R}^n\).
+
+  \(\widetilde{X}(\widetilde{x}) = (\xi_\alpha(x), \overrightarrow{v})\). Si \(X(x) = [(\alpha, x,\overrightarrow{v})]\).
+
+  Donc \(\widetilde{X}\) est bien un champ de vecteurs sur \(\xi _{\alpha}(U _{\alpha})\).
+\end{exemple}
+
+\subsubsection{Deux manières différenties pour définir le \(f _{\flat t}\) (qui sont équivalentes)}
+
+On dit que \(\gamma : J \longrightarrow M\), \(J \subseteq \mathbb{R}\) est une courbe intégrale de \(X : M \longrightarrow TM\) quand \(\forall t \in J\), \(\gamma(t) \in U _{\alpha}\).
+
+On a \(\gamma _{\alpha}(t) := \xi _{\alpha}\circ \gamma : J _{\alpha} \longrightarrow \xi _{\alpha}(U _{\alpha})\).
+
+\[J _{\alpha}:= \{ t \in J \mid \gamma(t)\in U _{\alpha} \}\]
+
+est une courbe intégrale pour le champ de vecteurs \(\widetilde{X}\) défini en haut sur \(\xi _{\alpha}(U _{\alpha})\).
+
+Chaque fois qu'on se pose une définition sur \(M\) au travers d'une carte, il faudra vérifier que la définition est consistente entre les cartes !
+
+Pour \(\alpha \neq \beta, x \in U _{\alpha} \cap U _{\beta}, x = \gamma(0)\)
+
+%%%%%fin%%%%%
+
+\begin{definition}
+  Soit \(M\) de dimension \(n\) et \(\widetilde{M}\) de dimension \(m\) deux variétés de classe \(\mathcal{C}^r\) et soit \(f : M \longrightarrow \widetilde{M}\) une application. On dit que \(f\) est différentiable en \(x \in M\) s'il existe une carte \((U _{\alpha}, \xi _{\alpha})\), \((V _{\beta}, \eta _{\beta})\) de ... \(M\) et \(\widetilde{M}\) autour de \(x \in U _{\alpha}\) et \(f(x)\in V _{\beta}\)
+  telle que
+
+  \[\eta _{\beta}\circ f \circ \xi _{\alpha}^{-1}\]
+
+  est différentiable en \(\xi _{\alpha}(x) \in \xi _{\alpha}(U _{\alpha})\). Alors \(D(\eta _{\beta}\circ f \circ \xi _{\alpha}^{-1})(\xi _{\alpha}(x))\in \mathbb{R} ^{m \times n}\) n'est pas uniquement définie, mais on peut mettre \(Tf([\alpha,x,\overrightarrow{v}]_{\sim}) = [\beta, f(x),D(\eta _{\beta}\circ f \circ \xi _{\alpha}^{-1})(\xi _{\alpha}(x))\overrightarrow{v}]\). Donc \(Tf([\alpha,x,\overrightarrow{v}]_{\sim}) \in T _{f(x)} \widetilde{M}\).
+\end{definition}
+
+%%%fig25
+
+Encore il faudra justifier que c'est consistent, c'est-à-dire si on a \((\alpha, x,\overrightarrow{v}) \sim (\alpha',x,\overrightarrow{v}')\) et \((\beta,f(x), \overrightarrow{w}) = (\beta',x,\overrightarrow{w}')\). On devrait avoir
+
+\begin{equation}\label{etoile}
+  D(\eta _{\beta'}\circ \xi _{\alpha'}^{-1})(\xi _{\alpha'}(x))\overrightarrow{v}' = \overrightarrow{w}'.
+\end{equation}
+
+Pour vérifier \ref{etoile}, on remarque que \((\alpha, x,\overrightarrow{v}) \sim (\alpha',x,\overrightarrow{v}')\), alors \(\overrightarrow{v}' = D(\xi _{\alpha'}\circ \xi _{\alpha}^{-1})(\xi _{\alpha}(x))\overrightarrow{v}\).
+
+
+
+
 
 
 \end{document}

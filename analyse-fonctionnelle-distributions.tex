@@ -2007,4 +2007,156 @@ Ce lemme aboutit au théorème suivant.
   Soit \(K \in \mathbb{R}^d\) un compact recouvert par une union fini d'ouverts \((U_j)_{1 \leq j \leq n}\). Alors il existe \(\varphi_j \in \mathscr{D}(\mathbb{R}^d), j = 1, \dots, n, \operatorname{supp}\varphi_j \subset U_j\) et \(\displaystyle \sum_{j=1}^{n} \varphi_j = 1 \) près de \(K\).
 \end{thm}
 
+\chapter{Convolution des fonctions et de mesures}\marginnote{24-11-2023}
+
+\section{Convolution des mesures discrètes}
+
+\emph{Comment définir une convolution ?}
+
+\begin{definition}[Mesure discrète]
+  On appelle mesure discrète une mesure qui s'écrit
+
+  \[\mu = \sum_{i \in \mathbb{N}} \lambda_j \delta _{x_j}, \lambda_j \in \mathbb{R}.\]
+\end{definition}
+
+\begin{definition}[Convolution des mesures discrètes]
+  Si \(\nu = \displaystyle\sum \mu_k \delta _{y_k}\) est une autre mesure discrète, on écrit
+
+  \[\mu \ast \nu = \sum_{j,k} \lambda_j \mu_j \delta _{x_j + y_k}.\]
+
+  En fait \(\delta _{x_j}\ast \delta _{y_k} = \delta _{x_j + y_k}\) (la loi interne est vérifiée).
+\end{definition}
+
+On peut aussi poser \(x_j + y_k = z_i\) et on a (produit de Cauchy)
+
+\[\mu \ast \nu = \sum_i \left(\sum_{x_j + y_k = z_i} \lambda_j \mu_k \right)\delta _{z_i}.\]
+
+Il se peut que cette quantité ne soit pas définie. Si \(\lambda_i \in \mathbb{R}\) pour tout \(i\), on dit que \(\mu\) et \(\nu\) sont convolables.
+
+\begin{exemple}[Loi de Poisson \(\mathcal{P}(\lambda)\) (distribution de probabilité)]
+  Elle se définit comme suit :
+
+  \[\mu = \sum_{k \geq 0} e^{-\lambda} \frac{\kappa ^{k}}{k!}\delta_k.\]
+
+  On a \(\operatorname{supp}(\mu) \subset \mathbb{N}\). Si \(\nu\) est une autre mesure de Poisson, on aura \(\operatorname{supp}(\mu + \nu) \subset \mathbb{N}\).
+\end{exemple}
+
+\begin{exemple}[Mesures non convolables]
+
+  \
+
+  \begin{enumerate}
+    \item On pose \[\mu = \sum_{j \in \mathbb{N}} \delta_j, \nu = \sum_{k \in \mathbb{N}} \delta _{-k}.\]
+
+    Dans ce cas, on a \(\operatorname{supp}(\mu) = \mathbb{Z}_+\) et \(\operatorname{supp}(\nu) = \mathbb{Z}_{-}\). On a \(\alpha_i = \displaystyle  \sum _{j-k = i} 1 = + \infty\). Donc \(\mu\) et \(\nu\) ne sont pas convolables.
+    \item Si on prend \(\mu = \displaystyle\sum_{j \geq 0} 2 ^{-j}\delta_j \) (bornée) et \(\nu = \displaystyle\sum_{j \geq 0} 2 ^{j}d _{-j} \) (non bornée), le produit de Cauchy diverge.
+  \end{enumerate}
+
+\end{exemple}
+
+\section{Convolution des mesures de Radon}
+
+\begin{definition}
+  On rappelle que la mesure de Radon est un élément du dual de l'espace localement convexe \(\mathcal{K}(X)\), donc appartenant à \(\mathcal{M}(X)\). On peut poser \(X = \mathbb{R}^d\) par exemple.
+\end{definition}
+
+On cherche un espace plus petit. On prend \(\mathcal{M}_b(\mathbb{R}^d)\) l'espace des mesures de Radon bornées sur \(\mathbb{R}^d\).
+
+\begin{definition}
+  On dit que \(\mu, \nu \in \mathcal{M}(\mathbb{R}^d)\) sont convolables si
+
+  \[\varphi \in \mathcal{K}(\mathbb{R}^d) \longrightarrow \varphi(x+y)d \mu(x)\otimes d \nu(y)\]
+
+  est continue sur \(\mathcal{K}(\mathbb{R}^d)\), i. e. pour tout \(K \subset \mathbb{R}^d\), il existe \(C_k\) tel que pour tout \(\varphi \in \mathcal{K}_K(\mathbb{R}^d)\),
+
+  \[\left\lvert \int \varphi(x+y)d \mu(x)\otimes d \nu(y) \right\rvert \leq C_k \sup_{K} \left\lvert \varphi(x) \right\rvert.\]
+\end{definition}
+
+\begin{definition}
+  On définit le produit de convolution de \(\mu\) et \(\nu\) par
+
+  \[\mu \ast \nu = \langle \mu \ast \nu, \varphi \rangle  = \int \varphi(x+y)d \mu(x)\otimes d \nu(y) = \langle \mu \otimes \nu, s ^{*} \varphi \rangle,\]
+
+  avec \(s ^{*} \varphi(x,y) = \varphi(x+y)\).
+\end{definition}
+
+\begin{remark}
+  \(\mu \otimes \nu\) est la mesure produit.
+\end{remark}
+
+\begin{exemple}
+  On veut calculer \(\langle \delta _{x_0} \otimes \delta_{x_1},f \rangle \), avec \(f : \mathbb{R}^d \times \mathbb{R}^d \longrightarrow \mathbb{R}\).
+
+  Soit \(\varphi \in \mathcal{K}(\mathbb{R}^d)\), on pose \(f(x,y) = \varphi(x+y)\).
+\end{exemple}
+
+\section{Propriétés géométriques sur les supports}
+
+On a le problème suivant : étant donnés \(\mu, \nu \in \mathcal{M}(\mathbb{R}^d)\), quelle est la condition suivante sur les supports pour que \(\mu \ast \nu\) existe ?
+
+\begin{prop}
+  Supposons que \(\forall K \in \mathbb{R}^d\),
+
+  \begin{equation}\label{existence-conv}
+    \{ (x,y), x \in \operatorname{supp} \mu \text{ et } y \in \operatorname{supp}\nu, x+y \in K\} \text{ est compact.}
+  \end{equation} Alors \(\mu \ast \nu\) existe.
+\end{prop}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.3]{figures/prop-geo-conv.png}
+  \caption{Propriétés sur le supports}
+  \label{}
+\end{figure}
+
+\begin{definition}
+  Les supports de \(\mu\) et \(\nu\) sont convolutifs si et seulement si ils vérifient la propriété \ref{existence-conv}.
+\end{definition}
+
+\begin{prop}
+  On a \(\operatorname{supp}(\mu \ast \nu) \subset \operatorname{supp}\mu + \operatorname{supp}\nu\).
+\end{prop}
+
+\begin{exemple}[Contre-exemples]
+
+  \
+
+  \begin{itemize}
+    \item[$\star$]On pose
+
+    \[\mu = \displaystyle\sum_{n \in \mathbb{Z}_+} \delta_n, \nu = \displaystyle\sum_{n \in \mathbb{Z}_{-}}.\]
+
+    Le produit de Cauchy diverge.
+
+    \item[$\star$] Si \(d \mu(x) = \mathds{1}_{\{ x \bg 0 \}}dx, d \nu(x) = \mathds{1}_{\{ y \less 0 \}} dy\), alors
+
+    \[\int_{0}^{\infty} dx \int_{- \infty}^{0} \varphi(x+y)dy = +\infty.\]
+    \item[$\star$] On prend un cône \(C\) et une surface de Cauchy.
+  \end{itemize}
+\end{exemple}
+
+\begin{equation}\label{existence-conv-2}
+  \exists p(R) \text{ tel que } (x,y)\in \underbrace{\operatorname{supp}\mu}_{F} \times \underbrace{\operatorname{supp}\nu }_{G} \text{ et } x + y \in K \implies \left\lvert x \right\rvert \leq p(R) \text{ et } \left\lvert y \right\rvert \leq p(R).
+\end{equation}
+
+\begin{prop}
+  On a \ref{existence-conv-2} implique \ref{existence-conv}. Les deux propriétés impliquent que \(\mu\) et \(\nu\) sont convolables. De plus, si \(F\) et \(G\) sont fermés, alors \(F+ G\) est aussi fermé.
+\end{prop}
+
+\section{Exemples de mesures convolables}
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item  Si \(\mu\) ou \(\nu\) est à support compact, alors \(\mu\) et \(\nu\) sont convolables.
+    \item Si \(\mu, \nu\) sont des mesures de Radon sur \(\mathbb{R}^2\) tels que \(\operatorname{supp}\mu = F\) et \(\operatorname{supp}\nu = G\) vérifient \ref{existence-conv-2}, alors \(\mu \ast \nu\) existe. En particulier si \(F = G = C\) cône convexe de sommet 0.
+    \item Si \(\mu\) et \(\nu\) sont des mesures de Radon bornées, alors \(\mu \otimes \nu \in \mathcal{M}_b(\mathbb{R}^d)\) et \(\mu \ast \nu\) existe.
+    \item Une mesure \(\mu\) bornée est en général convolable avec \(\nu\) quelconque.
+  \end{enumerate}
+
+\end{prop}
+
+
 \end{document}

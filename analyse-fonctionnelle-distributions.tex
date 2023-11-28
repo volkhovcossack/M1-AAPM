@@ -2158,5 +2158,32 @@ On a le problème suivant : étant donnés \(\mu, \nu \in \mathcal{M}(\mathbb{R}
 
 \end{prop}
 
+\section{Convolution des fonctions}\marginnote{28-11-2023}
+
+On a
+
+\[\langle \mu \ast \nu, \varphi \rangle = \iint \varphi(x+y)d \mu(x)\otimes d \nu(y).\]
+
+Si \(\mu\) est de densité \(f \in L ^{1}\), \(\nu\) est aussi de densité \(L ^{1}\). On a alors
+
+\[f \ast g(x) = \int f(x-y)g(y)dy,\]
+
+avec \(d \mu(x) = f(x)dx\), \(d \nu(y) = g(y)dy\). On a alors
+
+\[\langle \mu \ast \varphi \rangle = \int \varphi(x+y)f(x)g(y)dx dy.\]
+
+On pose \(z = x+y, x = x\), alors
+
+\[\operatorname{Jac} = \frac{\partial(z,x)}{\partial(x,y)} = \begin{bmatrix}
+  1 & 1 \\
+  1 & 0
+\end{bmatrix} = -1.\]
+
+On réécrit l'expression de la manière suivante et on obtient :
+
+\[\iint \varphi(z)f(x)g(z-x)dx dz = \int \varphi(z)f \ast g(z)dz.\]
+
+Alors \(\mu \ast \nu =(f\ast g)(z)\) est de densité \(L ^{1}\).
+
 
 \end{document}

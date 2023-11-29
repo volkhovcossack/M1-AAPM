@@ -4147,5 +4147,121 @@ Pour la preuve on utilise
   \[e^{X}Ye^{-X} = e^{\operatorname{ad}(X)}(Y)= \sum_{0}^{\infty} \frac{1}{m!}\operatorname{ad}_X ^{m}(Y). \]
 \end{corollary}
 
+\begin{definition}\marginnote{29-11-2023}
+  Soit une algèbre de Lie \(\mathfrak{g} \in \mathbb{M}(n,\mathbb{C})\) telle que \(iX \in \mathfrak{g}, \forall X \neq 0 \in \mathfrak{g}\), alors la complexification
+
+  \[\mathfrak{g} _{\mathbb{C}} \{  X+ iY \in \mathbb{M}(n,\mathbb{C}) ; X, Y \in \mathfrak{g} \},\]
+
+  avec \([X_1 + i X_2, Y_1 + i Y_2] = [X_1, Y_1]- [X_2,Y_2]+ i([X_2,Y_1]+[X_1,Y_2])\).
+\end{definition}
+
+\begin{prop}
+  Soit \(\mathfrak{g}\) une algèbre de Lie réelle et \(\mathfrak{h}\) une algèbre de Lie complexe et \(\pi : \mathfrak{g} \longrightarrow \mathfrak{h}\) un homomorphisme d'algèbre de Lie réelle. Alors il existe un unique homomorphisme d'algèbre de Lie complexe \(\pi _{\mathbb{C}} : \mathfrak{g} _{\mathbb{C}} \longrightarrow \mathfrak{h}\) qui prolonge \(\pi\).
+\end{prop}
+
+\begin{proof}
+  \(\pi _{\mathbb{C}}(X+ iY) := \pi(X)+ i \pi(Y)\).
+\end{proof}
+
+\begin{prop}
+  On a
+
+  \begin{enumerate}
+    \item \(\mathfrak{gL}(n,\mathbb{R}) _{\mathbb{C}} \simeq \mathfrak{gl}(n,\mathbb{C})\) ;
+    \item \(\mathfrak{U}(n)_{\mathbb{C}} \simeq \mathfrak{gL}(n,\mathbb{C})\) ;
+    \item \(\mathfrak{SU}(n)_{\mathbb{C}} \simeq \mathfrak{sL}(n,\mathbb{C})\) ;
+    \item \(\mathfrak{SL}(n,\mathbb{R}) _{\mathbb{C}} \simeq \mathfrak{sL}(n,\mathbb{C}).\)
+  \end{enumerate}
+\end{prop}
+
+\begin{prop}
+  \(\operatorname{dim} \mathfrak{sL}(n,\mathbb{R}) = 2 n ^2 - 1 \neq n ^2 - 1 = \operatorname{dim} \mathfrak{su}(n)\), donc \(\mathfrak{sL}(n,\mathbb{R})\) n'est pas équivalent à \(\mathfrak{su}(n)\).
+\end{prop}
+
+\subsection{L'application \(\exp : \mathfrak{g} \longrightarrow G\)}
+
+Nous démontrons que la restriction de cette fonction sur un voisinage de 0 est bijective sur son image.
+
+\begin{prop}
+
+  \
+
+  \begin{enumerate}
+    \item \(\exp : \mathfrak{gL}(2,\mathbb{C}) \longrightarrow SL(2,\mathbb{C})\) n'este pas surjectif.
+    \item \(\exp : \mathfrak{su}(2) \longrightarrow SU(2)\) n'est pas injectif.
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item \(\begin{pmatrix}
+    -1 & 1 \\
+    0 & -1
+    \end{pmatrix}\) n'est pas diagonalisable, donc \(e^{X} = \begin{pmatrix}
+    -1 & 1 \\
+    0 & -1
+    \end{pmatrix} \implies X\) n'est pas diagonalisable, \(0 \neq \lambda\) (valeur propre de \(X\)), alors \(\operatorname{Tr}(X) =0\) implique que \(-\lambda\) est valeur propre de \(X\), donc diagonalisable.
+
+    \item \(\exp(0) = \exp \begin{pmatrix}
+    2 \pi i & 0 \\
+    0 & - 2 \pi i
+    \end{pmatrix} = \operatorname{id}\).
+  \end{enumerate}
+\end{proof}
+
+\begin{thm}
+
+  \
+
+  \begin{enumerate}
+    \item Soit \(G\) un groupe de Lie matriciel et \(\mathfrak{g}\) son algèbre de Lie. Alors il existe \(\varepsilon \less \log(2)\) tel que \(A = e^{X}\) pour \(X \in \mathbb{M}(n,\mathbb{C})\), \(\left\Vert X \right\Vert \less \varepsilon\) et \(A \in G \iff \log(A) \in \mathfrak{g}\).
+    \item \(B(0,\varepsilon) \cap \mathfrak{g} \stackrel{\exp}{\longrightarrow} \exp(B(0,\varepsilon))\cap G\) est un homéomorphisme.
+  \end{enumerate}
+\end{thm}
+
+\begin{proof}
+
+  \begin{lemma}
+    Soit \((B_m)_{m \in \mathbb{N}}\subset B(\operatorname{id},1)\cap G \setminus \{ \operatorname{id} \}\), \(\displaystyle \lim_{m \to +\infty} B_m = \operatorname{id}\).
+
+    On a : si \(\displaystyle\lim_{m \to +\infty}\displaystyle \frac{Y_m}{\left\Vert Y_m \right\Vert } = Y \in \mathbb{M}(n,\mathbb{C})\) existe, alors \(Y \in \mathfrak{g}\).
+  \end{lemma}
+\end{proof}
+
+\begin{corollary}
+  Un groupe de Lie matriciel est une sous-variété différentielle de \(GL(n,\mathbb{C})\) de dimension de \(\mathfrak{g}\).
+\end{corollary}
+
+\begin{corollary}
+  Soit \(G\) un groupe de Lie matriciel. Alors \(\operatorname{id} \in \mathfrak{g}\), son algèbre de Lie si et seulement si \(\gamma \in \mathcal{C}^{\infty}((-a,a), \mathbb{M}(n,\mathbb{C})), \gamma(0) = \operatorname{id}, \dot{\gamma}(0) = X\), donc \(\mathfrak{g} = T _{\operatorname{id}}G\).
+\end{corollary}
+
+\begin{corollary}
+  Un homomorphisme continu entre deux groupe de Lie matriciels est \(\mathcal{C}^{\infty}\).
+\end{corollary}
+
+\begin{corollary}
+  Soit \(G\) un groupe de Lie connexe, alors pour \(A \in G\), il existe \(X_1, \dots, X_m \in \mathfrak{g}\) tel que \(A = e^{X_1}\dots e^{X_m}\).
+\end{corollary}
+
+\begin{remark}
+  \(SL(2,\mathbb{C})\) est connexe, mais \(\begin{pmatrix}
+  -1 & 1 \\
+  0 & -1
+  \end{pmatrix} \neq e^{X}, \forall X \in \mathfrak{sl}(2,\mathbb{C})\).
+\end{remark}
+
+\begin{lemma}
+  \(A \in \mathcal{C}^0([a,b],GL(n,\mathbb{C}))\), alors pour tout \(\varepsilon \bg 0\), il existe \(\delta\), \(\left\lvert s-t \right\rvert \less \delta \implies \left\Vert A(s)A(t)^{-1} - \operatorname{id} \right\Vert  \less \varepsilon\).
+\end{lemma}
+
+\begin{corollary}
+  Soient \(G,H\) des groupes de Lie matriciel, \(\mathfrak{g},\mathfrak{h}\) leurs algèbres de Lie. Soit \(\varphi_1,\varphi_2 : G \longrightarrow H\) deux Homomorphismes de \(G\) de Lie et \(\widehat{\varphi_1},\widehat{\varphi_2} : \mathfrak{g} \longrightarrow \mathfrak{h}\) les homomorphismes associés. Alors
+
+  \[G \text{ connexe } \iff (\widehat{\varphi_1} = \widehat{\varphi_2} \implies \varphi_1 = \varphi_2). \]
+\end{corollary}
 
 \end{document}

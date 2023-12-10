@@ -2186,4 +2186,279 @@ On réécrit l'expression de la manière suivante et on obtient :
 Alors \(\mu \ast \nu =(f\ast g)(z)\) est de densité \(L ^{1}\).
 
 
+
+\section{Algèbres de convolution}\marginnote{01-12-2023}
+
+\begin{definition}
+  \(X = \mathbb{R}^d, \mathcal{M}(X) = (\mathcal{K}(X))'\) espace de mesures de Radon.
+
+  On appelle \(V \subset \mathcal{M}(X)\) algèbre de convolution si \(V\) est un sous-espace vectoriel stable par convolution \(\ast\) et pour lequel \((V,+,\ast)\) est une algèbre.
+\end{definition}
+
+\begin{exemple}
+  \(\mu = H(x)f(x), f \in L _{\operatorname{loc}}^{1}(\mathbb{R})\). On a alors
+
+  \[\mu \ast \nu(x) = H(x)\int_{0}^{x}f(x-y)g(y)dy.\]
+\end{exemple}
+
+\begin{remark}
+  \(V\) est unitaire si et seulement si \(\delta_0 \in V\).  \(L ^{1}\) n'est pas unitaire parce que \(\delta _{0}\) n'est pas dans \(L ^{1}\), mais c'est toujours une algèbre.
+\end{remark}
+
+\begin{prop}
+  \(\mathcal{M}_b(X)\) muni de \(+\) et \(\ast\) est une algèbre unitaire d'élément unité \(\delta_0\).
+\end{prop}
+
+\begin{proof}
+  Comme \(\mathcal{M}_b(X)\) est un espace de Banach et que \(\mu \ast \delta_0 = \mu\), il suffit de montrer que \(\left\Vert \mu \ast \nu \right\Vert \leq \left\Vert \mu \right\Vert \left\Vert \nu \right\Vert   \). Or pour tout \(\varphi\) tel que \( \left\Vert \varphi \right\Vert _{\infty} \leq 1\),
+
+  \begin{gather*}
+    \langle \mu \ast \nu, \varphi \rangle = \left\lvert \iint \varphi(x+y)d \mu(x) \otimes d \nu(y) \right\rvert = \iint \left\lvert d \mu(x)\otimes d \nu(y) \right\rvert = \left\Vert \mu \right\Vert \left\Vert \nu \right\Vert.
+  \end{gather*}
+\end{proof}
+
+\section{Convolution de mesures et de fonctions}
+
+On prend \(f \in L ^{1}_{\operatorname{loc}}\).
+
+\begin{remark}
+  \( L ^{p}(X) \subset L ^{p}_{\operatorname{loc}}(X) \subset L ^{1}_{\operatorname{loc}}(X)\) pour tout \(p \geq 1\).
+\end{remark}
+
+\begin{prop}
+  Si \(f,g \in L ^{1}\), les mesures de densité \(f\) et \(g\) \(d \mu(x) = f(x)dx\) et \(d \nu(x) = g(x)dx\) sont convolables et \(\mu \ast \nu\) admet pour densité
+
+  \[h(x) = \int f(x-y)g(y)dy \in \mathscr{L}^{1}\]
+
+  définie presque partout et \(h \in L ^{1}(X)\). De plus,
+
+  \[\left\Vert h \right\Vert _{L ^{1}} \leq \left\Vert f \right\Vert _{L ^{1}} \left\Vert g \right\Vert _{L ^{1}}.\]
+\end{prop}
+
+\begin{prop}
+  Soient \(f \in L _{\operatorname{loc}}^{1}\) et \(g \in L _{\operatorname{loc}}^{1}\). Alors
+
+  \[h(x) = \int f(x-y)g(y)dy\]
+
+  est définie \(x\) presque partout et \(h \in L_{\operatorname{loc}}^{1}\).
+\end{prop}
+
+\begin{proof}
+  Soit \(\left\lvert x \right\rvert \leq R\) et \(\operatorname{supp}(g)\subset B(0,\rho)\). On a
+
+  \[\int_{}^{}g(x-y)f(y)dy = \int(\mathds{1}_{B(0,\rho+R)}f)(y)g(x-y)dy.\]
+\end{proof}
+
+\begin{prop}
+  On pose \(h(x) = \displaystyle\int f(x-y)g(y)dy\).
+
+  \begin{enumerate}
+    \item Si \(f \in L ^{1}, g \in L ^{\infty}\), alors \(h\) est unirformément continue et bornée (\(h \in C_b(\mathbb{R}^d)\)).
+    \item Si \(f \in L ^{p}, g \in L ^{q}, \frac{1}{p}+\frac{1}{q}=1\) alors \(h \in C_0(\mathbb{R}^d), \left\Vert h \right\Vert _{\infty}\leq \left\Vert f \right\Vert_p \left\Vert g \right\Vert_q\).
+  \end{enumerate}
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item Posons \(h(x) =\displaystyle \int f(x-y)g(y)dy = \displaystyle\int f(y)g(x-y)dy\). On a
+
+    \begin{gather*}
+      \left\lvert h(x) \right\rvert \leq \int \left\lvert f \right\rvert \left\Vert g \right\Vert _{\infty}  = \left\Vert g \right\Vert _{\infty}\left\Vert f \right\Vert _{L ^{1}},
+    \end{gather*}
+
+    alors \(h \in L ^{\infty}\).
+  \end{enumerate}
+\end{proof}
+
+\begin{exemple}[Equation de Lotka-Volterra]
+  Soit \(h \in \mathcal{K}(\mathbb{R})\). On a une équation intégrale
+
+  \begin{equation}
+    f(x)+ \int_{0}^{x}K(x-y)f(y)dy = h(x).
+  \end{equation}
+
+  On peut résoudre cette équation dans \(\overline{\mathbb{R}^{+}}\).
+
+\end{exemple}
+
+\chapter{Distributions}
+
+\begin{definition}[Distribution]\marginnote{08-12-2023}
+  C'est le dual de l'espace \(\mathscr{D}'(\Omega)\), avec \(u_j \longrightarrow u \in \mathscr{D}'\).
+\end{definition}
+
+
+On peut multiplier \(f \in \mathcal{C}^{\infty}\) et \(u \in \mathscr{D}'\), mais par contre si \(u, v \in \mathscr{D}'\), cela n'a pas de sens. On va également s'intéresser aux dérivations des distributions et aux solutions faibles.
+
+\section{Définition, convergence dans \(\mathscr{D}, \mathscr{D}'\)}
+
+\begin{definition}
+  Soit \(u\) une forme linéaire sur \(\mathscr{D}\) (pas forcément continue). L'application \(\varphi \longmapsto \langle \varphi, u \rangle \) est linéaire. On dit que \(u\) est une distribution d'ordre \(p \in \mathbb{N}\) si et seulement si pour tout compact \(K \subset \Omega\), il existe \(p \in \mathbb{N}\) (l'ordre de la distribution), il existe \(C \bg 0\), pour tout \(\varphi \in \mathscr{D}_K(\Omega)\),
+
+  \[\left\lvert \langle u, \varphi \rangle  \right\rvert \leq C \sup_{\left\lvert \alpha \right\rvert \leq p} \left\lvert \partial ^{\alpha} \varphi \right\rvert.\]
+
+  L'ordre \(p\) est le plus petit entier \(p\) qui satisfait la définition. On note \(\mathscr{D}(\Omega)\) l'ensemble de ses formes linéaires continues.
+\end{definition}
+
+\begin{remark}
+  C'est compatible avec le fait que \(\mathscr{D}'(\Omega)\) est le dual topologique de \(\mathscr{D}(\Omega)\).
+\end{remark}
+
+\begin{remark}
+  Soit \(u\) une forme linéaire sur \(\mathscr{D}(\Omega)\). Alors \(u \in \mathscr{D}'(\Omega)\) si et seulement si :
+
+  \[\forall \varphi_j \in \mathscr{D}(\Omega), \varphi_j \longrightarrow 0 \text{ pour la topologie de } \mathscr{D}(\Omega), \text{ alors } \langle u, \varphi_j \rangle \longrightarrow 0.\]
+\end{remark}
+
+\begin{exemple}[De distributions]
+
+  \
+
+  \begin{enumerate}
+    \item Les mesures de Radon sur \(\Omega\) sont des distributions avec \(p = 0\).
+    \item Les fonctions \(L ^{1}_{\operatorname{loc}}(\Omega)\) sont des distributions.
+
+    \emph{Conséquence : } Tous les espaces \(L ^{p}_{\operatorname{loc}}(\Omega)\) sont inclus dans \(\mathscr{D}'(\Omega)\).
+
+    \item Les solutions \textbf{faibles} des équations à dérivées partielles (EDP) :
+
+    \[\displaystyle\frac{\partial ^2 u }{c ^2\partial t ^2} - \displaystyle\frac{\partial ^2 u }{\partial x ^2} = f(x,t), (x,t) \in \mathbb{R}^2.\]
+
+    Or \(u(x,t) = \displaystyle \frac{1}{2}\mathds{1}_{\{ \left\lvert x \right\rvert \less ct \}}\notin \mathcal{C}^R(\Omega)\). On dit que \(u\) est une solution faible avec \(u \in L ^{1}_{\operatorname{loc}}(r ^2), \forall \varphi \in \mathscr{D}(\Omega)\) et on a
+
+    \[\iint \left(\displaystyle\frac{\partial ^2 u }{c ^2\partial t ^2} - \displaystyle\frac{\partial ^2 u }{\partial x ^2}\right)u(x,t)dx dt = \iint f(x,t)dt dx.\]
+
+    \item \emph{Problème aux limites :} On prend \(\Omega\) un ouvert à bord ouvert régulier. On introduit l'équation de Poisson (au sens fort) :
+
+    \[- \Delta u = f \in L ^2\]
+
+    et au sens faible :
+
+    \[- \int \Delta \varphi \cdot u = \int f \varphi,\]
+
+    avec \(u \in L _{\operatorname{loc}}^{1}\) solution faible.
+  \end{enumerate}
+\end{exemple}
+
+\section{Convergence d'une suite de distributions dans \(\mathscr{D}'(\Omega)\)}
+
+Il s'agit de la convergence faible (on dit encore ``convergence au sens des distributions'').
+
+\begin{definition}
+  On dit que \(u_j \in \mathscr{D}'(\Omega)\) converge vers \(u \in \mathscr{D}'(\Omega)\) si
+
+  \[\forall \varphi \in \mathscr{D}(\Omega), \langle u_j, \varphi \rangle \longrightarrow \langle u, \varphi \rangle.\]
+\end{definition}
+
+Le support de \(u\), \(\operatorname{supp}u = \mathcal{O} ^{C}\) où \(\mathcal{O}\) est le plus grand ouvert où \(u = 0\). Alors pour tout \(\varphi \in \mathscr{D}(\mathcal{O}), \langle u, \varphi \rangle  = 0\).
+
+\begin{exemple}
+
+  \
+
+  \begin{enumerate}
+    \item \(\operatorname{supp}\delta = \{ 0 \}\) ;
+    \item \(\operatorname{supp}dx = \mathbb{R}^d\).
+  \end{enumerate}
+\end{exemple}
+
+La différence avec les mesures est la suivante :
+
+\begin{itemize}
+  \item Pour \(\varphi \in \mathcal{K}(\mathbb{R}^d)\), si \(\varphi(0) = 0\), alors \(\langle \delta, \varphi \rangle  = \varphi(0)= 0\).
+  \item Si \(\varphi \in \mathscr{D}(\mathbb{R}^d), \varphi \bigm|_{\operatorname{supp}u} = 0\) n'entraine pas que \(\langle u, \varphi \rangle  =0 \).
+\end{itemize}
+
+\section{Multiplication (au sens des distributions) et dérivation}
+
+\subsection{Produit d'une distribution par \(f \in \mathcal{C}^{\infty}\)}
+
+\begin{definition}[Définition et proposition]
+  Soit \(f \in \mathcal{C}^{\infty}(\Omega), u \in \mathscr{D}'(\Omega)\), alors \(fu \in \mathscr{D}'(\Omega)\) d'ordre inférieur à celui de \(u\), à savoir \(p\). On définit \(fu \in \mathscr{D}'(\Omega)\) par
+
+  \[\langle fu, \varphi \rangle = \langle u, f \varphi \rangle.\]
+\end{definition}
+
+\begin{proof}
+  Soit \(K \subset \Omega\) compact, soit \(\varphi \in \mathscr{D}_K(\Omega)\). On a
+
+  \[\left\lvert \langle fu, \varphi \rangle  \right\rvert = \left\lvert \langle u, f \varphi \rangle  \right\rvert \leq C \sup_{\left\lvert \alpha \right\rvert \leq p} \left\lvert \partial \alpha(f \varphi)(x) \right\rvert.\]
+
+  On voudrait plutôt \(\widetilde{C} \sup_{\left\lvert \alpha \right\rvert \leq p} \left\lvert \partial ^{\alpha}\varphi \right\rvert\). Par la formule du produit de Leibniz, on a
+
+  \begin{gather*}
+    \partial ^{\alpha}(f \varphi) = \displaystyle\sum_{\gamma \leq \alpha} \binom{\alpha}{\gamma}\partial ^{\alpha - \gamma}f(x)\partial ^{\gamma}\varphi(x).
+  \end{gather*}
+
+  \(\gamma \leq \alpha\), \(\gamma_j \leq \alpha_j, \forall j\). On a \(\partial ^{\gamma} = \partial ^{\gamma_1} \dots \partial ^{\gamma_d}\). On écrit
+
+  \[ \binom{\alpha}{\gamma} = \frac{\alpha !}{\gamma ! (\alpha- \gamma)!}= \binom{\alpha_1}{\gamma_1} \dots \binom{\alpha_d}{\gamma_d}.\]
+\end{proof}
+
+\begin{prop}
+  On suppose \(d =1\). Soit \(u \in \mathscr{D}'(\mathbb{R})\). Alors \(xu = 0 \iff u = C \delta\) avec \(C \in \mathbb{C}\).
+\end{prop}
+
+Est-ce que l'on a \(x ^2 u = 0 \implies u = \delta\) ?
+
+Si \(u = \delta, \langle x ^2 u, \varphi \rangle \langle u, x ^2 \varphi \rangle  =0\).
+
+\subsection{Dérivée d'une distribution}
+
+\begin{definition}
+  Soit \(u \in \mathscr{D}'(\Omega)\), avec \(\Omega \subset \mathbb{R}^d\). Alors
+
+  \[\left\langle \displaystyle\frac{\partial u }{\partial x_j}, \varphi  \right\rangle = - \left\langle u, \displaystyle\frac{\partial \varphi }{\partial x_j}  \right\rangle.\]
+\end{definition}
+
+\paragraph{Motivation}
+
+Soit \(u \in L ^{1}_{\operatorname{loc}}, \langle u, \varphi \rangle  = \displaystyle \int u(x)\varphi(x)dx\). Si \(u \in \mathcal{C}^{\infty}\), alors
+
+\[\left\langle \displaystyle\frac{\partial u }{\partial x_j}, \varphi  \right\rangle = \int_{\mathbb{R}^d} \displaystyle\frac{\partial u }{\partial x_j} \varphi dx = - \int u \displaystyle\frac{\partial \varphi }{\partial x_j}dx \text{ (i.p.p.) } \]
+
+\begin{prop}
+  On a \(\displaystyle\frac{\partial u }{\partial x_j}\in \mathscr{D}'(\Omega)\) d'ordre inférieur à \(p+1\).
+
+\end{prop}
+
+Plus généralement, \(\langle \partial ^{\alpha}u, \varphi \rangle = (-1)^{\left\lvert \alpha \right\rvert} \langle u, \partial ^{\alpha}\varphi \rangle  \).
+
+\begin{prop}
+  Si \(u_j \longrightarrow u\) dans \(\mathscr{D}'\), alors \(\partial ^{\alpha}u_j \longrightarrow \partial ^{\alpha}u\) dans \(\mathscr{D}'\). En particulier, si \(\displaystyle\sum v_j \longrightarrow u\), alors \(\displaystyle\sum \partial ^{\alpha} v_j \longrightarrow \partial ^{\alpha}u\).
+\end{prop}
+
+\begin{thm}[Formule des sauts]
+  On pose par exemple \(u = H(x)\) fonction de Heavyside. Elle est dans \(L ^{1}_{\operatorname{loc}}\). On a
+
+  \[\langle u', \varphi \rangle = - \langle u , \varphi' \rangle   = - \int_{0}^{\infty}\varphi'(x)dx = \varphi(0).\]
+\end{thm}
+
+\begin{prop}
+  Soit \(f : I \subset \mathbb{R} \longrightarrow \mathbb{R}\), \(\mathcal{C}^1\) par morceaux discontinue aux points \(a_1, \dots, a_N \in I\), avec \(\langle Tf, \varphi \rangle = \langle f, \varphi \rangle  \) et
+
+  \[f' = Tf' \displaystyle\sum_{i=1}^{N}\sigma_i \delta _{a_i}.\]
+\end{prop}
+
+\begin{prop}
+  Soit \(u \in \mathscr{D}'(\mathbb{R})\). Alors \(u' = 0\) si et seulement si \(u = C\).
+\end{prop}
+
+\begin{proof}
+
+  \
+
+  \begin{enumerate}
+    \item \emph{Sens direct :} Si \(u = C\), alors \(u' = 0\).
+    \item \emph{Sens réciproque : } On pose \(\varphi = \psi'\) où \(\psi(x) = \displaystyle \int_{-\infty}^{x}\varphi(t)dt\). On a \(\psi \in \mathcal{C}^{\infty}\), mais \(\psi \notin \mathscr{D}(\mathbb{R})\) sauf si \(\int \varphi dx = 0\). On  a
+
+    \[\langle u, \varphi \rangle  = \langle u, h \rangle + \left(\int \varphi\right) \langle u, \theta \rangle = \langle u, \psi' \rangle = 0, \text{ car } u'=0.\]
+
+    Cela implique que \(\langle u, h \rangle  =0\).
+  \end{enumerate}
+\end{proof}
+
 \end{document}

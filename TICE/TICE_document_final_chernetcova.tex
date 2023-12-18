@@ -62,6 +62,7 @@
 \newcommand{\bg}{\ \biggg\ }
 
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
 
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
@@ -160,19 +161,19 @@ Cette section s'inspire majoritairement de \cite{notes_m54}.
 
   \[\operatorname{Ker}(\pi) \stackrel{\text{déf.}}{=} \{ g \in G \mid \forall x \in X, g \cdot x = x \}. \]
 
-  On dit que l'action est \textbf{fidèle} ou que $G$ agit \textbf{fidèlement} si le morphisme $\pi$ associé à l'action est injectif, ie si son noyau esr réduit à l'élement neutre.
+  On dit que l'action est \textbf{fidèle} ou que $G$ agit \textbf{fidèlement} si le morphisme $\pi$ associé à l'action est injectif, ie si son noyau est réduit à l'élement neutre.
 \end{definition}
 
 
 \begin{exemple}
-  Le groupe \(G = SO(3)\) des rotations de \(\mathbb{R}^3\) de centre \(O\) agit sur l'ensemble \(\mathbb{R}^3\). Les orbites de cette action sont des sphères centrées en l'origine. L'action n'est pas transitive. L'action est fidèle, car la seule rotation fixant tous les points de \(\mathbb{R}^3\) est l'identité (cf figure \ref{action-groupe-rotation}).
+  Le groupe \(G = SO(3)\) des rotations de \(\R^3\) de centre \(O\) agit sur l'ensemble \(\R^3\). Les orbites de cette action sont des sphères centrées en l'origine. L'action n'est pas transitive. L'action est fidèle, car la seule rotation fixant tous les points de \(\R^3\) est l'identité (cf figure \ref{action-groupe-rotation}).
 
 \end{exemple}
 
   \begin{figure}[h!]
     \centering
     \includegraphics[scale=0.5]{action-groupe-rotation.png}
-    \caption{L'action de \(G\) n'est pas transitive. En particulier, il n'existe pas de rotation \(r\) telle que \(\forall x \in \mathbb{R}^3, r(x) = O.\) }
+    \caption{L'action de \(G\) n'est pas transitive. En particulier, il n'existe pas de rotation \(r\) telle que \(\forall x \in \R^3, r(x) = O.\) }
     \label{action-groupe-rotation}
   \end{figure}
 
@@ -293,7 +294,7 @@ La théorie des représentations a été introduite par Georg \bsc{Frobenius}  a
 Définissons tout d'abord la notion de somme directe de représentations.
 
 \begin{definition}
-  Soit \(G\) un groupe fini. Soit \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) deux représentations de \(G\). On définit \textbf{la somme directe} \(\rho\oplus \rho'\) comme le rerésentation de \(G\) associée à l'espace vectoriel \(V \oplus V'\) définie par:
+  Soit \(G\) un groupe fini. Soit \(\rho : G \to GL(V)\) et \(\rho' : G \to GL(V')\) deux représentations de \(G\). On définit \textbf{la somme directe} \(\rho\oplus \rho'\) comme le représentation de \(G\) associée à l'espace vectoriel \(V \oplus V'\) définie par:
 
   \begin{equation}
     \begin{matrix}
@@ -329,7 +330,7 @@ On se réferera à \cite{mpsi_maths} pour plus de détails.
 \begin{figure}[h!]
   \centering
   \includegraphics[scale=0.5]{suppl.png}
-  \caption{Dans \(\mathbb{R}^2\), on peut dire que \(W_a\) est le supplémentaire de \(U\).}
+  \caption{Dans \(\R^2\), on peut dire que \(W_a\) est le supplémentaire de \(U\).}
   \label{suppl}
 \end{figure}
 

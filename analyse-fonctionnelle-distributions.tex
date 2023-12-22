@@ -2461,4 +2461,110 @@ Plus généralement, \(\langle \partial ^{\alpha}u, \varphi \rangle = (-1)^{\lef
   \end{enumerate}
 \end{proof}
 
+\chapter{Transformations de Fourier dans \(\mathscr{S}(\mathbb{R}^{d})\) et \(\mathscr{S}'(\mathbb{R}^d)\)} \marginnote{21-12-2023}
+
+On veut calculer les transformations de Fourier des distributions qui ne sont pas des fonctions. On veut également déterminer des solutions fondamentales d'EDP, par exemple
+
+\[\displaystyle\frac{\partial  }{\partial t} - \Delta = P.\]
+
+\section{Rappel : transformation de Fourier dans \(L ^{1}\)}
+
+\subsection{Conventions}
+
+C'est l'opérateur \(\mathcal{F} : L ^{1}(\mathbb{R}^d) \longrightarrow L ^{1}_{\operatorname{loc}}(\mathbb{R}^d)\) tel que
+
+\[\widehat{f}(\xi) = F f (\xi) = \int_{}^{} e^{- i \langle x,\xi \rangle }f(x)dx, f \in L ^{1}, \left\lvert e^{-i \langle x,\xi f(x)\rangle } \right\rvert \in L ^{1}.\]
+
+Si \(g \in L ^{1}(\mathbb{R}^d)\), on peut définir la transformation de Fourier inverse par :
+
+\[\mathcal{F}^{-1} g(x) = \frac{1}{(2 \pi)^{d}} \int e^{ix \xi}g(\xi) d \xi,\]
+
+le problème étant de trouver \(\mathcal{F}\) pour que \(\mathcal{F}^{-1} \circ \mathcal{F} f = f\).
+
+On a
+
+\[\mathcal{F}_{1}f(\xi) = \int e^{- i \langle x,\xi \rangle }f(x)\frac{dx}{(2 \pi)^{d/2}}, \]
+
+alors
+
+\[\mathcal{F}_{1}^{-1}g(x) = \int e^{i x \xi}g(\xi) \frac{d\xi}{(2 \pi)^{d/2}}.\]
+
+\subsection{Continuité de \(\mathcal{F}\)}
+
+\begin{thm}[Riemann-Lebesgue]
+  On a  \(\mathcal{F} : L ^{1}\longrightarrow C _{0}(\mathbb{R}^d)\).
+\end{thm}
+
+\begin{exemple}
+  \[\mathcal{F} \mathds{1}_{[-a,a]}(\xi) = \int_{-a}^{a} e^{ix \xi}dx = \left[\frac{e^{- i x\xi}}{- i \xi}\right]^{a}_{-a} = \frac{e^{-ia \xi}+ e^{ia \xi}}{2 i \xi} \times 2 = \frac{2 \sin(a \xi)}{\xi}.\]
+\end{exemple}
+
+\begin{remark}
+  Si \(f\) est paire, alors sa transformée de Fourier l'est aussi. Si \(f\) est à support compact, alors sa transformée de Fourier est \(\mathcal{C}^{\infty}\).
+\end{remark}
+
+\begin{exemple}
+  Soit \(f(x) = H(x)e^{- \lambda x}\). Alors
+
+  \begin{gather*}
+    \int_{0}^{\infty} e^{- \lambda x }e^{- i x \xi} dx = \int_{0}^{\infty} e^{-i(\xi - i \lambda)x}dx \frac{e^{-i(\xi - i \lambda)}}{-i (\xi - i \lambda)} \bigm|_{0}^{m} = \frac{1}{i (\xi - i \lambda)}.
+  \end{gather*}
+
+  C'est une fonction holomorphe.
+\end{exemple}
+
+\begin{exemple}
+  Soit \(\mathcal{F}\left(\frac{1}{x ^2 + \lambda ^2}\right)\), avec \(e^{- \lambda \left\lvert x \right\rvert} \longmapsto \frac{1}{x ^2 + \lambda ^2}\). \(\mathcal{F}^{-1}\) est bien définie.
+
+  \[\mathcal{F} \left(\frac{1}{x ^2 + \lambda ^2}\right)(\xi) = \frac{e^{- \lambda \left\lvert x \right\rvert}}{2 \lambda}.\]
+\end{exemple}
+
+\subsection{Invertion de \(\mathcal{F}\) dans \(\mathcal{L}^{1}\cap \mathcal{F}^{-1}(L ^{1})\)}
+
+\begin{lemma}
+  Pour tout \(\sigma \bg 0\),
+
+  \[F(e^{- \sigma ^2 x ^2/2})(\xi) = (2 \pi)^{d/2}\sigma ^{d}e^{- \xi ^2/2 \sigma ^2}.\]
+\end{lemma}
+
+\begin{thm}
+  Si \(f \in L ^{1} \cap \mathcal{F}^{-1} L ^{1}\), alors
+
+  \[f = (2 \pi)^{-d}\check{F}F f, \]
+
+  avec \(\check{u}(x) = u(-x)\), l'opérateur de parité.
+\end{thm}
+
+\section{Transformation de Fourier dans \(\mathscr{S}(\mathbb{R}^d)\)}
+
+\begin{thm}
+  \(\forall f \in \mathscr{S}(\mathbb{R}^d)\),
+
+  \[(- D)^{\alpha}\mathcal{F} f (\xi) = \mathcal{F}(x ^{\alpha}f(x))(\xi),\]
+
+  avec
+
+  \[(i \xi)^{\alpha}\mathcal{F} f(\xi) = \mathcal{F} \left(\displaystyle\frac{\partial ^{\alpha}f }{\partial x ^{\alpha} } \right).\]
+\end{thm}
+
+\begin{thm}
+  \(\mathcal{F} : \mathscr{S}(\mathbb{R}^d) \longrightarrow \mathscr{S}(\mathbb{R}^d)\) est continue, avec
+
+  \[\mathcal{F}^{-1} = (2 \pi)^{-d} \check{\mathcal{F}}.\]
+\end{thm}
+
+\section{Distributions tempérées}
+
+\begin{definition}
+  \(u \in \mathscr{S}(\mathbb{R}^d)\) si et seulement si il existe \(C\) tel que
+
+  \[\forall \varphi \in \mathscr{S}(\mathbb{R}^d), \left\lvert \langle u,\varphi \rangle  \right\rvert \leq C \left\Vert \varphi \right\Vert _{\alpha,\beta}.\]
+\end{definition}
+
+\subsection{Transformée de Fourier dans \(\mathscr{S}'\)}
+
+
+
+
+
 \end{document}

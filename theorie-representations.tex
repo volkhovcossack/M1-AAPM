@@ -3376,7 +3376,7 @@ On va détailler la preuve du \ref{c_priv_0_simpl_connx}.
 \end{definition}
 
 \begin{prop}[Propriété]
-  On va démontrer ultérieurement que \(G,H\) sont des sous-[...] et que \(f \in \mathcal{C}^{\infty}\).
+  On va démontrer ultérieurement que \(G,H\) sont des sous-variétés et que \(f \in \mathcal{C}^{\infty}\).
 \end{prop}
 
 \begin{exemple}
@@ -3439,7 +3439,7 @@ Un exemple important est l'homomorphisme \(SU(2) \longrightarrow SO(z)\) qui n'e
 Plus généralement :
 
 \begin{definition}
-  Un groupe de Lie est une variété différentielle qui est un groupe tel que le produit \(G \times G \longrightarrow G\) et l'inverse \((\cdot)^{-1} : G \longrightarrow G\) sont des fonctions différentiables.
+  Un groupe de Lie est une \textbf{variété différentielle} qui est un groupe tel que le produit \(G \times G \longrightarrow G\) et l'inverse \((\cdot)^{-1} : G \longrightarrow G\) sont des \textbf{fonctions différentiables}.
 \end{definition}
 
 \begin{prop}[Propriétés]
@@ -3655,6 +3655,47 @@ t & 1
   Pour \(A  = 2 \pi i \operatorname{id}, e^{A} = \operatorname{id} \in B(\operatorname{id},1)\), mais \(\log e^{A} = 0 \neq A\).
 \end{prop}
 
+\begin{proof}[De la proposition]
+
+  \
+
+  \begin{enumerate}
+    \item \(\left\Vert (\operatorname{id} - A)^{m} \right\Vert \leq \left\Vert \operatorname{id} - A \right\Vert ^{m}\), donc la série converge absolument dans \(\mathbb{M}(n,\mathbb{C})\). Continuité comme pour l'exponentielle.
+
+    Soit \(A \in B(\operatorname{id},1)\). \(A\) est diagonalisable. Alors il existe \(C \in GL(n,\mathbb{C})\) tel que
+
+    \[(\operatorname{id} - A)^{m} = C \begin{pmatrix}
+    (1 - z_1)^{m} & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & (1 - z_n)^{m}
+    \end{pmatrix} C ^{-1}\]
+
+    pour les valeurs propres \(z_j\) de \(A\), donc
+
+    \begin{gather*}
+      \sum -\frac{1}{m}(\operatorname{id} - A)^{m} = C \begin{pmatrix}
+      \log(z_1) & \dots & 0 \\
+      \vdots & \ddots & \vdots \\
+      0 & \dots & \log(z_n),
+      \end{pmatrix}
+    \end{gather*}
+
+    car \(\left\Vert \operatorname{id} - A \right\Vert ^{2} = \displaystyle\sum_{j=1}^{n} \left\lvert 1 - z_j \right\rvert ^2 \less 1\), ce qui implique que \(\left\lvert 1 - z_j \right\rvert \less 1\), et donc par le lemme
+
+    \[e^{\log(A)} = C \begin{pmatrix}
+    e^{\log(z_1)} & \dots & 0 \\
+    \vdots & \ddots & \vdots \\
+    0 & \dots & e^{\log(z_n)}
+    \end{pmatrix}C ^{-1} = A.\]
+
+    Soit \(A \in B(\operatorname{id},1)\) et \(A = \displaystyle \lim_{n \to \infty} A_n\) avec \(A_n \in B(\operatorname{id},1)\) et \(A\) diagonalisables, alors
+
+    \[e^{\log(A)} = \lim_{n \to \infty} e^{\log(A_n)} = \lim_{n \to \infty} A_n = A \text{ par continuité}.\]
+
+    \item Même type d'arguments.
+  \end{enumerate}
+\end{proof}
+
 %\subsection{Appendice}
 
 %\begin{prop}
@@ -3829,8 +3870,8 @@ Pour la preuve on utilise
   Soit \((\mathfrak{g}, [\cdot,\cdot])\) une algèbre de Lie et \(\mathfrak{h}\subset \mathfrak{g}\) un sous-espace tel que \([\mathfrak{h}, \mathfrak{h}]\subset\mathfrak{h}\) est
 
   \begin{enumerate}
-    \item appelé sous-algèbre de Lie de \(\mathfrak{g}\) et
-    \item idéal si \([X,Y] \in \mathfrak{h}\)
+    \item appelé \textbf{sous-algèbre de Lie} de \(\mathfrak{g}\) et
+    \item \textbf{idéal} si \([X,Y] \in \mathfrak{h}\)
     \item Le centre de \(\mathfrak{g}\) est l'idéal \(\{ X \in \mathfrak{g}, [Y,X] = 0, \forall Y \in \mathfrak{g}\}\).
   \end{enumerate}
 \end{definition}
@@ -3894,7 +3935,7 @@ Pour la preuve on utilise
 \end{proof}
 
 \begin{definition}
-  La somme directe de deux algèbres de Lie \(\mathfrak{g}_1,\mathfrak{g}_2\) est l'algèbre de Lie
+  La \textbf{somme directe de deux algèbres de Lie} \(\mathfrak{g}_1,\mathfrak{g}_2\) est l'algèbre de Lie
   \begin{gather*}
     \mathfrak{g}_1 \oplus \mathfrak{g}_2 = \{ (x_1,x_2)\in \mathfrak{g}_1 \times \mathfrak{g}_2, x_j \in \mathfrak{g}_j \} \\
     [(x_1,x_2),(y_1,y_2)]:= ([x_1,y_1],[x_2,y_2]).
@@ -4015,31 +4056,31 @@ Pour la preuve on utilise
 \
 
 
-\begin{tabular}{|c|c|}
+\begin{tabular}{|c|c|c|}
   \hline
-  Groupe de Lie & Algèbre de Lie\\
+  Groupe de Lie & Algèbre de Lie & Dimension\\
   \hline
-  \(GL(n,\mathbb{K})\) & \(\mathfrak{gL}(n,\mathbb{K}) = \mathbb{M}(n,\mathbb{K})\) \\
+  \(GL(n,\mathbb{K})\) & \(\mathfrak{gL}(n,\mathbb{K}) = \mathbb{M}(n,\mathbb{K})\) & \(2 n ^2\) si \(\mathbb{K} = \mathbb{C}\), \(n ^2\) si \(\mathbb{K} = \mathbb{R}\) \\
   \hline
-  \(SL(n,\mathbb{K})\) & \(\mathfrak{sL}(n,\mathbb{K}) = \{ X \in \mathbb{M}(n,\mathbb{K}), \operatorname{Tr}(X) = 0 \}\)\\
+  \(SL(n,\mathbb{K})\) & \(\mathfrak{sL}(n,\mathbb{K}) = \{ X \in \mathbb{M}(n,\mathbb{K}), \operatorname{Tr}(X) = 0 \}\) & \(2(n ^2- 1)\) si \(\mathbb{C}\), \(2 n ^2 - 1\) si \(\mathbb{R}\)\\
   \hline
-  \(U(n)\) & \(\mathfrak{U}(n) = \{ X ; X ^{*} = - X \}\) \\
+  \(U(n)\) & \(\mathfrak{U}(n) = \{ X ; X ^{*} = - X \}\) & \(n ^2\) \\
   \hline
-  \(SU(n)\) & \(\mathfrak{SU}(n) = \{ X ; X ^{*} = - X \text{ et } \operatorname{Tr}(X) = 0\}\) \\
+  \(SU(n)\) & \(\mathfrak{SU}(n) = \{ X ; X ^{*} = - X \text{ et } \operatorname{Tr}(X) = 0\}\) & \(n ^2 - 1\)\\
   \hline
-  \(O(n)\) & \(\mathfrak{O}(n) = \{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \}\) \\
+  \(O(n)\) & \(\mathfrak{O}(n) = \{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \}\) & \(\displaystyle\frac{n ^2 - 1}{2}\) \\
   \hline
-  \(SO(n)\) & \(\{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \text{ et } \operatorname{Tr}(X) = 0  \}\) \\
+  \(SO(n)\) & \(\{ X \in \mathbb{M}(n,\mathbb{R}), X ^{t} = -X \text{ et } \operatorname{Tr}(X) = 0  \}\) & \(\displaystyle \frac{n ^2 - 1}{2}\) \\
   \hline
   \(O(p,q)\) & \(\mathfrak{O}(p,q) = \left\{ X \in \mathbb{M}(n,\mathbb{R}), g X ^{t}g = X, g =\begin{pmatrix}
   \operatorname{id}_p & 0\\
   0 & -\operatorname{id}_q
-  \end{pmatrix} \right\}\) \\
+  \end{pmatrix} \right\}\) & \ \\
   \hline
   \(Sp(2n)\) & \(\mathfrak{Sp}(2n) = \left\{ X \in \mathbb{M}(n,\mathbb{R}), gX ^{t}g =  \begin{pmatrix}
   0 & -\operatorname{id}_n \\
   \operatorname{id}_n & 0
-  \end{pmatrix}\right\}\)\\
+  \end{pmatrix}\right\}\) & \(n(2n+1)\)\\
   \hline
 \end{tabular}
 
@@ -4048,7 +4089,7 @@ Pour la preuve on utilise
 \begin{prop}
   Soient \(G,H\) des groupes de Lie matriciels et \(\mathfrak{g},\mathfrak{h}\) les algèbres de Lie associées. Soit \(\varphi  : G \longrightarrow H\) un homomorphisme. Alors il existe un unique \(\widehat{\varphi} \in \mathbb{B}(\mathfrak{g},\mathfrak{h})\) tel que
 
-  \[\varphi(e^{X}) = e^{\widehat{\varphi(X)}}, \forall X \in \mathfrak{g}.\]
+  \[\varphi(e^{X}) = e^{\widehat{\varphi}(X)}, \forall X \in \mathfrak{g}.\]
 
   \(\widehat{\varphi}\) est un homomorphisme d'algèbres de Lie
 
@@ -4107,9 +4148,9 @@ Pour la preuve on utilise
 \begin{definition}
   Soit \(G\) un groupe de Lie matriciel et \(\mathfrak{g}\) son algèbre de Lie. Pour \(A \in G\), l'application
 
-  \[\operatorname{Ad}_{A} : \mathfrak{g} \longrightarrow \mathfrak{g}, \operatorname{Ad}_A(X) = A X A ^{-1}\]
+  \[\operatorname{Ad}_{A} : \mathfrak{g} \longrightarrow \mathfrak{g}, \quad \operatorname{Ad}_A(X) = A X A ^{-1}\]
 
-  est appelée l'application adjointe (alias représentation adjointe).
+  est appelée l'\textbf{application adjointe} (alias représentation adjointe).
 \end{definition}
 
 \begin{remark}
